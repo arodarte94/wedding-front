@@ -1,0 +1,107 @@
+.body {
+    background-color: #fdfdfd;
+    .topMenu {
+      .userMenu {
+        position: absolute;
+        right: 20px;
+      }
+    }
+  
+    .mainContent {
+      padding: 100px 25px 100px 100px;
+  
+      @media (max-width: 900px) {
+        padding: 100px 25px 100px 25px;
+      }
+  
+      .loading{
+        background-color: rgba(0, 0, 0, 0.15);
+        position:absolute;
+        top: 64px;
+        z-index:10;
+        height:100%;
+      }
+
+      .editView {
+        padding: 30px;
+  
+        .mainItem {
+          background: #ffffff;
+          border-radius: 5px;
+          border: 1px solid #dddddd;
+          height: calc(100vh - 200px);
+          position: relative;
+
+          .verticalTabs {
+            height: 100%;
+          }
+  
+          .scrollableTab {
+            overflow-y: scroll;
+            height: 100%;
+
+            @media (max-width: 900px) {
+                height: calc(100% - 50px);
+              }
+
+          }
+          .tabContent {
+            padding: 20px;
+          }
+
+          .mainButtonGroup {
+            position: absolute;
+            right: 0px;
+            top:-45px;
+            z-index:10;
+          }
+
+          .editViewImage {
+            
+            border: 2px solid #dddddd;
+            border-radius: 10px;
+            padding:5px;
+            img{
+              border-radius: 10px;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  
+    .leftMenu {
+      position: fixed;
+      z-index: 100;
+  
+      .menuItem {
+        text-decoration: none;
+  
+        span {
+          font-size: 14px;
+          color: #222;
+        }
+      }
+    }
+  
+    .fs15 {
+      font-size: 1.5rem;
+    }
+
+    .fs2 {
+      font-size: 2rem;
+    }
+
+    .fs25 {
+      font-size: 2.5rem;
+    }
+  
+    .fs3 {
+      font-size: 3rem;
+    }
+  
+    .fs5 {
+      font-size: 5rem;
+    }
+  }
+  
