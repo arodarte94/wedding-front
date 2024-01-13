@@ -35,7 +35,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
 
   return (
     <>
-      <TabOptions save={save} link="/users" />
+      <TabOptions save={save} link="/admin/users" />
       <Grid container spacing={2} className={styles.tabContent}>
         <Grid item xl={2} lg={3} xs={12}>
           <Box className={styles.editViewImage}>

@@ -6,7 +6,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 export const sections = [
   {
     name: 'Dashboard',
-    link: '/',
+    link: '/admin',
     order: 1,
     divider: true,
     icon: <DashboardIcon />,
@@ -14,14 +14,14 @@ export const sections = [
   },
   {
     name: 'Usuarios',
-    link: '/users',
+    link: '/admin/users',
     order: 2,
     icon: <PeopleAltOutlinedIcon />,
     permission: RolePermission.CAN_ACCESS_USERS
   },
   {
     name: 'Roles',
-    link: '/roles',
+    link: '/admin/roles',
     order: 3,
     icon: <BadgeOutlinedIcon />,
     permission: RolePermission.CAN_ACCESS_ROLES

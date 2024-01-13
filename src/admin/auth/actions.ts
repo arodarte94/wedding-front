@@ -1,6 +1,6 @@
 import axios from "axios";
 import axiosInstance from '../lib/axiosInstance'
-import { ENV } from "../environment/environment";
+import { ENV } from "../../environment/environment";
 
 enum ENDPOINTS {
   LOGIN = 'login',

@@ -1,5 +1,5 @@
 import axios from "../lib/axiosInstance";
-import { ENV } from "../environment/environment";
+import { ENV } from "../../environment/environment";
 
 enum ENDPOINTS {
   GET = 'users',

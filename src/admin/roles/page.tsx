@@ -43,7 +43,7 @@ const Roles = () => {
           direction="row"
           justifyContent="flex-end"
           alignItems="flex-end" marginBottom={2}>
-            <Link to='/roles/new'>
+            <Link to='new'>
             <Button startIcon={<Add />} variant='contained'>Nuevo rol</Button>
             </Link>
           </Grid>

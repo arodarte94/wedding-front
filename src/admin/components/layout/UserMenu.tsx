@@ -37,7 +37,7 @@ const UserMenu = () => {
     await logout();
     global?.window?.localStorage.setItem('user', '');
     dispatch(resetUser())
-    navigate("/");
+    navigate("/admin");
   }
 
   return (

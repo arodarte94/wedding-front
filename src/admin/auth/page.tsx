@@ -20,7 +20,7 @@ const Login = () => {
 
       global?.window?.localStorage.setItem('user', JSON.stringify(res.data));
       dispatcher(loginSuccess(res.data));
-      navigate('/')
+      navigate('/admin')
     }
   }
 

@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './admin/App';
 import reportWebVitals from './reportWebVitals';
-import RootLayout from './layout';
+import RootLayout from './admin/layout';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import UserPage from './users/edit/page';
-import Users from './users/page';
-import Roles from './roles/page';
-import RolePage from './roles/edit/page';
+import UserPage from './admin/users/edit/page';
+import Users from './admin/users/page';
+import Roles from './admin/roles/page';
+import RolePage from './admin/roles/edit/page';
+import LandingPage from './front/LandingPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,15 +16,17 @@ root.render(
   <BrowserRouter>
     <RootLayout>
       <Routes>
-        <Route path="/" element={<App />}/>
-        <Route path="/users" element={<Users/>}/>
-        <Route path="/users/:id" element={<UserPage/>}/>
-        <Route path="/users/new" element={<UserPage/>}/>
-        <Route path="/roles" element={<Roles/>}/>
-        <Route path="/roles/:id" element={<RolePage/>}/>
-        <Route path="/roles/new" element={<RolePage/>}/>
+        <Route path="/admin" element={<App />}/>
+        <Route path="/admin/users" element={<Users/>}/>
+        <Route path="/admin/users/:id" element={<UserPage/>}/>
+        <Route path="/admin/users/new" element={<UserPage/>}/>
+        <Route path="/admin/roles" element={<Roles/>}/>
+        <Route path="/admin/roles/:id" element={<RolePage/>}/>
+        <Route path="/admin/roles/new" element={<RolePage/>}/>
+        <Route path="/" element={<LandingPage />}/>
     </Routes>
     </RootLayout>
+
   </BrowserRouter>
 );
 

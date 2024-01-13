@@ -1,0 +1,222 @@
+$beigeOverlay: rgba(229, 223, 211, 0.5);
+$greenOverlay: rgba(124, 130, 116, 0.5);
+$pinkOverlay: rgba(168, 130, 122, 0.5);
+$blueOverlay: rgba(65, 78, 86, 0.5);
+
+$pink: #a8827a;
+$blue: #414e56;
+$beige: #e5dfd3;
+$green: #7c8274;
+
+$mobileThreshold: 900px;
+body {
+  background-color: #ffffff;
+  margin: 0px;
+  overflow-x: hidden;
+}
+
+.main {
+
+  section {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    
+    @media (min-width: 768px) {
+      width: 750px;
+    }
+    @media (min-width: 992px) {
+      width: 100%;
+    }
+    @media (min-width: 1200px) {
+      width: 1170px;
+    }
+  }
+
+  .sideMenu {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    // overflow-y: scroll;
+    width: 200px;
+    box-shadow: 0 3px 20px rgb(0 0 0 / 0.3);
+    background-color: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    .menuTitle {
+      font-size: 30px;
+      font-weight: bold;
+      color: $green;
+      position: absolute;
+      top: 15px;
+      text-align: center;
+      width: 200px;
+    }
+
+    .menuFooter {
+      font-size: 18px;
+      color: #ffffff;
+      background: $green;
+      position: absolute;
+      bottom: 0px;
+      text-align: center;
+      width: 200px;
+      padding: 15px 0px 15px 0px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0px;
+      li {
+        text-transform: uppercase;
+        color: $green;
+        padding: 20px 0px 20px 20px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: $green;
+          color: #ffffff;
+          cursor: pointer;
+        }
+      }
+    }
+
+    @media (max-width: $mobileThreshold) {
+      display: none;
+    }
+  }
+
+  .topMenu {
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    background-color: #ffffff;
+    z-index: 10;
+    box-shadow: 0 3px 20px rgb(0 0 0 / 0.5);
+    display: none;
+    padding: 10px;
+    @media (max-width: $mobileThreshold) {
+      display: block;
+    }
+
+    .menuTitle {
+      font-size: 14px;
+      font-weight: bold;
+      color: $green;
+    }
+  }
+
+  .content {
+    width: calc(100% - 200px);
+    padding-left: 200px;
+
+    @media (max-width: $mobileThreshold) {
+      width: 100%;
+      padding-left: 0px;
+    }
+
+    .morritosMainCover {
+      height: 100vh;
+      background: url("../../../public/mainCover.jpg");
+      min-height: 500px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+
+      .mainCoverOverlay {
+        height: 100vh;
+        width: 100%;
+        z-index: 2;
+        background-color: $beigeOverlay;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .mainCoverText {
+          width: 300px;
+          h1 {
+            font-size: 3em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 60px;
+          }
+
+          padding: 40px;
+          border-radius: 10px;
+          border: 3px solid #eeeeee;
+
+          color: #ffffff;
+        }
+      }
+
+      .date {
+        position: absolute;
+        bottom: 20px;
+        font-size: 40px;
+        color: #ffffff;
+      }
+    }
+
+    .us {
+      .title {
+        text-align: center;
+        padding: 20px 0px;
+
+        .hint {
+          opacity: 0.5;
+        }
+        h1 {
+          font-size: 40px;
+          color: $green;
+          margin:0px;
+        }
+      }
+
+      .presentation {
+        display: flex;
+        flex-wrap: wrap;
+        
+        div {
+          flex-grow: 1;
+
+          &:nth-child(1){
+            width: 30%;
+          }
+
+          &:nth-child(2){
+            width: 40%;
+          }
+
+          &:nth-child(3){
+            width: 30%;
+          }
+          
+
+          h3{
+            text-align:center;
+          }
+
+          p{
+            font-size:20px;
+            line-height:35px;
+            color:#777777;
+          }
+
+          @media (max-width: 1200px) {
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}
