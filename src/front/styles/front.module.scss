@@ -152,7 +152,6 @@ body {
         height: 100vh;
         width: 100%;
         z-index: 2;
-        background-color: $beigeOverlay;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -267,28 +266,10 @@ body {
       .date {
         height: 100vh;
 
-        &:nth-child(2) {
-          .leftColumn {
-            background-image: url("../../../public/mainCover.jpg");
-          }
+        .leftColumn {
+          background-image: url("../../../public/mainCover.jpg");
         }
-
-        &:nth-child(3) {
-          .leftColumn {
-            background-image: url("../../../public/jade.jpeg");
-          }
-        }
-        &:nth-child(4) {
-          .leftColumn {
-            background-image: url("../../../public/mainCover.jpg");
-          }
-        }
-
-        &:nth-child(5) {
-          .leftColumn {
-            background-image: url("../../../public/presentation.png");
-          }
-        }
+        
 
         .leftColumn {
           width: 50%;
