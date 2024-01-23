@@ -1,1 +1,0 @@
-export type SortTypes = 'asc' | 'desc' | null;
