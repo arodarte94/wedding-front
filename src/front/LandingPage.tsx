@@ -1,6 +1,8 @@
 import { Menu } from "@mui/icons-material";
 import styles from "./styles/front.module.scss";
 import { Button } from "@mui/material";
+import { Link } from "react-scroll";
+
 const LandingPage = () => {
   return (
     <div className={styles.main}>
@@ -8,20 +10,40 @@ const LandingPage = () => {
         <Menu className={styles.topMenuCollapse} />
         <div className={styles.topMenuTitle}>&emsp;A&N</div>
         <div className={styles.topMenuRsvp}>
-        <Button variant="outlined" color="success">
-  RSVP
-</Button>
+          <Button variant="outlined" color="success">
+            RSVP
+          </Button>
         </div>
       </div>
 
       <div className={styles.sideMenu}>
         <div className={styles.menuTitle}>A&N</div>
         <ul>
-          <li>Los morritos</li>
-          <li>Los dates</li>
-          <li>La bodita</li>
-          <li>El RSVP</li>
-          <li>Los regalitos</li>
+          <li>
+            <Link to="morritos" smooth={true} duration={500}>
+              Los morritos
+            </Link>
+          </li>
+          <li>
+            <Link to="dates" smooth={true} duration={500}>
+              Los dates
+            </Link>
+          </li>
+          <li>
+            <Link to="bodita" smooth={true} duration={500}>
+              La bodita
+            </Link>
+          </li>
+          <li>
+            <Link to="rsvp" smooth={true} duration={500}>
+              El RSVP
+            </Link>
+          </li>
+          <li>
+            <Link to="regalitos" smooth={true} duration={500}>
+              Los regalitos
+            </Link>
+          </li>
         </ul>
 
         <div className={styles.menuFooter}>03.11.2024</div>
@@ -46,7 +68,7 @@ const LandingPage = () => {
         </div>
 
         {/* Section 2: Quienes son los morritos */}
-        <section className={styles.us}>
+        <section id="morritos" className={styles.us}>
           <div className={styles.title}>
             <p className={styles.hint}>Amor en tiempos del coví</p>
             <h1>La rara del salón se casó con el popu</h1>
@@ -64,7 +86,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div>
-              <img src="/presentation.png" alt="" />
+              <img src="/wedding-front/presentation.png" alt="" />
             </div>
             <div>
               <p>
@@ -83,8 +105,8 @@ const LandingPage = () => {
           <hr />
         </section>
 
-        <section className={styles.dates}>
-
+        {/* Section 3: Dates */}
+        <section id="dates" className={styles.dates}>
           <h1>Nuestra historia</h1>
           <div className={styles.date}>
             <div className={styles.leftColumn}></div>
@@ -164,12 +186,50 @@ const LandingPage = () => {
 
         <section className={styles.totalDates}>
           En total, nos hemos visto en <b>384 ocasiones</b>
-          <br/><br/>Y ahora vamos por toda una vida.
+          <br />
+          <br />Y ahora vamos por toda una vida.
         </section>
 
-        <section className={styles.schedule}>
+        {/* Section 4: La bodita */}
+        <section id="bodita" className={styles.bodita}>
           <h1>La bodita</h1>
+          <div className={styles.boditaCards}>
+          <div className={styles.card}>
+              <h1>La misa</h1>
+              <hr />
+              <p>Salón jardín Cibeles</p>
+              <p>
+                Bulevar Tomás Fernández 8450, Partido Senecú, 32540 Cd Juárez,
+                Chih.
+              </p>
+              <p>9:00 PM a 2:00 PM</p>
+              <p>Cena a las 9:15 PM</p>
+              <a href="#">Ver en Google Maps</a>
+            </div>
+            <div className={styles.card}>
+              <h1>La peda</h1>
+              <hr />
+              <p>Salón jardín Cibeles</p>
+              <p>
+                Bulevar Tomás Fernández 8450, Partido Senecú, 32540 Cd Juárez,
+                Chih.
+              </p>
+              <p>9:00 PM a 2:00 PM</p>
+              <p>Cena a las 9:15 PM</p>
+              <a href="#">Ver en Google Maps</a>
+            </div>
+          </div>
+        </section>
 
+        <section className={styles.footer}>
+          <hr />
+          <h1>La nallely & el tumblus</h1>
+          <div className={styles.footerInfo}>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+          </div>
         </section>
       </div>
     </div>
