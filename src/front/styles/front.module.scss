@@ -10,6 +10,12 @@ $green: #7c8274;
 $bumbleColor: #f0c332;
 
 $mobileThreshold: 900px;
+
+@font-face {
+  font-family: 'chaprille';
+  src: url('../../../public/fonts/Chaprile calligraphy.otf');
+}
+
 body {
   background-color: #ffffff;
   margin: 0px;
@@ -17,7 +23,7 @@ body {
 }
 
 .main {
-  section {
+  section, .container {
     margin-right: auto;
     margin-left: auto;
     box-sizing: border-box;
@@ -49,7 +55,7 @@ body {
     background-color: #fdfdfd;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     z-index: 10;
     .menuTitle {
       font-size: 30px;
@@ -72,6 +78,19 @@ body {
       padding: 15px 0px 15px 0px;
     }
 
+    .mobileSideMenuChevron{
+      position:absolute;
+      top: 10px;
+      left: 140px;
+      font-size:50px;
+      color: $green;
+      cursor: pointer;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+
     ul {
       list-style-type: none;
       padding: 0px;
@@ -81,8 +100,9 @@ body {
         transition: all 0.3s ease;
 
         a {
-          padding: 20px 0px 20px 20px;
+          padding: 20px 20px 20px 0px;
           display: block;
+          text-align: right;
         }
         &:hover {
           background-color: $green;
@@ -92,9 +112,6 @@ body {
       }
     }
 
-    @media (max-width: $mobileThreshold) {
-      display: none;
-    }
   }
 
   .topMenu {
@@ -160,20 +177,10 @@ body {
         position: relative;
 
         .mainCoverText {
-          width: 300px;
-          h1 {
-            font-size: 3em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-            line-height: 60px;
-          }
 
-          padding: 40px;
-          border-radius: 10px;
-          border: 3px solid #eeeeee;
-
-          color: #ffffff;
+          font-family: 'chaprille';
+          font-size: 140px;
+          color: $beige;
         }
       }
 
@@ -181,7 +188,7 @@ body {
         position: absolute;
         bottom: 20px;
         font-size: 40px;
-        color: #ffffff;
+        color: $beige;
       }
     }
 
@@ -217,25 +224,26 @@ body {
         flex-wrap: wrap;
         padding: 40px;
         margin-bottom: 100px;
+        gap: 50px;
         div {
           flex-grow: 1;
           display: flex;
           align-items: center;
           &:nth-child(1) {
-            width: 30%;
+            width: calc(30% - 50px);
           }
 
           &:nth-child(2) {
-            width: 40%;
+            width: calc(40% - 50px);
 
             img {
-              width: 90%;
+              width: 100% !important;
               border-radius: 20px;
             }
           }
 
           &:nth-child(3) {
-            width: 30%;
+            width: calc(30% - 50px);
           }
 
           h3 {
@@ -268,6 +276,12 @@ body {
       .date {
         height: 100vh;
 
+        @media (max-width: $mobileThreshold) {
+          &:not(:first-child) {
+           border-top: 1px solid $pinkOverlay;
+          }
+         }
+         
         .leftColumn {
           background-image: url("../../../public/mainCover.jpg");
         }
@@ -311,9 +325,16 @@ body {
             width: 100%;
             line-height: 150px;
             margin: 0px;
+
+            @media (max-width: $mobileThreshold) {
+              font-size: 100px;
+              line-height: 100px;
+            }
+
           }
           .dateContent {
             padding: 50px;
+
             p {
               font-size: 1.5em;
               color: $green;
@@ -331,6 +352,7 @@ body {
       text-align: center;
       padding: 40px;
       font-size: 35px;
+      line-height: 50px;
     }
 
     .bodita {
@@ -361,9 +383,10 @@ body {
 
           h1{
             text-align: center;
-            font-size:30px;
+            font-size:35px;
           }
           p,a {
+            font-size:20px;
             display:block;
             text-align: center;
           }

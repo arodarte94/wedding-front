@@ -2,12 +2,35 @@ import { Menu } from "@mui/icons-material";
 import styles from "./styles/front.module.scss";
 import { Button } from "@mui/material";
 import { Link } from "react-scroll";
+import { useEffect, useState } from "react";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 const LandingPage = () => {
+
+  const [isMenuEnabled, setIsMenuEnabled] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    toggleMenu();
+  }, [window.screen.width]);
+
+  const toggleMenu = () => {
+        if(window.innerWidth <= 900) {
+          setIsMenuEnabled(false);
+          setIsMobile(true);
+        }
+        
+        else {
+          setIsMenuEnabled(true);
+          setIsMobile(false);
+        }
+  }
+  
+  window.onresize = toggleMenu;
+
   return (
     <div className={styles.main}>
       <div className={styles.topMenu}>
-        <Menu className={styles.topMenuCollapse} />
+        <Menu className={styles.topMenuCollapse} onClick={() => setIsMenuEnabled(!isMenuEnabled)} />
         <div className={styles.topMenuTitle}>&emsp;A&N</div>
         <div className={styles.topMenuRsvp}>
           <Button variant="outlined" color="success">
@@ -16,37 +39,42 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className={styles.sideMenu}>
-        <div className={styles.menuTitle}>A&N</div>
+      <div className={styles.sideMenu} style={{left: isMenuEnabled? "0px" : "-250px"}} >
+        {isMobile ?
+            <ChevronLeftIcon className={styles.mobileSideMenuChevron} onClick={() => setIsMenuEnabled(!isMenuEnabled)} />
+          : <div className={styles.menuTitle}>A&N</div>
+      }
+        
+
         <ul>
           <li>
             <Link to="morritos" smooth={true} duration={500}>
-              Los morritos
+              Inicio
             </Link>
           </li>
           <li>
             <Link to="dates" smooth={true} duration={500}>
-              Los dates
+              Nuestra historia
             </Link>
           </li>
           <li>
             <Link to="bodita" smooth={true} duration={500}>
-              La bodita
+              Evento
             </Link>
           </li>
           <li>
             <Link to="rsvp" smooth={true} duration={500}>
-              El RSVP
+              RSVP
             </Link>
           </li>
           <li>
             <Link to="regalitos" smooth={true} duration={500}>
-              Los regalitos
+              Regalos
             </Link>
           </li>
         </ul>
 
-        <div className={styles.menuFooter}>03.11.2024</div>
+        {/* <div className={styles.menuFooter}>03.11.2024</div> */}
       </div>
 
       <div className={styles.content}>
@@ -54,11 +82,9 @@ const LandingPage = () => {
         <div className={styles.morritosMainCover}>
           <div className={styles.mainCoverOverlay}>
             <div className={styles.mainCoverText}>
-              <h1>
-                {" "}
-                Nallely <br /> & <br />
-                Tumblus
-              </h1>
+              <p>
+                Nallely & Antonio
+              </p>
             </div>
           </div>
 
@@ -186,7 +212,6 @@ const LandingPage = () => {
 
         <section className={styles.totalDates}>
           En total, nos hemos visto en <b>384 ocasiones</b>
-          <br />
           <br />Y ahora vamos por toda una vida.
         </section>
 
@@ -222,7 +247,10 @@ const LandingPage = () => {
         </section>
 
         <section className={styles.footer}>
+          
+          <div className={styles.container}>
           <hr />
+          </div>
           <h1>La nallely & el tumblus</h1>
           <div className={styles.footerInfo}>
             <div>test</div>
