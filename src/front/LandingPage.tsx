@@ -137,7 +137,7 @@ const LandingPage = () => {
           <br />Todavía no sé que poner aquí
         </section>
 
-        <div className={styles.morritosMainCover} style={{background: 'url("Homepage.jpg")'}}>
+        {/* <div className={styles.morritosMainCover} style={{background: 'url("Homepage.jpg")'}}>
           <div className={styles.mainCoverOverlay}>
             <div className={styles.mainCoverText}>
               {isMobile ? 
@@ -147,7 +147,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-        </div>
+        </div> */}
         
         {/* Section 2: Quienes son los morritos */}
         <section  className={styles.us}>
