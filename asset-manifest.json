@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/wedding-front/static/css/main.dd097a20.css",
-    "main.js": "/wedding-front/static/js/main.5b788290.js",
+    "main.css": "/wedding-front/static/css/main.e1d974bd.css",
+    "main.js": "/wedding-front/static/js/main.602a1398.js",
     "static/js/787.de60aad4.chunk.js": "/wedding-front/static/js/787.de60aad4.chunk.js",
+    "static/media/Chaprile calligraphy.otf": "/wedding-front/static/media/Chaprile calligraphy.16b73c6a1c45a4dfabc3.otf",
     "static/media/mainCover.jpg": "/wedding-front/static/media/mainCover.5b849b6276f8113d96e2.jpg",
     "index.html": "/wedding-front/index.html",
-    "main.dd097a20.css.map": "/wedding-front/static/css/main.dd097a20.css.map",
-    "main.5b788290.js.map": "/wedding-front/static/js/main.5b788290.js.map",
+    "main.e1d974bd.css.map": "/wedding-front/static/css/main.e1d974bd.css.map",
+    "main.602a1398.js.map": "/wedding-front/static/js/main.602a1398.js.map",
     "787.de60aad4.chunk.js.map": "/wedding-front/static/js/787.de60aad4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd097a20.css",
-    "static/js/main.5b788290.js"
+    "static/css/main.e1d974bd.css",
+    "static/js/main.602a1398.js"
   ]
 }
