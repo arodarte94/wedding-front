@@ -2,6 +2,7 @@ $beigeOverlay: rgba(229, 223, 211, 0.5);
 $greenOverlay: rgba(124, 130, 116, 0.5);
 $pinkOverlay: rgba(168, 130, 122, 0.5);
 $blueOverlay: rgba(65, 78, 86, 0.5);
+$beigeTest: #EDE7DC;
 
 $pink: #a8827a;
 $blue: #414e56;
@@ -71,10 +72,10 @@ body {
     left: 0px;
     top: 0px;
     height: 100vh;
+    background-color: $beigeTest;
     // overflow-y: scroll;
     width: 200px;
     box-shadow: 0 3px 20px rgb(0 0 0 / 0.3);
-    background-color: #fdfdfd;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -87,6 +88,17 @@ body {
       top: 15px;
       text-align: center;
       width: 200px;
+
+      .mainConfirm{
+        border-color: $pink;
+        color: $pink;
+        font-weight: bold;
+
+        &:hover{
+          background-color: $pink;
+          color: #ffffff;
+        }
+      }
     }
 
     .menuFooter {
@@ -118,7 +130,7 @@ body {
       padding: 0px;
       li {
         text-transform: uppercase;
-        color: $green;
+        color: $blue;
         transition: all 0.3s ease;
 
         a {
@@ -127,7 +139,7 @@ body {
           text-align: right;
         }
         &:hover {
-          background-color: $green;
+          background-color: $blue;
           color: #ffffff;
           cursor: pointer;
         }
@@ -201,11 +213,12 @@ body {
       background: url("../../../public/Homepage.jpg");
       min-height: 500px;
       background-attachment: fixed;
-      background-position: center;
+      background-position: 45%;
       background-repeat: no-repeat;
       background-size: cover;
       display: flex;
       justify-content: center;
+
 
       .mainCoverOverlay {
         height: 100vh;
@@ -221,14 +234,21 @@ body {
           font-family: 'chaprille';
           font-size: 140px;
           color: $beige;
+
+          .mobileLabel {
+            width: 900px;
+            margin-top:200px;
+            
+          }
         }
       }
 
       .date {
         position: absolute;
-        bottom: 20px;
+        bottom: 25%;
         font-size: 40px;
         color: $beige;
+        
       }
     }
 

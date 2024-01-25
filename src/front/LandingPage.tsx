@@ -6,6 +6,7 @@ import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined
 import SynagogueOutlinedIcon from "@mui/icons-material/SynagogueOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import { Button } from "@mui/material";
 
 const LandingPage = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -79,7 +80,10 @@ const LandingPage = () => {
       </div>
 
       <div className={styles.sideMenu}>
-        <div className={styles.menuTitle}>A&N</div>
+        <div className={styles.menuTitle}>
+
+        <Button className={styles.mainConfirm} variant="outlined">CONFIRMAR</Button>
+        </div>
         <ul>
           <li>
           <Link onClick={()=> animateSectionJump(morritosRef) }>
@@ -111,25 +115,40 @@ const LandingPage = () => {
         {/* <div className={styles.menuFooter}>03.11.2024</div> */}
       </div>
 
-      <div className={animationState}>
+      <div ref={morritosRef} className={animationState}>
         {/* Section 1: Main morritos cover page */}
         <div className={styles.morritosMainCover}>
           <div className={styles.mainCoverOverlay}>
             <div className={styles.mainCoverText}>
-              <p>Nallely & Antonio</p>
+              {isMobile ? 
+              <img src="/wedding-front/mainLabelMobile.png" alt="" className={styles.mobileLabel} />
+              :<img src="/wedding-front/mainLabel.png" alt="" />
+              }
             </div>
           </div>
 
-          <div className={styles.date}>
-            <h2>03.11.2024</h2>
-          </div>
+          {!isMobile && <div className={styles.date}>
+          <img src="/wedding-front/Fecha.png" alt="" />
+          </div>}
         </div>
 
-        <section ref={morritosRef} className={styles.totalDates}>
+        <section className={styles.totalDates}>
           Divider <b>raro</b>
           <br />Todavía no sé que poner aquí
         </section>
 
+        <div className={styles.morritosMainCover} style={{background: 'url("Homepage.jpg")'}}>
+          <div className={styles.mainCoverOverlay}>
+            <div className={styles.mainCoverText}>
+              {isMobile ? 
+              <p>Nallely &<br />Antonio</p>
+              :<img src="/wedding-front/mainLabel.png" alt="" />
+              }
+            </div>
+          </div>
+
+        </div>
+        
         {/* Section 2: Quienes son los morritos */}
         <section  className={styles.us}>
           <div className={styles.title}>
