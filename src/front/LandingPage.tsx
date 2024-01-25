@@ -1,74 +1,108 @@
-import { Menu } from "@mui/icons-material";
 import styles from "./styles/front.module.scss";
-import { Button } from "@mui/material";
 import { Link } from "react-scroll";
-import { useEffect, useState } from "react";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { useEffect, useRef, useState } from "react";
+import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
+import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
+import SynagogueOutlinedIcon from "@mui/icons-material/SynagogueOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const LandingPage = () => {
-
-  const [isMenuEnabled, setIsMenuEnabled] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [animationState, setAnimationState] = useState(`${styles.content}`);
+  
+  const morritosRef = useRef(null);
+  const datesRef = useRef(null);
+  const boditaRef = useRef(null);
+  
   useEffect(() => {
-    toggleMenu();
+    resize();
   }, [window.screen.width]);
 
-  const toggleMenu = () => {
-        if(window.innerWidth <= 900) {
-          setIsMenuEnabled(false);
-          setIsMobile(true);
-        }
-        
-        else {
-          setIsMenuEnabled(true);
-          setIsMobile(false);
-        }
+  const resize = () => {
+    if (window.innerWidth <= 900) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  const animateSectionJump = (ref) => {
+    
+    setTimeout(() => {
+      setAnimationState(`${styles.content} ${styles.fadeIn}`);
+
+      ref.current.scrollIntoView({
+        block: 'start', // You can adjust this value based on your needs ('start', 'center', 'end', or 'nearest')
+      });
+
+    }, 500);
+
+    setAnimationState(`${styles.content} ${styles.fadeOut}`);
   }
-  
-  window.onresize = toggleMenu;
+
+  window.onresize = resize;
 
   return (
     <div className={styles.main}>
-      <div className={styles.topMenu}>
-        <Menu className={styles.topMenuCollapse} onClick={() => setIsMenuEnabled(!isMenuEnabled)} />
-        <div className={styles.topMenuTitle}>&emsp;A&N</div>
-        <div className={styles.topMenuRsvp}>
-          <Button variant="outlined" color="success">
-            RSVP
-          </Button>
+      <div className={styles.bottomMenu}>
+        <div className={styles.bottomMenuOption}>
+        <Link onClick={()=> animateSectionJump(morritosRef) }>
+          <HomeOutlinedIcon />
+          <span>Inicio</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+        <Link onClick={()=> animateSectionJump(datesRef) }>
+          <FavoriteBorderOutlinedIcon />
+          <span>Nosotros</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+        <Link onClick={()=> animateSectionJump(boditaRef) }>
+          <SynagogueOutlinedIcon />
+          <span>Evento</span>
+        </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+        <Link onClick={()=> animateSectionJump(morritosRef) }>
+          <MarkEmailReadOutlinedIcon />
+          <span>RSVP</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+        <Link onClick={()=> animateSectionJump(morritosRef) }>
+          <CardGiftcardOutlinedIcon />
+          <span>Regalos</span>
+          </Link>
         </div>
       </div>
 
-      <div className={styles.sideMenu} style={{left: isMenuEnabled? "0px" : "-250px"}} >
-        {isMobile ?
-            <ChevronLeftIcon className={styles.mobileSideMenuChevron} onClick={() => setIsMenuEnabled(!isMenuEnabled)} />
-          : <div className={styles.menuTitle}>A&N</div>
-      }
-        
-
+      <div className={styles.sideMenu}>
+        <div className={styles.menuTitle}>A&N</div>
         <ul>
           <li>
-            <Link to="morritos" smooth={true} duration={500}>
+          <Link onClick={()=> animateSectionJump(morritosRef) }>
               Inicio
             </Link>
           </li>
           <li>
-            <Link to="dates" smooth={true} duration={500}>
+          <Link onClick={()=> animateSectionJump(datesRef) }>
               Nuestra historia
             </Link>
           </li>
           <li>
-            <Link to="bodita" smooth={true} duration={500}>
+          <Link onClick={()=> animateSectionJump(boditaRef) }>
               Evento
             </Link>
           </li>
           <li>
-            <Link to="rsvp" smooth={true} duration={500}>
+          <Link onClick={()=> animateSectionJump(morritosRef) }>
               RSVP
             </Link>
           </li>
           <li>
-            <Link to="regalitos" smooth={true} duration={500}>
+          <Link onClick={()=> animateSectionJump(morritosRef) }>
               Regalos
             </Link>
           </li>
@@ -77,14 +111,12 @@ const LandingPage = () => {
         {/* <div className={styles.menuFooter}>03.11.2024</div> */}
       </div>
 
-      <div className={styles.content}>
+      <div className={animationState}>
         {/* Section 1: Main morritos cover page */}
         <div className={styles.morritosMainCover}>
           <div className={styles.mainCoverOverlay}>
             <div className={styles.mainCoverText}>
-              <p>
-                Nallely & Antonio
-              </p>
+              <p>Nallely & Antonio</p>
             </div>
           </div>
 
@@ -93,8 +125,13 @@ const LandingPage = () => {
           </div>
         </div>
 
+        <section ref={morritosRef} className={styles.totalDates}>
+          Divider <b>raro</b>
+          <br />Todavía no sé que poner aquí
+        </section>
+
         {/* Section 2: Quienes son los morritos */}
-        <section id="morritos" className={styles.us}>
+        <section  className={styles.us}>
           <div className={styles.title}>
             <p className={styles.hint}>Amor en tiempos del coví</p>
             <h1>La rara del salón se casó con el popu</h1>
@@ -132,7 +169,7 @@ const LandingPage = () => {
         </section>
 
         {/* Section 3: Dates */}
-        <section id="dates" className={styles.dates}>
+        <section ref={datesRef} className={styles.dates}>
           <h1>Nuestra historia</h1>
           <div className={styles.date}>
             <div className={styles.leftColumn}></div>
@@ -216,10 +253,10 @@ const LandingPage = () => {
         </section>
 
         {/* Section 4: La bodita */}
-        <section id="bodita" className={styles.bodita}>
+        <section ref={boditaRef} className={styles.bodita}>
           <h1>La bodita</h1>
           <div className={styles.boditaCards}>
-          <div className={styles.card}>
+            <div className={styles.card}>
               <h1>La misa</h1>
               <hr />
               <p>Salón jardín Cibeles</p>
@@ -247,9 +284,8 @@ const LandingPage = () => {
         </section>
 
         <section className={styles.footer}>
-          
           <div className={styles.container}>
-          <hr />
+            <hr />
           </div>
           <h1>La nallely & el tumblus</h1>
           <div className={styles.footerInfo}>
