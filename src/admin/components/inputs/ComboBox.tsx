@@ -1,7 +1,7 @@
 import { Autocomplete, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-const ComboBox = ({src, labelKey, idKey, fieldKey, data, searchTerm, set, text, responseProperty, async}) => {
+const ComboBox = ({src, labelKey, idKey, fieldKey, data, searchTerm, set, text, responseProperty, async, label}) => {
 
   const [query, setQuery] = useState('')
   const [options, setOptions] = useState([]);
@@ -53,7 +53,7 @@ const ComboBox = ({src, labelKey, idKey, fieldKey, data, searchTerm, set, text, 
         getOptionKey={(option) => option[idKey]}
         onChange={handleSelect}
         value={value}
-        renderInput={(params) => <TextField variant="filled" {...params} label="Select..."
+        renderInput={(params) => <TextField label={label || "Select..."} variant="filled" {...params}
         onChange={ async ? e => search(e.target.value) : undefined} 
         />}
     />

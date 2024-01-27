@@ -1,3 +1,4 @@
+import { Group } from './group.model';
 import { Location } from './location.model';
 import { RolePermission } from './permission.model';
 import { Role } from './role.model';
@@ -12,6 +13,12 @@ export interface User {
   token: string;
   locations: Location[];
   role: Role;
+  group: Group;
+  host: User;
+  type_id: number;
+  type: string;
+  dinner_id: number;
+  dinner: string;
   passwordChange: boolean;
   createdAt: Date;
   updatedAt: Date;

@@ -156,7 +156,7 @@ export default function MiniDrawer({
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            POS-Core
+            La bodita de los morritos
           </Typography>
           <UserMenu />
         </Toolbar>

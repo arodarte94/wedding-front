@@ -15,11 +15,29 @@ export const getUsers = async (page: number = 1, pageLength: number = 10, sortKe
         page: page,
         itemsPerPage: pageLength,
         orderBy: sortKey,
-        role: params?.role
+        role: params?.role,
+        name: params?.name
       } 
     });
     return response;
 }
+
+export const getHosts = async (page: number = 1, pageLength: number = 10, sortKey: string | null, params?: any) => {
+
+  const response = await axios.get(ENV.basePath + ENDPOINTS.GET, { 
+    params: 
+    { 
+      page: page,
+      itemsPerPage: pageLength,
+      orderBy: sortKey,
+      role: params?.role,
+      name: params?.name,
+      hostsOnly: true,
+    } 
+  });
+  return response;
+}
+
 
 
 export const getUser = async (id: string, set: any) => {
@@ -28,25 +46,29 @@ export const getUser = async (id: string, set: any) => {
   set(response.data.user);
 }
 
-export const create = async (name?: string, username?: string, email?: string, role?: number) => {
+export const create = async (name?: string, username?: string, email?: string, role?: number, host?: number, type?: number) => {
 
   const response = await axios.post(ENV.basePath + ENDPOINTS.CREATE, {
     name: name,
     username: username,
     email: email,
     role: role,
+    host: host,
+    type: type
   });
 
   return response;
 }
 
-export const update = async (id: number, name?: string, username?: string, email?: string, role?: number) => {
+export const update = async (id: number, name?: string, username?: string, email?: string, role?: number, host?: number, type?: number) => {
 
   const response = await axios.post(ENV.basePath + ENDPOINTS.UPDATE + '/' + id, {
     name: name,
     username: username,
     email: email,
     role: role,
+    host: host,
+    type: type
   });
 
   return response;

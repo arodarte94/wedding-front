@@ -43,7 +43,7 @@ const Users = () => {
           justifyContent="flex-end"
           alignItems="flex-end" marginBottom={2}>
             <Link href='users/new'>
-            <Button startIcon={<Add />} variant='contained'>Nuevo usuario</Button>
+            <Button startIcon={<Add />} variant='contained'>Nuevo Invitado</Button>
             </Link>
           </Grid>
 

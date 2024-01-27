@@ -1,5 +1,5 @@
 
-const dev = 'http://client.pos.core:8080/api/';
+const dev = 'http://nallelytumblus.wedding/api/';
 const prod = window.location.origin + "/api/";
 
 export const ENV = {

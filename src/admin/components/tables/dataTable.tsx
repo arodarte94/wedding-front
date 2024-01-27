@@ -35,8 +35,18 @@ export default function DataTable({ columns,
           }}
           paginationMode='server'
           sortingMode="server"
-            getRowClassName={(params) =>
-              params.indexRelativeToCurrentPage % 2 === 0 ? styles.even : styles.odd
+            getRowClassName={(params) => {
+
+              if(params.row.confirmed) {
+                if(params.row.confirmed === "Sí")
+                  return styles.confirmed;
+
+                else
+                  return styles.unconfirmed;
+              }
+
+              return params.indexRelativeToCurrentPage % 2 === 0 ? styles.even : styles.odd;
+            }
           }
           onPaginationModelChange={ (e) => onPageChange(e.page + 1, e.pageSize)}
           onSortModelChange={ (e) => onSortChange(e[0]?.field, e[0]?.sort)}

@@ -25,10 +25,10 @@ const UserEditView = ({ user, set }: {user: User|null, set: any}) => {
           justifyContent="flex-start"
           alignItems="flex-start"
         >
-           <Breadcrumb link='/users' name='Usuarios' element={user?.name}/> 
+           <Breadcrumb link='/admin/users' name='Invitados' element={user?.name}/> 
         </Grid>
         <Grid xs={8} marginTop={1} marginBottom={1}>
-          <b className={styles.fs15}>{user?.name ?? "Nuevo usuario"}</b>
+          <b className={styles.fs15}>{user?.name ?? "Nuevo invitado"}</b>
           <i>&nbsp; {user?.createdAt ? "- Creado el" + user.createdAt : ""}</i>
         </Grid>
         <Grid container className={styles.mainItem}>
