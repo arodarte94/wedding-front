@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export interface Group {
   id: number;
   name: string;
@@ -5,4 +7,5 @@ export interface Group {
   usersCount: number;
   createdAt: Date;
   updatedAt: Date;
+  users: User[]
 }

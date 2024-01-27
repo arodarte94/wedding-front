@@ -17,8 +17,9 @@ export const columns: GridColDef[] = [
       ),
   }, 
   { field: 'email', headerName: 'Correo', width: 300 },
-  { field: 'confirmed', headerName: 'Confirmado', width: 150 },
+  // { field: 'confirmed', headerName: 'Confirmado', width: 150 },
   { field: 'confirmed_at', headerName: 'Fecha de confirmación', width: 200 },
+  { field: 'guests_count', headerName: 'Extras', width: 200 },
   { field: 'type', headerName: 'Tipo', width: 200 },
   {
     field: 'group',

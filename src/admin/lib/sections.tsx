@@ -20,10 +20,10 @@ export const sections = [
     permission: RolePermission.CAN_ACCESS_USERS
   },
   {
-    name: 'Roles',
-    link: '/admin/roles',
+    name: 'Grupos',
+    link: '/admin/groups',
     order: 3,
     icon: <BadgeOutlinedIcon />,
-    permission: RolePermission.CAN_ACCESS_ROLES
+    permission: RolePermission.CAN_ACCESS_GROUPS
   }
 ];

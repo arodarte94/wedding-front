@@ -8,8 +8,9 @@ import { useState } from "react";
 import Breadcrumb from "../../components/edit-view/Breadcrumb";
 import MainTab from "../tabs/main";
 import { User } from "../../models/user.model";
+import UsersTab from "../tabs/users";
 
-const tabs = [{ name: "General" }];
+const tabs = [{ name: "General" }, { name: "Acompañantes" }];
 
 const UserEditView = ({ user, set }: {user: User|null, set: any}) => {
 
@@ -43,6 +44,11 @@ const UserEditView = ({ user, set }: {user: User|null, set: any}) => {
             <Tab value={value} index={0}>
               <MainTab user={user} set={set} key={user?.id} />
             </Tab>
+
+            {user && <Tab value={value} index={1}>
+              <UsersTab user={user} key={user?.id + 'Guests'} />
+            </Tab>}
+
           </Grid>
         </Grid>
       </Grid>
