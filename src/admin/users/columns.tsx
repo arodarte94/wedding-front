@@ -16,10 +16,11 @@ export const columns: GridColDef[] = [
           <Link to={"/admin/users/" + params.row.id}>{params.row.name}</Link>
       ),
   }, 
-  { field: 'email', headerName: 'Correo', width: 300 },
+  { field: 'email', headerName: 'Correo', width: 250 },
   // { field: 'confirmed', headerName: 'Confirmado', width: 150 },
   { field: 'confirmed_at', headerName: 'Fecha de confirmación', width: 200 },
-  { field: 'guests_count', headerName: 'Extras', width: 200 },
+  { field: 'guests_count', headerName: 'Extras utilizados', width: 200 },
+  { field: 'slots', headerName: 'Extras disponibles', width: 200 },
   { 
     field: 'type', 
     headerName: 'Tipo', 
@@ -47,7 +48,7 @@ export const columns: GridColDef[] = [
     valueGetter: (params: GridValueGetterParams) =>
       params.row.host?.name ?? '', 
   },
-  { field: 'dinner', headerName: 'Cena', width: 300 },
+  { field: 'dinner', headerName: 'Cena', width: 250 },
   
   createdAtColumn,
   updatedAtColumn

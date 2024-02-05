@@ -52,7 +52,7 @@ export const getUser = async (id: string, set: any) => {
   set(response.data.user);
 }
 
-export const create = async (name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, dinner?: number) => {
+export const create = async (name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, dinner?: number, slots?: number) => {
 
   const response = await axios.post(ENV.basePath + ENDPOINTS.CREATE, {
     name: name,
@@ -62,13 +62,14 @@ export const create = async (name?: string, username?: string, email?: string, r
     host: host,
     type: type,
     group: group,
-    dinner: dinner
+    dinner: dinner,
+    slots: slots
   });
 
   return response;
 }
 
-export const update = async (id: number, name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, dinner?: number) => {
+export const update = async (id: number, name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, dinner?: number, slots?: number) => {
 
   const response = await axios.post(ENV.basePath + ENDPOINTS.UPDATE + '/' + id, {
     name: name,
@@ -78,7 +79,8 @@ export const update = async (id: number, name?: string, username?: string, email
     host: host,
     type: type,
     group: group,
-    dinner: dinner
+    dinner: dinner,
+    slots: slots
   });
 
   return response;

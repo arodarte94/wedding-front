@@ -23,6 +23,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     name: user?.name,
     username: user?.username,
     email: user?.email,
+    slots: user?.slots,
     host: user?.host?.id,
     group: user?.group?.id,
     role: user?.role?.id,
@@ -41,7 +42,8 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
           userData.host,
           userData.type,
           userData.group,
-          userData.dinner
+          userData.dinner,
+          userData.slots
         )
       : await create(
           userData.name,
@@ -51,7 +53,8 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
           userData.host,
           userData.type,
           userData.group,
-          userData.dinner
+          userData.dinner,
+          userData.slots
         );
 
     if (res.status === 200) set(res.data.user);
@@ -103,6 +106,17 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
               />
             </Grid>
             <Grid item md={6} xs={12}>
+            {
+              userData?.type == 1 ?
+              <TextField
+              fullWidth
+              required
+              type="number"
+              label="Acompañantes disponibles"
+              defaultValue={user?.slots}
+              onChange={(e) => setUserData({...userData, slots: e.target.value})}
+              variant="filled"
+            />:
               <ComboBox
               src={getHosts}
               async
@@ -114,6 +128,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
               initialValue={user?.host}
               set={(newValue: any) => setUserData({...userData, host: newValue})}
               ></ComboBox>
+            }
             </Grid>
             <Grid item md={6} xs={12}>
             { !userData?.host && <ComboBox

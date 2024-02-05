@@ -9,6 +9,7 @@ export interface User {
   username: string;
   password: string;
   image: string,
+  slots: number,
   email: string;
   token: string;
   locations: Location[];
