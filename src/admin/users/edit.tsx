@@ -1,20 +1,34 @@
 
-import AppLayout from "../../components/layout/appLayout";
+import AppLayout from "../components/layout/appLayout";
 import { Grid } from "@mui/material";
-import styles from "../../styles/app.module.scss";
-import Tab from "../../components/edit-view/Tab";
-import ResponsiveTabs from "../../components/edit-view/Tabs";
-import { useState } from "react";
-import Breadcrumb from "../../components/edit-view/Breadcrumb";
-import MainTab from "../tabs/main";
-import { User } from "../../models/user.model";
-import UsersTab from "../tabs/users";
+import styles from "../styles/app.module.scss";
+import Tab from "../components/edit-view/Tab";
+import ResponsiveTabs from "../components/edit-view/Tabs";
+import { useEffect, useState } from "react";
+import Breadcrumb from "../components/edit-view/Breadcrumb";
+import MainTab from "./tabs/main";
+import { User } from "../models/user.model";
+import UsersTab from "./tabs/users";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { setIsLoading } from "../lib/appSlice";
+import { getUser } from "./actions";
 
 const tabs = [{ name: "General" }, { name: "Acompañantes" }];
 
-const UserEditView = ({ user, set }: {user: User|null, set: any}) => {
+const UserEditView = () => {
 
   const [value, setValue] = useState(0);
+  const [user, setUser] = useState<User | null>(null);
+  const { id } = useParams();
+  const dispatcher = useDispatch();
+  
+  useEffect(() => {
+    if (id) {
+      dispatcher(setIsLoading(true));
+      getUser(id, setUser);
+    }
+  }, []);
   
   return (
     <AppLayout>
@@ -42,13 +56,11 @@ const UserEditView = ({ user, set }: {user: User|null, set: any}) => {
           </Grid>
           <Grid xl={11} lg={10} md={9} xs={12} className={styles.scrollableTab}>
             <Tab value={value} index={0}>
-              <MainTab user={user} set={set} key={user?.id} />
+              <MainTab user={user} set={setUser} key={user?.id} />
             </Tab>
-
             {user && <Tab value={value} index={1}>
               <UsersTab user={user} key={user?.id + 'Guests'} />
             </Tab>}
-
           </Grid>
         </Grid>
       </Grid>

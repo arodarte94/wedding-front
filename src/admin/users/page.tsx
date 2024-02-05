@@ -1,40 +1,49 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { paginator } from "../lib/paginator";
-import { getUsers } from "./actions";
-import { setData, setPage, sortTable } from "./slice";
+import { deleteUsers, getUsers } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 import AppLayout from "../components/layout/appLayout";
 import DataTable from "../components/tables/dataTable";
 import { columns } from "./columns";
 import { RootState } from "../store";
-import { SortTypes } from "../lib/types";
-import { Button, Checkbox, FormControlLabel, Grid, Link } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { Checkbox, FormControlLabel, Grid } from "@mui/material";
+import DeleteModal from "../components/layout/deleteModal";
+import usePaginator from "../lib/hooks/usePaginator";
+import useDeleteModal from "../lib/hooks/useDeleteModal";
+import { setIsLoading } from "../lib/appSlice";
+import TableOptions from "../components/tables/tableOptions";
+
 const Users = () => {
   const dispatcher = useDispatch();
-  const { items, currentPage, elements, itemsPerPage, sortKey, isLoading } =
-    useSelector((state: RootState) => state.users);
-  const [types, setTypes] = useState([]);
-  const [confirmed, setConfirmed] = useState(null);
-  useEffect(() => {
-    paginator(
-      getUsers,
-      setData,
-      dispatcher,
-      "users",
-      currentPage,
-      itemsPerPage,
-      sortKey,
-      { type: types, confirmed: confirmed }
-    );
-  }, [currentPage, itemsPerPage, sortKey, types, confirmed]);
-  const onPageChange = (page: number, itemsPerPage: number) => {
-    dispatcher(setPage({ page, itemsPerPage }));
+  const {
+    currentPage,
+    elements,
+    isLoading,
+    items,
+    selectedRows,
+    itemsPerPage,
+    customParams,
+    onPageChange,
+    onSortChange,
+    setCustomParams,
+    setSelectedRows,
+    removeRows,
+  } = usePaginator(getUsers, "users");
+
+  const { openDeleteModal, toggleModal, handleDelete } = useDeleteModal();
+  const appState = useSelector((state: RootState) => state.app);
+
+  const deleteSelected = async () => {
+    dispatcher(setIsLoading(true));
+    const response = await deleteUsers(selectedRows);
+    handleDelete(response, () => removeRows(selectedRows));
   };
-  const onSortChange = (column: string | null, sort: SortTypes) => {
-    dispatcher(sortTable({ column, sort }));
-  };
+
+  const filterType = (type) => {
+
+    if(typeof customParams?.type?.length ) 
+      return customParams?.type.filter((i) => i != type)
+
+    return null;
+  }
   return (
     <AppLayout>
       <Grid
@@ -46,20 +55,23 @@ const Users = () => {
         alignItems="flex-end"
         marginBottom={2}
       >
-        <Link href="users/new">
-          <Button startIcon={<Add />} variant="contained">
-            Nuevo Invitado 
-          </Button>
-        </Link>
       </Grid>
+      <TableOptions
+        editButton={{ link: "/admin/users/new", label: "Nuevo usuario" }}
+        deleteButton={{
+          fn: () => toggleModal(true),
+          label: "Eliminar usuarios",
+          active: selectedRows.length > 0,
+        }}
+      />
       <FormControlLabel
         control={
           <Checkbox
             onChange={(e, val) => {
               if (val) {
-                setTypes([...types, 1]);
+                setCustomParams({...customParams, type: [ ...customParams?.type ?? [], 1]});
               } else {
-                setTypes(types.filter((i) => i != 1));
+                setCustomParams({...customParams, type: filterType(1) } );
               }
             }}
           />
@@ -71,9 +83,9 @@ const Users = () => {
           <Checkbox
             onChange={(e, val) => {
               if (val) {
-                setTypes([...types, 2]);
+                setCustomParams({...customParams, type: [ ...customParams?.type ?? [], 2]});
               } else {
-                setTypes(types.filter((i) => i != 2));
+                setCustomParams({...customParams, type: filterType(2) } );
               }
             }}
           />
@@ -85,9 +97,9 @@ const Users = () => {
           <Checkbox
             onChange={(e, val) => {
               if (val) {
-                setTypes([...types, 3]);
+                setCustomParams({...customParams, type: [ ...customParams?.type ?? [], 3]});
               } else {
-                setTypes(types.filter((i) => i != 3));
+                setCustomParams({...customParams, type: filterType(3) } );
               }
             }}
           />
@@ -95,20 +107,14 @@ const Users = () => {
         label="Niños"
       />
 
-    <FormControlLabel
-        control={
-          <Checkbox
-            onChange={(e,val) => setConfirmed( val? 1 : 0)}
-          />
-        }
+      <FormControlLabel
+        control={<Checkbox onChange={(e, val) => setCustomParams({...customParams, confirmed: val ? 1 : 0})} />}
         label="Confirmados"
       />
-      
-      
-        <span style={{fontStyle: "italic", color: '#555555'}}>
-          {elements} - invitados encontrados
-        </span>
 
+      <span style={{ fontStyle: "italic", color: "#555555" }}>
+        {elements} - invitados encontrados
+      </span>
       <DataTable
         columns={columns}
         rows={items}
@@ -117,7 +123,19 @@ const Users = () => {
         onPageChange={onPageChange}
         onSortChange={onSortChange}
         isLoading={isLoading}
+        itemsPerPage={itemsPerPage}
+        setSelectedRows={(selected: any) => setSelectedRows(selected)}
+        enableCheckboxes
       />
+      <DeleteModal
+        open={openDeleteModal}
+        close={() => toggleModal(false)}
+        deleteElements={deleteSelected}
+        isLoading={appState.isLoading}
+      >
+        ¿Estás seguro de eliminar los {selectedRows.length} usuarios
+        seleccionados?
+      </DeleteModal>
     </AppLayout>
   );
 };

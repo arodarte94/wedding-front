@@ -3,13 +3,13 @@ import App from './admin/App';
 import reportWebVitals from './reportWebVitals';
 import RootLayout from './admin/layout';
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
-import UserPage from './admin/users/edit/page';
 import Users from './admin/users/page';
 import Roles from './admin/roles/page';
-import RolePage from './admin/roles/edit/page';
+import RolePage from './admin/roles/edit';
 import LandingPage from './front/LandingPage';
 import Groups from './admin/groups/page';
-import GroupPage from './admin/groups/edit/page';
+import GroupEditView from './admin/groups/edit';
+import UserEditView from './admin/users/edit';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,12 +20,12 @@ root.render(
   <Routes>
         <Route path="/admin" element={<App />}/>
         <Route path="/admin/users" element={<Users/>}/>
-        <Route path="/admin/users/:id" element={<UserPage/>}/>
-        <Route path="/admin/users/new" element={<UserPage/>}/>
+        <Route path="/admin/users/:id" element={<UserEditView/>}/>
+        <Route path="/admin/users/new" element={<UserEditView/>}/>
 
         <Route path="/admin/groups" element={<Groups/>}/>
-        <Route path="/admin/groups/:id" element={<GroupPage/>}/>
-        <Route path="/admin/groups/new" element={<GroupPage/>}/>
+        <Route path="/admin/groups/:id" element={<GroupEditView/>}/>
+        <Route path="/admin/groups/new" element={<GroupEditView/>}/>
 
         <Route path="/admin/roles" element={<Roles/>}/>
         <Route path="/admin/roles/:id" element={<RolePage/>}/>

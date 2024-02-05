@@ -5,6 +5,7 @@ enum ENDPOINTS {
   GET = 'users',
   CREATE = 'users',
   UPDATE = 'users',
+  DELETE = 'users'
 }   
 
 export const getUsers = async (page: number = 1, pageLength: number = 10, sortKey: string | null, params?: any) => {
@@ -78,6 +79,17 @@ export const update = async (id: number, name?: string, username?: string, email
     type: type,
     group: group,
     dinner: dinner
+  });
+
+  return response;
+}
+
+export const deleteUsers = async (users: number[]) => {
+
+  const response = await axios.delete(ENV.basePath + ENDPOINTS.DELETE, { data: 
+    { 
+      users: users,
+    } 
   });
 
   return response;

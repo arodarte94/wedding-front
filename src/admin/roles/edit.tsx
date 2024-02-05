@@ -1,20 +1,38 @@
-
 import AppLayout from "../components/layout/appLayout";
 import { Grid } from "@mui/material";
 import styles from "../styles/app.module.scss";
 import Tab from "../components/edit-view/Tab";
 import { Role } from "../models/role.model";
 import ResponsiveTabs from "../components/edit-view/Tabs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Breadcrumb from "../components/edit-view/Breadcrumb";
 import MainTab from "./tabs/main";
 import UsersTab from "./tabs/users";
+import { useParams } from "react-router-dom";
+import { getRole } from "./actions";
+import { PermissionModule } from "../models/permission.model";
+import { getPermissions } from "./actions";
+import { useDispatch } from "react-redux";
+import { setIsLoading } from "../lib/appSlice";
 
 const tabs = [{ name: "General" }, { name: "Usuarios" }];
 
-const RoleEditView = ({ role, set }: {role: Role|null, set: any}) => {
+const RoleEditView = () => {
 
   const [value, setValue] = useState(0);
+  const [allPermissions, setAllPermissions] = useState<PermissionModule[] | null>(null);
+  const [role, setRole] = useState<Role | null>(null);
+  const { id } = useParams();
+  const dispatcher = useDispatch();
+
+  useEffect(() => {
+    if (id) {
+      dispatcher(setIsLoading(true));
+      getRole(id, setRole);
+    }
+
+    getPermissions(setAllPermissions);
+  }, []);
 
   return (
     <AppLayout>
@@ -42,7 +60,7 @@ const RoleEditView = ({ role, set }: {role: Role|null, set: any}) => {
           </Grid>
           <Grid xl={11} lg={10} md={9} xs={12} className={styles.scrollableTab}>
             <Tab value={value} index={0}>
-              <MainTab role={role} set={set} key={role?.id} />
+              <MainTab role={role} set={setRole} key={role?.id} allPermissions={allPermissions} />
             </Tab>
             {role && <Tab value={value} index={1}>
               <UsersTab role={role} key={role?.id + 'Users'} />

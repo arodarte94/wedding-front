@@ -1,7 +1,7 @@
-import { GridColDef, GridRenderCellParams, GridValueGetterParams } from '@mui/x-data-grid';
+import { GridCellParams, GridColDef, GridRenderCellParams, GridValueGetterParams } from '@mui/x-data-grid';
 import { createdAtColumn, idColumn, nameColumn, updatedAtColumn } from '../lib/defaultTableColumns';
 import { Link } from 'react-router-dom'
-
+import styles from "../styles/tables.module.scss";
 export const columns: GridColDef[] = [
 
   idColumn,
@@ -20,7 +20,19 @@ export const columns: GridColDef[] = [
   // { field: 'confirmed', headerName: 'Confirmado', width: 150 },
   { field: 'confirmed_at', headerName: 'Fecha de confirmación', width: 200 },
   { field: 'guests_count', headerName: 'Extras', width: 200 },
-  { field: 'type', headerName: 'Tipo', width: 200 },
+  { 
+    field: 'type', 
+    headerName: 'Tipo', 
+    width: 200 ,
+    cellClassName: (params: GridCellParams) =>
+    {
+      if(params.row.type === "Acompañante")
+        return styles.guest;
+    
+      else if(params.row.type === "Niño acompañante")
+        return styles.guestChild;
+    }
+  },
   {
     field: 'group',
     headerName: 'Grupo',

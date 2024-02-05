@@ -1,64 +1,89 @@
-'use client';
-import { useEffect } from 'react';
-import { paginator } from '../lib/paginator';
-import { getRoles } from './actions';
-import { setData, setPage, sortTable } from './slice';
-import { useDispatch, useSelector } from 'react-redux';
-import AppLayout from '../components/layout/appLayout';
-import DataTable from '../components/tables/dataTable';
-import { columns } from './columns';
-import { RootState } from '../store';
-import { SortTypes } from '../lib/types';
-import { Button, Grid } from '@mui/material';
-import { Add } from '@mui/icons-material';
-import { Link } from 'react-router-dom'
+import { deleteRoles, getRoles } from "./actions";
+import { useDispatch, useSelector } from "react-redux";
+import AppLayout from "../components/layout/appLayout";
+import DataTable from "../components/tables/dataTable";
+import { columns } from "./columns";
+import { RootState } from "../store";
+import TableOptions from "../components/tables/tableOptions";
+import DeleteModal from "../components/layout/deleteModal";
+import ComboBox from "../components/inputs/ComboBox";
+import { setIsLoading } from "../lib/appSlice";
+import { useState } from "react";
+import usePaginator from "../lib/hooks/usePaginator";
+import useDeleteModal from "../lib/hooks/useDeleteModal";
 
 const Roles = () => {
 
   const dispatcher = useDispatch();
-  const { items, 
-    currentPage, 
-    elements, 
-    itemsPerPage, 
-    sortKey, 
-    isLoading 
-  } = useSelector((state: RootState) => state.roles);
+  const appState = useSelector((state: RootState) => state.app);
+  const [replacementRole, setReplacementRole] = useState(null);
 
-  useEffect(() => {
-    paginator(getRoles, setData, dispatcher, 'roles', currentPage, itemsPerPage, sortKey);
-  }, [currentPage, itemsPerPage, sortKey]);
+  const {
+    currentPage,
+    elements,
+    isLoading,
+    items,
+    selectedRows,
+    itemsPerPage,
+    onPageChange,
+    onSortChange,
+    setSelectedRows,
+    removeRows,
+  } = usePaginator(getRoles, "roles");
 
-  const onPageChange = (page: number, itemsPerPage: number) => {
-    dispatcher(setPage({page, itemsPerPage}))
-  }
+  const {openDeleteModal, toggleModal, handleDelete} = useDeleteModal();
 
-  const onSortChange = (column: string | null, sort: SortTypes) => {
-      dispatcher(sortTable({column, sort}))
-  }
-  
+  const deleteSelected = async () => {
+    dispatcher(setIsLoading(true))
+    const response = await deleteRoles(selectedRows, replacementRole);
+    handleDelete(response, () => removeRows(selectedRows));
+  };
+
   return (
     <AppLayout>
-
-      <Grid container item xs={12} 
-          direction="row"
-          justifyContent="flex-end"
-          alignItems="flex-end" marginBottom={2}>
-            <Link to='new'>
-            <Button startIcon={<Add />} variant='contained'>Nuevo rol</Button>
-            </Link>
-          </Grid>
-
-        <DataTable
-          columns={columns}
-          rows={items}
-          currentPage={currentPage}
-          elementsCount={elements}
-          onPageChange={onPageChange}
-          onSortChange={onSortChange}
-          isLoading={isLoading}
-        />
+      <TableOptions
+        editButton={{ link: "/roles/new", label: "Nuevo rol" }}
+        deleteButton={{
+          fn: () => toggleModal(true),
+          label: "Eliminar roles",
+          active: selectedRows.length > 0,
+        }}
+      />
+      <DataTable
+        columns={columns}
+        rows={items}
+        currentPage={currentPage}
+        elementsCount={elements}
+        onPageChange={(onPageChange)}
+        onSortChange={onSortChange}
+        isLoading={isLoading}
+        itemsPerPage={itemsPerPage}
+        setSelectedRows={(selected: any) => setSelectedRows(selected)}
+        enableCheckboxes
+      />
+      <DeleteModal
+        open={openDeleteModal}
+        close={() => toggleModal(false)}
+        deleteElements={deleteSelected}
+        isLoading={appState.isLoading}
+      >
+       <p>¿Estás seguro de eliminar los {selectedRows.length} roles seleccionados?</p>
+        <p>
+        Para poder eliminar estos roles, debes seleccionar el nuevo rol que
+        tendrán todos los usuarios que estaban asignados a estos roles.
+        </p>
+        <ComboBox
+          src={getRoles}
+          async
+          required
+          field="name"
+          fieldKey="role"
+          responseProperty="roles"
+          label="Rol"
+          set={(newValue: any) => setReplacementRole(newValue)}
+        ></ComboBox>
+      </DeleteModal>
     </AppLayout>
-
   );
 };
 

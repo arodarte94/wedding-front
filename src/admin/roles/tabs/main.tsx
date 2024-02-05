@@ -1,13 +1,17 @@
 import { Role } from "../../models/role.model";
 import { Checkbox, FormControlLabel, FormGroup, Grid, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "../../styles/app.module.scss";
-import { PermissionModule } from "../../models/permission.model";
-import { create, getPermissions, update } from "../actions";
 import TabOptions from "../../components/edit-view/TabOptions";
-const MainTab = ({ role, set }: { role: Role | null, set: any }) => {
+import { PermissionModule } from "../../models/permission.model";
+import { upsert } from "../actions";
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+import LoadingBackdrop from "../../components/layout/loadingBackdrop";
 
-  const [allPermissions, setAllPermissions] = useState<PermissionModule[] | null>(null);
+const MainTab = ({ role, set, allPermissions }: { role: Role | null, set: any, allPermissions: PermissionModule[] | null }) => {
+  
+  const appState = useSelector((state: RootState) => state.app);
   const [roleData, setRoleData] = useState(
     {
       name: role?.name,
@@ -15,10 +19,6 @@ const MainTab = ({ role, set }: { role: Role | null, set: any }) => {
       permissions: role?.permissions.map(r => r.id) ?? []
     }
   );
-  
-  useEffect(() => {
-    getPermissions(setAllPermissions);
-  }, []);
   
   const togglePermission = (event: React.ChangeEvent<HTMLInputElement>, permissionId: number) => {
     
@@ -28,19 +28,16 @@ const MainTab = ({ role, set }: { role: Role | null, set: any }) => {
   }
 
   const save = async () => {
-    
-    const res = role? await update(role?.id, roleData.name, roleData.description, roleData.permissions) : 
-    await create(roleData.name, roleData.description, roleData.permissions);
-
+    const res = await upsert(roleData, role?.id);
     if(res.status === 200)
       set(res.data.role);
   }
 
   return (
     <>
-
-    <TabOptions save={save} link='/admin/roles'/>
+    <TabOptions save={save} link='/roles'/>
       <Grid container spacing={2} className={styles.tabContent}>
+        {appState.isLoading && <LoadingBackdrop />} 
         <Grid item md={6} xs={12}>
           <TextField
             fullWidth
@@ -59,7 +56,7 @@ const MainTab = ({ role, set }: { role: Role | null, set: any }) => {
             fullWidth
             required
             label="Descripción"
-            value={role?.description}
+            defaultValue={role?.description}
             onChange={(e) => setRoleData({...roleData, description: e.target.value})}
             variant="filled"
           />
@@ -71,7 +68,6 @@ const MainTab = ({ role, set }: { role: Role | null, set: any }) => {
                         <b>{module.name.toUpperCase()}</b>
                         <FormGroup>
                         {module.permissions.map((permission, idx) => {
-
                     return (
                         <FormControlLabel key={idx} 
                         control={<Checkbox 

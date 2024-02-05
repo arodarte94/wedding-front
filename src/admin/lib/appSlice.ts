@@ -6,6 +6,7 @@ interface appState {
     content: string|null,
     type: 'success' | 'error' | null
   }
+  currentModule: string;
 }
 
 const initialState : appState = {
@@ -13,10 +14,11 @@ const initialState : appState = {
   message : {
     content: null,
     type: null
-  }
+  },
+  currentModule: 'Dashboard'
 };
 
-const handleIsLoading = (state: any, action: any) => {
+const handleIsLoading = (state: any, action: {payload: boolean}) => {
   state.isLoading = action.payload;
 }
 
@@ -36,16 +38,21 @@ const handleCloseMessage = (state: any) => {
   state.message = { content: null, type: null};
 }
 
+const handleSetCurrentModule = (state: any, action: any) => {
+  state.currentModule = action.payload;
+}
+
 const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
     setIsLoading: handleIsLoading,
     showMessage: handleShowMessage,
+    setCurrentModule: handleSetCurrentModule,
     showErrorMessage: handleShowErrorMessage,
     closeMessage: handleCloseMessage
   },
 });
 
-export const { setIsLoading, showMessage, showErrorMessage, closeMessage } = appSlice.actions;
+export const { setIsLoading, showMessage, showErrorMessage, closeMessage, setCurrentModule } = appSlice.actions;
 export default appSlice.reducer;

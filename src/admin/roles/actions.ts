@@ -4,8 +4,8 @@ import { ENV } from "../../environment/environment";
 enum ENDPOINTS {
   GET = 'roles',
   PERMISSIONS = 'permissions',
-  CREATE = 'roles',
-  UPDATE = 'roles'
+  UPSERT = 'roles',
+  DELETE = 'roles'
 }   
 
 export const getRoles = async (page: number = 1, pageLength: number = 10, sortKey: string | null,  params?: any) => {
@@ -24,8 +24,8 @@ export const getRoles = async (page: number = 1, pageLength: number = 10, sortKe
 
 export const getRole = async (id: string, set: any) => {
 
-  const response = await axios.get(ENV.basePath + ENDPOINTS.GET + "/" + id);
-  set(response.data.role);
+  const response = await axios.get(ENV.basePath + ENDPOINTS.GET + "/" + id);  
+  set(response?.status === 200 ? response.data.role : null);
 }
 
 export const getPermissions = async (set: any) => {
@@ -34,24 +34,25 @@ export const getPermissions = async (set: any) => {
   set(response.data.modules);
 }
 
-export const create = async (name?: string, description?: string, permissions?: number[]) => {
+export const upsert = async (requestData: any, id?: number) => {
 
-  const response = await axios.post(ENV.basePath + ENDPOINTS.CREATE, {
-    name: name,
-    description: description,
-    permissions: permissions
-  });
+  const request = {
+    name: requestData?.name,
+    description: requestData?.description,
+    permissions: requestData?.permissions
+  }
+
+  const endpoint = ENV.basePath + ENDPOINTS.UPSERT + (id ? '/' + id : "")
+  const response = await axios.post(endpoint, request);
 
   return response;
 }
 
-export const update = async (id: number, name?: string, description?: string, permissions?: number[]) => {
+export const deleteRoles = async (roles: number[], replacementRole?: number|null) => {
 
-  const response = await axios.put(ENV.basePath + ENDPOINTS.UPDATE + '/' + id, {
-    name: name,
-    description: description,
-    permissions: permissions
-  });
-
+  const response = await axios.delete(ENV.basePath + ENDPOINTS.DELETE, { data: { 
+    roles: roles,
+    newRole: replacementRole
+  } });
   return response;
 }

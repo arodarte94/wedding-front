@@ -1,47 +1,32 @@
 import DataTable from '../../components/tables/dataTable';
 import { columns } from '../../users/columns';
-import { RootState } from '../../store';
-import { SortTypes } from '../../lib/types';
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { paginator } from "../../lib/paginator";
 import { getUsers } from "../../users/actions";
-import { setData, setPage, sortTable } from "../../users/slice";
 import { Group } from "../../models/group.model";
+import usePaginator from '../../lib/hooks/usePaginator';
 
 const UsersTab = ({ group }: { group: Group }) => {
 
-  const dispatcher = useDispatch();
-  const { items, 
-    currentPage, 
-    elements, 
-    itemsPerPage, 
-    sortKey, 
-    isLoading 
-  } = useSelector((state: RootState) => state.users);
-
-  useEffect(() => {
-    paginator(getUsers, setData, dispatcher, 'users', currentPage, itemsPerPage, sortKey, {group: group.id});
-  }, [currentPage, itemsPerPage, sortKey]);
-
-  const onPageChange = (page: number, itemsPerPage: number) => {
-    dispatcher(setPage({page, itemsPerPage}))
-  }
-
-  const onSortChange = (column: string | null, sort: SortTypes) => {
-      dispatcher(sortTable({column, sort}))
-  }
+  const {
+    currentPage,
+    elements,
+    isLoading,
+    items,
+    itemsPerPage,
+    onPageChange,
+    onSortChange,
+  } = usePaginator(getUsers, "users", {group: group.id});
   
   return (
     <DataTable
-      columns={columns}
-      rows={items}
-      currentPage={currentPage}
-      elementsCount={elements}
-      onPageChange={onPageChange}
-      onSortChange={onSortChange}
-      isLoading={isLoading}
-    />
+    columns={columns}
+    rows={items}
+    currentPage={currentPage}
+    elementsCount={elements}
+    onPageChange={onPageChange}
+    onSortChange={onSortChange}
+    isLoading={isLoading}
+    itemsPerPage={itemsPerPage}
+  />
   );
 };
 export default UsersTab;

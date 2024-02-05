@@ -1,40 +1,41 @@
-'use client';
-import { useEffect } from 'react';
-import { paginator } from '../lib/paginator';
-import { setData, setPage, sortTable } from './slice';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../components/layout/appLayout';
 import DataTable from '../components/tables/dataTable';
 import { columns } from './columns';
 import { RootState } from '../store';
-import { SortTypes } from '../lib/types';
 import { Button, Grid } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import { Link } from 'react-router-dom'
 import { getGroups } from './actions';
+import usePaginator from '../lib/hooks/usePaginator';
+import useDeleteModal from '../lib/hooks/useDeleteModal';
+import { setIsLoading } from '../lib/appSlice';
+import { deleteUsers } from '../users/actions';
 
 const Groups = () => {
 
   const dispatcher = useDispatch();
-  const { items, 
-    currentPage, 
-    elements, 
-    itemsPerPage, 
-    sortKey, 
-    isLoading 
-  } = useSelector((state: RootState) => state.roles);
+  const {
+    currentPage,
+    elements,
+    isLoading,
+    items,
+    selectedRows,
+    itemsPerPage,
+    onPageChange,
+    onSortChange,
+    setSelectedRows,
+    removeRows,
+  } = usePaginator(getGroups, "groups");
 
-  useEffect(() => {
-    paginator(getGroups, setData, dispatcher, 'groups', currentPage, itemsPerPage, sortKey);
-  }, [currentPage, itemsPerPage, sortKey]);
+  const { openDeleteModal, toggleModal, handleDelete } = useDeleteModal();
+  const appState = useSelector((state: RootState) => state.app);
 
-  const onPageChange = (page: number, itemsPerPage: number) => {
-    dispatcher(setPage({page, itemsPerPage}))
-  }
-
-  const onSortChange = (column: string | null, sort: SortTypes) => {
-      dispatcher(sortTable({column, sort}))
-  }
+  const deleteSelected = async () => {
+    dispatcher(setIsLoading(true));
+    const response = await deleteUsers(selectedRows);
+    handleDelete(response, () => removeRows(selectedRows));
+  };
   
   return (
     <AppLayout>
@@ -48,15 +49,16 @@ const Groups = () => {
             </Link>
           </Grid>
 
-        <DataTable
-          columns={columns}
-          rows={items}
-          currentPage={currentPage}
-          elementsCount={elements}
-          onPageChange={onPageChange}
-          onSortChange={onSortChange}
-          isLoading={isLoading}
-        />
+          <DataTable
+        columns={columns}
+        rows={items}
+        currentPage={currentPage}
+        elementsCount={elements}
+        onPageChange={onPageChange}
+        onSortChange={onSortChange}
+        isLoading={isLoading}
+        itemsPerPage={itemsPerPage}
+      />
     </AppLayout>
 
   );

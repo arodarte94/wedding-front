@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import {
   Avatar,
@@ -13,18 +12,22 @@ import {
 import styles from "../../styles/app.module.scss";
 import { logout } from "../../auth/actions";
 import { Logout, Settings } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { resetUser } from "../../auth/slice";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { ENV } from "../../../environment/environment";
+import { logout as clearUser } from "../../auth/slice";
 
 const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch();
-
+  const accountState = useSelector((state: RootState) => state.account);
+  
+  const navigate = useNavigate();
+  const dispatcher = useDispatch();
+  
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -35,18 +38,21 @@ const UserMenu = () => {
 
   const logoutUser = async () => {
     await logout();
+    dispatcher(clearUser());
     global?.window?.localStorage.setItem('user', '');
-    dispatch(resetUser())
-    navigate("/admin");
+    global?.window?.localStorage.setItem('token', '');
+    global?.window?.localStorage.setItem('role', '');
+    navigate("/");
   }
 
   return (
     <div className={styles.userMenu}>
         <Box sx={{ flexGrow: 0 }}>
       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+        <Avatar alt={accountState.user?.name} 
+        src={accountState.user?.image ? ENV.imagePath + accountState.user.image : "/static/images/avatar/2.jpg"} 
+        key={'userImage' + accountState.user?.id} />
       </IconButton>
-
       <Menu
         anchorEl={anchorElUser}
         id="account-menu"
@@ -57,11 +63,13 @@ const UserMenu = () => {
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          <Typography textAlign="center">Settings</Typography>
+          <Link to={'/profile'}>
+          <Typography textAlign="center">Mi cuenta</Typography>
+          </Link>
         </MenuItem>
         <Divider />
         <MenuItem onClick={() => logoutUser()}>
-                    <ListItemIcon>
+          <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
           <Typography textAlign="center">Cerrar sesión</Typography>

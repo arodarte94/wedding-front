@@ -61,12 +61,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     <>
       <TabOptions save={save} link="/admin/users" />
       <Grid container spacing={2} className={styles.tabContent}>
-        <Grid item xl={2} lg={3} xs={12}>
-          <Box className={styles.editViewImage}>
-            <img src="/defaultUser.jpg" alt="" />
-          </Box>
-        </Grid>
-        <Grid item xl={10} lg={9} xs={12}>
+        <Grid item xl={12} lg={12} xs={12}>
           <Grid container>
             <Grid item md={6} xs={12}>
               <TextField
@@ -109,39 +104,35 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             </Grid>
             <Grid item md={6} xs={12}>
               <ComboBox
-                label="Responsable..."
-                src={getHosts}
-                async={false}
-                labelKey="name"
-                searchTerm="name"
-                idKey="id"
-                fieldKey="host"
-                responseProperty="users"
-                data={userData}
-                text={user?.host?.name || ''}
-                set={setUserData}
+              src={getHosts}
+              async
+              required
+              field="name"
+              fieldKey="host"
+              responseProperty="users"
+              label="Responsable..."
+              initialValue={user?.host}
+              set={(newValue: any) => setUserData({...userData, host: newValue})}
               ></ComboBox>
             </Grid>
             <Grid item md={6} xs={12}>
             { !userData?.host && <ComboBox
-                label="Grupo..."
-                src={() => getGroups(1, 1000, null, null)}
-                async={false}
-                labelKey="name"
-                searchTerm="name"
-                idKey="id"
-                fieldKey="group"
-                responseProperty="groups"
-                data={userData}
-                text={user?.group?.name || ''}
-                set={setUserData}
+            src={() => getGroups(1, 1000, null, null)}
+            async
+            required
+            field="name"
+            fieldKey="group"
+            responseProperty="groups"
+            label="Grupo..."
+            initialValue={user?.group}
+            set={(newValue: any) => setUserData({...userData, group: newValue})}
               ></ComboBox> }
             </Grid>
             <Grid item md={6} xs={12}>
             <Autocomplete
             options={dinners}
             onChange={(e, val) => setUserData({...userData, dinner: val?.id})}
-            value={userData?.dinner && types.find(i => i.id == userData.dinner)?.label}
+            value={userData?.dinner && dinners.find(i => i.id == userData.dinner)?.label}
             renderInput={(params) => <TextField label="Cenita..." variant="filled" {...params}
             />}
             />

@@ -1,16 +1,28 @@
 import { Autocomplete, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-const ComboBox = ({src, labelKey, idKey, fieldKey, data, searchTerm, set, text, responseProperty, async, label}) => {
+interface ComboBoxProps {
+  src: any;
+  field: string;
+  fieldKey: string;
+  responseProperty: string;
+  set: any;
+  label?: string;
+  initialValue?: any;
+  async?: boolean;
+  multiple?: boolean;
+  required?: boolean;
+}
+
+const ComboBox = ({src, field, fieldKey, responseProperty, set, label, initialValue, async, multiple, required}: ComboBoxProps) => {
 
   const [query, setQuery] = useState('')
   const [options, setOptions] = useState([]);
-  const [value, setNewValue] = useState<{id: number, name: string} | null>(null);
+  const [value, setValue] = useState(initialValue ? initialValue : null);
 
   const fetchOptions = async () => {
-    const response = await src(1, 100, 'nameDesc', {[searchTerm]: query});
-    setOptions([...response.data[responseProperty].data]);
-    setNewValue({id: data[fieldKey], name: text});
+    const response = await src(1, 100, 'nameDesc', {[field]: query});
+    setOptions(async? [...response.data[responseProperty].data] : response.data[responseProperty]);
   }
 
   useEffect( () => {
@@ -34,26 +46,29 @@ const ComboBox = ({src, labelKey, idKey, fieldKey, data, searchTerm, set, text, 
       setQuery(term);
   }
 
-  const handleSelect = (e: any, newValue: any, reason: string, details?: string) => {;
-    if(newValue) {
-      set({...data, [fieldKey]: newValue.id})
-      setNewValue({id: newValue.id, name: details.option.name })
+  const handleSelect = (e: any, newValue: any, reason: string, details?: string) => {
+
+    console.log(newValue);
+    if(newValue){
+      set(multiple? newValue : newValue?.id)
+      setValue({[fieldKey]: newValue?.id, name: details?.option.name });
     }
 
     else {
-      setNewValue(null);
-      set({...data, [fieldKey]: null})
+      setValue(null);
+      set(null)
     }
+
   }
 
   return (
     <Autocomplete
+        multiple={multiple}
         options={options}
-        getOptionLabel={(option) => option[labelKey]}
-        getOptionKey={(option) => option[idKey]}
+        getOptionLabel={(option) => option[field]}
         onChange={handleSelect}
-        value={value}
-        renderInput={(params) => <TextField label={label || "Select..."} variant="filled" {...params}
+        defaultValue={value}
+        renderInput={(params) => <TextField required={required} variant="filled" {...params} label={label ?? 'Seleccionar...'}
         onChange={ async ? e => search(e.target.value) : undefined} 
         />}
     />

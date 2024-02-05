@@ -5,16 +5,30 @@ import styles from "../styles/app.module.scss";
 import Tab from "../components/edit-view/Tab";
 import { Group } from "../models/group.model";
 import ResponsiveTabs from "../components/edit-view/Tabs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Breadcrumb from "../components/edit-view/Breadcrumb";
 import MainTab from "./tabs/main";
 import UsersTab from "./tabs/users";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsLoading } from "../lib/appSlice";
+import { getGroup } from "./actions";
 
 const tabs = [{ name: "General" }, { name: "Usuarios" }];
 
-const GroupEditView = ({ group, set }: {group: Group|null, set: any}) => {
+const GroupEditView = () => {
 
   const [value, setValue] = useState(0);
+  const [group, setGroup] = useState<Group | null>(null);
+  const { id } = useParams();
+  const dispatcher = useDispatch();
+  
+  useEffect(() => {
+    if (id) {
+      dispatcher(setIsLoading(true));
+      getGroup(id, setGroup);
+    }
+  }, []);
 
   return (
     <AppLayout>
@@ -43,7 +57,7 @@ const GroupEditView = ({ group, set }: {group: Group|null, set: any}) => {
           </Grid>
           <Grid xl={11} lg={10} md={9} xs={12} className={styles.scrollableTab}>
             <Tab value={value} index={0}>
-              <MainTab group={group} set={set} key={group?.id} />
+              <MainTab group={group} set={setGroup} key={group?.id} />
             </Tab>
             {group && <Tab value={value} index={1}>
               <UsersTab group={group} key={group?.id + 'Groups'} />
