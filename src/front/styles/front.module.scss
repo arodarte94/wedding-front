@@ -10,7 +10,7 @@ $beige: #e5dfd3;
 $green: #7c8274;
 $bumbleColor: #f0c332;
 
-$mobileThreshold: 900px;
+$mobileThreshold: 1200px;
 
 @font-face {
   font-family: 'chaprille';
@@ -249,6 +249,44 @@ body {
         font-size: 40px;
         color: $beige;
         
+      }
+    }
+
+    .whoAreWe {
+      height: 100vh;
+      background: url("../../../public/Us.jpg");
+      min-height: 500px;
+      // background-attachment: fixed;
+      background-position: calc(50%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      position:relative;
+
+      @media (max-width: $mobileThreshold) {
+        background-position: center;
+      }
+
+      .heartButton {
+        position: absolute;
+        color: green;
+        font-weight: bold;
+        &:first-of-type {
+          left: 40%;
+          top: 60%;
+
+          @media (max-width: $mobileThreshold) {
+            left: 25%;
+          }
+        }
+
+        &:last-of-type {
+          left: 55%;
+          top: 65%;
+
+          @media (max-width: $mobileThreshold) {
+            left: 60%;
+          }
+        }
       }
     }
 

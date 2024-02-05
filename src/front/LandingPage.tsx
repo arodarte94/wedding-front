@@ -13,6 +13,7 @@ const LandingPage = () => {
   const [animationState, setAnimationState] = useState(`${styles.content}`);
   
   const morritosRef = useRef(null);
+  const usRef = useRef(null);
   const datesRef = useRef(null);
   const boditaRef = useRef(null);
   
@@ -54,7 +55,7 @@ const LandingPage = () => {
           </Link>
         </div>
         <div className={styles.bottomMenuOption}>
-        <Link onClick={()=> animateSectionJump(datesRef) }>
+        <Link onClick={()=> animateSectionJump(usRef) }>
           <FavoriteBorderOutlinedIcon />
           <span>Nosotros</span>
           </Link>
@@ -91,8 +92,8 @@ const LandingPage = () => {
             </Link>
           </li>
           <li>
-          <Link onClick={()=> animateSectionJump(datesRef) }>
-              Nuestra historia
+          <Link onClick={()=> animateSectionJump(usRef) }>
+              Nosotros
             </Link>
           </li>
           <li>
@@ -137,20 +138,17 @@ const LandingPage = () => {
           <br />Todavía no sé que poner aquí
         </section>
 
-        {/* <div className={styles.morritosMainCover} style={{background: 'url("Homepage.jpg")'}}>
-          <div className={styles.mainCoverOverlay}>
-            <div className={styles.mainCoverText}>
-              {isMobile ? 
-              <p>Nallely &<br />Antonio</p>
-              :<img src="/wedding-front/mainLabel.png" alt="" />
-              }
-            </div>
-          </div>
-
-        </div> */}
+        <div ref={usRef} className={styles.whoAreWe}>
+              <div className={styles.heartButton}>
+                BOTON
+              </div>
+              <div className={styles.heartButton}>
+              BOTON
+              </div>
+        </div>
         
         {/* Section 2: Quienes son los morritos */}
-        <section  className={styles.us}>
+        {/* <section  className={styles.us}>
           <div className={styles.title}>
             <p className={styles.hint}>Amor en tiempos del coví</p>
             <h1>La rara del salón se casó con el popu</h1>
@@ -185,7 +183,7 @@ const LandingPage = () => {
             Y simón, los rumores son ciertos, nos conocimos en <b>Bumble.</b>
           </h1>
           <hr />
-        </section>
+        </section> */}
 
         {/* Section 3: Dates */}
         <section ref={datesRef} className={styles.dates}>
