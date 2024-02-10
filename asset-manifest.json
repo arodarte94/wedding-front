@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wedding-front/static/css/main.d5827d82.css",
-    "main.js": "/wedding-front/static/js/main.65387704.js",
+    "main.js": "/wedding-front/static/js/main.25cb0068.js",
     "static/js/787.de60aad4.chunk.js": "/wedding-front/static/js/787.de60aad4.chunk.js",
     "static/media/Chaprile calligraphy.otf": "/wedding-front/static/media/Chaprile calligraphy.16b73c6a1c45a4dfabc3.otf",
     "static/media/Homepage.jpg": "/wedding-front/static/media/Homepage.0d559b69ebd34fa43c84.jpg",
@@ -9,11 +9,11 @@
     "static/media/mainCover.jpg": "/wedding-front/static/media/mainCover.5b849b6276f8113d96e2.jpg",
     "index.html": "/wedding-front/index.html",
     "main.d5827d82.css.map": "/wedding-front/static/css/main.d5827d82.css.map",
-    "main.65387704.js.map": "/wedding-front/static/js/main.65387704.js.map",
+    "main.25cb0068.js.map": "/wedding-front/static/js/main.25cb0068.js.map",
     "787.de60aad4.chunk.js.map": "/wedding-front/static/js/787.de60aad4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d5827d82.css",
-    "static/js/main.65387704.js"
+    "static/js/main.25cb0068.js"
   ]
 }
