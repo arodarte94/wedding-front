@@ -6,11 +6,13 @@ import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined
 import SynagogueOutlinedIcon from "@mui/icons-material/SynagogueOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const LandingPage = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isAntonioOpen, setIsAntonioOpen] = useState(false);
+  const [isNallelyOpen, setIsNallelyOpen] = useState(false);
   const [animationState, setAnimationState] = useState(`${styles.content}`);
 
   const morritosRef = useRef(null);
@@ -31,7 +33,15 @@ const LandingPage = () => {
   };
 
   const openMorritoPopover = (morrito) => {
-    
+    if(morrito) {
+      setIsAntonioOpen(false);
+      setIsNallelyOpen(true);
+    }
+
+    else {
+      setIsAntonioOpen(true);
+      setIsNallelyOpen(false);
+    }
   }
 
   const animateSectionJump = (ref) => {
@@ -82,7 +92,6 @@ const LandingPage = () => {
           </Link>
         </div>
       </div>
-
       <div className={styles.sideMenu}>
         <div className={styles.menuTitle}>
           <Button className={styles.mainConfirm} variant="outlined">
@@ -142,13 +151,28 @@ const LandingPage = () => {
         </section>
 
         <div ref={usRef} className={styles.whoAreWe}>
-          <h1></h1>
-          <div className={styles.heartButton} onClick={openMorritoPopover(0)}>
+          <h1>Esto es lo que somos...</h1>          
+          
+          <Box className={styles.morritoDialog + " " + styles.tumblus} visibility={isAntonioOpen ? '' : 'hidden'}>
+            <h4>Antonio</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illo totam hic magnam ab laudantium cupiditate dignissimos rerum obcaecati! Fuga fugit architecto suscipit eveniet aperiam reiciendis, vitae recusandae vel unde!</p>
+          </Box>
+
+          <Box className={styles.morritoDialog + " " + styles.nallely} visibility={isNallelyOpen ? '' : 'hidden'}>
+          <h4>Nallely</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illo totam hic magnam ab laudantium cupiditate dignissimos rerum obcaecati! Fuga fugit architecto suscipit eveniet aperiam reiciendis, vitae recusandae vel unde!</p>
+          </Box>
+
+      
+          <div className={styles.hearts}>
+          <div className={styles.heartButton} onClick={() => openMorritoPopover(false)}>
             <FavoriteIcon />
           </div>
-          <div className={styles.heartButton} onClick={openMorritoPopover(0)}>
+          <div className={styles.heartButton} onClick={() =>  openMorritoPopover(true)}>
             <FavoriteIcon />
           </div>
+          </div>
+
         </div>
 
         {/* Section 2: Quienes son los morritos */}
@@ -303,7 +327,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-
         <section className={styles.footer}>
           <div className={styles.container}>
             <hr />

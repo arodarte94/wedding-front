@@ -178,7 +178,7 @@ body {
         flex-direction: column;
       }
       * {
-        font-size: 30px;
+        font-size: 28px;
       }
 
       span {
@@ -262,8 +262,54 @@ body {
       background-size: cover;
       position:relative;
 
+      h1 {
+        position:absolute;
+        padding: 10px 20px;
+        font-family: 'chaprille';
+        font-size: 42px;
+        letter-spacing: 2px;
+        color: $blue;
+      }
       @media (max-width: $mobileThreshold) {
         background-position: center;
+      }
+
+      .morritoDialog {
+
+        position:absolute;
+        padding: 15px;
+        top: 250px;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        width: 300px;
+
+        @media (max-width: $mobileThreshold) {
+
+          top: 125px !important;
+          left: 0px !important;
+          right: 0px !important;
+          width: unset;
+          margin-left: 10%;
+          margin-right:10%;
+          p {
+            color: #fff; 
+            font-size: 14px;
+          }
+        }
+
+        &.tumblus {
+          left:50px;
+        }
+
+        &.nallely {
+          right: 50px;
+        }
+
+        p {
+          color: #fff; 
+          font-size: 14px;
+        }
       }
 
       .heartButton {
