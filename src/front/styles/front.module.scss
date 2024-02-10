@@ -268,8 +268,36 @@ body {
 
       .heartButton {
         position: absolute;
-        color: green;
+        color: #ccc;
         font-weight: bold;
+
+        border: 1px solid #ccc;
+        border-radius:100px;
+        padding: 8px 8px 4px 8px;
+        background: rgba(100,100,100, 0.7);
+
+        svg {
+        animation: pulse 0.5s infinite alternate; /* Define the animation */
+        }
+
+        @keyframes pulse {
+          0% {
+            font-size: 30px;
+          }
+          100% {
+            font-size: 34px;
+          }
+        }
+
+        &:hover, &.active {
+          transform: scale(1.2);
+          background: rgba(80,80,80, 0.7);
+          cursor: pointer;
+          svg {
+            color: $pink;
+          }
+        }
+
         &:first-of-type {
           left: 40%;
           top: 60%;
@@ -302,18 +330,6 @@ body {
           font-size: 40px;
           color: $green;
           margin: 0px;
-        }
-      }
-
-      .bumble {
-        width: 100%;
-        font-size: 70px;
-        text-align: center;
-        color: $green;
-        opacity: 0.5;
-        margin-bottom: 100px;
-        b {
-          color: $bumbleColor;
         }
       }
 
@@ -443,6 +459,22 @@ body {
       }
     }
 
+    .mainDivider {
+      width: 100%;
+      background-color: $beigeOverlay;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px;
+      font-size: 35px;
+      line-height: 50px;
+      margin-bottom: -22px;
+
+      img {
+        width: 120px;
+        opacity: 0.6;
+      }
+    }
+
     .totalDates {
       width: 100%;
       background-color: $blue;
@@ -524,5 +556,17 @@ body {
     transition: opacity 0.5s;
 
 }
+
+      .bumble {
+        width: 100%;
+        font-size: 45px;
+        text-align: center;
+        color: $green;
+        opacity: 0.5;
+        // margin-bottom: 100px;
+        b {
+          color: $bumbleColor;
+        }
+      }
 
 }

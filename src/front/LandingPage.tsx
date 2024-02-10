@@ -7,16 +7,17 @@ import SynagogueOutlinedIcon from "@mui/icons-material/SynagogueOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { Button } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const LandingPage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [animationState, setAnimationState] = useState(`${styles.content}`);
-  
+
   const morritosRef = useRef(null);
   const usRef = useRef(null);
   const datesRef = useRef(null);
   const boditaRef = useRef(null);
-  
+
   useEffect(() => {
     resize();
   }, [window.screen.width]);
@@ -29,19 +30,21 @@ const LandingPage = () => {
     }
   };
 
-  const animateSectionJump = (ref) => {
+  const openMorritoPopover = (morrito) => {
     
+  }
+
+  const animateSectionJump = (ref) => {
     setTimeout(() => {
       setAnimationState(`${styles.content} ${styles.fadeIn}`);
 
       ref.current.scrollIntoView({
-        block: 'start', // You can adjust this value based on your needs ('start', 'center', 'end', or 'nearest')
+        block: "start", // You can adjust this value based on your needs ('start', 'center', 'end', or 'nearest')
       });
-
     }, 500);
 
     setAnimationState(`${styles.content} ${styles.fadeOut}`);
-  }
+  };
 
   window.onresize = resize;
 
@@ -49,67 +52,58 @@ const LandingPage = () => {
     <div className={styles.main}>
       <div className={styles.bottomMenu}>
         <div className={styles.bottomMenuOption}>
-        <Link onClick={()=> animateSectionJump(morritosRef) }>
-          <HomeOutlinedIcon />
-          <span>Inicio</span>
+          <Link onClick={() => animateSectionJump(morritosRef)}>
+            <HomeOutlinedIcon />
+            <span>Inicio</span>
           </Link>
         </div>
         <div className={styles.bottomMenuOption}>
-        <Link onClick={()=> animateSectionJump(usRef) }>
-          <FavoriteBorderOutlinedIcon />
-          <span>Nosotros</span>
+          <Link onClick={() => animateSectionJump(usRef)}>
+            <FavoriteBorderOutlinedIcon />
+            <span>Nosotros</span>
           </Link>
         </div>
         <div className={styles.bottomMenuOption}>
-        <Link onClick={()=> animateSectionJump(boditaRef) }>
-          <SynagogueOutlinedIcon />
-          <span>Evento</span>
-        </Link>
-        </div>
-        <div className={styles.bottomMenuOption}>
-        <Link onClick={()=> animateSectionJump(morritosRef) }>
-          <MarkEmailReadOutlinedIcon />
-          <span>RSVP</span>
+          <Link onClick={() => animateSectionJump(boditaRef)}>
+            <SynagogueOutlinedIcon />
+            <span>Evento</span>
           </Link>
         </div>
         <div className={styles.bottomMenuOption}>
-        <Link onClick={()=> animateSectionJump(morritosRef) }>
-          <CardGiftcardOutlinedIcon />
-          <span>Regalos</span>
+          <Link onClick={() => animateSectionJump(morritosRef)}>
+            <MarkEmailReadOutlinedIcon />
+            <span>RSVP</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+          <Link onClick={() => animateSectionJump(morritosRef)}>
+            <CardGiftcardOutlinedIcon />
+            <span>Regalos</span>
           </Link>
         </div>
       </div>
 
       <div className={styles.sideMenu}>
         <div className={styles.menuTitle}>
-
-        <Button className={styles.mainConfirm} variant="outlined">CONFIRMAR</Button>
+          <Button className={styles.mainConfirm} variant="outlined">
+            CONFIRMAR
+          </Button>
         </div>
         <ul>
           <li>
-          <Link onClick={()=> animateSectionJump(morritosRef) }>
-              Inicio
-            </Link>
+            <Link onClick={() => animateSectionJump(morritosRef)}>Inicio</Link>
           </li>
           <li>
-          <Link onClick={()=> animateSectionJump(usRef) }>
-              Nosotros
-            </Link>
+            <Link onClick={() => animateSectionJump(usRef)}>Nosotros</Link>
           </li>
           <li>
-          <Link onClick={()=> animateSectionJump(boditaRef) }>
-              Evento
-            </Link>
+            <Link onClick={() => animateSectionJump(boditaRef)}>Evento</Link>
           </li>
           <li>
-          <Link onClick={()=> animateSectionJump(morritosRef) }>
-              RSVP
-            </Link>
+            <Link onClick={() => animateSectionJump(morritosRef)}>RSVP</Link>
           </li>
           <li>
-          <Link onClick={()=> animateSectionJump(morritosRef) }>
-              Regalos
-            </Link>
+            <Link onClick={() => animateSectionJump(morritosRef)}>Regalos</Link>
           </li>
         </ul>
 
@@ -121,32 +115,42 @@ const LandingPage = () => {
         <div className={styles.morritosMainCover}>
           <div className={styles.mainCoverOverlay}>
             <div className={styles.mainCoverText}>
-              {isMobile ? 
-              <img src="/wedding-front/mainLabelMobile.png" alt="" className={styles.mobileLabel} />
-              :<img src="/wedding-front/mainLabel.png" alt="" />
-              }
+              {isMobile ? (
+                <img
+                  src="/wedding-front/mainLabelMobile.png"
+                  alt=""
+                  className={styles.mobileLabel}
+                />
+              ) : (
+                <img src="/wedding-front/mainLabel.png" alt="" />
+              )}
             </div>
           </div>
 
-          {!isMobile && <div className={styles.date}>
-          <img src="/wedding-front/Fecha.png" alt="" />
-          </div>}
+          {!isMobile && (
+            <div className={styles.date}>
+              <img src="/wedding-front/Fecha.png" alt="" />
+            </div>
+          )}
         </div>
 
-        <section className={styles.totalDates}>
-          Divider <b>raro</b>
-          <br />Todavía no sé que poner aquí
+        <section className={styles.mainDivider}>
+        <h1 className={styles.bumble}>
+            Simón, los rumores son ciertos, <br />nos conocimos en <b>Bumble.</b>
+          </h1>
+          <img src="/wedding-front/mainJade.png" alt="" />
         </section>
 
         <div ref={usRef} className={styles.whoAreWe}>
-              <div className={styles.heartButton}>
-                BOTON
-              </div>
-              <div className={styles.heartButton}>
-              BOTON
-              </div>
+          <h1></h1>
+          <div className={styles.heartButton} onClick={openMorritoPopover(0)}>
+            <FavoriteIcon />
+          </div>
+          <div className={styles.heartButton} onClick={openMorritoPopover(0)}>
+            <FavoriteIcon />
+          </div>
         </div>
-        
+
         {/* Section 2: Quienes son los morritos */}
         {/* <section  className={styles.us}>
           <div className={styles.title}>
