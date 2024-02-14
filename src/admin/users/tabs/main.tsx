@@ -90,21 +90,25 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             />}
             />
             </Grid>
+
             <Grid item md={6} xs={12}>
-              <TextField
-                fullWidth
-                required
-                label="Correo del invitado"
-                variant="filled"
-                defaultValue={user?.email}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={(e) =>
-                  setUserData({ ...userData, email: e.target.value })
-                }
-              />
+              { userData?.type == 1 &&
+                <TextField
+                  fullWidth
+                  required
+                  label="Correo del invitado"
+                  variant="filled"
+                  defaultValue={user?.email}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  onChange={(e) =>
+                    setUserData({ ...userData, email: e.target.value })
+                  }
+                />
+              }
             </Grid>
+
             <Grid item md={6} xs={12}>
             {
               userData?.type == 1 ?
