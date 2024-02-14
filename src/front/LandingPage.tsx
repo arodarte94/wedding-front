@@ -8,8 +8,12 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { Box, Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useParams } from "react-router-dom";
 
 const LandingPage = () => {
+
+  const { id } = useParams();
+  
   const [isMobile, setIsMobile] = useState(false);
   const [isAntonioOpen, setIsAntonioOpen] = useState(false);
   const [isNallelyOpen, setIsNallelyOpen] = useState(false);
@@ -22,6 +26,12 @@ const LandingPage = () => {
 
   useEffect(() => {
     resize();
+
+    if (id) {
+      console.log(id);
+      animateSectionJump(boditaRef);
+    }
+
   }, [window.screen.width]);
 
   const resize = () => {
@@ -328,16 +338,7 @@ const LandingPage = () => {
           </div>
         </section>
         <section className={styles.footer}>
-          <div className={styles.container}>
-            <hr />
-          </div>
-          <h1>La nallely & el tumblus</h1>
-          <div className={styles.footerInfo}>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-          </div>
+        <p>Made with ❤️ by Antonio Rodarte</p>
         </section>
       </div>
     </div>
