@@ -11,6 +11,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useParams } from "react-router-dom";
 import MatchImg from "../img/match.png";
 import MasonryImg from "../img/masonry.png";
+import ClearIcon from '@mui/icons-material/Clear';
 
 const LandingPage = () => {
   const { id } = useParams();
@@ -67,7 +68,13 @@ const LandingPage = () => {
   };
 
   const toggleCollapsable = (ref, toggle) => {
-    ref.current.style.height = "900px";
+    if(toggle) {
+      setTimeout(() => {
+        ref.current.style.height = "900px";
+      }, 200);
+    }
+    else
+      ref.current.style.height = "0px";
   }
 
   window.onresize = resize;
@@ -264,6 +271,11 @@ const LandingPage = () => {
               style={{ backgroundImage: "url(" + MatchImg + ")" }}
             >
               <div className={styles.collapsableOverlay} ref={howWeMetRef}>
+
+              <div className={styles.collapsableOverlayButton + " " + styles.close} onClick={ () => toggleCollapsable(howWeMetRef, false)}>
+                <ClearIcon />
+              </div>
+                <h1>¿Cómo nos conocimos?</h1>
                 <p>
                   ¡Las aplicaciones de citas si funcionan! Hicimos “match” en
                   Bumble, alrededor del 18 de Diciembre del 2021. En esta
@@ -319,6 +331,12 @@ const LandingPage = () => {
             >
 
 <div className={styles.collapsableOverlay} ref={howWeFellRef}>
+
+<div className={styles.collapsableOverlayButton + " " + styles.close} onClick={ () => toggleCollapsable(howWeFellRef, false)}>
+                <ClearIcon />
+              </div>
+                <h1>¿Cómo nos conocimos?</h1>
+
                 <p>
                   ¡Las aplicaciones de citas si funcionan! Hicimos “match” en
                   Bumble, alrededor del 18 de Diciembre del 2021. En esta

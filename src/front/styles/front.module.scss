@@ -463,21 +463,30 @@ body {
 
           
           .collapsableOverlay {
-            background: $pink;
+            background: $green;
             height: 0px;
             width: 100%;
-            display: block;
+            display: none;
             color: #fff;
             transition: all 1s ease;
             overflow-y: auto;
             z-index: 2;
             position: relative;
+
+            h1 {
+              color: #fff;
+              font-family: 'chapaza';
+            }
             p {
               font-size: 1.1em;
               color: #fff;
               opacity: 0.8;
               padding: 20px;
               font-family: "chapaza";
+            }
+
+            @media (max-width: $mobileThreshold) {
+              display: block;
             }
           }
 
@@ -487,7 +496,7 @@ body {
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 60px;
+            width: 240px;
             border-radius: 100px;
             color: #ffffff;
             display: none;
@@ -497,27 +506,32 @@ body {
             text-wrap: nowrap;
             transition: all 0.5s ease;
             z-index: 1;
+            font-family: 'chapaza';
+            cursor: pointer;
             svg {
               animation: pulse 0.5s infinite alternate; /* Define the animation */
             }
 
             span {
-              font-size: 0px;
-              transition: all 0.5s ease;
+              display: block;
+              font-size: 15px;
+              margin-left: 5px;
             }
+
             &:hover {
-              width: 240px;
-              cursor: pointer;
               background: $pink;
-              span {
-                display: block;
-                font-size: 15px;
-                margin-left: 10px;
-              }
             }
 
             @media (max-width: $mobileThreshold) {
               display: flex;
+            }
+
+            &.close {
+              width: 40px;
+              height: 40px;
+              svg {
+                font-size: 20px !important;
+              }
             }
           }
         }
