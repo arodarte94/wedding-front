@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wedding-front/static/css/main.63951259.css",
-    "main.js": "/wedding-front/static/js/main.d722aa53.js",
+    "main.css": "/wedding-front/static/css/main.a94d6426.css",
+    "main.js": "/wedding-front/static/js/main.b5071ca4.js",
     "static/js/787.de60aad4.chunk.js": "/wedding-front/static/js/787.de60aad4.chunk.js",
     "static/media/masonry.png": "/wedding-front/static/media/masonry.4fd3a9ccb55848f64f45.png",
     "static/media/match.png": "/wedding-front/static/media/match.6432f3b1da68e3337f37.png",
@@ -10,12 +10,12 @@
     "static/media/Us.jpg": "/wedding-front/static/media/Us.07ec4d37aeb359fb7ad1.jpg",
     "static/media/Chapaza.ttf": "/wedding-front/static/media/Chapaza.23707fce9d5aa7b30fd7.ttf",
     "index.html": "/wedding-front/index.html",
-    "main.63951259.css.map": "/wedding-front/static/css/main.63951259.css.map",
-    "main.d722aa53.js.map": "/wedding-front/static/js/main.d722aa53.js.map",
+    "main.a94d6426.css.map": "/wedding-front/static/css/main.a94d6426.css.map",
+    "main.b5071ca4.js.map": "/wedding-front/static/js/main.b5071ca4.js.map",
     "787.de60aad4.chunk.js.map": "/wedding-front/static/js/787.de60aad4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.63951259.css",
-    "static/js/main.d722aa53.js"
+    "static/css/main.a94d6426.css",
+    "static/js/main.b5071ca4.js"
   ]
 }
