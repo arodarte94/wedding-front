@@ -9,11 +9,12 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { Box, Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useParams } from "react-router-dom";
+import MatchImg from "../img/match.png";
+import MasonryImg from "../img/masonry.png";
 
 const LandingPage = () => {
-
   const { id } = useParams();
-  
+
   const [isMobile, setIsMobile] = useState(false);
   const [isAntonioOpen, setIsAntonioOpen] = useState(false);
   const [isNallelyOpen, setIsNallelyOpen] = useState(false);
@@ -23,6 +24,8 @@ const LandingPage = () => {
   const usRef = useRef(null);
   const datesRef = useRef(null);
   const boditaRef = useRef(null);
+  const howWeMetRef = useRef(null);
+  const howWeFellRef = useRef(null);
 
   useEffect(() => {
     resize();
@@ -31,7 +34,6 @@ const LandingPage = () => {
       console.log(id);
       animateSectionJump(boditaRef);
     }
-
   }, [window.screen.width]);
 
   const resize = () => {
@@ -43,16 +45,14 @@ const LandingPage = () => {
   };
 
   const openMorritoPopover = (morrito) => {
-    if(morrito) {
+    if (morrito) {
       setIsAntonioOpen(false);
       setIsNallelyOpen(true);
-    }
-
-    else {
+    } else {
       setIsAntonioOpen(true);
       setIsNallelyOpen(false);
     }
-  }
+  };
 
   const animateSectionJump = (ref) => {
     setTimeout(() => {
@@ -65,6 +65,10 @@ const LandingPage = () => {
 
     setAnimationState(`${styles.content} ${styles.fadeOut}`);
   };
+
+  const toggleCollapsable = (ref, toggle) => {
+    ref.current.style.height = "900px";
+  }
 
   window.onresize = resize;
 
@@ -154,35 +158,56 @@ const LandingPage = () => {
         </div>
 
         <section className={styles.mainDivider}>
-        <h1 className={styles.bumble}>
-            Simón, los rumores son ciertos, <br />nos conocimos en <b>Bumble.</b>
+          <h1 className={styles.bumble}>
+            Simón, los rumores son ciertos, <br />
+            nos conocimos en <b>Bumble.</b>
           </h1>
           <img src="/wedding-front/mainJade.png" alt="" />
         </section>
 
         <div ref={usRef} className={styles.whoAreWe}>
-          <h1>Esto es lo que somos...</h1>          
-          
-          <Box className={styles.morritoDialog + " " + styles.tumblus} visibility={isAntonioOpen ? '' : 'hidden'}>
+          <h1>Esto es lo que somos...</h1>
+
+          <Box
+            className={styles.morritoDialog + " " + styles.tumblus}
+            visibility={isAntonioOpen ? "" : "hidden"}
+          >
             <h4>Antonio</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illo totam hic magnam ab laudantium cupiditate dignissimos rerum obcaecati! Fuga fugit architecto suscipit eveniet aperiam reiciendis, vitae recusandae vel unde!</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+              illo totam hic magnam ab laudantium cupiditate dignissimos rerum
+              obcaecati! Fuga fugit architecto suscipit eveniet aperiam
+              reiciendis, vitae recusandae vel unde!
+            </p>
           </Box>
 
-          <Box className={styles.morritoDialog + " " + styles.nallely} visibility={isNallelyOpen ? '' : 'hidden'}>
-          <h4>Nallely</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illo totam hic magnam ab laudantium cupiditate dignissimos rerum obcaecati! Fuga fugit architecto suscipit eveniet aperiam reiciendis, vitae recusandae vel unde!</p>
+          <Box
+            className={styles.morritoDialog + " " + styles.nallely}
+            visibility={isNallelyOpen ? "" : "hidden"}
+          >
+            <h4>Nallely</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+              illo totam hic magnam ab laudantium cupiditate dignissimos rerum
+              obcaecati! Fuga fugit architecto suscipit eveniet aperiam
+              reiciendis, vitae recusandae vel unde!
+            </p>
           </Box>
 
-      
           <div className={styles.hearts}>
-          <div className={styles.heartButton} onClick={() => openMorritoPopover(false)}>
-            <FavoriteIcon />
+            <div
+              className={styles.heartButton}
+              onClick={() => openMorritoPopover(false)}
+            >
+              <FavoriteIcon />
+            </div>
+            <div
+              className={styles.heartButton}
+              onClick={() => openMorritoPopover(true)}
+            >
+              <FavoriteIcon />
+            </div>
           </div>
-          <div className={styles.heartButton} onClick={() =>  openMorritoPopover(true)}>
-            <FavoriteIcon />
-          </div>
-          </div>
-
         </div>
 
         {/* Section 2: Quienes son los morritos */}
@@ -224,39 +249,103 @@ const LandingPage = () => {
         </section> */}
 
         {/* Section 3: Dates */}
+
+        <section className={styles.mainDivider}>
+          <h1 className={styles.bumble}>
+            Nuestra historia <br />
+            juntos
+          </h1>
+          <img src="/wedding-front/mainJade.png" alt="" />
+        </section>
         <section ref={datesRef} className={styles.dates}>
-          <h1>Nuestra historia</h1>
           <div className={styles.date}>
-            <div className={styles.leftColumn}></div>
+            <div
+              className={styles.leftColumn}
+              style={{ backgroundImage: "url(" + MatchImg + ")" }}
+            >
+              <div className={styles.collapsableOverlay} ref={howWeMetRef}>
+                <p>
+                  ¡Las aplicaciones de citas si funcionan! Hicimos “match” en
+                  Bumble, alrededor del 18 de Diciembre del 2021. En esta
+                  aplicación la mujer tiene que enviar el primer mensaje durante
+                  un periodo de 24 horas, de lo contrario pierdes tu oportunidad
+                  y la persona desaparece.
+                  <br />
+                  <br />
+                  Casi al llegar al límite de las 24 horas, Antonio presiona el
+                  botón de emergencia el cual le daba otras 24 horas a Nallely
+                  para enviarle un mensaje. Intrigada por tal acción el 20 de
+                  Diciembre, Nallely envía a Antonio el clásico “Hola ¿cómo
+                  estas?”
+                </p>
+              </div>
+
+              <div className={styles.collapsableOverlayButton} onClick={ () => toggleCollapsable(howWeMetRef, true)}>
+                <FavoriteBorderOutlinedIcon />
+                <span>¿Cómo nos conocimos?</span>
+              </div>
+            </div>
+
             <div className={styles.rightColumn}>
               <div className={styles.dateContent}>
                 <h1>
-                  Cita
-                  <br /># 01
+                  How we
+                  <br />
+                  met
                 </h1>
 
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Explicabo, officiis, inventore labore culpa odit earum
-                  assumenda vitae expedita laborum quis quibusdam impedit amet
-                  quidem, obcaecati modi. Debitis qui esse illo?
+                  ¡Las aplicaciones de citas si funcionan! Hicimos “match” en
+                  Bumble, alrededor del 18 de Diciembre del 2021. En esta
+                  aplicación la mujer tiene que enviar el primer mensaje durante
+                  un periodo de 24 horas, de lo contrario pierdes tu oportunidad
+                  y la persona desaparece.
                   <br />
                   <br />
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Temporibus illum tempore nisi debitis vitae officia
-                  repudiandae odio cupiditate et quos voluptatibus, neque libero
-                  dolor magni, perspiciatis vero fuga? Necessitatibus, expedita.
+                  Casi al llegar al límite de las 24 horas, Antonio presiona el
+                  botón de emergencia el cual le daba otras 24 horas a Nallely
+                  para enviarle un mensaje. Intrigada por tal acción el 20 de
+                  Diciembre, Nallely envía a Antonio el clásico “Hola ¿cómo
+                  estas?”
                 </p>
               </div>
             </div>
           </div>
 
           <div className={styles.date}>
-            <div className={styles.leftColumn}></div>
+            <div
+              className={styles.leftColumn}
+              style={{ backgroundImage: "url(" + MasonryImg + ")" }}
+            >
+
+<div className={styles.collapsableOverlay} ref={howWeFellRef}>
+                <p>
+                  ¡Las aplicaciones de citas si funcionan! Hicimos “match” en
+                  Bumble, alrededor del 18 de Diciembre del 2021. En esta
+                  aplicación la mujer tiene que enviar el primer mensaje durante
+                  un periodo de 24 horas, de lo contrario pierdes tu oportunidad
+                  y la persona desaparece.
+                  <br />
+                  <br />
+                  Casi al llegar al límite de las 24 horas, Antonio presiona el
+                  botón de emergencia el cual le daba otras 24 horas a Nallely
+                  para enviarle un mensaje. Intrigada por tal acción el 20 de
+                  Diciembre, Nallely envía a Antonio el clásico “Hola ¿cómo
+                  estas?”
+                </p>
+              </div>
+
+              <div className={styles.collapsableOverlayButton} onClick={ () => toggleCollapsable(howWeFellRef, true)}>
+                <FavoriteBorderOutlinedIcon />
+                <span>¿Cómo nos enamoramos?</span>
+              </div>
+
+
+            </div>
             <div className={styles.rightColumn}>
               <div className={styles.dateContent}>
                 <h1>
-                  Cita
+                  How we
                   <br /># 08
                 </h1>
 
@@ -338,7 +427,7 @@ const LandingPage = () => {
           </div>
         </section>
         <section className={styles.footer}>
-        <p>Made with ❤️ by Antonio Rodarte</p>
+          <p>Made with ❤️ by Antonio & Nallely</p>
         </section>
       </div>
     </div>

@@ -2,7 +2,7 @@ $beigeOverlay: rgba(229, 223, 211, 0.5);
 $greenOverlay: rgba(124, 130, 116, 0.5);
 $pinkOverlay: rgba(168, 130, 122, 0.5);
 $blueOverlay: rgba(65, 78, 86, 0.5);
-$beigeTest: #EDE7DC;
+$beigeTest: #ede7dc;
 
 $pink: #a8827a;
 $blue: #414e56;
@@ -13,8 +13,13 @@ $bumbleColor: #f0c332;
 $mobileThreshold: 1200px;
 
 @font-face {
-  font-family: 'chaprille';
-  src: url('../../../public/fonts/Chaprile calligraphy.otf');
+  font-family: "chaprille";
+  src: url("../../../public/fonts/Chaprile calligraphy.otf");
+}
+
+@font-face {
+  font-family: "chapaza";
+  src: url("../../../public/fonts/Chapaza.ttf");
 }
 
 /* width */
@@ -24,19 +29,19 @@ $mobileThreshold: 1200px;
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 1px grey; 
+  box-shadow: inset 0 0 1px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $green; 
+  background: $green;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $pink; 
+  background: $pink;
 }
 
 body {
@@ -46,7 +51,8 @@ body {
 }
 
 .main {
-  section, .container {
+  section,
+  .container {
     margin-right: auto;
     margin-left: auto;
     box-sizing: border-box;
@@ -89,12 +95,12 @@ body {
       text-align: center;
       width: 200px;
 
-      .mainConfirm{
+      .mainConfirm {
         border-color: $pink;
         color: $pink;
         font-weight: bold;
 
-        &:hover{
+        &:hover {
           background-color: $pink;
           color: #ffffff;
         }
@@ -112,11 +118,11 @@ body {
       padding: 15px 0px 15px 0px;
     }
 
-    .mobileSideMenuChevron{
-      position:absolute;
+    .mobileSideMenuChevron {
+      position: absolute;
       top: 10px;
       left: 140px;
-      font-size:50px;
+      font-size: 50px;
       color: $green;
       cursor: pointer;
 
@@ -149,12 +155,11 @@ body {
     @media (max-width: $mobileThreshold) {
       display: none;
     }
-    
   }
 
   .bottomMenu {
     position: fixed;
-    bottom:0px;
+    bottom: 0px;
     width: 100%;
     height: 60px;
     background-color: #ffffff;
@@ -169,9 +174,9 @@ body {
       height: 60px;
       color: $green;
 
-      a{
+      a {
         height: 60px;
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -219,7 +224,6 @@ body {
       display: flex;
       justify-content: center;
 
-
       .mainCoverOverlay {
         height: 100vh;
         width: 100%;
@@ -230,15 +234,13 @@ body {
         position: relative;
 
         .mainCoverText {
-
-          font-family: 'chaprille';
+          font-family: "chaprille";
           font-size: 140px;
           color: $beige;
 
           .mobileLabel {
             width: 900px;
-            margin-top:200px;
-            
+            margin-top: 200px;
           }
         }
       }
@@ -248,7 +250,6 @@ body {
         bottom: 25%;
         font-size: 40px;
         color: $beige;
-        
       }
     }
 
@@ -260,12 +261,12 @@ body {
       background-position: calc(50%);
       background-repeat: no-repeat;
       background-size: cover;
-      position:relative;
+      position: relative;
 
       h1 {
-        position:absolute;
+        position: absolute;
         padding: 10px 20px;
-        font-family: 'chaprille';
+        font-family: "chaprille";
         font-size: 42px;
         letter-spacing: 2px;
         color: $blue;
@@ -275,31 +276,29 @@ body {
       }
 
       .morritoDialog {
-
-        position:absolute;
+        position: absolute;
         padding: 15px;
         top: 250px;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0, 0, 0, 0.3);
         border: 1px solid #ccc;
         border-radius: 3px;
         width: 300px;
 
         @media (max-width: $mobileThreshold) {
-
           top: 125px !important;
           left: 0px !important;
           right: 0px !important;
           width: unset;
           margin-left: 10%;
-          margin-right:10%;
+          margin-right: 10%;
           p {
-            color: #fff; 
+            color: #fff;
             font-size: 14px;
           }
         }
 
         &.tumblus {
-          left:50px;
+          left: 50px;
         }
 
         &.nallely {
@@ -307,7 +306,7 @@ body {
         }
 
         p {
-          color: #fff; 
+          color: #fff;
           font-size: 14px;
         }
       }
@@ -318,12 +317,12 @@ body {
         font-weight: bold;
 
         border: 1px solid #ccc;
-        border-radius:100px;
+        border-radius: 100px;
         padding: 8px 8px 4px 8px;
-        background: rgba(100,100,100, 0.7);
+        background: rgba(100, 100, 100, 0.7);
 
         svg {
-        animation: pulse 0.5s infinite alternate; /* Define the animation */
+          animation: pulse 0.5s infinite alternate; /* Define the animation */
         }
 
         @keyframes pulse {
@@ -335,9 +334,10 @@ body {
           }
         }
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
           transform: scale(1.2);
-          background: rgba(80,80,80, 0.7);
+          background: rgba(80, 80, 80, 0.7);
           cursor: pointer;
           svg {
             color: $pink;
@@ -437,26 +437,88 @@ body {
         height: 100vh;
 
         @media (max-width: $mobileThreshold) {
+          height: 100%;
           &:not(:first-child) {
-           border-top: 1px solid $pinkOverlay;
+            border-top: 1px solid $pinkOverlay;
           }
-         }
-         
-        .leftColumn {
-          background-image: url("../../../public/mainCover.jpg");
         }
 
         .leftColumn {
           width: 50%;
           min-height: 100vh;
           background-attachment: fixed;
-          background-position: center;
+          background-position: 200px;
           background-repeat: no-repeat;
-          background-size: cover;
+          background-size: contain;
           display: inline-block;
+          position: relative;
 
           @media (max-width: $mobileThreshold) {
+            width: 100%;
+            height: 900px;
+            background-position: center;
+            background-size: cover;
+            display: block;
+          }
+
+          
+          .collapsableOverlay {
+            background: $pink;
+            height: 0px;
+            width: 100%;
+            display: block;
+            color: #fff;
+            transition: all 1s ease;
+            overflow-y: auto;
+            z-index: 2;
+            position: relative;
+            p {
+              font-size: 1.1em;
+              color: #fff;
+              opacity: 0.8;
+              padding: 20px;
+              font-family: "chapaza";
+            }
+          }
+
+          .collapsableOverlayButton {
+            height: 60px;
+            background: $blue;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            border-radius: 100px;
+            color: #ffffff;
             display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            text-wrap: nowrap;
+            transition: all 0.5s ease;
+            z-index: 1;
+            svg {
+              animation: pulse 0.5s infinite alternate; /* Define the animation */
+            }
+
+            span {
+              font-size: 0px;
+              transition: all 0.5s ease;
+            }
+            &:hover {
+              width: 240px;
+              cursor: pointer;
+              background: $pink;
+              span {
+                display: block;
+                font-size: 15px;
+                margin-left: 10px;
+              }
+            }
+
+            @media (max-width: $mobileThreshold) {
+              display: flex;
+            }
           }
         }
 
@@ -468,37 +530,37 @@ body {
           height: 100vh;
 
           @media (max-width: $mobileThreshold) {
-            width: 100%;
-            height: 100%;
-            margin-bottom: 50px;
+            display: none;
           }
 
           h1 {
             position: absolute;
             z-index: -1;
-            font-size: 200px;
+            font-size: 150px;
+            letter-spacing: -2px;
             color: $pink;
-            opacity: 0.2;
+            opacity: 0.15;
             text-align: right;
             bottom: 30px;
             right: 30px;
             width: 100%;
             line-height: 150px;
             margin: 0px;
+            text-transform: uppercase;
 
             @media (max-width: $mobileThreshold) {
               font-size: 100px;
               line-height: 100px;
             }
-
           }
           .dateContent {
             padding: 50px;
 
             p {
-              font-size: 1.5em;
+              font-size: 1.4em;
               color: $green;
               opacity: 0.8;
+              font-family: "chapaza";
             }
           }
         }
@@ -513,7 +575,6 @@ body {
       padding: 40px;
       font-size: 35px;
       line-height: 50px;
-      margin-bottom: -22px;
 
       img {
         width: 120px;
@@ -557,13 +618,14 @@ body {
           outline: 1.5px dashed $greenOverlay;
           outline-offset: 3px;
 
-          h1{
+          h1 {
             text-align: center;
-            font-size:35px;
+            font-size: 35px;
           }
-          p,a {
-            font-size:20px;
-            display:block;
+          p,
+          a {
+            font-size: 20px;
+            display: block;
             text-align: center;
           }
         }
@@ -575,11 +637,11 @@ body {
       margin-top: 200px;
       display: block;
       width: 100%;
-      text-align:center;
+      text-align: center;
       color: #555;
       margin-bottom: -16px;
-      p{
-        padding:10px;
+      p {
+        padding: 10px;
         font-size: 12px;
       }
       .footerInfo {
@@ -596,27 +658,24 @@ body {
     }
   }
 
-  .fadeOut{
-    opacity:0;
+  .fadeOut {
+    opacity: 0;
     transition: opacity 0.5s;
-
-}
-.fadeIn {
-    opacity:1;
+  }
+  .fadeIn {
+    opacity: 1;
     transition: opacity 0.5s;
+  }
 
-}
-
-      .bumble {
-        width: 100%;
-        font-size: 45px;
-        text-align: center;
-        color: $green;
-        opacity: 0.5;
-        // margin-bottom: 100px;
-        b {
-          color: $bumbleColor;
-        }
-      }
-
+  .bumble {
+    width: 100%;
+    font-size: 45px;
+    text-align: center;
+    color: $green;
+    opacity: 0.5;
+    // margin-bottom: 100px;
+    b {
+      color: $bumbleColor;
+    }
+  }
 }
