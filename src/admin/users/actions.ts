@@ -3,6 +3,7 @@ import { ENV } from "../../environment/environment";
 
 enum ENDPOINTS {
   GET = 'users',
+  GETBYUUID = 'users/uuid',
   CREATE = 'users',
   UPDATE = 'users',
   DELETE = 'users'
@@ -49,6 +50,12 @@ export const getHosts = async (page: number = 1, pageLength: number = 1000, sort
 export const getUser = async (id: string, set: any) => {
 
   const response = await axios.get(ENV.basePath + ENDPOINTS.GET + "/" + id);
+  set(response.data.user);
+}
+
+export const getUserByUuid = async (id: string, set: any) => {
+
+  const response = await axios.get(ENV.basePath + ENDPOINTS.GETBYUUID + "/" + id);
   set(response.data.user);
 }
 

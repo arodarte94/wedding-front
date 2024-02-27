@@ -11,6 +11,7 @@ export interface User {
   image: string,
   slots: number,
   email: string;
+  link: string;
   token: string;
   locations: Location[];
   role: Role;

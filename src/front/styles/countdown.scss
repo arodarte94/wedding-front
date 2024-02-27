@@ -1,0 +1,88 @@
+$beigeOverlay: #f6f3ed;
+$greenOverlay: rgba(124, 130, 116, 0.5);
+$pinkOverlay: rgba(168, 130, 122, 0.5);
+$blueOverlay: rgba(65, 78, 86, 0.5);
+$beigeTest: #f6f3ed;
+
+$pink: #a8827a;
+$blue: #414e56;
+$beige: #f6f3ed;
+$green: #7c8274;
+$bumbleColor: #f0c332;
+
+
+$mobileThreshold: 1200px;
+
+@font-face {
+    font-family: "chaprille";
+    src: url("../../../public/fonts/Chaprile calligraphy.otf");
+  }
+  
+  @font-face {
+    font-family: "chapaza";
+    src: url("../../../public/fonts/Chapaza.ttf");
+  }
+
+.countdownContainer {
+
+    position: absolute;
+    bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    
+    p {
+        font-size: 27px !important;
+        text-align: justify;
+        padding-right: 80px;
+        letter-spacing: 0.25px;
+  
+        span {
+            color: #eccc68;
+        }
+    }
+  
+    .countdown {
+        color: #555;
+        display: block;
+        z-index: 100;
+        @media only screen and (max-width: $mobileThreshold) {
+            display: flex;
+            justify-content: center;
+        }
+  
+        @media only screen and (max-width: 690px) {
+            display: grid;
+            grid-template-columns: auto auto;
+            padding-left: 10%;
+        }
+  
+        .countdownElem {
+            display: inline-block;
+            padding-right: 30px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+  
+            .countdownDigit {
+                font-family: 'chapaza';
+                background: $beige;
+                font-size: 30px;
+                padding: 5px 22px 5px 22px;
+                margin-right: 3px;
+                border-radius: 10px;
+                display: inline;
+            }
+  
+            .countdownLabel {
+                font-family: 'chapaza';
+                margin-top: 25px;
+                display: block;
+                font-size: 25px;
+                color: #FFF;
+                letter-spacing: 5px;
+            }
+        }
+    }
+  }

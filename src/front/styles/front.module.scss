@@ -1,12 +1,12 @@
-$beigeOverlay: rgba(229, 223, 211, 0.5);
+$beigeOverlay: #f6f3ed;
 $greenOverlay: rgba(124, 130, 116, 0.5);
 $pinkOverlay: rgba(168, 130, 122, 0.5);
 $blueOverlay: rgba(65, 78, 86, 0.5);
-$beigeTest: #ede7dc;
+$beigeTest: #f6f3ed;
 
 $pink: #a8827a;
 $blue: #414e56;
-$beige: #e5dfd3;
+$beige: #f6f3ed;
 $green: #7c8274;
 $bumbleColor: #f0c332;
 
@@ -205,8 +205,19 @@ body {
   }
 
   .content {
+
     width: calc(100% - 200px);
     padding-left: 200px;
+
+    &.saveTheDate {
+      width: 100% !important;
+      padding-left: 0px !important;
+      overflow: hidden;
+      .mainCoverOverlay {
+        background-color: rgba(0,0,0,0.2);
+
+      }
+    }
 
     @media (max-width: $mobileThreshold) {
       width: 100%;
@@ -232,7 +243,6 @@ body {
         justify-content: center;
         align-items: center;
         position: relative;
-
         .mainCoverText {
           font-family: "chaprille";
           font-size: 140px;

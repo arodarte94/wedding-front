@@ -1,4 +1,4 @@
-import { Autocomplete, Box, Grid, TextField } from "@mui/material";
+import { Autocomplete, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 import styles from "../../styles/app.module.scss";
 import TabOptions from "../../components/edit-view/TabOptions";
@@ -158,6 +158,19 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             </Grid>
           </Grid>
         </Grid>
+        {userData?.type == 1 &&
+          <Grid item xl={12} marginTop={3}>
+
+          <TextField
+                fullWidth
+                disabled
+                type="text"
+                label="Liga de confirmación"
+                defaultValue={user?.link}
+                variant="filled"
+              />
+          </Grid>
+        }
       </Grid>
     </>
   );
