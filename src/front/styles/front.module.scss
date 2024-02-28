@@ -216,6 +216,12 @@ body {
       .mainCoverOverlay {
         background-color: rgba(0,0,0,0.2);
 
+        @media (max-width: $mobileThreshold) {
+          .mobileLabel {
+            margin-top: -200px !important;
+            width: 600px !important;
+          }
+        }
       }
     }
 
