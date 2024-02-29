@@ -587,7 +587,7 @@ body {
             padding: 50px;
 
             p {
-              font-size: 1.4em;
+              font-size: 1.3em;
               color: $green;
               opacity: 0.8;
               font-family: "chapaza";
@@ -706,6 +706,12 @@ body {
     // margin-bottom: 100px;
     b {
       color: $bumbleColor;
+    }
+  }
+
+  .hideOnMobile {
+    @media (max-width: $mobileThreshold) {
+      display:none;
     }
   }
 }

@@ -348,7 +348,7 @@ const Wedding = () => {
 <div className={styles.collapsableOverlayButton + " " + styles.close} onClick={ () => toggleCollapsable(howWeFellRef, false)}>
                 <ClearIcon />
               </div>
-                <h1>¿Cómo nos conocimos?</h1>
+                <h1>¿Cómo nos enamoramos?</h1>
 
                 <p>
                   ¡Las aplicaciones de citas si funcionan! Hicimos “match” en
@@ -358,6 +358,20 @@ const Wedding = () => {
                   y la persona desaparece.
                   <br />
                   <br />
+                  Casi al llegar al límite de las 24 horas, Antonio presiona el
+                  botón de emergencia el cual le daba otras 24 horas a Nallely
+                  para enviarle un mensaje. Intrigada por tal acción el 20 de
+                  Diciembre, Nallely envía a Antonio el clásico “Hola ¿cómo
+                  estas?”
+
+                  <br /><br />
+                  Casi al llegar al límite de las 24 horas, Antonio presiona el
+                  botón de emergencia el cual le daba otras 24 horas a Nallely
+                  para enviarle un mensaje. Intrigada por tal acción el 20 de
+                  Diciembre, Nallely envía a Antonio el clásico “Hola ¿cómo
+                  estas?”
+
+                  <br /><br />
                   Casi al llegar al límite de las 24 horas, Antonio presiona el
                   botón de emergencia el cual le daba otras 24 horas a Nallely
                   para enviarle un mensaje. Intrigada por tal acción el 20 de
@@ -375,11 +389,6 @@ const Wedding = () => {
             </div>
             <div className={styles.rightColumn}>
               <div className={styles.dateContent}>
-                <h1>
-                  How we
-                  <br /># 08
-                </h1>
-
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Explicabo, officiis, inventore labore culpa odit earum
@@ -391,12 +400,19 @@ const Wedding = () => {
                   Temporibus illum tempore nisi debitis vitae officia
                   repudiandae odio cupiditate et quos voluptatibus, neque libero
                   dolor magni, perspiciatis vero fuga? Necessitatibus, expedita.
+
+                  <br /> <br />
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Temporibus illum tempore nisi debitis vitae officia
+                  repudiandae odio cupiditate et quos voluptatibus, neque libero
+                  dolor magni, perspiciatis vero fuga? Necessitatibus, expedita.
                 </p>
+                
               </div>
             </div>
           </div>
 
-          <div className={styles.date}>
+          <div className={styles.date + " " + styles.hideOnMobile}>
             <div className={styles.leftColumn}
                           style={{ backgroundImage: "url(" + MasonryImg + ")" }}
             ></div>
