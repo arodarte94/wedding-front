@@ -74,7 +74,7 @@ const Wedding = () => {
   const toggleCollapsable = (ref, toggle) => {
     if(toggle) {
       setTimeout(() => {
-        ref.current.style.height = "900px";
+        ref.current.style.height = "943px";
       }, 200);
     }
     else
@@ -272,7 +272,7 @@ const Wedding = () => {
           <div className={styles.date}>
             <div
               className={styles.leftColumn}
-              style={{ backgroundImage: "url(" + MatchImg + ")" }}
+              style={{ backgroundImage: "url(" + MatchImg + ")", zIndex: 2 }}
             >
               <div className={styles.collapsableOverlay} ref={howWeMetRef}>
 
@@ -340,7 +340,7 @@ const Wedding = () => {
           <div className={styles.date}>
             <div
               className={styles.leftColumn}
-              style={{ backgroundImage: "url(" + MasonryImg + ")" }}
+              style={{ backgroundImage: "url(" + MasonryImg + ")", zIndex: 3 }}
             >
 
 <div className={styles.collapsableOverlay} ref={howWeFellRef}>
@@ -358,6 +358,20 @@ const Wedding = () => {
                   y la persona desaparece.
                   <br />
                   <br />
+                  Casi al llegar al límite de las 24 horas, Antonio presiona el
+                  botón de emergencia el cual le daba otras 24 horas a Nallely
+                  para enviarle un mensaje. Intrigada por tal acción el 20 de
+                  Diciembre, Nallely envía a Antonio el clásico “Hola ¿cómo
+                  estas?”
+
+                  <br /><br />
+                  Casi al llegar al límite de las 24 horas, Antonio presiona el
+                  botón de emergencia el cual le daba otras 24 horas a Nallely
+                  para enviarle un mensaje. Intrigada por tal acción el 20 de
+                  Diciembre, Nallely envía a Antonio el clásico “Hola ¿cómo
+                  estas?”
+
+                  <br /><br />
                   Casi al llegar al límite de las 24 horas, Antonio presiona el
                   botón de emergencia el cual le daba otras 24 horas a Nallely
                   para enviarle un mensaje. Intrigada por tal acción el 20 de

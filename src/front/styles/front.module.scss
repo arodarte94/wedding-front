@@ -509,9 +509,12 @@ body {
           .collapsableOverlayButton {
             height: 60px;
             background: $blue;
-            position: absolute;
+            position: sticky;
             top: 20px;
-            right: 20px;
+            left: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
             width: 240px;
             border-radius: 100px;
             color: #ffffff;
