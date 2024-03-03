@@ -16,8 +16,12 @@ import { getUserByUuid } from "../admin/users/actions";
 import { User } from "../admin/models/user.model";
 
 const Wedding = () => {
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; // Check if user agent indicates iOS
+
   const { id } = useParams();
 
+  
   const [isMobile, setIsMobile] = useState(false);
   const [isAntonioOpen, setIsAntonioOpen] = useState(false);
   const [isNallelyOpen, setIsNallelyOpen] = useState(false);
@@ -146,7 +150,7 @@ const Wedding = () => {
 
       <div ref={morritosRef} className={animationState}>
         {/* Section 1: Main morritos cover page */}
-        <div className={styles.morritosMainCover}>
+        <div className={styles.morritosMainCover} style={{backgroundAttachment: (isIOS ? 'scroll' : 'fixed')}}>
           <div className={styles.mainCoverOverlay}>
             <div className={styles.mainCoverText}>
               {isMobile ? (
@@ -272,7 +276,7 @@ const Wedding = () => {
           <div className={styles.date}>
             <div
               className={styles.leftColumn}
-              style={{ backgroundImage: "url(" + MatchImg + ")", zIndex: 2 }}
+              style={{ backgroundImage: "url(" + MatchImg + ")", zIndex: 2, backgroundAttachment: (isIOS ? 'scroll' : 'fixed') }}
             >
               <div className={styles.collapsableOverlay} ref={howWeMetRef}>
 
@@ -340,7 +344,7 @@ const Wedding = () => {
           <div className={styles.date}>
             <div
               className={styles.leftColumn}
-              style={{ backgroundImage: "url(" + MasonryImg + ")", zIndex: 3 }}
+              style={{ backgroundImage: "url(" + MasonryImg + ")", zIndex: 3, backgroundAttachment: (isIOS ? 'scroll' : 'fixed') }}
             >
 
 <div className={styles.collapsableOverlay} ref={howWeFellRef}>
@@ -428,7 +432,7 @@ const Wedding = () => {
 
           <div className={styles.date + " " + styles.hideOnMobile}>
             <div className={styles.leftColumn}
-                          style={{ backgroundImage: "url(" + MasonryImg + ")" }}
+                          style={{ backgroundImage: "url(" + MasonryImg + ")", backgroundAttachment: (isIOS ? 'scroll' : 'fixed') }}
             ></div>
             <div className={styles.rightColumn}>
               <div className={styles.dateContent}>

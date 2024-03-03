@@ -25,6 +25,9 @@ $mobileThreshold: 1200px;
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
+  @media (max-width: $mobileThreshold) {
+    width: 0px;
+  }
 }
 
 /* Track */
@@ -44,6 +47,10 @@ $mobileThreshold: 1200px;
   background: $pink;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #ffffff;
   margin: 0px;
@@ -51,6 +58,14 @@ body {
 }
 
 .main {
+  position: absolute;
+  top: 0.5px;
+  left: 0;
+  right: 0;
+  bottom: 0.5px;
+  overflow-x: hidden; /* or any other value */
+  overflow-y: auto; /* or any other value */
+
   section,
   .container {
     margin-right: auto;
@@ -205,7 +220,6 @@ body {
   }
 
   .content {
-
     width: calc(100% - 200px);
     padding-left: 200px;
 
@@ -213,12 +227,27 @@ body {
       width: 100% !important;
       padding-left: 0px !important;
       overflow: hidden;
+
       .mainCoverOverlay {
-        background-color: rgba(0,0,0,0.2);
+        background-color: rgba(0, 0, 0, 0.2);
+
+        .mainCoverText {
+          margin-top: -200px;
+          display: flex;
+          justify-content: center;
+        }
+
+        img {
+          @media (min-width: 1200px) {
+            margin-top: 250px;
+            width: 900px;
+            z-index: 0;
+          }
+        }
 
         @media (max-width: $mobileThreshold) {
           .mobileLabel {
-            margin-top: -200px !important;
+            margin-top: 150px !important;
             width: 600px !important;
           }
         }
@@ -254,8 +283,12 @@ body {
           font-size: 140px;
           color: $beige;
 
+          img {
+            width: 1100px;
+          }
+
           .mobileLabel {
-            width: 900px;
+            width: 700px;
             margin-top: 200px;
           }
         }
@@ -263,9 +296,13 @@ body {
 
       .date {
         position: absolute;
-        bottom: 25%;
+        bottom: 30%;
         font-size: 40px;
         color: $beige;
+
+        img {
+          width: 300px;
+        }
       }
     }
 
@@ -477,7 +514,6 @@ body {
             display: block;
           }
 
-          
           .collapsableOverlay {
             background: $green;
             height: 0px;
@@ -491,7 +527,7 @@ body {
 
             h1 {
               color: #fff;
-              font-family: 'chapaza';
+              font-family: "chapaza";
             }
             p {
               font-size: 1.1em;
@@ -525,7 +561,7 @@ body {
             text-wrap: nowrap;
             transition: all 0.5s ease;
             z-index: 1;
-            font-family: 'chapaza';
+            font-family: "chapaza";
             cursor: pointer;
             svg {
               animation: pulse 0.5s infinite alternate; /* Define the animation */
@@ -714,7 +750,7 @@ body {
 
   .hideOnMobile {
     @media (max-width: $mobileThreshold) {
-      display:none;
+      display: none;
     }
   }
 }
