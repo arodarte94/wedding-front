@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/wedding-front/static/css/main.3b5863b9.css",
-    "main.js": "/wedding-front/static/js/main.bb1bd5cb.js",
+    "main.css": "/wedding-front/static/css/main.1c5a6d61.css",
+    "main.js": "/wedding-front/static/js/main.3fba24e9.js",
     "static/js/787.de60aad4.chunk.js": "/wedding-front/static/js/787.de60aad4.chunk.js",
-    "static/media/masonry.png": "/wedding-front/static/media/masonry.4fd3a9ccb55848f64f45.png",
+    "static/media/masonry.png": "/wedding-front/static/media/masonry.5e16b4efe7edf4c8b637.png",
     "static/media/match.png": "/wedding-front/static/media/match.6432f3b1da68e3337f37.png",
     "static/media/Chaprile calligraphy.otf": "/wedding-front/static/media/Chaprile calligraphy.16b73c6a1c45a4dfabc3.otf",
     "static/media/Homepage.jpg": "/wedding-front/static/media/Homepage.0d559b69ebd34fa43c84.jpg",
     "static/media/Us.jpg": "/wedding-front/static/media/Us.07ec4d37aeb359fb7ad1.jpg",
     "static/media/Chapaza.ttf": "/wedding-front/static/media/Chapaza.23707fce9d5aa7b30fd7.ttf",
     "index.html": "/wedding-front/index.html",
-    "main.3b5863b9.css.map": "/wedding-front/static/css/main.3b5863b9.css.map",
-    "main.bb1bd5cb.js.map": "/wedding-front/static/js/main.bb1bd5cb.js.map",
+    "main.1c5a6d61.css.map": "/wedding-front/static/css/main.1c5a6d61.css.map",
+    "main.3fba24e9.js.map": "/wedding-front/static/js/main.3fba24e9.js.map",
     "787.de60aad4.chunk.js.map": "/wedding-front/static/js/787.de60aad4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b5863b9.css",
-    "static/js/main.bb1bd5cb.js"
+    "static/css/main.1c5a6d61.css",
+    "static/js/main.3fba24e9.js"
   ]
 }
