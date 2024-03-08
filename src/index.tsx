@@ -6,10 +6,10 @@ import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import Users from './admin/users/page';
 import Roles from './admin/roles/page';
 import RolePage from './admin/roles/edit';
-import LandingPage from './front/LandingPage';
 import Groups from './admin/groups/page';
 import GroupEditView from './admin/groups/edit';
 import UserEditView from './admin/users/edit';
+import Wedding from './front/Wedding';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -30,9 +30,9 @@ root.render(
         <Route path="/admin/roles" element={<Roles/>}/>
         <Route path="/admin/roles/:id" element={<RolePage/>}/>
         <Route path="/admin/roles/new" element={<RolePage/>}/>
-        <Route path="/" element={<LandingPage />}/>
-        <Route path="/wedding-front" element={<LandingPage />}/>
-        <Route path="/wedding-front/:id" element={<LandingPage />}/>
+        <Route path="/" element={<Wedding />}/>
+        <Route path="/wedding-front" element={<Wedding />}/>
+        <Route path="/wedding-front/:id" element={<Wedding />}/>
     </Routes>
 
   </RootLayout>

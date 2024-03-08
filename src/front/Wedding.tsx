@@ -3,7 +3,7 @@ import SaveTheDate from "./SaveTheDate";
 import weddingStore from "./stores/weddingStore";
 import Page from "./LandingPage/page";
 
-const LandingPage = () => {
+const Wedding = () => {
 
   const countDownDate = new Date("Nov 9, 2023 00:00:00").getTime();
   const now           = new Date().getTime();
@@ -16,4 +16,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default Wedding
