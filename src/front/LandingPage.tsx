@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import SaveTheDate from "./SaveTheDate";
-import Wedding from "./Wedding";
 import weddingStore from "./stores/weddingStore";
+import Page from "./LandingPage/page";
 
 const LandingPage = () => {
 
@@ -11,7 +11,7 @@ const LandingPage = () => {
 
   return (
     <Provider store={weddingStore}>
-     { distance <= 0 ? <Wedding /> : <SaveTheDate />}
+     { distance <= 0 ? <Page /> : <SaveTheDate />}
   </Provider>
   )
 }

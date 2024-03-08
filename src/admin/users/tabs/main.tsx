@@ -14,6 +14,11 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     {id: 3, label: "Niño acompañante"},
   ];
 
+  const entrees = [
+    {id: 1, label: "Ensalada olimpia"},
+    {id: 2, label: "Takos de jicama dicos"},
+  ];
+
   const dinners = [
     {id: 1, label: "Chile en nogada"},
     {id: 2, label: "Pizzita"},
@@ -28,6 +33,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     group: user?.group?.id,
     role: user?.role?.id,
     type: user?.type_id,
+    entree: user?.entree_id,
     dinner: user?.dinner_id
   });
 
@@ -42,6 +48,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
           userData.host,
           userData.type,
           userData.group,
+          userData.entree,
           userData.dinner,
           userData.slots
         )
@@ -53,6 +60,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
           userData.host,
           userData.type,
           userData.group,
+          userData.entree,
           userData.dinner,
           userData.slots
         );
@@ -134,7 +142,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
               ></ComboBox>
             }
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item xs={12}>
             { !userData?.host && <ComboBox
             src={() => getGroups(1, 1000, null, null)}
             async
@@ -149,10 +157,19 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             </Grid>
             <Grid item md={6} xs={12}>
             <Autocomplete
-            options={dinners}
-            onChange={(e, val) => setUserData({...userData, dinner: val?.id})}
-            value={userData?.dinner && dinners.find(i => i.id == userData.dinner)?.label}
-            renderInput={(params) => <TextField label="Cenita..." variant="filled" {...params}
+              options={entrees}
+              onChange={(e, val) => setUserData({...userData, entree: val?.id})}
+              value={userData?.entree && entrees.find(i => i.id == userData.entree)?.label}
+              renderInput={(params) => <TextField label="Entrada..." variant="filled" {...params}
+            />}
+            />
+            </Grid>
+            <Grid item md={6} xs={12}>
+            <Autocomplete
+              options={dinners}
+              onChange={(e, val) => setUserData({...userData, dinner: val?.id})}
+              value={userData?.dinner && dinners.find(i => i.id == userData.dinner)?.label}
+              renderInput={(params) => <TextField label="Cenita..." variant="filled" {...params}
             />}
             />
             </Grid>

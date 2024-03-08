@@ -33,6 +33,7 @@ import {
   showMessage,
 } from "../../lib/appSlice";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../../auth/slice";
 
 const drawerWidth = 220;
 
@@ -135,6 +136,13 @@ export default function MiniDrawer({
           dispatcher(showErrorMessage(error.response.data.message));
           return error;
         }
+
+        else if(error.response.status === 419 || error.response.status === 401 ) {
+          global?.window?.localStorage.removeItem('user');
+          dispatcher(logout());
+          navigate("/admin");
+        }
+        
       }
     );
   }, []);

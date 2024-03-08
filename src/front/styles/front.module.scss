@@ -189,6 +189,11 @@ body {
       height: 60px;
       color: $green;
 
+      &.selected {
+        background: $green;
+        color: #ffffff;
+      }
+      
       a {
         height: 60px;
         display: flex;

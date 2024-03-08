@@ -48,6 +48,7 @@ export const columns: GridColDef[] = [
     valueGetter: (params: GridValueGetterParams) =>
       params.row.host?.name ?? '', 
   },
+  { field: 'entree', headerName: 'Entrada', width: 250 },
   { field: 'dinner', headerName: 'Cena', width: 250 },
   
   createdAtColumn,

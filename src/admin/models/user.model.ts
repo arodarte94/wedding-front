@@ -19,6 +19,8 @@ export interface User {
   host: User;
   type_id: number;
   type: string;
+  entree_id: number;
+  entree: string;
   dinner_id: number;
   dinner: string;
   passwordChange: boolean;

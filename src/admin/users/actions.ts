@@ -3,7 +3,7 @@ import { ENV } from "../../environment/environment";
 
 enum ENDPOINTS {
   GET = 'users',
-  GETBYUUID = 'users/uuid',
+  GETBYCODE = 'users/code',
   CREATE = 'users',
   UPDATE = 'users',
   DELETE = 'users'
@@ -53,13 +53,13 @@ export const getUser = async (id: string, set: any) => {
   set(response.data.user);
 }
 
-export const getUserByUuid = async (id: string, set: any) => {
+export const getUserByCode = async (id: string, set: any) => {
 
-  const response = await axios.get(ENV.basePath + ENDPOINTS.GETBYUUID + "/" + id);
+  const response = await axios.get(ENV.basePath + ENDPOINTS.GETBYCODE + "/" + id);
   set(response.data.user);
 }
 
-export const create = async (name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, dinner?: number, slots?: number) => {
+export const create = async (name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, entree?: number, dinner?: number, slots?: number) => {
 
   const response = await axios.post(ENV.basePath + ENDPOINTS.CREATE, {
     name: name,
@@ -69,6 +69,7 @@ export const create = async (name?: string, username?: string, email?: string, r
     host: host,
     type: type,
     group: group,
+    entree: entree,
     dinner: dinner,
     slots: slots
   });
@@ -76,7 +77,7 @@ export const create = async (name?: string, username?: string, email?: string, r
   return response;
 }
 
-export const update = async (id: number, name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, dinner?: number, slots?: number) => {
+export const update = async (id: number, name?: string, username?: string, email?: string, role?: number, host?: number, type?: number, group?: number, entree?: number, dinner?: number, slots?: number) => {
 
   const response = await axios.post(ENV.basePath + ENDPOINTS.UPDATE + '/' + id, {
     name: name,
@@ -86,6 +87,7 @@ export const update = async (id: number, name?: string, username?: string, email
     host: host,
     type: type,
     group: group,
+    entree: entree,
     dinner: dinner,
     slots: slots
   });

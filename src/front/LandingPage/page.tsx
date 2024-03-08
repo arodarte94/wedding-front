@@ -1,4 +1,4 @@
-import styles from "./styles/front.module.scss";
+import styles from "../styles/front.module.scss";
 import { Link } from "react-scroll";
 import { useEffect, useRef, useState } from "react";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
@@ -9,13 +9,13 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { Box, Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useParams } from "react-router-dom";
-import MatchImg from "../img/match.png";
-import MasonryImg from "../img/masonry.png";
+import MatchImg from "../../img/match.png";
+import MasonryImg from "../../img/masonry.png";
 import ClearIcon from '@mui/icons-material/Clear';
-import { getUserByUuid } from "../admin/users/actions";
-import { User } from "../admin/models/user.model";
+import { getUserByCode } from "../../admin/users/actions";
+import { User } from "../../admin/models/user.model";
 
-const Wedding = () => {
+const Page = () => {
 
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; // Check if user agent indicates iOS
 
@@ -27,7 +27,7 @@ const Wedding = () => {
   const [isNallelyOpen, setIsNallelyOpen] = useState(false);
   const [animationState, setAnimationState] = useState(`${styles.content}`);
   const [guest, setGuest] = useState<User|null>(null);
-
+  const [currentSection, setCurrentSection] = useState<number>(0);
   const morritosRef = useRef(null);
   const usRef = useRef(null);
   const datesRef = useRef(null);
@@ -40,7 +40,7 @@ const Wedding = () => {
     resize();
 
     if (id) {
-      getUserByUuid(id, setGuest);
+      getUserByCode(id, setGuest);
       animateSectionJump(boditaRef);
     }
   }, [window.screen.width]);
@@ -63,7 +63,10 @@ const Wedding = () => {
     }
   };
 
-  const animateSectionJump = (ref) => {
+  const animateSectionJump = (ref, section = 0) => {
+
+    if(section === currentSection) return;
+    
     setTimeout(() => {
       setAnimationState(`${styles.content} ${styles.fadeIn}`);
 
@@ -71,7 +74,7 @@ const Wedding = () => {
         block: "start", // You can adjust this value based on your needs ('start', 'center', 'end', or 'nearest')
       });
     }, 500);
-
+    setCurrentSection(section);
     setAnimationState(`${styles.content} ${styles.fadeOut}`);
   };
 
@@ -90,32 +93,32 @@ const Wedding = () => {
   return (
     <div className={styles.main}>
       <div className={styles.bottomMenu}>
-        <div className={styles.bottomMenuOption}>
-          <Link onClick={() => animateSectionJump(morritosRef)}>
+        <div className={[styles.bottomMenuOption, currentSection === 0 ? styles.selected : ""].join(" ")}>
+          <Link onClick={() => animateSectionJump(morritosRef, 0)}>
             <HomeOutlinedIcon />
             <span>Inicio</span>
           </Link>
         </div>
-        <div className={styles.bottomMenuOption}>
-          <Link onClick={() => animateSectionJump(usRef)}>
+        <div className={[styles.bottomMenuOption, currentSection === 1 ? styles.selected : ""].join(" ")}>
+          <Link onClick={() => animateSectionJump(usRef, 1)}>
             <FavoriteBorderOutlinedIcon />
             <span>Nosotros</span>
           </Link>
         </div>
-        <div className={styles.bottomMenuOption}>
-          <Link onClick={() => animateSectionJump(boditaRef)}>
+        <div className={[styles.bottomMenuOption, currentSection === 2 ? styles.selected : ""].join(" ")}>
+          <Link onClick={() => animateSectionJump(boditaRef, 2)}>
             <SynagogueOutlinedIcon />
             <span>Evento</span>
           </Link>
         </div>
-        <div className={styles.bottomMenuOption}>
-          <Link onClick={() => animateSectionJump(rsvpRef)}>
+        <div className={[styles.bottomMenuOption, currentSection === 3 ? styles.selected : ""].join(" ")}>
+          <Link onClick={() => animateSectionJump(rsvpRef, 3)}>
             <MarkEmailReadOutlinedIcon />
             <span>RSVP</span>
           </Link>
         </div>
-        <div className={styles.bottomMenuOption}>
-          <Link onClick={() => animateSectionJump(morritosRef)}>
+        <div className={[styles.bottomMenuOption, currentSection === 4 ? styles.selected : ""].join(" ")}>
+          <Link onClick={() => animateSectionJump(morritosRef, 4)}>
             <CardGiftcardOutlinedIcon />
             <span>Regalos</span>
           </Link>
@@ -508,4 +511,4 @@ const Wedding = () => {
     </div>
   );
 };
-export default Wedding;
+export default Page;

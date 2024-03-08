@@ -23,7 +23,7 @@ const Login = () => {
       global?.window?.localStorage.setItem('token', res.data.token);
       global?.window?.localStorage.setItem('role', JSON.stringify(res.data.role));
       dispatcher(loginSuccess(res.data));
-      navigate('/')
+      navigate('/admin')
     }
 
     else if(res?.response.status === 400)
