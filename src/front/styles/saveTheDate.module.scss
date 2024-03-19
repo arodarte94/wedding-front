@@ -1,0 +1,39 @@
+$mobileThreshold: 1200px;
+
+body {
+    height: 100vh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+
+.saveTheDate {
+    width: 100% !important;
+    padding-left: 0px !important;
+    overflow: hidden;
+
+    .mainCoverOverlay {
+      background-color: rgba(0, 0, 0, 0.2);
+
+      .mainCoverText {
+        margin-top: -200px;
+        display: flex;
+        justify-content: center;
+      }
+
+      img {
+        @media (min-width: 1200px) {
+          margin-top: 250px;
+          width: 900px;
+          z-index: 0;
+        }
+      }
+
+      @media (max-width: $mobileThreshold) {
+        .mobileLabel {
+          margin-top: 150px !important;
+          width: 600px !important;
+        }
+      }
+    }
+  }
+}

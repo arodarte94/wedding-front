@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles/front.module.scss";
+import stylesSDD from "./styles/saveTheDate.module.scss";
 import "./styles/countdown.scss";
 import { tick } from "./stores/weddingStore";
 
@@ -23,7 +24,7 @@ const SaveTheDate = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.content + " " + styles.saveTheDate}>
+      <div className={styles.content + " " + stylesSDD.saveTheDate}>
         <CountDown />
         <div className={styles.morritosMainCover}>
           <div className={styles.mainCoverOverlay}>

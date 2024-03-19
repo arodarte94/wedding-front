@@ -252,37 +252,6 @@ body {
     width: calc(100% - 200px);
     padding-left: 200px;
 
-    &.saveTheDate {
-      width: 100% !important;
-      padding-left: 0px !important;
-      overflow: hidden;
-
-      .mainCoverOverlay {
-        background-color: rgba(0, 0, 0, 0.2);
-
-        .mainCoverText {
-          margin-top: -200px;
-          display: flex;
-          justify-content: center;
-        }
-
-        img {
-          @media (min-width: 1200px) {
-            margin-top: 250px;
-            width: 900px;
-            z-index: 0;
-          }
-        }
-
-        @media (max-width: $mobileThreshold) {
-          .mobileLabel {
-            margin-top: 150px !important;
-            width: 600px !important;
-          }
-        }
-      }
-    }
-
     @media (max-width: $mobileThreshold) {
       width: 100%;
       padding-left: 0px;
