@@ -2,9 +2,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Box } from "@mui/material";
 import styles from "../../styles/front.module.scss";
 
-const WhoWeAre = ({ ref, isAntonioOpen, isNallelyOpen, openPopover }) => {
+const WhoWeAre = ({isAntonioOpen, isNallelyOpen, openPopover }) => {
   return (
-    <div ref={ref} className={styles.whoAreWe}>
+    <>
       <h1>Esto es lo que somos...</h1>
       <Box
         className={styles.morritoDialog + " " + styles.tumblus}
@@ -38,7 +38,7 @@ const WhoWeAre = ({ ref, isAntonioOpen, isNallelyOpen, openPopover }) => {
           <FavoriteIcon />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

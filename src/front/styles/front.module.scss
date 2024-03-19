@@ -66,6 +66,30 @@ body {
   overflow-x: hidden; /* or any other value */
   overflow-y: auto; /* or any other value */
 
+  .mainCoverConfirmButton {
+    background-color: $blue;
+    color: $beige;
+    border: 1px solid $blueOverlay;
+    z-index: 5;
+    width: 240px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'chapaza';
+    padding-top:10px;
+
+    svg {
+      font-size: 23px;
+      margin-top: -5px;
+    }
+    
+    &:hover {
+      background-color: $pink;
+      color: $beige;
+      border: 1px solid $pinkOverlay;
+    }
+  }
+
   section,
   .container {
     margin-right: auto;
@@ -287,14 +311,18 @@ body {
           font-family: "chaprille";
           font-size: 140px;
           color: $beige;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
 
           img {
             width: 1100px;
           }
 
           .mobileLabel {
-            width: 700px;
-            margin-top: 200px;
+            width: 80%;
+            margin-top: 165px;
           }
         }
       }

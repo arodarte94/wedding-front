@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import styles from "../../styles/front.module.scss";
 import MasonryImg from "../../../img/masonry.png";
+import MasonryImgMobile from "../../../img/masonryMobile.png";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 
@@ -24,7 +25,7 @@ const HowWeFell = () => {
         <div
           className={styles.leftColumn}
           style={{
-            backgroundImage: "url(" + MasonryImg + ")",
+            backgroundImage: "url(" + MasonryImgMobile + ")",
             zIndex: 3,
             backgroundAttachment: isIOS ? "scroll" : "fixed",
           }}
@@ -112,7 +113,7 @@ const HowWeFell = () => {
         <div
           className={styles.leftColumn}
           style={{
-            backgroundImage: "url(" + MasonryImg + ")",
+            backgroundImage: "url(" + MasonryImgMobile + ")",
             backgroundAttachment: isIOS ? "scroll" : "fixed",
           }}
         ></div>

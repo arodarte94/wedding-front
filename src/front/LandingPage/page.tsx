@@ -13,6 +13,7 @@ import { User } from "../../admin/models/user.model";
 import WhoWeAre from "./sections/WhoWeAre";
 import HowWeMet from "./sections/HowWeMet";
 import HowWeFell from "./sections/HowWeFell";
+import MainCover from "./sections/MainCover";
 
 const Page = () => {
   const isIOS =
@@ -161,29 +162,7 @@ const Page = () => {
       </div>
       <div ref={morritosRef} className={animationState}>
         {/* Section 1: Main morritos cover page */}
-        <div
-          className={styles.morritosMainCover}
-          style={{ backgroundAttachment: isIOS ? "scroll" : "fixed" }}
-        >
-          <div className={styles.mainCoverOverlay}>
-            <div className={styles.mainCoverText}>
-              {isMobile ? (
-                <img
-                  src="/wedding-front/mainLabelMobile.png"
-                  alt=""
-                  className={styles.mobileLabel}
-                />
-              ) : (
-                <img src="/wedding-front/mainLabel.png" alt="" />
-              )}
-            </div>
-          </div>
-          {!isMobile && (
-            <div className={styles.date}>
-              <img src="/wedding-front/Fecha.png" alt="" />
-            </div>
-          )}
-        </div>
+          <MainCover isMobile={isMobile}/>
         {/* 
         <section className={styles.mainDivider}>
           <h1 className={styles.bumble}>
@@ -192,12 +171,13 @@ const Page = () => {
           </h1>
           <img src="/wedding-front/mainJade.png" alt="" />
         </section> */}
+        <div ref={usRef} className={styles.whoAreWe}>
         <WhoWeAre
-          ref={usRef}
-          isAntonioOpen={isAntonioOpen}
-          isNallelyOpen={isNallelyOpen}
-          openPopover={openMorritoPopover}
-        />
+            isAntonioOpen={isAntonioOpen}
+            isNallelyOpen={isNallelyOpen}
+            openPopover={openMorritoPopover}
+          />
+        </div>
         {/* Section 2: Quienes son los morritos */}
         {/* <section  className={styles.us}>
           <div className={styles.title}>

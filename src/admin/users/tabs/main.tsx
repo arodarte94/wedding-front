@@ -9,7 +9,7 @@ import { getGroups } from "../../groups/actions";
 const MainTab = ({ user, set }: { user: User | null; set: any }) => {
   
   const types = [
-    {id: 1, label: "Principal"},
+    {id: 1, label: "Invitado principal"},
     {id: 2, label: "Acompañante"},
     {id: 3, label: "Niño acompañante"},
   ];
@@ -21,7 +21,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
 
   const dinners = [
     {id: 1, label: "Chile en nogada"},
-    {id: 2, label: "Pizzita"},
+    {id: 2, label: "Pollo en nuez"},
   ];
 
   const [userData, setUserData] = useState({
