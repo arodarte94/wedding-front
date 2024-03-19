@@ -31,8 +31,8 @@ root.render(
         <Route path="/admin/roles/:id" element={<RolePage/>}/>
         <Route path="/admin/roles/new" element={<RolePage/>}/>
         <Route path="/" element={<Wedding />}/>
-        <Route path="/wedding-front" element={<Wedding />}/>
-        <Route path="/wedding-front/:id" element={<Wedding />}/>
+        <Route path="/" element={<Wedding />}/>
+        <Route path="/:id" element={<Wedding />}/>
     </Routes>
 
   </RootLayout>

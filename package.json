@@ -1,6 +1,5 @@
 {
   "name": "pos-front",
-  "homepage": "https://arodarte94.github.io/wedding-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

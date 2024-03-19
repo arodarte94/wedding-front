@@ -17,12 +17,12 @@ const MainCover = ({isMobile}) => {
         <div className={styles.mainCoverText}>
             {isMobile ? (
             <img
-                src="/wedding-front/mainLabelMobile.png"
+                src="mainLabelMobile.png"
                 alt=""
                 className={styles.mobileLabel}
             />
             ) : (
-            <img src="/wedding-front/mainLabel.png" alt="" />
+            <img src="mainLabel.png" alt="" />
             )}
             <Button variant="contained" startIcon={<CelebrationIcon />} className={styles.mainCoverConfirmButton}>Confirmar</Button>
         </div>

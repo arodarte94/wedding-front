@@ -30,12 +30,12 @@ const SaveTheDate = () => {
             <div className={styles.mainCoverText}>
               {isMobile ? (
                 <img
-                  src="/wedding-front/saveTheDate.png"
+                  src="saveTheDate.png"
                   alt=""
                   className={styles.mobileLabel}
                 />
               ) : (
-                <img src="/wedding-front/saveTheDateDesktop.png" alt="" />
+                <img src="saveTheDateDesktop.png" alt="" />
               )}
             </div>
           </div>
