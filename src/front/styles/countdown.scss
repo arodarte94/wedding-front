@@ -48,7 +48,6 @@ $mobileThreshold: 1200px;
             color: #eccc68;
         }
     }
-  
     .countdown {
         color: #555;
         display: block;
@@ -58,7 +57,7 @@ $mobileThreshold: 1200px;
             display: inline-block;
             padding-right: 30px;
             margin-top: 20px;
-            margin-bottom:20px;
+            margin-bottom: 10px;
 
             @media only screen and (max-width: $mobileThreshold) {
                 padding-right: 20px;
@@ -71,7 +70,8 @@ $mobileThreshold: 1200px;
                 padding: 5px 22px 5px 22px;
 
                 @media only screen and (max-width: $mobileThreshold) {
-                    padding: 3px 7px 3px 7px;
+                    font-size: 6.5vw;
+                    padding: 0.8vw 1.8vw;
                 }
                 
                 margin-right: 3px;
@@ -83,7 +83,7 @@ $mobileThreshold: 1200px;
                 font-family: 'chapaza';
                 margin-top: 25px;
                 display: block;
-                font-size: 20px;
+                font-size: 1vw;
                 color: #FFF;
                 letter-spacing: 2px;
 

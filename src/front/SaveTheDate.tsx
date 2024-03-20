@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./styles/front.module.scss";
 import stylesSDD from "./styles/saveTheDate.module.scss";
 import "./styles/countdown.scss";
 import { tick } from "./stores/weddingStore";
@@ -23,17 +22,17 @@ const SaveTheDate = () => {
   window.onresize = resize;
 
   return (
-    <div className={styles.main}>
-      <div className={styles.content + " " + stylesSDD.saveTheDate}>
+    <div className={stylesSDD.main}>
+      <div className={stylesSDD.content + " " + stylesSDD.saveTheDate}>
         <CountDown />
-        <div className={styles.morritosMainCover}>
-          <div className={styles.mainCoverOverlay}>
-            <div className={styles.mainCoverText}>
+        <div className={stylesSDD.morritosMainCover}>
+          <div className={stylesSDD.mainCoverOverlay}>
+            <div className={stylesSDD.mainCoverText}>
               {isMobile ? (
                 <img
                   src="saveTheDate.png"
                   alt=""
-                  className={styles.mobileLabel}
+                  className={stylesSDD.mobileLabel}
                 />
               ) : (
                 <img src="saveTheDateDesktop.png" alt="" />
