@@ -1,26 +1,4 @@
-$beigeOverlay: #f6f3ed;
-$greenOverlay: rgba(124, 130, 116, 0.5);
-$pinkOverlay: rgba(168, 130, 122, 0.5);
-$blueOverlay: rgba(65, 78, 86, 0.5);
-$beigeTest: #f6f3ed;
-
-$pink: #a8827a;
-$blue: #414e56;
-$beige: #f6f3ed;
-$green: #7c8274;
-$bumbleColor: #f0c332;
-
-$mobileThreshold: 1200px;
-
-@font-face {
-  font-family: "chaprille";
-  src: url("../../../public/fonts/Chaprile calligraphy.otf");
-}
-
-@font-face {
-  font-family: "chapaza";
-  src: url("../../../public/fonts/Chapaza.ttf");
-}
+@import 'variables.module.scss';
 
 /* width */
 ::-webkit-scrollbar {
@@ -174,335 +152,8 @@ body {
       }
     }
 
-    .whoAreWe {
-      height: 100vh;
-      background: url("../../../public/Us.jpg");
-      min-height: 500px;
-      // background-attachment: fixed;
-      background-position: calc(50%);
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-
-      h1 {
-        position: absolute;
-        padding: 10px 20px;
-        font-family: "chaprille";
-        font-size: 42px;
-        letter-spacing: 2px;
-        color: $blue;
-      }
-      @media (max-width: $mobileThreshold) {
-        background-position: center;
-      }
-
-      .morritoDialog {
-        position: absolute;
-        padding: 15px;
-        top: 250px;
-        background: rgba(0, 0, 0, 0.3);
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        width: 300px;
-
-        @media (max-width: $mobileThreshold) {
-          top: 125px !important;
-          left: 0px !important;
-          right: 0px !important;
-          width: unset;
-          margin-left: 10%;
-          margin-right: 10%;
-          p {
-            color: #fff;
-            font-size: 14px;
-          }
-        }
-
-        &.tumblus {
-          left: 50px;
-        }
-
-        &.nallely {
-          right: 50px;
-        }
-
-        p {
-          color: #fff;
-          font-size: 14px;
-        }
-      }
-
-      .heartButton {
-        position: absolute;
-        color: #ccc;
-        font-weight: bold;
-
-        border: 1px solid #ccc;
-        border-radius: 100px;
-        padding: 8px 8px 4px 8px;
-        background: rgba(100, 100, 100, 0.7);
-
-        svg {
-          animation: pulse 0.5s infinite alternate; /* Define the animation */
-        }
-
-        @keyframes pulse {
-          0% {
-            font-size: 30px;
-          }
-          100% {
-            font-size: 34px;
-          }
-        }
-
-        &:hover,
-        &.active {
-          transform: scale(1.2);
-          background: rgba(80, 80, 80, 0.7);
-          cursor: pointer;
-          svg {
-            color: $pink;
-          }
-        }
-
-        &:first-of-type {
-          left: 40%;
-          top: 60%;
-
-          @media (max-width: $mobileThreshold) {
-            left: 25%;
-          }
-        }
-
-        &:last-of-type {
-          left: 55%;
-          top: 65%;
-
-          @media (max-width: $mobileThreshold) {
-            left: 60%;
-          }
-        }
-      }
-    }
-
-    .us {
-      .title {
-        text-align: center;
-        padding: 20px 0px;
-
-        .hint {
-          opacity: 0.5;
-        }
-        h1 {
-          font-size: 40px;
-          color: $green;
-          margin: 0px;
-        }
-      }
-
-      .presentation {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 40px;
-        margin-bottom: 100px;
-        gap: 50px;
-        div {
-          flex-grow: 1;
-          display: flex;
-          align-items: center;
-          &:nth-child(1) {
-            width: calc(30% - 50px);
-          }
-
-          &:nth-child(2) {
-            width: calc(40% - 50px);
-
-            img {
-              width: 100% !important;
-              border-radius: 20px;
-            }
-          }
-
-          &:nth-child(3) {
-            width: calc(30% - 50px);
-          }
-
-          h3 {
-            text-align: center;
-          }
-
-          p {
-            font-size: 20px;
-            line-height: 35px;
-            color: #777777;
-          }
-
-          @media (max-width: 1200px) {
-            width: 100% !important;
-          }
-        }
-      }
-    }
-
-    .dates {
-      width: 100%;
-      h1 {
-        width: 100%;
-        text-align: center;
-        color: $green;
-        font-size: 30px;
-        opacity: 0.5;
-        margin-top: 100px;
-      }
-      .date {
-        height: 100vh;
-
-        @media (max-width: $mobileThreshold) {
-          height: 100%;
-          &:not(:first-child) {
-            border-top: 1px solid $pinkOverlay;
-          }
-        }
-
-        .leftColumn {
-          width: 50%;
-          min-height: 100vh;
-          background-attachment: fixed;
-          background-position: 200px;
-          background-repeat: no-repeat;
-          background-size: contain;
-          display: inline-block;
-          position: relative;
-
-          @media (max-width: $mobileThreshold) {
-            width: 100%;
-            height: 900px;
-            background-position: center;
-            background-size: cover;
-            display: block;
-          }
-
-          .collapsableOverlay {
-            background: $green;
-            height: 0px;
-            width: 100%;
-            display: none;
-            color: #fff;
-            transition: all 1s ease;
-            overflow-y: auto;
-            z-index: 2;
-            position: relative;
-
-            h1 {
-              color: #fff;
-              font-family: "chapaza";
-            }
-            p {
-              font-size: 1.1em;
-              color: #fff;
-              opacity: 0.8;
-              padding: 20px;
-              font-family: "chapaza";
-            }
-
-            @media (max-width: $mobileThreshold) {
-              display: block;
-            }
-          }
-
-          .collapsableOverlayButton {
-            height: 60px;
-            background: $blue;
-            position: sticky;
-            top: 20px;
-            left: 100%;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            width: 240px;
-            border-radius: 100px;
-            color: #ffffff;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            text-wrap: nowrap;
-            transition: all 0.5s ease;
-            z-index: 1;
-            font-family: "chapaza";
-            cursor: pointer;
-            svg {
-              animation: pulse 0.5s infinite alternate; /* Define the animation */
-            }
-
-            span {
-              display: block;
-              font-size: 15px;
-              margin-left: 5px;
-            }
-
-            &:hover {
-              background: $pink;
-            }
-
-            @media (max-width: $mobileThreshold) {
-              display: flex;
-            }
-
-            &.close {
-              width: 40px;
-              height: 40px;
-              svg {
-                font-size: 20px !important;
-              }
-            }
-          }
-        }
-
-        .rightColumn {
-          width: 50%;
-          display: inline-block;
-          vertical-align: top;
-          position: relative;
-          height: 100vh;
-
-          @media (max-width: $mobileThreshold) {
-            display: none;
-          }
-
-          h1 {
-            position: absolute;
-            z-index: -1;
-            font-size: 150px;
-            letter-spacing: -2px;
-            color: $pink;
-            opacity: 0.15;
-            text-align: right;
-            bottom: 30px;
-            right: 30px;
-            width: 100%;
-            line-height: 150px;
-            margin: 0px;
-            text-transform: uppercase;
-
-            @media (max-width: $mobileThreshold) {
-              font-size: 100px;
-              line-height: 100px;
-            }
-          }
-          .dateContent {
-            padding: 50px;
-
-            p {
-              font-size: 1.3em;
-              color: $green;
-              opacity: 0.8;
-              font-family: "chapaza";
-            }
-          }
-        }
-      }
-    }
+    @import 'whoAreWe.module.scss';
+    @import 'dates.module.scss';
 
     .mainDivider {
       width: 100%;
@@ -530,6 +181,7 @@ body {
     }
 
     .bodita {
+      padding: 200px 0px 200px;
       h1 {
         width: 100%;
         color: $green;
@@ -537,41 +189,61 @@ body {
         text-align: center;
       }
 
-      .boditaCards {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        gap: 50px;
+      h5 {
+        color: $pink;
+        font-family: 'chapaza';
+        font-weight: normal;
+        font-size: 25px;
+        margin-bottom: 10px;
+        margin-top: 0px;
+      }
 
-        @media screen and (max-width: 900px) {
-          flex-direction: column;
+      h6 {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 24px;
+        font-family: 'chapaza';
+        font-weight: normal;
+        color: $blue;
+      }
+
+      h4 {
+        font-family: 'chaprille';
+        font-size: 100px;
+        font-weight: normal;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+        margin-bottom:10px;
+        padding: 0px 30px;
+        text-align:center;
+        font-family: 'chapaza';
+        color: $blue;
+        font-size: 14px;
+      }
+
+      .pinkDivider {
+        margin: 20px 0 10px;
+        background: $pinkOverlay;
+        height: 20px;
+        
+        @media (max-width: 900px) {
+          height: 300px;
+          margin:0;
         }
 
-        .card {
-          background: $beige;
-          width: 50%;
-          padding: 20px;
-          color: #555;
-          outline: 1.5px dashed $greenOverlay;
-          outline-offset: 3px;
+      }
 
-          h1 {
-            text-align: center;
-            font-size: 35px;
-          }
-          p,
-          a {
-            font-size: 20px;
-            display: block;
-            text-align: center;
-          }
-        }
+      img {
+        width: 80px;
       }
     }
 
     .footer {
       background: $beigeOverlay;
-      margin-top: 200px;
+      // margin-top: 100px;
       display: block;
       width: 100%;
       text-align: center;

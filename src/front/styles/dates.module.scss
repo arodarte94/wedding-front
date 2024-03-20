@@ -1,0 +1,159 @@
+.dates {
+    width: 100%;
+    h1 {
+      width: 100%;
+      text-align: center;
+      color: $green;
+      font-size: 30px;
+      opacity: 0.5;
+      margin-top: 100px;
+    }
+    .date {
+      height: 100vh;
+
+      @media (max-width: $mobileThreshold) {
+        height: 100%;
+        &:not(:first-child) {
+          border-top: 1px solid $pinkOverlay;
+        }
+      }
+
+      .leftColumn {
+        width: 50%;
+        min-height: 100vh;
+        background-attachment: fixed;
+        background-position: 200px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+        position: relative;
+
+        @media (max-width: $mobileThreshold) {
+          width: 100%;
+          height: 900px;
+          background-position: center;
+          background-size: cover;
+          display: block;
+        }
+
+        .collapsableOverlay {
+          background: $green;
+          height: 0px;
+          width: 100%;
+          display: none;
+          color: #fff;
+          transition: all 1s ease;
+          overflow-y: auto;
+          z-index: 2;
+          position: relative;
+
+          h1 {
+            color: #fff;
+            font-family: "chapaza";
+          }
+          p {
+            font-size: 1.1em;
+            color: #fff;
+            opacity: 0.8;
+            padding: 20px;
+            font-family: "chapaza";
+          }
+
+          @media (max-width: $mobileThreshold) {
+            display: block;
+          }
+        }
+
+        .collapsableOverlayButton {
+          height: 60px;
+          background: $blue;
+          position: sticky;
+          top: 20px;
+          left: 100%;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-right: 20px;
+          width: 240px;
+          border-radius: 100px;
+          color: #ffffff;
+          display: none;
+          justify-content: center;
+          align-items: center;
+          font-size: 30px;
+          text-wrap: nowrap;
+          transition: all 0.5s ease;
+          z-index: 1;
+          font-family: "chapaza";
+          cursor: pointer;
+          svg {
+            animation: pulse 0.5s infinite alternate; /* Define the animation */
+          }
+
+          span {
+            display: block;
+            font-size: 15px;
+            margin-left: 5px;
+          }
+
+          &:hover {
+            background: $pink;
+          }
+
+          @media (max-width: $mobileThreshold) {
+            display: flex;
+          }
+
+          &.close {
+            width: 40px;
+            height: 40px;
+            svg {
+              font-size: 20px !important;
+            }
+          }
+        }
+      }
+
+      .rightColumn {
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        height: 100vh;
+
+        @media (max-width: $mobileThreshold) {
+          display: none;
+        }
+
+        h1 {
+          position: absolute;
+          z-index: -1;
+          font-size: 150px;
+          letter-spacing: -2px;
+          color: $pink;
+          opacity: 0.15;
+          text-align: right;
+          bottom: 30px;
+          right: 30px;
+          width: 100%;
+          line-height: 150px;
+          margin: 0px;
+          text-transform: uppercase;
+
+          @media (max-width: $mobileThreshold) {
+            font-size: 100px;
+            line-height: 100px;
+          }
+        }
+        .dateContent {
+          padding: 50px;
+
+          p {
+            font-size: 1.3em;
+            color: $green;
+            opacity: 0.8;
+            font-family: "chapaza";
+          }
+        }
+      }
+    }
+  }

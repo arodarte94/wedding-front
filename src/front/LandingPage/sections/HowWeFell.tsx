@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../../styles/front.module.scss";
 import MasonryImg from "../../../img/masonry.png";
 import MasonryImgMobile from "../../../img/masonryMobile.png";
@@ -10,6 +10,21 @@ const HowWeFell = () => {
     /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; // Check if user agent indicates iOS
 
   const howWeFellRef = useRef(null);
+  const [backgroundImg, setBackgroundImg] = useState(MasonryImg);
+  
+  useEffect(() => {
+    resize();
+  }, [window.screen.width]);
+
+  const resize = () => {
+    if (window.innerWidth <= 600) {
+      setBackgroundImg(MasonryImgMobile);
+    } else {
+      setBackgroundImg(MasonryImg);
+    }
+  };
+
+  window.onresize = resize;
 
   const toggleCollapsable = (ref, toggle) => {
     if (toggle) {
@@ -25,7 +40,7 @@ const HowWeFell = () => {
         <div
           className={styles.leftColumn}
           style={{
-            backgroundImage: "url(" + MasonryImgMobile + ")",
+            backgroundImage: "url(" + backgroundImg + ")",
             zIndex: 3,
             backgroundAttachment: isIOS ? "scroll" : "fixed",
           }}
@@ -113,7 +128,7 @@ const HowWeFell = () => {
         <div
           className={styles.leftColumn}
           style={{
-            backgroundImage: "url(" + MasonryImgMobile + ")",
+            backgroundImage: "url(" + backgroundImg + ")",
             backgroundAttachment: isIOS ? "scroll" : "fixed",
           }}
         ></div>

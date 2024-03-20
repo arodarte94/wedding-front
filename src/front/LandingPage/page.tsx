@@ -14,6 +14,7 @@ import WhoWeAre from "./sections/WhoWeAre";
 import HowWeMet from "./sections/HowWeMet";
 import HowWeFell from "./sections/HowWeFell";
 import MainCover from "./sections/MainCover";
+import Schedule from "./sections/Schedule";
 
 const Page = () => {
 
@@ -177,39 +178,13 @@ const Page = () => {
           <br />Y ahora vamos por toda una vida.
         </section>
         {/* Section 4: La bodita */}
-        <section ref={boditaRef} className={styles.bodita}>
-          <h1>La bodita</h1>
-          <div className={styles.boditaCards}>
-            <div className={styles.card}>
-              <h1>La misa</h1>
-              <hr />
-              <p>Salón jardín Cibeles</p>
-              <p>
-                Bulevar Tomás Fernández 8450, Partido Senecú, 32540 Cd Juárez,
-                Chih.
-              </p>
-              <p>9:00 PM a 2:00 PM</p>
-              <p>Cena a las 9:15 PM</p>
-              <a href="#">Ver en Google Maps</a>
-            </div>
-            <div className={styles.card}>
-              <h1>La peda</h1>
-              <hr />
-              <p>Salón jardín Cibeles</p>
-              <p>
-                Bulevar Tomás Fernández 8450, Partido Senecú, 32540 Cd Juárez,
-                Chih.
-              </p>
-              <p>9:00 PM a 2:00 PM</p>
-              <p>Cena a las 9:15 PM</p>
-              <a href="#">Ver en Google Maps</a>
-            </div>
-          </div>
-        </section>
+        <div ref={boditaRef} className={styles.bodita}>
+        <Schedule />
+        </div>
         {/* Section 5: RSVP */}
-        <section ref={rsvpRef} className={styles.rsvp}>
-          <h1> Guest: {guest ? guest.name : ""}</h1>
-        </section>
+       {guest && <section ref={rsvpRef} className={styles.rsvp}>
+          <h1> Guest: {guest.name}</h1>
+        </section>} 
         <section className={styles.footer}>
           <p>Made with ❤️ by Antonio & Nallely</p>
         </section>

@@ -18,13 +18,13 @@ html {
 }
 
 // Remove this when going live
-body {
-    height: 100vh;
-    height: -webkit-fill-available;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    pointer-events: none;
-}
+// body {
+//     height: 100vh;
+//     height: -webkit-fill-available;
+//     min-height: 100vh;
+//     min-height: -webkit-fill-available;
+//     pointer-events: none;
+// }
 
 .main {
   position: absolute;

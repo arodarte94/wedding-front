@@ -1,0 +1,58 @@
+$beigeOverlay: #f6f3ed;
+$greenOverlay: rgba(124, 130, 116, 0.5);
+$pinkOverlay: rgba(168, 130, 122, 0.5);
+$blueOverlay: rgba(65, 78, 86, 0.5);
+$beigeTest: #f6f3ed;
+
+$pink: #a8827a;
+$blue: #414e56;
+$beige: #f6f3ed;
+$green: #7c8274;
+$bumbleColor: #f0c332;
+
+$mobileThreshold: 1200px;
+
+@font-face {
+  font-family: "chaprille";
+  src: url("../../../public/fonts/Chaprile calligraphy.otf");
+}
+
+@font-face {
+  font-family: "chapaza";
+  src: url("../../../public/fonts/Chapaza.ttf");
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  @media (max-width: $mobileThreshold) {
+    width: 0px;
+  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $green;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $pink;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #ffffff;
+  margin: 0px;
+  overflow-x: hidden;
+}
