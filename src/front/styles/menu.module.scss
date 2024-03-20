@@ -1,0 +1,135 @@
+.sideMenu {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    background-color: $beigeTest;
+    // overflow-y: scroll;
+    width: 200px;
+    box-shadow: 0 3px 20px rgb(0 0 0 / 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    z-index: 10;
+    .menuTitle {
+      font-size: 30px;
+      font-weight: bold;
+      color: $green;
+      position: absolute;
+      top: 15px;
+      text-align: center;
+      width: 200px;
+
+      .mainConfirm {
+        border-color: $pink;
+        color: $pink;
+        font-weight: bold;
+
+        &:hover {
+          background-color: $pink;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .menuFooter {
+      font-size: 18px;
+      color: #ffffff;
+      background: $green;
+      position: absolute;
+      bottom: 0px;
+      text-align: center;
+      width: 200px;
+      padding: 15px 0px 15px 0px;
+    }
+
+    .mobileSideMenuChevron {
+      position: absolute;
+      top: 10px;
+      left: 140px;
+      font-size: 50px;
+      color: $green;
+      cursor: pointer;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0px;
+      li {
+        text-transform: uppercase;
+        color: $blue;
+        transition: all 0.3s ease;
+
+        a {
+          padding: 20px 20px 20px 0px;
+          display: block;
+          text-align: right;
+        }
+        &:hover {
+          background-color: $blue;
+          color: #ffffff;
+          cursor: pointer;
+        }
+      }
+    }
+
+    @media (max-width: $mobileThreshold) {
+      display: none;
+    }
+  }
+
+  .bottomMenu {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    z-index: 10;
+    box-shadow: 0px 0px 15px $green;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+
+    .bottomMenuOption {
+      width: 20%;
+      height: 60px;
+      color: $green;
+
+      &.selected {
+        background: $green;
+        color: #ffffff;
+      }
+      
+      a {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-direction: column;
+      }
+      * {
+        font-size: 28px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+      // &:not(:last-child) {
+      //   border-right: 1px solid $greenOverlay;
+      // }
+
+      &:hover {
+        background: $green;
+        color: #ffffff;
+      }
+    }
+
+    @media (max-width: $mobileThreshold) {
+      display: flex;
+    }
+  }

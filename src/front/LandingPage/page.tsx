@@ -16,8 +16,6 @@ import HowWeFell from "./sections/HowWeFell";
 import MainCover from "./sections/MainCover";
 
 const Page = () => {
-  const isIOS =
-    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; // Check if user agent indicates iOS
 
   const { id } = useParams();
 
@@ -163,14 +161,6 @@ const Page = () => {
       <div ref={morritosRef} className={animationState}>
         {/* Section 1: Main morritos cover page */}
           <MainCover isMobile={isMobile}/>
-        {/* 
-        <section className={styles.mainDivider}>
-          <h1 className={styles.bumble}>
-            Simón, los rumores son ciertos, <br />
-            nos conocimos en <b>Bumble.</b>
-          </h1>
-          <img src="/wedding-front/mainJade.png" alt="" />
-        </section> */}
         <div ref={usRef} className={styles.whoAreWe}>
         <WhoWeAre
             isAntonioOpen={isAntonioOpen}
@@ -178,52 +168,6 @@ const Page = () => {
             openPopover={openMorritoPopover}
           />
         </div>
-        {/* Section 2: Quienes son los morritos */}
-        {/* <section  className={styles.us}>
-          <div className={styles.title}>
-            <p className={styles.hint}>Amor en tiempos del coví</p>
-            <h1>La rara del salón se casó con el popu</h1>
-          </div>
-
-          <hr />
-          <div className={styles.presentation}>
-            <div>
-              <p>
-                <h3>Antonio</h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi
-                aut porro nam explicabo incidunt accusantium perspiciatis vero,
-                deserunt minus quo praesentium corrupti, ratione quod
-                reprehenderit similique beatae? Alias, temporibus dolore?
-              </p>
-            </div>
-            <div>
-              <img src="/wedding-front/presentation.png" alt="" />
-            </div>
-            <div>
-              <p>
-                <h3>Nallely</h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi
-                aut porro nam explicabo incidunt accusantium perspiciatis vero,
-                deserunt minus quo praesentium corrupti, ratione quod
-                reprehenderit similique beatae? Alias, temporibus dolore?
-              </p>
-            </div>
-          </div>
-          <h1 className={styles.bumble}>
-            Y simón, los rumores son ciertos, nos conocimos en <b>Bumble.</b>
-          </h1>
-          <hr />
-        </section> */}
-
-        {/* Section 3: Dates */}
-        {/* 
-        <section className={styles.mainDivider}>
-          <h1 className={styles.bumble}>
-            Nuestra historia <br />
-            juntos
-          </h1>
-          <img src="/wedding-front/mainJade.png" alt="" />
-        </section> */}
         <section ref={datesRef} className={styles.dates}>
         <HowWeMet />
         <HowWeFell />
