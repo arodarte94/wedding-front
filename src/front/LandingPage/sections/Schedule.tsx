@@ -14,6 +14,7 @@ const Schedule = () => {
   return (
     <>
       <div>
+        <h1 className={styles.title}>Schedule</h1>
         <Grid container sx={{ display: { xs: "flex", md: "none" } }}>
           <Grid xs={12} {...mobileFlexProps}>
             <Grid container>
@@ -38,7 +39,6 @@ const Schedule = () => {
               </Grid>
             </Grid>
           </Grid>
-
           <Grid xs={12} {...mobileFlexProps}>
             <Grid container>
               <Grid xs={5.8} {...flexProps}>
@@ -51,13 +51,13 @@ const Schedule = () => {
                 {...flexProps}
               ></Grid>
               <Grid xs={5.8} {...flexProps}>
-                <h6>7:00 p.m.</h6>
+                <h6>9:15 p.m.</h6>
                 <p>
-                  Parroquia Nuestra
-                  <br /> Señora de la Paz
+                  Terraza Jardín Cibeles
                 </p>
                 <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                 <b>Con previa confirmación *</b>
                 </p>
               </Grid>
             </Grid>
@@ -75,13 +75,12 @@ const Schedule = () => {
                 {...flexProps}
               ></Grid>
               <Grid xs={5.8} {...flexProps}>
-                <h6>7:00 p.m.</h6>
+                <h6>10:15 p.m.</h6>
                 <p>
-                  Parroquia Nuestra
-                  <br /> Señora de la Paz
+                  Terraza Jardín Cibeles
                 </p>
                 <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
                 </p>
               </Grid>
             </Grid>
@@ -99,13 +98,12 @@ const Schedule = () => {
                 {...flexProps}
               ></Grid>
               <Grid xs={5.8} {...flexProps}>
-                <h6>7:00 p.m.</h6>
+                <h6>10:30 p.m.</h6>
                 <p>
-                  Parroquia Nuestra
-                  <br /> Señora de la Paz
+                  Terraza Jardín Cibeles
                 </p>
                 <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
                 </p>
               </Grid>
             </Grid>
@@ -179,33 +177,31 @@ const Schedule = () => {
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
-                <h6>7:00 p.m.</h6>
+                <h6>9:15 p.m.</h6>
                 <p>
-                  Parroquia Nuestra
-                  <br /> Señora de la Paz
+                  Terraza Jardín Cibeles
                 </p>
                 <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
-                </p>
-              </Grid>
-              <Grid md={2.4} sm={12} {...flexProps}>
-                <h6>7:00 p.m.</h6>
-                <p>
-                  Parroquia Nuestra
-                  <br /> Señora de la Paz
-                </p>
-                <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                 <b>Con previa confirmación *</b>
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
-                <h6>7:00 p.m.</h6>
+                <h6>10:15 p.m.</h6>
                 <p>
-                  Parroquia Nuestra
-                  <br /> Señora de la Paz
+                  Terraza Jardín Cibeles
                 </p>
                 <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                </p>
+              </Grid>
+              <Grid md={2.4} sm={12} {...flexProps}>
+                <h6>10:30 p.m.</h6>
+                <p>
+                  Terraza Jardín Cibeles
+                </p>
+                <p>
+                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>

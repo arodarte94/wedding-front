@@ -181,12 +181,19 @@ body {
     }
 
     .bodita {
-      padding: 200px 0px 200px;
+      padding: 50px 0px 50px;
       h1 {
         width: 100%;
         color: $green;
         font-size: 40px;
         text-align: center;
+
+        &.title {
+          font-family: 'chaprille';
+          font-size: 100px;
+          font-weight: normal;
+          color: $blue;
+        }
       }
 
       h5 {
@@ -226,10 +233,11 @@ body {
 
       .pinkDivider {
         margin: 20px 0 10px;
-        background: $pinkOverlay;
+        background: rgb(168,130,122);
+        background: linear-gradient(90deg, rgba(168,130,122,0.5) 80%, rgba(255,255,255,1) 100%);
         height: 20px;
         
-        @media (max-width: 900px) {
+        @media (max-width: 899px) {
           height: 300px;
           margin:0;
         }
