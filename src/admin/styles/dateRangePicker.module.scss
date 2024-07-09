@@ -1,0 +1,10 @@
+.dateRangePicker {
+  height: 42px;
+  background: #eee;
+  border: none;
+  border-bottom: 1px solid #888;
+  padding: 0px 10px;
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,56 +1,52 @@
-import { GridRenderCellParams, GridValueGetterParams } from "@mui/x-data-grid";
-import { getGridStringOperators } from "@mui/x-data-grid";
+import { GridValueGetterParams } from '@mui/x-data-grid';
+import { getGridStringOperators } from '@mui/x-data-grid';
+import { TextFilter } from '../components/tables/columnFilter';
+import DateRangePicker from '../components/inputs/DateRangePicker';
 
-const stringOperators = getGridStringOperators().filter((op => ['contains'].includes(op.value)));
+const stringOperators = getGridStringOperators().filter((op) =>
+  ['contains'].includes(op.value),
+);
 
-const transformDate = (params: GridValueGetterParams) => {
-    
-  if(!params.value)
-      return "--";
-  
-    const date = new Date(params.value);
-    return date.toLocaleString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: '2-digit',
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true,
-    })
-}
+export const transformDate = (params: GridValueGetterParams) => {
+  if (!params.value) return '--';
 
-export const idColumn =   { 
-field: 'id',
-headerName: 'ID',
-width: 100,
-filterOperators: stringOperators
-//  renderHeader: (params: GridColumnHeaderParams) => (
-//      <ColumnFilter title={'ID'} type={'text'} field={params.field}></ColumnFilter>
-//   )},
-}
+  const date = new Date(params.value);
+  return date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  });
+};
 
-export const nameColumn =   { 
+export const idColumn = {
+  field: 'id',
+  headerName: 'ID',
+  width: 100,
+  filterOperators: stringOperators,
+  filter: TextFilter,
+};
+
+export const nameColumn = {
   field: 'name',
   headerName: 'Nombre',
-width: 300,
-  //  renderHeader: (params: GridColumnHeaderParams) => (
-  //      <ColumnFilter title={'ID'} type={'text'} field={params.field}></ColumnFilter>
-  //   )},
-// renderCell: (params: GridRenderCellParams<any, Date>) => (
-//         <Link href={"roles/" + params.row.id}>{params.row.name}</Link>
-//     ),
-} 
+  width: 300,
+};
 
-export const createdAtColumn =   { 
-    field: 'created_at', 
-    headerName: 'Fecha de creación', 
-width: 220,
-    valueGetter: transformDate
-  };
+export const createdAtColumn = {
+  field: 'created_at',
+  headerName: 'Fecha de creación',
+  width: 200,
+  valueGetter: transformDate,
+  filter: DateRangePicker,
+};
 
-  export const updatedAtColumn =   { 
-    field: 'updated_at', 
-    headerName: 'Última actualización', 
-    width: 220,
-    valueGetter: transformDate,
-  };
+export const updatedAtColumn = {
+  field: 'updated_at',
+  headerName: 'Última actualización',
+  width: 200,
+  valueGetter: transformDate,
+  filter: DateRangePicker,
+};

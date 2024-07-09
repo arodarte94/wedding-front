@@ -1,107 +1,146 @@
-body {
-    background-color: #fdfdfd;
-    .topMenu {
-      .userMenu {
-        position: absolute;
-        right: 20px;
-      }
-    }
-  
-    .mainContent {
-      padding: 100px 25px 100px 100px;
-  
+@import 'font.module.scss';
+
+.body {
+  background-color: #f3f4f8;
+  height: 100vh;
+  .mainContent {
+    padding: 100px 25px 0px 100px;
+    background-color: #f3f4f8;
+    &.noPadding {
+      padding: 75px 0px 0px 80px;
+
       @media (max-width: 900px) {
-        padding: 100px 25px 100px 25px;
+        padding: 0px !important;
       }
-  
-      .loading{
-        background-color: rgba(0, 0, 0, 0.15);
-        position:absolute;
-        top: 64px;
-        z-index:10;
-        height:100%;
+    }
+
+    @media (max-width: 900px) {
+      padding: 100px 10px 0px 10px;
+      width: 100%;
+      margin-left: 0px;
+    }
+
+    .fullBlock {
+      padding: 10px;
+      text-transform: uppercase;
+      font-size: 14px;
+      text-align: center;
+      background: #ccc;
+    }
+
+    .editView {
+      padding: 30px;
+
+      @media (max-width: 900px) {
+        padding: 0px;
+        width: 100%;
+        margin-left: 0px;
       }
 
-      .editView {
-        padding: 30px;
-  
-        .mainItem {
-          background: #ffffff;
-          border-radius: 5px;
-          border: 1px solid #dddddd;
-          height: calc(100vh - 200px);
-          position: relative;
+      .form {
+        .formElement {
+          padding: 10px 10px 10px 0px;
+        }
+      }
 
-          .verticalTabs {
-            height: 100%;
+      .mainItem {
+        background: #ffffff;
+        border-radius: 5px;
+        border: 1px solid #dddddd;
+        border-bottom: none;
+        height: calc(100vh - 200px);
+        position: relative;
+
+        .verticalTabs {
+          height: 100%;
+        }
+
+        .scrollableTab {
+          overflow-y: scroll;
+          height: 100%;
+          border-bottom: 1px solid #ccc;
+          background: #fff;
+
+          @media (max-width: 900px) {
+            height: calc(100%);
           }
-  
-          .scrollableTab {
-            overflow-y: scroll;
-            height: 100%;
+        }
+        .tabContent {
+          padding: 40px;
+        }
 
-            @media (max-width: 900px) {
-                height: calc(100% - 50px);
-              }
+        .scrollablePanel {
+          height: calc(100vh - 370px);
+          overflow-y: scroll;
+        }
 
-          }
-          .tabContent {
-            padding: 20px;
-          }
+        .mainButtonGroup {
+          position: absolute;
+          right: 0px;
+          top: -45px;
+          z-index: 10;
+        }
 
-          .mainButtonGroup {
-            position: absolute;
-            right: 0px;
-            top:-45px;
-            z-index:10;
-          }
-
-          .editViewImage {
-            
-            border: 2px solid #dddddd;
+        .editViewImage {
+          border: 2px solid #dddddd;
+          border-radius: 10px;
+          padding: 5px;
+          img {
             border-radius: 10px;
-            padding:5px;
-            img{
-              border-radius: 10px;
-              width: 100%;
-            }
+            width: 100%;
           }
         }
       }
-    }
-  
-    .leftMenu {
-      position: fixed;
-      z-index: 100;
-  
-      .menuItem {
-        text-decoration: none;
-  
-        span {
-          font-size: 14px;
-          color: #222;
-        }
-      }
-    }
-  
-    .fs15 {
-      font-size: 1.5rem;
-    }
-
-    .fs2 {
-      font-size: 2rem;
-    }
-
-    .fs25 {
-      font-size: 2.5rem;
-    }
-  
-    .fs3 {
-      font-size: 3rem;
-    }
-  
-    .fs5 {
-      font-size: 5rem;
     }
   }
-  
+
+  .verticalTabs {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .hiddenUploadButton {
+    background: none;
+
+    img {
+      width: 100%;
+    }
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .hideOnMobile {
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+}
+
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.pageLoader {
+  width: 100%;
+  height: calc(100vh - 200px);
+}
+
+.accordion {
+  margin: 0 !important;
+}
+
+hr {
+  width: 100%;
+  border-top: 1px solid #ccc;
+}

@@ -1,12 +1,12 @@
-import { CircularProgress } from '@mui/material'
-import styles from "../../styles/app.module.scss";
+import { CircularProgress } from '@mui/material';
+import styles from '../../styles/app.module.scss';
 
 const LoadingBackdrop = () => {
   return (
     <div className={styles.loading}>
-    <CircularProgress />
+      <CircularProgress />
     </div>
-  )
-}
+  );
+};
 
-export default LoadingBackdrop
+export default LoadingBackdrop;

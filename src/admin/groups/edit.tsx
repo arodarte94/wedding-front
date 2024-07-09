@@ -11,8 +11,9 @@ import MainTab from "./tabs/main";
 import UsersTab from "./tabs/users";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setIsLoading } from "../lib/appSlice";
+import { setIsPageLoading } from "../lib/appSlice";
 import { getGroup } from "./actions";
+import DefaultEditView from "../components/layout/defaultEditView";
 
 const tabs = [{ name: "General" }, { name: "Usuarios" }];
 
@@ -24,38 +25,41 @@ const GroupEditView = () => {
   const dispatcher = useDispatch();
   
   useEffect(() => {
-    if (id) {
-      dispatcher(setIsLoading(true));
-      getGroup(id, setGroup);
-    }
+    loadData();
   }, []);
+
+  const loadData = async () => {
+    if (id) {
+      dispatcher(setIsPageLoading(true));
+      await getGroup(id, setGroup);
+      dispatcher(setIsPageLoading(false));
+    }
+  };
 
   return (
     <AppLayout>
-      <Grid container spacing={2} className={styles.editView}>
-      <Grid
-          xs={12}
-          container
-          direction="row"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-        >
-           <Breadcrumb link='/admin/groups' name='Grupos' element={group?.name}/> 
-        </Grid>
-        <Grid xs={8} marginTop={1} marginBottom={1}>
-          <b className={styles.fs15}>{group?.name ?? "Nuevo grupo"}</b>
-          <i>&nbsp; {group?.users.length ? " - " + group?.users.length + " invitados en este grupo" : ""}</i>
-          <i>&nbsp; {group?.createdAt ? "- Creado el" + group.createdAt : ""}</i>
-        </Grid>
+      <DefaultEditView
+        link={'/admin/groups'}
+        title={'Mesas'}
+        newLabel={'Nueva mesa'}
+        createdAt={group?.created_at}
+        name={group?.name}
+      >
         <Grid container className={styles.mainItem}>
-          <Grid  xl={1} lg={2} md={3} xs={12}>
+          <Grid xl={1.5} lg={2} md={3} xs={12}>
             <ResponsiveTabs
               value={value}
               setNewValue={setValue}
               tabs={tabs}
             ></ResponsiveTabs>
           </Grid>
-          <Grid xl={11} lg={10} md={9} xs={12} className={styles.scrollableTab}>
+          <Grid
+            xl={10.5}
+            lg={10}
+            md={9}
+            xs={12}
+            className={styles.scrollableTab}
+          >
             <Tab value={value} index={0}>
               <MainTab group={group} set={setGroup} key={group?.id} />
             </Tab>
@@ -64,7 +68,7 @@ const GroupEditView = () => {
             </Tab>}
           </Grid>
         </Grid>
-      </Grid>
+      </DefaultEditView>
     </AppLayout>
   );
 };

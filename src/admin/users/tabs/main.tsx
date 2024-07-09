@@ -6,6 +6,9 @@ import { User } from "../../models/user.model";
 import { create, getHosts, update } from "../actions";
 import ComboBox from "../../components/inputs/ComboBox";
 import { getGroups } from "../../groups/actions";
+import LoadingBackdrop from "../../components/layout/loadingBackdrop";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 const MainTab = ({ user, set }: { user: User | null; set: any }) => {
   
   const types = [
@@ -23,7 +26,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     {id: 1, label: "Chile en nogada"},
     {id: 2, label: "Pollo en nuez"},
   ];
-
+  const appState = useSelector((state: RootState) => state.app);
   const [userData, setUserData] = useState({
     name: user?.name,
     username: user?.username,
@@ -72,6 +75,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     <>
       <TabOptions save={save} link="/admin/users" />
       <Grid container spacing={2} className={styles.tabContent}>
+      {appState.isLoading && <LoadingBackdrop />}
         <Grid item xl={12} lg={12} xs={12}>
           <Grid container>
             <Grid item md={6} xs={12}>

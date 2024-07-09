@@ -24,7 +24,7 @@ const Groups = () => {
     itemsPerPage,
     onPageChange,
     onSortChange,
-    setSelectedRows,
+    setParams,
     removeRows,
   } = usePaginator(getGroups, "groups");
 
@@ -58,6 +58,7 @@ const Groups = () => {
         onSortChange={onSortChange}
         isLoading={isLoading}
         itemsPerPage={itemsPerPage}
+        setParams={setParams}
       />
     </AppLayout>
 

@@ -1,23 +1,73 @@
+* {
+  a {
+    text-decoration: none;
+  }
+}
 .even {
-    background-color: #fff;
+  background-color: #fff;
 }
 
-.odd { 
-    background-color: #f5f5f5;
+.odd {
+  background-color: #f5f5f5;
 }
 
-.confirmed {
-    background-color: rgba(0, 184, 148, 0.3);
+.gray {
+  background-color: #636e7250;
 }
 
-.unconfirmed { 
-    background-color: rgba(235, 77, 75, 0.3);
+.success {
+  background-color: #1abc9c50;
 }
 
-.guest {
-    background-color: rgba(52, 152, 219, 0.5) !important;
+.warning {
+  background-color: #f39c1250;
 }
 
-.guestChild {
-    background-color: rgba(241, 196, 15, 0.5) !important;
+.danger {
+  background-color: #e74c3c50;
+}
+
+.PageHeader {
+  button {
+    margin-left: 10px;
+  }
+}
+
+.tableHeaderWrapper {
+  overflow-x: scroll;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  @import 'horizontalScrollbar.module.scss';
+
+  .tableHeader {
+    background: #ffffff;
+    white-space: nowrap;
+    display: inline-block;
+    align-items: center;
+    padding: 5px 0px;
+
+    .tableSearchColumn {
+      display: inline-block;
+      padding: 10px;
+      height: 55px;
+      vertical-align: top;
+
+      /* DateRangePicker fix */
+      & > :first-child {
+        width: 100%;
+        input[type='text'] {
+          width: 100%;
+        }
+      }
+
+      &.checkBoxColumn {
+        border-left: unset;
+      }
+
+      * {
+        font-size: 12px;
+      }
+    }
+  }
 }

@@ -1,0 +1,70 @@
+$primary: #546de5;
+$secondary: #cf6a87;
+$tertiary: #3dc1d3;
+$quaternary: #574b90;
+$success: #16a085;
+$warning: #e67e22;
+$master: #303952;
+$primary-dark: #303f9f;
+$secondary-dark: #d32f2f;
+$tertiary-dark: #28b485;
+$quaternary-dark: #311b92;
+$success-dark: #117a65;
+$warning-dark: #ff9100;
+$master-dark: #23232e;
+
+.bgPrimary {
+  background-color: $primary !important;
+}
+
+.bgSecondary {
+  background-color: $secondary !important;
+}
+
+.bgTertiary {
+  background-color: $tertiary !important;
+}
+
+.bgQuaternary {
+  background-color: $quaternary !important;
+}
+
+.bgSuccess {
+  background-color: $success !important;
+}
+
+.bgMaster {
+  background-color: $master !important;
+}
+
+.bgPrimaryGradient {
+  background: linear-gradient(to right, $primary, $primary-dark) !important;
+}
+
+.bgSecondaryGradient {
+  background: linear-gradient(to right, $secondary, $secondary-dark) !important;
+}
+
+.bgTertiaryGradient {
+  background: linear-gradient(to right, $tertiary, $tertiary-dark) !important;
+}
+
+.bgQuaternaryGradient {
+  background: linear-gradient(
+    to right,
+    $quaternary,
+    $quaternary-dark
+  ) !important;
+}
+
+.bgSuccessGradient {
+  background: linear-gradient(to right, $success, $success-dark) !important;
+}
+
+.bgWarningGradient {
+  background: linear-gradient(to right, $warning, $warning-dark) !important;
+}
+
+.bgMasterGradient {
+  background: linear-gradient(to right, $master, $master-dark) !important;
+}

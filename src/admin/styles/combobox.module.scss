@@ -1,0 +1,48 @@
+@import './baseColors.module.scss';
+
+.option {
+  padding: 7px 12px;
+  cursor: pointer;
+  background-color: #ffffff;
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &.selected {
+    background-color: $primary;
+    border-top: 1px solid #ccc;
+    color: #ffffff;
+  }
+
+  .optionImage {
+    img {
+      width: 100%;
+      max-width: 60px;
+      max-height: 60px;
+      object-fit: cover;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+    }
+  }
+
+  &.product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .productInfo {
+      padding-left: 10px;
+    }
+  }
+
+  .additionalData {
+    margin-top: 5px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    svg {
+      font-size: 18px;
+      margin-right: 2px;
+    }
+  }
+}

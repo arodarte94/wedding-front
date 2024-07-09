@@ -1,23 +1,53 @@
 import { TextField } from '@mui/material';
-import React from 'react'
+import styles from '../../styles/tables.module.scss';
 
-const TextFilter = () => {
+export const TextFilter = ({ title, set, field, isLoading }) => {
+  const filter = (e) => {
+    if (e.key === 'Enter' && !isLoading) {
+      set({ [field]: e.target.value });
+    }
+  };
   return (
-   <TextField
-        variant="outlined"
-        size="small"
-        label={`FILTER`}
-      />
+    <TextField
+      size="small"
+      variant="filled"
+      label={title}
+      className={styles.filter}
+      onKeyDown={(e) => filter(e)}
+    />
   );
-}
+};
 
-const ColumnFilter = ({title, type, field}: {title: string, type: string, field: string}) => {
+const ColumnFilter = ({
+  filter: Component,
+  title,
+  field,
+  set,
+  property,
+  isLoading,
+}: {
+  filter?: any;
+  title: string;
+  field: string;
+  set: any;
+  property?: string;
+  isLoading?: boolean;
+}) => {
   return (
-    <div>
-    <div>{title}</div>
-    <div><TextFilter /></div>   
-    </div>
-  )
-}
+    <>
+      <Component
+        title={title}
+        field={field}
+        set={set}
+        isLoading={isLoading}
+        isTableFilter
+        initialValue={[]}
+        data={{}}
+        property={property}
+        multiple
+      />
+    </>
+  );
+};
 
-export default ColumnFilter
+export default ColumnFilter;

@@ -25,6 +25,7 @@ const Users = () => {
     onSortChange,
     setCustomParams,
     setSelectedRows,
+    setParams,
     removeRows,
   } = usePaginator(getUsers, "users");
 
@@ -125,6 +126,7 @@ const Users = () => {
         isLoading={isLoading}
         itemsPerPage={itemsPerPage}
         setSelectedRows={(selected: any) => setSelectedRows(selected)}
+        setParams={setParams}
         enableCheckboxes
       />
       <DeleteModal
