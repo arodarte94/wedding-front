@@ -1,15 +1,15 @@
-import { Tab, Tabs, useMediaQuery, useTheme } from '@mui/material';
-import styles from '../../styles/app.module.scss';
+import { Tab, Tabs, useMediaQuery, useTheme } from "@mui/material";
+import styles from "../../styles/app.module.scss";
 
 const ResponsiveTabs = (props: any) => {
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const scrollableTabs = !isDesktop && props.tabs.length > 3;
 
   function a11yProps(index: number) {
     return {
       id: `vertical-tab-${index}`,
-      'aria-controls': `vertical-tabpanel-${index}`,
+      "aria-controls": `vertical-tabpanel-${index}`,
     };
   }
 
@@ -19,21 +19,21 @@ const ResponsiveTabs = (props: any) => {
         props?.orientation
           ? props.orientation
           : isDesktop
-            ? 'vertical'
-            : 'horizontal'
+            ? "vertical"
+            : "horizontal"
       }
       value={props.value}
       onChange={(e, value) => props.setNewValue(value)}
       sx={{
         borderRight: 1,
-        borderColor: 'divider',
-        borderBottom: '1px solid #dddddd',
-        backgroundColor: 'white',
+        borderColor: "divider",
+        borderBottom: "1px solid #dddddd",
+        backgroundColor: "white",
         marginLeft: 3,
         marginRight: 3,
       }}
       className={styles.verticalTabs}
-      variant={scrollableTabs ? 'scrollable' : 'fullWidth'}
+      variant={scrollableTabs ? "scrollable" : "fullWidth"}
       scrollButtons={scrollableTabs}
       allowScrollButtonsMobile={scrollableTabs}
     >

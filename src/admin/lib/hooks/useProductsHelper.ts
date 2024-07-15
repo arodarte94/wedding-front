@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { showErrorMessage } from '../appSlice';
+import { useState } from "react";
+import { showErrorMessage } from "../appSlice";
 
 export const productHelperInitialState = {
   id: null,
@@ -28,7 +28,7 @@ function useProductsHelper(separatedItems = false) {
     ) {
       dispatcher(
         showErrorMessage(
-          'Por favor llena todos los campos para agregar un producto',
+          "Por favor llena todos los campos para agregar un producto",
         ),
       );
       return;
@@ -45,7 +45,7 @@ function useProductsHelper(separatedItems = false) {
           ...documentData.products,
           {
             ...product,
-            id: product.product_id + '_' + documentData.products.length + 1,
+            id: product.product_id + "_" + documentData.products.length + 1,
             price: product.price ?? product?.product?.price,
             new: true,
           },

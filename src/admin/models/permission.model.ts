@@ -1,4 +1,4 @@
-import { BaseInterface } from './base-interface.model';
+import { BaseInterface } from "./base-interface.model";
 
 export interface PermissionModule {
   id: number;

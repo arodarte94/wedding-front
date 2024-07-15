@@ -1,11 +1,10 @@
-import DataTable from '../../components/tables/dataTable';
-import { columns } from '../../users/columns';
+import DataTable from "../../components/tables/dataTable";
+import { columns } from "../../users/columns";
 import { getUsers } from "../../users/actions";
-import { User } from '../../models/user.model';
-import usePaginator from '../../lib/hooks/usePaginator';
+import { User } from "../../models/user.model";
+import usePaginator from "../../lib/hooks/usePaginator";
 
 const UsersTab = ({ user }: { user: User }) => {
-
   const {
     currentPage,
     elements,
@@ -14,19 +13,19 @@ const UsersTab = ({ user }: { user: User }) => {
     itemsPerPage,
     onPageChange,
     onSortChange,
-  } = usePaginator(getUsers, "users", {host: user.id});
-  
+  } = usePaginator(getUsers, "users", { host: user.id });
+
   return (
     <DataTable
-    columns={columns}
-    rows={items}
-    currentPage={currentPage}
-    elementsCount={elements}
-    onPageChange={onPageChange}
-    onSortChange={onSortChange}
-    isLoading={isLoading}
-    itemsPerPage={itemsPerPage}
-  />
+      columns={columns}
+      rows={items}
+      currentPage={currentPage}
+      elementsCount={elements}
+      onPageChange={onPageChange}
+      onSortChange={onSortChange}
+      isLoading={isLoading}
+      itemsPerPage={itemsPerPage}
+    />
   );
 };
 export default UsersTab;

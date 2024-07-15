@@ -1,12 +1,11 @@
 import { Role } from "../../models/role.model";
-import DataTable from '../../components/tables/dataTable';
-import { columns } from '../../users/columns';
+import DataTable from "../../components/tables/dataTable";
+import { columns } from "../../users/columns";
 import { getUsers } from "../../users/actions";
 import TabOptions from "../../components/edit-view/TabOptions";
 import usePaginator from "../../lib/hooks/usePaginator";
 
 const UsersTab = ({ role }: { role: Role }) => {
-
   const {
     currentPage,
     elements,
@@ -15,11 +14,11 @@ const UsersTab = ({ role }: { role: Role }) => {
     itemsPerPage,
     onPageChange,
     onSortChange,
-  } = usePaginator(getUsers, "users", {role: role.id});
-  
+  } = usePaginator(getUsers, "users", { role: role.id });
+
   return (
     <>
-    <TabOptions link="/roles" />
+      <TabOptions link="/roles" />
       <DataTable
         columns={columns}
         rows={items}

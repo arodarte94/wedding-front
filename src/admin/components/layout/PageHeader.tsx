@@ -1,8 +1,8 @@
-import { Button, Grid } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { Add } from '@mui/icons-material';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import styles from '../../styles/tables.module.scss';
+import { Button, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Add } from "@mui/icons-material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import styles from "../../styles/tables.module.scss";
 
 interface tableOptionsProps {
   title?: string;
@@ -20,7 +20,7 @@ const PageHeader = ({
   return (
     <Grid
       container
-      sx={{ backgroundColor: 'white', paddingLeft: 2, paddingRight: 2 }}
+      sx={{ backgroundColor: "white", paddingLeft: 2, paddingRight: 2 }}
     >
       <Grid item lg={6} xs={12}>
         <h3>{title}</h3>

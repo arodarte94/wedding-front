@@ -17,7 +17,6 @@ import MainCover from "./sections/MainCover";
 import Schedule from "./sections/Schedule";
 
 const Page = () => {
-
   const { id } = useParams();
 
   const [isMobile, setIsMobile] = useState(false);
@@ -161,17 +160,17 @@ const Page = () => {
       </div>
       <div ref={morritosRef} className={animationState}>
         {/* Section 1: Main morritos cover page */}
-          <MainCover isMobile={isMobile}/>
+        <MainCover isMobile={isMobile} />
         <div ref={usRef} className={styles.whoAreWe}>
-        <WhoWeAre
+          <WhoWeAre
             isAntonioOpen={isAntonioOpen}
             isNallelyOpen={isNallelyOpen}
             openPopover={openMorritoPopover}
           />
         </div>
         <section ref={datesRef} className={styles.dates}>
-        <HowWeMet />
-        <HowWeFell />
+          <HowWeMet />
+          <HowWeFell />
         </section>
         <section className={styles.totalDates}>
           En total, nos hemos visto en <b>384 ocasiones</b>
@@ -179,12 +178,14 @@ const Page = () => {
         </section>
         {/* Section 4: La bodita */}
         <div ref={boditaRef} className={styles.bodita}>
-        <Schedule />
+          <Schedule />
         </div>
         {/* Section 5: RSVP */}
-       {guest && <section ref={rsvpRef} className={styles.rsvp}>
-          <h1> Guest: {guest.name}</h1>
-        </section>} 
+        {guest && (
+          <section ref={rsvpRef} className={styles.rsvp}>
+            <h1> Guest: {guest.name}</h1>
+          </section>
+        )}
         <section className={styles.footer}>
           <p>Made with ❤️ by Antonio & Nallely</p>
         </section>

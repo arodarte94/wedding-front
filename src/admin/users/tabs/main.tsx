@@ -10,21 +10,20 @@ import LoadingBackdrop from "../../components/layout/loadingBackdrop";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 const MainTab = ({ user, set }: { user: User | null; set: any }) => {
-  
   const types = [
-    {id: 1, label: "Invitado principal"},
-    {id: 2, label: "Acompañante"},
-    {id: 3, label: "Niño acompañante"},
+    { id: 1, label: "Invitado principal" },
+    { id: 2, label: "Acompañante" },
+    { id: 3, label: "Niño acompañante" },
   ];
 
   const entrees = [
-    {id: 1, label: "Ensalada olimpia"},
-    {id: 2, label: "Takos de jicama dicos"},
+    { id: 1, label: "Ensalada olimpia" },
+    { id: 2, label: "Takos de jicama dicos" },
   ];
 
   const dinners = [
-    {id: 1, label: "Chile en nogada"},
-    {id: 2, label: "Pollo en nuez"},
+    { id: 1, label: "Chile en nogada" },
+    { id: 2, label: "Pollo en nuez" },
   ];
   const appState = useSelector((state: RootState) => state.app);
   const [userData, setUserData] = useState({
@@ -37,7 +36,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     role: user?.role?.id,
     type: user?.type_id,
     entree: user?.entree_id,
-    dinner: user?.dinner_id
+    dinner: user?.dinner_id,
   });
 
   const save = async () => {
@@ -53,7 +52,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
           userData.group,
           userData.entree,
           userData.dinner,
-          userData.slots
+          userData.slots,
         )
       : await create(
           userData.name,
@@ -65,7 +64,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
           userData.group,
           userData.entree,
           userData.dinner,
-          userData.slots
+          userData.slots,
         );
 
     if (res.status === 200) set(res.data.user);
@@ -75,7 +74,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     <>
       <TabOptions save={save} link="/admin/users" />
       <Grid container spacing={2} className={styles.tabContent}>
-      {appState.isLoading && <LoadingBackdrop />}
+        {appState.isLoading && <LoadingBackdrop />}
         <Grid item xl={12} lg={12} xs={12}>
           <Grid container>
             <Grid item md={6} xs={12}>
@@ -94,17 +93,27 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
               />
             </Grid>
             <Grid item md={6} xs={12}>
-            <Autocomplete
-            options={types}
-            onChange={(e, val) => setUserData({...userData, type: val?.id})}
-            value={userData?.type && types.find(i => i.id == userData.type)?.label}
-            renderInput={(params) => <TextField label="Tipo de usuario..." variant="filled" {...params}
-            />}
-            />
+              <Autocomplete
+                options={types}
+                onChange={(e, val) =>
+                  setUserData({ ...userData, type: val?.id })
+                }
+                value={
+                  userData?.type &&
+                  types.find((i) => i.id == userData.type)?.label
+                }
+                renderInput={(params) => (
+                  <TextField
+                    label="Tipo de usuario..."
+                    variant="filled"
+                    {...params}
+                  />
+                )}
+              />
             </Grid>
 
             <Grid item md={6} xs={12}>
-              { userData?.type == 1 &&
+              {userData?.type == 1 && (
                 <TextField
                   fullWidth
                   required
@@ -118,80 +127,99 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
                     setUserData({ ...userData, email: e.target.value })
                   }
                 />
-              }
+              )}
             </Grid>
 
             <Grid item md={6} xs={12}>
-            {
-              userData?.type == 1 ?
-              <TextField
-              fullWidth
-              required
-              type="number"
-              label="Acompañantes disponibles"
-              defaultValue={user?.slots}
-              onChange={(e) => setUserData({...userData, slots: e.target.value})}
-              variant="filled"
-            />:
-              <ComboBox
-              src={getHosts}
-              async
-              required
-              field="name"
-              fieldKey="host"
-              responseProperty="users"
-              label="Responsable..."
-              initialValue={user?.host}
-              set={(newValue: any) => setUserData({...userData, host: newValue})}
-              ></ComboBox>
-            }
+              {userData?.type == 1 ? (
+                <TextField
+                  fullWidth
+                  required
+                  type="number"
+                  label="Acompañantes disponibles"
+                  defaultValue={user?.slots}
+                  onChange={(e) =>
+                    setUserData({ ...userData, slots: e.target.value })
+                  }
+                  variant="filled"
+                />
+              ) : (
+                <ComboBox
+                  src={getHosts}
+                  async
+                  required
+                  field="name"
+                  fieldKey="host"
+                  responseProperty="users"
+                  label="Responsable..."
+                  initialValue={user?.host}
+                  set={(newValue: any) =>
+                    setUserData({ ...userData, host: newValue })
+                  }
+                ></ComboBox>
+              )}
             </Grid>
             <Grid item xs={12}>
-            { !userData?.host && <ComboBox
-            src={() => getGroups(1, 1000, null, null)}
-            async
-            required
-            field="name"
-            fieldKey="group"
-            responseProperty="groups"
-            label="Grupo..."
-            initialValue={user?.group}
-            set={(newValue: any) => setUserData({...userData, group: newValue})}
-              ></ComboBox> }
+              {!userData?.host && (
+                <ComboBox
+                  src={() => getGroups(1, 1000, null, null)}
+                  async
+                  required
+                  field="name"
+                  fieldKey="group"
+                  responseProperty="groups"
+                  label="Grupo..."
+                  initialValue={user?.group}
+                  set={(newValue: any) =>
+                    setUserData({ ...userData, group: newValue })
+                  }
+                ></ComboBox>
+              )}
             </Grid>
             <Grid item md={6} xs={12}>
-            <Autocomplete
-              options={entrees}
-              onChange={(e, val) => setUserData({...userData, entree: val?.id})}
-              value={userData?.entree && entrees.find(i => i.id == userData.entree)?.label}
-              renderInput={(params) => <TextField label="Entrada..." variant="filled" {...params}
-            />}
-            />
+              <Autocomplete
+                options={entrees}
+                onChange={(e, val) =>
+                  setUserData({ ...userData, entree: val?.id })
+                }
+                value={
+                  userData?.entree &&
+                  entrees.find((i) => i.id == userData.entree)?.label
+                }
+                renderInput={(params) => (
+                  <TextField label="Entrada..." variant="filled" {...params} />
+                )}
+              />
             </Grid>
             <Grid item md={6} xs={12}>
-            <Autocomplete
-              options={dinners}
-              onChange={(e, val) => setUserData({...userData, dinner: val?.id})}
-              value={userData?.dinner && dinners.find(i => i.id == userData.dinner)?.label}
-              renderInput={(params) => <TextField label="Cenita..." variant="filled" {...params}
-            />}
-            />
+              <Autocomplete
+                options={dinners}
+                onChange={(e, val) =>
+                  setUserData({ ...userData, dinner: val?.id })
+                }
+                value={
+                  userData?.dinner &&
+                  dinners.find((i) => i.id == userData.dinner)?.label
+                }
+                renderInput={(params) => (
+                  <TextField label="Cenita..." variant="filled" {...params} />
+                )}
+              />
             </Grid>
           </Grid>
         </Grid>
-        {userData?.type == 1 &&
+        {userData?.type == 1 && (
           <Grid item xl={12} marginTop={3}>
-
-          <TextField
-                fullWidth
-                disabled
-                type="text"
-                label="Liga de confirmación"
-                defaultValue={user?.link}
-                variant="filled"
-              />
+            <TextField
+              fullWidth
+              disabled
+              type="text"
+              label="Liga de confirmación"
+              defaultValue={user?.link}
+              variant="filled"
+            />
           </Grid>
-        }
+        )}
       </Grid>
     </>
   );

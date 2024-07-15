@@ -13,7 +13,6 @@ import usePaginator from "../lib/hooks/usePaginator";
 import useDeleteModal from "../lib/hooks/useDeleteModal";
 
 const Roles = () => {
-
   const dispatcher = useDispatch();
   const appState = useSelector((state: RootState) => state.app);
   const [replacementRole, setReplacementRole] = useState(null);
@@ -31,10 +30,10 @@ const Roles = () => {
     removeRows,
   } = usePaginator(getRoles, "roles");
 
-  const {openDeleteModal, toggleModal, handleDelete} = useDeleteModal();
+  const { openDeleteModal, toggleModal, handleDelete } = useDeleteModal();
 
   const deleteSelected = async () => {
-    dispatcher(setIsLoading(true))
+    dispatcher(setIsLoading(true));
     const response = await deleteRoles(selectedRows, replacementRole);
     handleDelete(response, () => removeRows(selectedRows));
   };
@@ -54,7 +53,7 @@ const Roles = () => {
         rows={items}
         currentPage={currentPage}
         elementsCount={elements}
-        onPageChange={(onPageChange)}
+        onPageChange={onPageChange}
         onSortChange={onSortChange}
         isLoading={isLoading}
         itemsPerPage={itemsPerPage}
@@ -67,10 +66,13 @@ const Roles = () => {
         deleteElements={deleteSelected}
         isLoading={appState.isLoading}
       >
-       <p>¿Estás seguro de eliminar los {selectedRows.length} roles seleccionados?</p>
         <p>
-        Para poder eliminar estos roles, debes seleccionar el nuevo rol que
-        tendrán todos los usuarios que estaban asignados a estos roles.
+          ¿Estás seguro de eliminar los {selectedRows.length} roles
+          seleccionados?
+        </p>
+        <p>
+          Para poder eliminar estos roles, debes seleccionar el nuevo rol que
+          tendrán todos los usuarios que estaban asignados a estos roles.
         </p>
         <ComboBox
           src={getRoles}

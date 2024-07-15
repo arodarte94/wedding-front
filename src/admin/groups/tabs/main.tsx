@@ -61,8 +61,7 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
         </Grid>
       </Grid>
       <Grid container spacing={3} className={styles.tabContent}>
-
-      <Grid item lg={3} md={6} xs={12}>
+        <Grid item lg={3} md={6} xs={12}>
           <Card>
             <CardMedia
               sx={{ height: 140 }}
@@ -76,7 +75,6 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
             </CardContent>
           </Card>
         </Grid>
-
 
         <Grid item lg={3} md={6} xs={12}>
           <Card>
@@ -92,7 +90,6 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
             </CardContent>
           </Card>
         </Grid>
-
 
         <Grid item lg={3} md={6} xs={12}>
           <Card>

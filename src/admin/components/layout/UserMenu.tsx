@@ -7,20 +7,18 @@ import {
   Menu,
   MenuItem,
   Typography,
-} from '@mui/material';
-import menuStyles from '../../styles/menu.module.scss';
-import { logout } from '../../auth/actions';
-import { Logout, Settings } from '@mui/icons-material';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { logout as clearUser } from '../../auth/slice';
-import { useState } from 'react';
+} from "@mui/material";
+import menuStyles from "../../styles/menu.module.scss";
+import { logout } from "../../auth/actions";
+import { Logout, Settings } from "@mui/icons-material";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { logout as clearUser } from "../../auth/slice";
+import { useState } from "react";
 
 const UserMenu = () => {
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(
-    null,
-  );
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const accountState = useSelector((state: RootState) => state.account);
   const navigate = useNavigate();
@@ -37,10 +35,10 @@ const UserMenu = () => {
   const logoutUser = async () => {
     await logout();
     dispatcher(clearUser());
-    global?.window?.localStorage.setItem('user', '');
-    global?.window?.localStorage.setItem('token', '');
-    global?.window?.localStorage.setItem('role', '');
-    navigate('/');
+    global?.window?.localStorage.setItem("user", "");
+    global?.window?.localStorage.setItem("token", "");
+    global?.window?.localStorage.setItem("role", "");
+    navigate("/");
   };
 
   return (
@@ -52,9 +50,9 @@ const UserMenu = () => {
             src={
               accountState.user?.image
                 ? ENV.imagePath + accountState.user.image
-                : '/static/images/avatar/2.jpg'
+                : "/static/images/avatar/2.jpg"
             }
-            key={'userImage' + accountState.user?.id}
+            key={"userImage" + accountState.user?.id}
           />
         </IconButton>
         <Menu
@@ -67,7 +65,7 @@ const UserMenu = () => {
             <ListItemIcon>
               <Settings fontSize="small" />
             </ListItemIcon>
-            <Link to={'/profile'}>
+            <Link to={"/profile"}>
               <Typography textAlign="center">Mi cuenta</Typography>
             </Link>
           </MenuItem>

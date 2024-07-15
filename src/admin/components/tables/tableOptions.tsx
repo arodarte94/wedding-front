@@ -1,8 +1,8 @@
 import { Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Add } from "@mui/icons-material";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import styles from '../../styles/tables.module.scss'
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import styles from "../../styles/tables.module.scss";
 
 interface tableOptionsProps {
   editButton?: { link: string; label: string };
@@ -28,7 +28,10 @@ const TableOptions = ({
     >
       {children}
       {deleteButton?.active && (
-        <Button startIcon={<DeleteOutlineIcon />} variant="contained" color="error"
+        <Button
+          startIcon={<DeleteOutlineIcon />}
+          variant="contained"
+          color="error"
           onClick={deleteButton.fn}
         >
           {deleteButton.label}

@@ -39,12 +39,11 @@ const Users = () => {
   };
 
   const filterType = (type) => {
-
-    if(typeof customParams?.type?.length ) 
-      return customParams?.type.filter((i) => i != type)
+    if (typeof customParams?.type?.length)
+      return customParams?.type.filter((i) => i != type);
 
     return null;
-  }
+  };
   return (
     <AppLayout>
       <Grid
@@ -55,8 +54,7 @@ const Users = () => {
         justifyContent="flex-end"
         alignItems="flex-end"
         marginBottom={2}
-      >
-      </Grid>
+      ></Grid>
       <TableOptions
         editButton={{ link: "/admin/users/new", label: "Nuevo usuario" }}
         deleteButton={{
@@ -70,9 +68,12 @@ const Users = () => {
           <Checkbox
             onChange={(e, val) => {
               if (val) {
-                setCustomParams({...customParams, type: [ ...customParams?.type ?? [], 1]});
+                setCustomParams({
+                  ...customParams,
+                  type: [...(customParams?.type ?? []), 1],
+                });
               } else {
-                setCustomParams({...customParams, type: filterType(1) } );
+                setCustomParams({ ...customParams, type: filterType(1) });
               }
             }}
           />
@@ -84,9 +85,12 @@ const Users = () => {
           <Checkbox
             onChange={(e, val) => {
               if (val) {
-                setCustomParams({...customParams, type: [ ...customParams?.type ?? [], 2]});
+                setCustomParams({
+                  ...customParams,
+                  type: [...(customParams?.type ?? []), 2],
+                });
               } else {
-                setCustomParams({...customParams, type: filterType(2) } );
+                setCustomParams({ ...customParams, type: filterType(2) });
               }
             }}
           />
@@ -98,9 +102,12 @@ const Users = () => {
           <Checkbox
             onChange={(e, val) => {
               if (val) {
-                setCustomParams({...customParams, type: [ ...customParams?.type ?? [], 3]});
+                setCustomParams({
+                  ...customParams,
+                  type: [...(customParams?.type ?? []), 3],
+                });
               } else {
-                setCustomParams({...customParams, type: filterType(3) } );
+                setCustomParams({ ...customParams, type: filterType(3) });
               }
             }}
           />
@@ -109,7 +116,13 @@ const Users = () => {
       />
 
       <FormControlLabel
-        control={<Checkbox onChange={(e, val) => setCustomParams({...customParams, confirmed: val ? 1 : 0})} />}
+        control={
+          <Checkbox
+            onChange={(e, val) =>
+              setCustomParams({ ...customParams, confirmed: val ? 1 : 0 })
+            }
+          />
+        }
         label="Confirmados"
       />
 

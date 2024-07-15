@@ -1,11 +1,11 @@
-import { SaveAltOutlined } from '@mui/icons-material';
-import { Button, ButtonGroup } from '@mui/material';
-import styles from '../../styles/app.module.scss';
-import { setIsLoading } from '../../lib/appSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { RootState } from '../../store';
+import { SaveAltOutlined } from "@mui/icons-material";
+import { Button, ButtonGroup } from "@mui/material";
+import styles from "../../styles/app.module.scss";
+import { setIsLoading } from "../../lib/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { RootState } from "../../store";
 
 const TabOptions = ({
   save,
@@ -49,7 +49,7 @@ const TabOptions = ({
           onClick={handleSave}
           disabled={appState.isLoading}
         >
-          {customLabel ?? 'Guardar'}
+          {customLabel ?? "Guardar"}
         </Button>
       )}
       {children}

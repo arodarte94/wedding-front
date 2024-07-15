@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import authSlice from './auth/slice';
-import appSlice from './lib/appSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import authSlice from "./auth/slice";
+import appSlice from "./lib/appSlice";
 
 const store = configureStore({
   reducer: {
     app: appSlice,
-    account: authSlice
+    account: authSlice,
   },
 });
 

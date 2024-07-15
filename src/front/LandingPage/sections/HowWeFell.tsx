@@ -11,7 +11,7 @@ const HowWeFell = () => {
 
   const howWeFellRef = useRef(null);
   const [backgroundImg, setBackgroundImg] = useState(MasonryImg);
-  
+
   useEffect(() => {
     resize();
   }, [window.screen.width]);

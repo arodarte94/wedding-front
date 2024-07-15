@@ -38,7 +38,7 @@
   width: 100%;
   background: #fff;
   border-top: 1px solid #ccc;
-  @import 'horizontalScrollbar.module.scss';
+  @import "horizontalScrollbar.module.scss";
 
   .tableHeader {
     background: #ffffff;
@@ -56,7 +56,7 @@
       /* DateRangePicker fix */
       & > :first-child {
         width: 100%;
-        input[type='text'] {
+        input[type="text"] {
           width: 100%;
         }
       }

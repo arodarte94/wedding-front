@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import styles from '../../styles/dateRangePicker.module.scss';
-import dayjs from 'dayjs';
+import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import styles from "../../styles/dateRangePicker.module.scss";
+import dayjs from "dayjs";
 
 const DateRangePicker = ({ title, set, field }) => {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -12,11 +12,11 @@ const DateRangePicker = ({ title, set, field }) => {
   useEffect(() => {
     if (dateRange[0] && dateRange[1]) {
       set({
-        [field + '_from']: dayjs(dateRange[0]).format('YYYY-MM-DD'),
-        [field + '_to']: dayjs(dateRange[1]).format('YYYY-MM-DD'),
+        [field + "_from"]: dayjs(dateRange[0]).format("YYYY-MM-DD"),
+        [field + "_to"]: dayjs(dateRange[1]).format("YYYY-MM-DD"),
       });
     } else if (!dateRange[0] && !dateRange[1] && !isFirstLoad) {
-      set({ [field + '_from']: null, [field + '_to']: null });
+      set({ [field + "_from"]: null, [field + "_to"]: null });
     }
     setIsFirstLoad(false);
   }, [dateRange]);

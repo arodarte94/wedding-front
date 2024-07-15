@@ -7,22 +7,22 @@ import {
   DialogTitle,
   Slide,
   styled,
-} from '@mui/material';
-import { TransitionProps } from '@mui/material/transitions';
-import React from 'react';
+} from "@mui/material";
+import { TransitionProps } from "@mui/material/transitions";
+import React from "react";
 
 const SideDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialog-paper': {
-    position: 'fixed',
-    right: '0',
-    top: '0',
-    margin: '0',
-    width: '450px',
-    height: '100vh',
-    maxHeight: '100vh',
-    borderRadius: '0',
+  "& .MuiDialog-paper": {
+    position: "fixed",
+    right: "0",
+    top: "0",
+    margin: "0",
+    width: "450px",
+    height: "100vh",
+    maxHeight: "100vh",
+    borderRadius: "0",
   },
-  '& .MuiDialogActions-root': {
+  "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
   },
 }));
@@ -61,7 +61,7 @@ const SideModal = ({
       <DialogContent>
         <DialogContentText
           id="alert-dialog-description"
-          key={'dialogContent'}
+          key={"dialogContent"}
           sx={{ paddingTop: 1.5 }}
         >
           {children}
@@ -72,7 +72,7 @@ const SideModal = ({
           Regresar
         </Button>
         <Button onClick={save} variant="outlined" color="success">
-          {customLabel ? customLabel : 'Continuar'}
+          {customLabel ? customLabel : "Continuar"}
         </Button>
       </DialogActions>
     </SideDialog>

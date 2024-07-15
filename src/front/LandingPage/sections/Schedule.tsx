@@ -52,12 +52,10 @@ const Schedule = () => {
               ></Grid>
               <Grid xs={5.8} {...flexProps}>
                 <h6>9:15 p.m.</h6>
+                <p>Terraza Jardín Cibeles</p>
                 <p>
-                  Terraza Jardín Cibeles
-                </p>
-                <p>
-                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
-                 <b>Con previa confirmación *</b>
+                  Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                  <b>Con previa confirmación *</b>
                 </p>
               </Grid>
             </Grid>
@@ -76,11 +74,9 @@ const Schedule = () => {
               ></Grid>
               <Grid xs={5.8} {...flexProps}>
                 <h6>10:15 p.m.</h6>
+                <p>Terraza Jardín Cibeles</p>
                 <p>
-                  Terraza Jardín Cibeles
-                </p>
-                <p>
-                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                  Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
                 </p>
               </Grid>
             </Grid>
@@ -99,11 +95,9 @@ const Schedule = () => {
               ></Grid>
               <Grid xs={5.8} {...flexProps}>
                 <h6>10:30 p.m.</h6>
+                <p>Terraza Jardín Cibeles</p>
                 <p>
-                  Terraza Jardín Cibeles
-                </p>
-                <p>
-                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                  Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
                 </p>
               </Grid>
             </Grid>
@@ -178,30 +172,24 @@ const Schedule = () => {
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
                 <h6>9:15 p.m.</h6>
+                <p>Terraza Jardín Cibeles</p>
                 <p>
-                  Terraza Jardín Cibeles
-                </p>
-                <p>
-                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
-                 <b>Con previa confirmación *</b>
+                  Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                  <b>Con previa confirmación *</b>
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
                 <h6>10:15 p.m.</h6>
+                <p>Terraza Jardín Cibeles</p>
                 <p>
-                  Terraza Jardín Cibeles
-                </p>
-                <p>
-                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                  Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
                 <h6>10:30 p.m.</h6>
+                <p>Terraza Jardín Cibeles</p>
                 <p>
-                  Terraza Jardín Cibeles
-                </p>
-                <p>
-                 Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                  Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>

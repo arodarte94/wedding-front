@@ -1,6 +1,6 @@
-import store from './store';
-import { Provider } from 'react-redux';
-import styles from './styles/app.module.scss';
+import store from "./store";
+import { Provider } from "react-redux";
+import styles from "./styles/app.module.scss";
 
 export default function RootLayout({
   children,

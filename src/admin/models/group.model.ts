@@ -7,5 +7,5 @@ export interface Group {
   usersCount: number;
   createdAt: Date;
   updatedAt: Date;
-  users: User[]
+  users: User[];
 }

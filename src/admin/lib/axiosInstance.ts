@@ -1,7 +1,7 @@
-import axios, { CancelTokenSource } from 'axios';
+import axios, { CancelTokenSource } from "axios";
 
 const defaultInstance = axios.create();
-defaultInstance.defaults.headers.common['Content-Type'] = 'application/json';
+defaultInstance.defaults.headers.common["Content-Type"] = "application/json";
 
 let sources: CancelTokenSource[] = [];
 
@@ -16,23 +16,23 @@ defaultInstance.interceptors.request.use(
     sources.push(source);
 
     // Retrieve the token from localStorage
-    const token = global?.window?.localStorage.getItem('token') || '';
-    const currentLocation = getLocalStorage('currentLocation');
-    const currentRegister = getLocalStorage('currentRegister');
+    const token = global?.window?.localStorage.getItem("token") || "";
+    const currentLocation = getLocalStorage("currentLocation");
+    const currentRegister = getLocalStorage("currentRegister");
 
     // If a token is found, add it to the Authorization header
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
 
     // If a location is found, add it to the Location header
     if (currentLocation) {
-      config.headers['location'] = currentLocation.id;
+      config.headers["location"] = currentLocation.id;
     }
 
     // If a register is found, add it to the Location header
     if (currentRegister) {
-      config.headers['register'] = currentRegister.id;
+      config.headers["register"] = currentRegister.id;
     }
 
     return config;
@@ -41,7 +41,7 @@ defaultInstance.interceptors.request.use(
     if (error.response && error.response.status === 400) {
       return error;
     } else if (error.response.status === 419 || error.response.status === 401) {
-      global?.window?.localStorage.removeItem('user');
+      global?.window?.localStorage.removeItem("user");
     } else if (error.response.status === 403) {
     }
   },

@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material';
-import React from 'react';
-import Breadcrumb from '../edit-view/Breadcrumb';
-import styles from '../../styles/app.module.scss';
-import { formatDate } from '../../lib/helpers';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import PageLoader from './PageLoader';
+import { Grid } from "@mui/material";
+import React from "react";
+import Breadcrumb from "../edit-view/Breadcrumb";
+import styles from "../../styles/app.module.scss";
+import { formatDate } from "../../lib/helpers";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import PageLoader from "./PageLoader";
 
 const DefaultEditView = ({
   title,
@@ -42,7 +42,7 @@ const DefaultEditView = ({
           <Grid xs={8} marginTop={1} marginBottom={1}>
             <b className={styles.hideOnMobile}>{name ?? newLabel}</b>
             <i>
-              &nbsp; {createdAt ? '- Creado el ' + formatDate(createdAt) : ''}
+              &nbsp; {createdAt ? "- Creado el " + formatDate(createdAt) : ""}
             </i>
           </Grid>
           {children}

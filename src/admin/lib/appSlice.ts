@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 interface appState {
   isLoading: boolean;
   isPageLoading: boolean;
   message: {
     content: string | null;
-    type: 'success' | 'error' | null;
+    type: "success" | "error" | null;
   };
   currentModule: string;
   isMenuOpen: boolean;
@@ -20,7 +20,7 @@ const initialState: appState = {
     type: null,
   },
   isMenuOpen: false,
-  currentModule: 'Dashboard',
+  currentModule: "Dashboard",
   unauthorizedReason: null,
 };
 
@@ -35,13 +35,13 @@ const handleIsPageLoading = (state: any, action: { payload: boolean }) => {
 const handleShowMessage = (state: any, action: any) => {
   state.isLoading = false;
   state.message.content = action.payload;
-  state.message.type = 'success';
+  state.message.type = "success";
 };
 
 const handleShowErrorMessage = (state: any, action: any) => {
   state.isLoading = false;
   state.message.content = action.payload;
-  state.message.type = 'error';
+  state.message.type = "error";
 };
 
 const handleCloseMessage = (state: any) => {
@@ -69,7 +69,7 @@ const handleResetUnauthorized = (state: any) => {
 };
 
 const appSlice = createSlice({
-  name: 'app',
+  name: "app",
   initialState,
   reducers: {
     setIsLoading: handleIsLoading,

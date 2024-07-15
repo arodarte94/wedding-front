@@ -1,5 +1,5 @@
-import { Breadcrumbs } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Breadcrumbs } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Breadcrumb = ({
   link,
@@ -16,7 +16,7 @@ const Breadcrumb = ({
         {name}
       </Link>
       <Link color="inherit" to="#">
-        {element ?? 'Nuevo'}
+        {element ?? "Nuevo"}
       </Link>
     </Breadcrumbs>
   );

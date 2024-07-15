@@ -1,4 +1,3 @@
-
 import AppLayout from "../components/layout/appLayout";
 import { Grid } from "@mui/material";
 import styles from "../styles/app.module.scss";
@@ -18,12 +17,11 @@ import DefaultEditView from "../components/layout/defaultEditView";
 const tabs = [{ name: "General" }, { name: "Acompañantes" }];
 
 const UserEditView = () => {
-
   const [value, setValue] = useState(0);
   const [user, setUser] = useState<User | null>(null);
   const { id } = useParams();
   const dispatcher = useDispatch();
-  
+
   useEffect(() => {
     loadData();
   }, []);
@@ -35,13 +33,13 @@ const UserEditView = () => {
       dispatcher(setIsPageLoading(false));
     }
   };
-  
+
   return (
     <AppLayout>
       <DefaultEditView
-        link={'/admin/users'}
-        title={'Invitados'}
-        newLabel={'Nuevo invitado'}
+        link={"/admin/users"}
+        title={"Invitados"}
+        newLabel={"Nuevo invitado"}
         createdAt={user?.created_at}
         name={user?.name}
       >
@@ -63,9 +61,11 @@ const UserEditView = () => {
             <Tab value={value} index={0}>
               <MainTab user={user} set={setUser} key={user?.id} />
             </Tab>
-            {user && <Tab value={value} index={1}>
-              <UsersTab user={user} key={user?.id + 'Guests'} />
-            </Tab>}
+            {user && (
+              <Tab value={value} index={1}>
+                <UsersTab user={user} key={user?.id + "Guests"} />
+              </Tab>
+            )}
           </Grid>
         </Grid>
       </DefaultEditView>

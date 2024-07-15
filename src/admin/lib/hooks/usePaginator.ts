@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import { SortTypes } from '../types';
-import { capitalize } from '@mui/material';
+import { useState, useEffect, useRef } from "react";
+import { SortTypes } from "../types";
+import { capitalize } from "@mui/material";
 
 function usePaginator(
   getData,
@@ -60,7 +60,7 @@ function usePaginator(
       setIsLoading(false);
       isFetching.current = false;
     } catch (error) {
-      console.error('Error fetching:', error);
+      console.error("Error fetching:", error);
       setIsLoading(false);
       isFetching.current = false;
     }

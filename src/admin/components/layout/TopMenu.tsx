@@ -1,11 +1,11 @@
-import { IconButton, Toolbar, Typography, styled } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import menuStyles from '../../styles/menu.module.scss';
-import UserMenu from './UserMenu';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { sections } from '../../lib/sections';
+import { IconButton, Toolbar, Typography, styled } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import menuStyles from "../../styles/menu.module.scss";
+import UserMenu from "./UserMenu";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { sections } from "../../lib/sections";
 
 const TopMenu = ({ open, setOpen }) => {
   interface AppBarProps extends MuiAppBarProps {
@@ -15,15 +15,15 @@ const TopMenu = ({ open, setOpen }) => {
   const appState = useSelector((state: RootState) => state.app);
 
   const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
+    shouldForwardProp: (prop) => prop !== "open",
   })<AppBarProps>();
 
   return (
     <AppBar
       position="fixed"
       open={open}
-      className={[menuStyles.topMenu, open ? menuStyles.collapsed : ''].join(
-        ' ',
+      className={[menuStyles.topMenu, open ? menuStyles.collapsed : ""].join(
+        " ",
       )}
     >
       <Toolbar>

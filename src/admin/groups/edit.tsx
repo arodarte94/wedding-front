@@ -1,4 +1,3 @@
-
 import AppLayout from "../components/layout/appLayout";
 import { Grid } from "@mui/material";
 import styles from "../styles/app.module.scss";
@@ -18,12 +17,11 @@ import DefaultEditView from "../components/layout/defaultEditView";
 const tabs = [{ name: "General" }, { name: "Usuarios" }];
 
 const GroupEditView = () => {
-
   const [value, setValue] = useState(0);
   const [group, setGroup] = useState<Group | null>(null);
   const { id } = useParams();
   const dispatcher = useDispatch();
-  
+
   useEffect(() => {
     loadData();
   }, []);
@@ -39,9 +37,9 @@ const GroupEditView = () => {
   return (
     <AppLayout>
       <DefaultEditView
-        link={'/admin/groups'}
-        title={'Mesas'}
-        newLabel={'Nueva mesa'}
+        link={"/admin/groups"}
+        title={"Mesas"}
+        newLabel={"Nueva mesa"}
         createdAt={group?.created_at}
         name={group?.name}
       >
@@ -63,9 +61,11 @@ const GroupEditView = () => {
             <Tab value={value} index={0}>
               <MainTab group={group} set={setGroup} key={group?.id} />
             </Tab>
-            {group && <Tab value={value} index={1}>
-              <UsersTab group={group} key={group?.id + 'Groups'} />
-            </Tab>}
+            {group && (
+              <Tab value={value} index={1}>
+                <UsersTab group={group} key={group?.id + "Groups"} />
+              </Tab>
+            )}
           </Grid>
         </Grid>
       </DefaultEditView>

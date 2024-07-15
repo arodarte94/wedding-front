@@ -10,96 +10,94 @@ $beige: #f6f3ed;
 $green: #7c8274;
 $bumbleColor: #f0c332;
 
-
 $mobileThreshold: 1200px;
 
 @font-face {
-    font-family: "chaprille";
-    src: url("../../../public/fonts/Chaprile calligraphy.otf");
-  }
-  
-  @font-face {
-    font-family: "chapaza";
-    src: url("../../../public/fonts/Chapaza.ttf");
-  }
+  font-family: "chaprille";
+  src: url("../../../public/fonts/Chaprile calligraphy.otf");
+}
+
+@font-face {
+  font-family: "chapaza";
+  src: url("../../../public/fonts/Chapaza.ttf");
+}
 
 .countdownContainer {
+  position: absolute;
+  bottom: 0px;
 
-    position: absolute;
+  @media only screen and (max-width: $mobileThreshold) {
+    bottom: 50px;
+  }
+
+  @media screen and (orientation: landscape) {
     bottom: 0px;
+  }
 
-    @media only screen and (max-width: $mobileThreshold) {
-        bottom: 50px;
-    }
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
 
-    @media screen and (orientation:landscape) {
-       bottom: 0px;
-    } 
+  p {
+    font-size: 27px !important;
+    text-align: justify;
+    padding-right: 80px;
+    letter-spacing: 0.25px;
 
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    
-    p {
-        font-size: 27px !important;
-        text-align: justify;
-        padding-right: 80px;
-        letter-spacing: 0.25px;
-  
-        span {
-            color: #eccc68;
-        }
-    }
-    .countdown {
-        color: #555;
-        display: block;
-        z-index: 100;
-
-        .countdownElem {
-            display: inline-block;
-            padding-right: 30px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-
-            @media only screen and (max-width: $mobileThreshold) {
-                padding-right: 20px;
-            }
-
-            .countdownDigit {
-                font-family: 'chapaza';
-                background: $beige;
-                font-size: 1.8em;
-                padding: 5px 22px 5px 22px;
-
-                @media only screen and (max-width: $mobileThreshold) {
-                    font-size: 6.5vw;
-                    padding: 0.8vw 1.8vw;
-                }
-                
-                margin-right: 3px;
-                border-radius: 10px;
-                display: inline;
-
-                @media screen and (orientation:landscape) {
-                    font-size: 20px;
-                } 
-            }
-  
-            .countdownLabel {
-                font-family: 'chapaza';
-                margin-top: 25px;
-                display: block;
-                font-size: 1vw;
-                color: #FFF;
-                letter-spacing: 2px;
-
-                @media only screen and (max-width: $mobileThreshold) {
-                    font-size: 10px;
-                    margin-top: 10px;
-                }
-            }
-        }
+    span {
+      color: #eccc68;
     }
   }
+  .countdown {
+    color: #555;
+    display: block;
+    z-index: 100;
+
+    .countdownElem {
+      display: inline-block;
+      padding-right: 30px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+
+      @media only screen and (max-width: $mobileThreshold) {
+        padding-right: 20px;
+      }
+
+      .countdownDigit {
+        font-family: "chapaza";
+        background: $beige;
+        font-size: 1.8em;
+        padding: 5px 22px 5px 22px;
+
+        @media only screen and (max-width: $mobileThreshold) {
+          font-size: 6.5vw;
+          padding: 0.8vw 1.8vw;
+        }
+
+        margin-right: 3px;
+        border-radius: 10px;
+        display: inline;
+
+        @media screen and (orientation: landscape) {
+          font-size: 20px;
+        }
+      }
+
+      .countdownLabel {
+        font-family: "chapaza";
+        margin-top: 25px;
+        display: block;
+        font-size: 1vw;
+        color: #fff;
+        letter-spacing: 2px;
+
+        @media only screen and (max-width: $mobileThreshold) {
+          font-size: 10px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

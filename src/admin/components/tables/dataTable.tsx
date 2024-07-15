@@ -1,9 +1,9 @@
-import { DataGrid, GridColDef, esES } from '@mui/x-data-grid';
-import styles from '../../styles/tables.module.scss';
-import { Box } from '@mui/material';
-import ColumnFilter from './columnFilter';
-import NoRows from './NoRows';
-import { useEffect, useRef } from 'react';
+import { DataGrid, GridColDef, esES } from "@mui/x-data-grid";
+import styles from "../../styles/tables.module.scss";
+import { Box } from "@mui/material";
+import ColumnFilter from "./columnFilter";
+import NoRows from "./NoRows";
+import { useEffect, useRef } from "react";
 
 export default function DataTable({
   columns,
@@ -40,7 +40,7 @@ export default function DataTable({
 
     const handleHeaderScroll = (event) => {
       const scroller = gridRef.current.querySelector(
-        '.MuiDataGrid-virtualScroller',
+        ".MuiDataGrid-virtualScroller",
       );
       if (scroller) {
         scroller.scrollLeft = event.target.scrollLeft;
@@ -49,12 +49,12 @@ export default function DataTable({
 
     const observer = new MutationObserver((mutationsList, observer) => {
       for (let mutation of mutationsList) {
-        if (mutation.type === 'childList') {
+        if (mutation.type === "childList") {
           const scroller = gridRef.current.querySelector(
-            '.MuiDataGrid-virtualScroller',
+            ".MuiDataGrid-virtualScroller",
           );
           if (scroller) {
-            scroller.addEventListener('scroll', handleGridScroll);
+            scroller.addEventListener("scroll", handleGridScroll);
             observer.disconnect();
           }
         }
@@ -63,26 +63,26 @@ export default function DataTable({
 
     observer.observe(gridRef.current, { childList: true, subtree: true });
 
-    headerRef.current.addEventListener('scroll', handleHeaderScroll);
+    headerRef.current.addEventListener("scroll", handleHeaderScroll);
 
     return () => {
       observer.disconnect();
       if (headerRef.current) {
-        headerRef.current.removeEventListener('scroll', handleHeaderScroll);
+        headerRef.current.removeEventListener("scroll", handleHeaderScroll);
       }
     };
   }, []);
 
   return (
-    <div style={{ height: 500, width: '100%' }} ref={gridRef}>
+    <div style={{ height: 500, width: "100%" }} ref={gridRef}>
       <Box className={styles.tableHeaderWrapper} ref={headerRef}>
         <Box className={styles.tableHeader}>
           {enableCheckboxes && (
             <Box
               className={[styles.tableSearchColumn, styles.checkBoxColumn].join(
-                ' ',
+                " ",
               )}
-              sx={{ width: '50px' }}
+              sx={{ width: "50px" }}
             ></Box>
           )}
           {columns.map((column) => {
@@ -105,7 +105,7 @@ export default function DataTable({
         </Box>
       </Box>
       <DataGrid
-        sx={{ backgroundColor: '#fff' }}
+        sx={{ backgroundColor: "#fff" }}
         localeText={esES.components.MuiDataGrid.defaultProps.localeText}
         hideFooterPagination={isLoading}
         rows={rows}

@@ -1,7 +1,7 @@
-import { login } from './actions';
-import { useDispatch } from 'react-redux';
-import { loginSuccess } from './slice';
-import styles from './styles/login.module.scss';
+import { login } from "./actions";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "./slice";
+import styles from "./styles/login.module.scss";
 import {
   Box,
   Button,
@@ -10,12 +10,12 @@ import {
   Snackbar,
   TextField,
   Typography,
-} from '@mui/material';
-import { useState } from 'react';
+} from "@mui/material";
+import { useState } from "react";
 
 const Login = () => {
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
   const [openError, setOpenError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useDispatch();
@@ -23,13 +23,13 @@ const Login = () => {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    const res = await login(user, password, 'testDevice');
+    const res = await login(user, password, "testDevice");
     setIsLoading(false);
     if (res?.status === 200) {
-      global?.window?.localStorage.setItem('user', JSON.stringify(res.data));
-      global?.window?.localStorage.setItem('token', res.data.token);
+      global?.window?.localStorage.setItem("user", JSON.stringify(res.data));
+      global?.window?.localStorage.setItem("token", res.data.token);
       global?.window?.localStorage.setItem(
-        'role',
+        "role",
         JSON.stringify(res.data.role),
       );
       dispatcher(loginSuccess(res.data));
@@ -41,19 +41,19 @@ const Login = () => {
   return (
     <Box className={styles.loginScreen}>
       <form onSubmit={submit}>
-        <Typography variant={'h5'} fontWeight={'bold'} marginBottom={3}>
+        <Typography variant={"h5"} fontWeight={"bold"} marginBottom={3}>
           Iniciar sesión
         </Typography>
         <Divider sx={{ marginBottom: 3 }} />
         <TextField
           onChange={(e) => setUser(e.target.value)}
-          label={'Correo o username'}
+          label={"Correo o username"}
         />
         <br />
         <TextField
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-          label={'Contraseña'}
+          label={"Contraseña"}
         />
         <Snackbar
           open={openError}
@@ -63,14 +63,14 @@ const Login = () => {
         {isLoading ? (
           <Box paddingTop={3}>
             <CircularProgress
-              sx={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
+              sx={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
             />
           </Box>
         ) : (
           <>
             <Button
               type="submit"
-              color={'primary'}
+              color={"primary"}
               variant="contained"
               className={styles.submitButton}
             >
