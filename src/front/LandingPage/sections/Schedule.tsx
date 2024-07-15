@@ -1,6 +1,5 @@
-import React from "react";
 import styles from "../../styles/front.module.scss";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 const Schedule = () => {
   const flexProps = {
@@ -14,7 +13,7 @@ const Schedule = () => {
   return (
     <>
       <div>
-        <h1 className={styles.title}>Schedule</h1>
+        <h1 className={styles.title}>Itinerario</h1>
         <Grid container sx={{ display: { xs: "flex", md: "none" } }}>
           <Grid xs={12} {...mobileFlexProps}>
             <Grid container>
@@ -55,7 +54,7 @@ const Schedule = () => {
                 <p>Terraza Jardín Cibeles</p>
                 <p>
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
-                  <b>Con previa confirmación *</b>
+                  <b>* Con previa confirmación</b>
                 </p>
               </Grid>
             </Grid>
@@ -115,13 +114,8 @@ const Schedule = () => {
               ></Grid>
               <Grid xs={5.8} {...flexProps}>
                 <h6>2:00 a.m.</h6>
-                <p>Fuímonos a koger</p>
               </Grid>
             </Grid>
-          </Grid>
-
-          <Grid xs={12} {...flexProps}>
-            <h4>Forever</h4>
           </Grid>
         </Grid>
 
@@ -175,7 +169,7 @@ const Schedule = () => {
                 <p>Terraza Jardín Cibeles</p>
                 <p>
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
-                  <b>Con previa confirmación *</b>
+                  <b>* Con previa confirmación</b>
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
@@ -197,9 +191,40 @@ const Schedule = () => {
               </Grid>
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid lg={2} sm={12} {...flexProps}>
-            <h4>Forever</h4>
+        <Grid container padding={5} marginTop={5} >
+          <Grid lg={6} xs={12} className={styles.scheduleInstructions}>
+            
+            <Grid container spacing={6}>
+              <Grid item lg={6} xs={12}>
+                <h3>CONFIRMACIÓN</h3>
+                <p>
+
+                Es muy importante confirmar tu
+asistencia y selección de platillo
+a más tardar el día:
+
+<h3>4 Octubre 2024</h3>
+*Sin confirmación y selección
+de platillo no es posible servirte cena ¡Gracias por tu comprensión!
+
+                </p>
+              </Grid>
+              <Grid item lg={6} xs={12}>
+              <h3>DRESS CODE</h3>
+          <p>
+          Formal<br />
+          Hombres: Traje y corbata<br />
+          Mujeres: Vestido largo<br />
+          *Se reservará el derecho
+          de admisión
+          </p>
+          <Button className={styles.confirm} variant="outlined">
+            CONFIRMAR
+          </Button>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </div>

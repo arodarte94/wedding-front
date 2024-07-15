@@ -21,12 +21,16 @@
     width: 200px;
 
     .mainConfirm {
-      border-color: $pink;
-      color: $pink;
-      font-weight: bold;
+      background-color: $blue;
+      font-family: 'chapaza';
+      color: $beige;
+      letter-spacing: 2px;
+      font-size: 18px;
+      border-radius: 0px;
 
       &:hover {
         background-color: $pink;
+        border-color: $pink;
         color: #ffffff;
       }
     }
