@@ -1,5 +1,5 @@
 import styles from "../../styles/front.module.scss";
-import { Button, Grid } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 
 const Schedule = () => {
   const flexProps = {
@@ -12,8 +12,8 @@ const Schedule = () => {
   const mobileFlexProps = flexProps && {};
   return (
     <>
-      <div>
-        <h1 className={styles.title}>Itinerario</h1>
+      <Box paddingTop={8}>
+        {/* <h1 className={styles.title}>Itinerario</h1> */}
         <Grid container sx={{ display: { xs: "flex", md: "none" } }}>
           <Grid xs={12} {...mobileFlexProps}>
             <Grid container>
@@ -207,7 +207,7 @@ a más tardar el día:
 
 <h3>4 Octubre 2024</h3>
 *Sin confirmación y selección
-de platillo no es posible servirte cena ¡Gracias por tu comprensión!
+de platillo no es posible servirte cena <br />¡Agradecemos tu pronta confirmación!
 
                 </p>
               </Grid>
@@ -227,7 +227,7 @@ de platillo no es posible servirte cena ¡Gracias por tu comprensión!
             </Grid>
           </Grid>
         </Grid>
-      </div>
+      </Box>
     </>
   );
 };

@@ -67,15 +67,16 @@
       text-transform: uppercase;
       color: $blue;
       transition: all 0.3s ease;
-
+      font-family: 'chapaza';
+      color: $blue;
       a {
         padding: 20px 20px 20px 0px;
         display: block;
         text-align: right;
       }
       &:hover {
-        background-color: $blue;
-        color: #ffffff;
+        background-color: $green;
+        color: $beige;
         cursor: pointer;
       }
     }
