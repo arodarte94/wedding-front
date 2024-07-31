@@ -158,9 +158,7 @@ const Page = () => {
             <Link onClick={() => animateSectionJump(rsvpRef, 3)}>RSVP</Link>
           </li>
           <li>
-            <Link onClick={() => animateSectionJump(giftsRef, 4)}>
-              Regalos
-            </Link>
+            <Link onClick={() => animateSectionJump(giftsRef, 4)}>Regalos</Link>
           </li>
         </ul>
       </div>
@@ -177,9 +175,7 @@ const Page = () => {
           <HowWeMet />
           <HowWeFell />
         </section>
-        <section className={styles.totalDates}>
-        
-        </section>
+        <section className={styles.totalDates}></section>
         {/* Section 4: La bodita */}
         <div ref={boditaRef} className={styles.bodita}>
           <Schedule />

@@ -58,13 +58,17 @@ const Rsvp = () => {
               </li>
             </ol>
           </Typography>
-          <Button className={rsvpStyles.confirm} variant="outlined" sx={{marginLeft: 2}}>
+          <Button
+            className={rsvpStyles.confirm}
+            variant="outlined"
+            sx={{ marginLeft: 2 }}
+          >
             CONFIRMAR
           </Button>
         </Box>
         <Box
-          component={'img'}
-          src={'transparentJade.png'}
+          component={"img"}
+          src={"transparentJade.png"}
           className={rsvpStyles.transparentJade}
         />
       </Grid>
