@@ -25,33 +25,13 @@ export const getUsers = async (
       orderBy: sortKey,
       role: params?.role,
       name: params?.name,
-      groups: params?.group,
+      groups: params?.groups,
       host: params?.host,
       types: params?.types,
       dinners: params?.dinners,
       entrees: params?.entrees,
       confirmed: params?.confirmed,
       notConfirmed: params?.notConfirmed,
-    },
-  });
-  return response;
-};
-
-export const getHosts = async (
-  page: number = 1,
-  pageLength: number = 1000,
-  sortKey: string | null,
-  params?: any,
-) => {
-  const response = await axios.get(ENV.basePath + ENDPOINTS.GET, {
-    params: {
-      page: page,
-      itemsPerPage: pageLength,
-      orderBy: sortKey,
-      role: params?.role,
-      name: params?.name,
-      hostsOnly: true,
-      type: params?.type,
     },
   });
   return response;

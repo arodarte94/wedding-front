@@ -4,7 +4,7 @@ import AppLayout from "../components/layout/appLayout";
 import DataTable from "../components/tables/dataTable";
 import { columns } from "./columns";
 import { RootState } from "../store";
-import { Checkbox, FormControlLabel, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import DeleteModal from "../components/layout/deleteModal";
 import usePaginator from "../lib/hooks/usePaginator";
 import useDeleteModal from "../lib/hooks/useDeleteModal";
@@ -20,10 +20,8 @@ const Users = () => {
     items,
     selectedRows,
     itemsPerPage,
-    customParams,
     onPageChange,
     onSortChange,
-    setCustomParams,
     setSelectedRows,
     setParams,
     removeRows,
@@ -38,12 +36,6 @@ const Users = () => {
     handleDelete(response, () => removeRows(selectedRows));
   };
 
-  const filterType = (type) => {
-    if (typeof customParams?.type?.length)
-      return customParams?.type.filter((i) => i != type);
-
-    return null;
-  };
   return (
     <AppLayout>
       <Grid
@@ -56,76 +48,13 @@ const Users = () => {
         marginBottom={2}
       ></Grid>
       <TableOptions
-        editButton={{ link: "/admin/users/new", label: "Nuevo usuario" }}
+        editButton={{ link: "/admin/users/new", label: "Nuevo invitado" }}
         deleteButton={{
           fn: () => toggleModal(true),
-          label: "Eliminar usuarios",
+          label: "Eliminar invitados",
           active: selectedRows.length > 0,
         }}
       />
-      <FormControlLabel
-        control={
-          <Checkbox
-            onChange={(e, val) => {
-              if (val) {
-                setCustomParams({
-                  ...customParams,
-                  type: [...(customParams?.type ?? []), 1],
-                });
-              } else {
-                setCustomParams({ ...customParams, type: filterType(1) });
-              }
-            }}
-          />
-        }
-        label="Principales"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            onChange={(e, val) => {
-              if (val) {
-                setCustomParams({
-                  ...customParams,
-                  type: [...(customParams?.type ?? []), 2],
-                });
-              } else {
-                setCustomParams({ ...customParams, type: filterType(2) });
-              }
-            }}
-          />
-        }
-        label="Acompañantes"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            onChange={(e, val) => {
-              if (val) {
-                setCustomParams({
-                  ...customParams,
-                  type: [...(customParams?.type ?? []), 3],
-                });
-              } else {
-                setCustomParams({ ...customParams, type: filterType(3) });
-              }
-            }}
-          />
-        }
-        label="Niños"
-      />
-
-      <FormControlLabel
-        control={
-          <Checkbox
-            onChange={(e, val) =>
-              setCustomParams({ ...customParams, confirmed: val ? 1 : 0 })
-            }
-          />
-        }
-        label="Confirmados"
-      />
-
       <span style={{ fontStyle: "italic", color: "#555555" }}>
         {elements} - invitados encontrados
       </span>

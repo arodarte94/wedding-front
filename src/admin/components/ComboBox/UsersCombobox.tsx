@@ -8,9 +8,9 @@ const UsersCombobox = ({
   field,
   multiple,
   isTableFilter,
-  locations,
   permission,
   property,
+  type,
 }: {
   data: any;
   set: any;
@@ -18,22 +18,22 @@ const UsersCombobox = ({
   field?: string;
   multiple?: boolean;
   isTableFilter?: boolean;
-  locations?: string;
+  type?: number;
   permission?: number;
   property?: string;
 }) => {
   return (
     <ComboBox
-      src={permission ? () => getUsersWithPermission(permission) : getUsers}
+      src={getUsers}
       async={permission ? false : true}
       multiple={multiple}
       isTableFilter={isTableFilter}
       field="name"
       fieldKey="users"
       responseProperty="users"
-      label="Usuarios..."
+      label="Responsable..."
       initialValue={initialValue}
-      params={{ locations: locations }}
+      params={{ type: type }}
       customFormat="user"
       set={(newValue: any) =>
         multiple

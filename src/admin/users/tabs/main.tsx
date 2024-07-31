@@ -1,4 +1,4 @@
-import { Autocomplete, Grid, TextField } from "@mui/material";
+import { Autocomplete, Divider, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 import styles from "../../styles/app.module.scss";
 import TabOptions from "../../components/edit-view/TabOptions";
@@ -12,6 +12,7 @@ import GroupsCombobox from "../../components/ComboBox/GroupsCombobox";
 import EntreesCombobox from "../../components/ComboBox/EntreesCombobox";
 import DinnersCombobox from "../../components/ComboBox/DinnersCombobox";
 import UsersTypesCombobox from "../../components/ComboBox/UsersTypesCombobox";
+import UsersCombobox from "../../components/ComboBox/UsersCombobox";
 const MainTab = ({ user, set }: { user: User | null; set: any }) => {
   const appState = useSelector((state: RootState) => state.app);
   const [userData, setUserData] = useState({
@@ -64,7 +65,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
       <Grid container spacing={2} className={styles.tabContent}>
         {appState.isLoading && <LoadingBackdrop />}
         <Grid item xl={12} lg={12} xs={12}>
-          <Grid container>
+          <Grid container marginBottom={3}>
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
@@ -83,62 +84,68 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
                 initialValue={user?.type ?? undefined}
               />
             </Grid>
-            <Grid item md={6} xs={12}>
-              {userData?.type == 2 && (
-                <TextField
-                  fullWidth
-                  required
-                  label="Correo del invitado"
-                  variant="filled"
-                  defaultValue={user?.email}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onChange={(e) =>
-                    setUserData({ ...userData, email: e.target.value })
-                  }
-                />
-              )}
-            </Grid>
+          </Grid>
 
-            <Grid item md={6} xs={12}>
-              {userData?.type == 2 ? (
-                <TextField
-                  fullWidth
-                  required
-                  type="number"
-                  label="Acompañantes disponibles"
-                  defaultValue={user?.slots}
-                  onChange={(e) =>
-                    setUserData({ ...userData, slots: e.target.value })
-                  }
-                  variant="filled"
-                />
-              ) : (
-                <ComboBox
-                  src={getHosts}
-                  async
-                  required
-                  field="name"
-                  fieldKey="host"
-                  responseProperty="users"
-                  label="Responsable..."
-                  initialValue={user?.host}
-                  set={(newValue: any) =>
-                    setUserData({ ...userData, host: newValue })
-                  }
-                ></ComboBox>
-              )}
-            </Grid>
-            <Grid item xs={12}>
-              {!userData?.host && (
-                <GroupsCombobox
+          <Divider />
+
+          <Grid container marginTop={3} marginBottom={3}>
+            {userData?.type == 2 ? (
+              <>
+                <Grid item xs={12}>
+                  <GroupsCombobox
+                    data={userData}
+                    set={setUserData}
+                    initialValue={user?.group ?? undefined}
+                  />
+                </Grid>
+                <Grid item md={6} xs={12}>
+                  <TextField
+                    fullWidth
+                    required
+                    label="Correo del invitado"
+                    defaultValue={user?.email}
+                    onChange={(e) =>
+                      setUserData({ ...userData, email: e.target.value })
+                    }
+                  />
+                </Grid>
+                <Grid item md={6} xs={12}>
+                  <TextField
+                    fullWidth
+                    required
+                    type="number"
+                    label="Acompañantes disponibles"
+                    defaultValue={user?.slots}
+                    onChange={(e) =>
+                      setUserData({ ...userData, slots: e.target.value })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12} marginTop={3}>
+                  <TextField
+                    fullWidth
+                    disabled
+                    type="text"
+                    label="Liga de confirmación"
+                    defaultValue={user?.link}
+                  />
+                </Grid>
+              </>
+            ) : (
+              <Grid item xs={12}>
+                <UsersCombobox
+                  property="host"
                   data={userData}
                   set={setUserData}
-                  initialValue={user?.group ?? undefined}
+                  type={1}
+                  initialValue={user?.host ?? undefined}
                 />
-              )}
-            </Grid>
+              </Grid>
+            )}
+          </Grid>
+
+          <Divider />
+          <Grid container marginTop={3}>
             <Grid item md={6} xs={12}>
               <EntreesCombobox
                 data={userData}
@@ -155,18 +162,6 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             </Grid>
           </Grid>
         </Grid>
-        {userData?.type == 2 && (
-          <Grid item xl={12} marginTop={3}>
-            <TextField
-              fullWidth
-              disabled
-              type="text"
-              label="Liga de confirmación"
-              defaultValue={user?.link}
-              variant="filled"
-            />
-          </Grid>
-        )}
       </Grid>
     </>
   );

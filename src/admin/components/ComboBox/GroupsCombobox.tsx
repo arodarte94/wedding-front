@@ -17,6 +17,7 @@ const GroupsCombobox = ({
   return (
     <ComboBox
       src={getGroups}
+      async
       required
       multiple={multiple}
       isTableFilter={isTableFilter}
