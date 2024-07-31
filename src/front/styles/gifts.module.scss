@@ -1,0 +1,14 @@
+.gifts {
+  height: 100vh;
+  background: url("../../../public/gifts.jpg");
+  min-height: 500px;
+  // background-attachment: fixed;
+  background-position: calc(50%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  @media (max-width: $mobileThreshold) {
+    background-position: center;
+  }
+}

@@ -4,6 +4,7 @@ import MasonryImg from "../../../img/masonry.png";
 import MasonryImgMobile from "../../../img/masonryMobile.png";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
+import { Box } from "@mui/material";
 
 const HowWeFell = () => {
   const isIOS =
@@ -121,6 +122,10 @@ const HowWeFell = () => {
               perspiciatis vero fuga? Necessitatibus, expedita.
             </p>
           </div>
+          <div className={styles.floatingTitle}>
+            Primeros
+            <br /> <Box sx={{ fontSize: "150px" }}>Pasos</Box>
+          </div>
         </div>
       </div>
 
@@ -134,11 +139,6 @@ const HowWeFell = () => {
         ></div>
         <div className={styles.rightColumn}>
           <div className={styles.dateContent}>
-            <h1>
-              Cita
-              <br /># 295
-            </h1>
-
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Explicabo, officiis, inventore labore culpa odit earum assumenda
@@ -151,6 +151,11 @@ const HowWeFell = () => {
               odio cupiditate et quos voluptatibus, neque libero dolor magni,
               perspiciatis vero fuga? Necessitatibus, expedita.
             </p>
+          </div>
+          <div className={styles.floatingTitle}>
+            Camino
+            <br />
+            <Box sx={{ fontSize: "150px" }}>Al Altar</Box>
           </div>
         </div>
       </div>

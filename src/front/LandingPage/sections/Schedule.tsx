@@ -224,6 +224,22 @@ const Schedule = () => {
               </Grid>
             </Grid>
           </Grid>
+
+          <Grid
+            item
+            lg={6}
+            display={"flex"}
+            alignItems={"end"}
+            justifyContent={"end"}
+            flexDirection={"column"}
+          >
+            <Box
+              className={styles.floatingTitle}
+              sx={{ position: "relative !important;" }}
+            >
+              <Box sx={{ fontSize: "180px" }}>Detalles</Box>del evento
+            </Box>
+          </Grid>
         </Grid>
       </Box>
     </>

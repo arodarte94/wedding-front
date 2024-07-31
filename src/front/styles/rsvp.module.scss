@@ -1,0 +1,39 @@
+@import "variables.module.scss";
+
+.rsvp {
+  width: 100%;
+
+  .rsvpImage {
+    height: 900px;
+    background: url("../../../public/confirm.jpg");
+    background-position: center;
+  }
+
+  .transparentJade {
+    width: 400px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);   
+
+    @media (max-width: $mobileThreshold) {
+      width: 300px;
+      bottom: 50px;
+    }
+  }
+
+  .confirm {
+    background-color: $blue;
+    font-family: "chapaza";
+    color: $beige;
+    letter-spacing: 2px;
+    font-size: 18px;
+    border-radius: 0px;
+
+    &:hover {
+      background-color: $pink;
+      border-color: $pink;
+      color: #ffffff;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import styles from "../../styles/front.module.scss";
 import MatchImg from "../../../img/match.png";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
+import { Box } from "@mui/material";
 
 const HowWeMet = () => {
   const isIOS =
@@ -73,19 +74,10 @@ const HowWeMet = () => {
             un mensaje. Intrigada por tal acción el 20 de Diciembre, Nallely
             envía a Antonio el clásico “Hola ¿cómo estas?”
           </p>
-
-          <p>
-            ¡Las aplicaciones de citas si funcionan! Hicimos “match” en Bumble,
-            alrededor del 18 de Diciembre del 2021. En esta aplicación la mujer
-            tiene que enviar el primer mensaje durante un periodo de 24 horas,
-            de lo contrario pierdes tu oportunidad y la persona desaparece.
-            <br />
-            <br />
-            Casi al llegar al límite de las 24 horas, Antonio presiona el botón
-            de emergencia el cual le daba otras 24 horas a Nallely para enviarle
-            un mensaje. Intrigada por tal acción el 20 de Diciembre, Nallely
-            envía a Antonio el clásico “Hola ¿cómo estas?”
-          </p>
+        </div>
+        <div className={styles.floatingTitle}>
+          Primer
+          <br /> <Box sx={{ fontSize: "150px" }}>Mensaje</Box>
         </div>
       </div>
     </div>

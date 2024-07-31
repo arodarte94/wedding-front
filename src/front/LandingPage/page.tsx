@@ -15,6 +15,8 @@ import HowWeMet from "./sections/HowWeMet";
 import HowWeFell from "./sections/HowWeFell";
 import MainCover from "./sections/MainCover";
 import Schedule from "./sections/Schedule";
+import Rsvp from "./sections/Rsvp";
+import Gifts from "./sections/Gifts";
 
 const Page = () => {
   const { id } = useParams();
@@ -30,6 +32,7 @@ const Page = () => {
   const datesRef = useRef(null);
   const boditaRef = useRef(null);
   const rsvpRef = useRef(null);
+  const giftsRef = useRef(null);
 
   useEffect(() => {
     resize();
@@ -141,25 +144,27 @@ const Page = () => {
         </div>
         <ul>
           <li>
-            <Link onClick={() => animateSectionJump(morritosRef)}>Inicio</Link>
+            <Link onClick={() => animateSectionJump(morritosRef, 0)}>
+              Inicio
+            </Link>
           </li>
           <li>
-            <Link onClick={() => animateSectionJump(usRef)}>Nosotros</Link>
+            <Link onClick={() => animateSectionJump(usRef, 1)}>Nosotros</Link>
           </li>
           <li>
-            <Link onClick={() => animateSectionJump(boditaRef)}>Evento</Link>
+            <Link onClick={() => animateSectionJump(boditaRef, 2)}>Evento</Link>
           </li>
           <li>
-            <Link onClick={() => animateSectionJump(rsvpRef)}>RSVP</Link>
+            <Link onClick={() => animateSectionJump(rsvpRef, 3)}>RSVP</Link>
           </li>
           <li>
-            <Link onClick={() => animateSectionJump(morritosRef)}>Regalos</Link>
+            <Link onClick={() => animateSectionJump(giftsRef, 4)}>
+              Regalos
+            </Link>
           </li>
         </ul>
-        {/* <div className={styles.menuFooter}>03.11.2024</div> */}
       </div>
       <div ref={morritosRef} className={animationState}>
-        {/* Section 1: Main morritos cover page */}
         <MainCover isMobile={isMobile} />
         <div ref={usRef} className={styles.whoAreWe}>
           <WhoWeAre
@@ -173,19 +178,18 @@ const Page = () => {
           <HowWeFell />
         </section>
         <section className={styles.totalDates}>
-          En total, nos hemos visto en <b>384 ocasiones</b>
-          <br />Y ahora vamos por toda una vida.
+        
         </section>
         {/* Section 4: La bodita */}
         <div ref={boditaRef} className={styles.bodita}>
           <Schedule />
         </div>
-        {/* Section 5: RSVP */}
-        {guest && (
-          <section ref={rsvpRef} className={styles.rsvp}>
-            <h1> Guest: {guest.name}</h1>
-          </section>
-        )}
+        <section ref={rsvpRef} className={styles.rsvp}>
+          <Rsvp />
+        </section>
+        <div ref={giftsRef} className={styles.gifts}>
+          <Gifts />
+        </div>
         <section className={styles.footer}>
           <p>Made with ❤️ by Antonio & Nallely</p>
         </section>

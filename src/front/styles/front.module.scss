@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   margin: 0px;
   overflow-x: hidden;
 }
@@ -68,7 +68,6 @@ body {
     }
   }
 
-  section,
   .container {
     margin-right: auto;
     margin-left: auto;
@@ -154,6 +153,7 @@ body {
 
     @import "whoAreWe.module.scss";
     @import "dates.module.scss";
+    @import "gifts.module.scss";
 
     .mainDivider {
       width: 100%;
@@ -193,6 +193,7 @@ body {
       p {
         padding: 10px;
         font-size: 12px;
+        margin-top: 0;
       }
       .footerInfo {
         padding: 30px 0px 100px 0px;
@@ -233,5 +234,17 @@ body {
     @media (max-width: $mobileThreshold) {
       display: none;
     }
+  }
+
+  .floatingTitle {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: right;
+    font-family: "chapaza";
+    color: $green;
+    opacity: 0.2;
+    font-size: 120px;
+    line-height: 120px;
   }
 }

@@ -12,7 +12,9 @@
     height: 100vh;
 
     @media (max-width: $mobileThreshold) {
-      height: 100%;
+
+      height: calc(100vh - 70px) !important;
+
       &:not(:first-child) {
         border-top: 1px solid $pinkOverlay;
       }
