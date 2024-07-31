@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./admin/App";
 import reportWebVitals from "./reportWebVitals";
 import RootLayout from "./admin/layout";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Users from "./admin/users/page";
 import Roles from "./admin/roles/page";
 import RolePage from "./admin/roles/edit";

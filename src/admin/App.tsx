@@ -1,4 +1,3 @@
-"use client";
 import { RootState } from "./store";
 import { useSelector } from "react-redux";
 import AppLayout from "./components/layout/appLayout";

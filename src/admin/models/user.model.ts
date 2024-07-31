@@ -18,11 +18,11 @@ export interface User {
   group: Group;
   host: User;
   type_id: number;
-  type: string;
+  type: any;
   entree_id: number;
-  entree: string;
+  entree: any;
   dinner_id: number;
-  dinner: string;
+  dinner: any;
   passwordChange: boolean;
   createdAt: Date;
   updatedAt: Date;

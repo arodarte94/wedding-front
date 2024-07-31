@@ -7,6 +7,9 @@ enum ENDPOINTS {
   CREATE = "users",
   UPDATE = "users",
   DELETE = "users",
+  GETUSERSTYPES = "users-types",
+  GETENTREES = "entrees",
+  GETDINNERS = "dinners",
 }
 
 export const getUsers = async (
@@ -22,10 +25,13 @@ export const getUsers = async (
       orderBy: sortKey,
       role: params?.role,
       name: params?.name,
-      group: params?.group,
+      groups: params?.group,
       host: params?.host,
-      type: params?.type?.toString(),
+      types: params?.types,
+      dinners: params?.dinners,
+      entrees: params?.entrees,
       confirmed: params?.confirmed,
+      notConfirmed: params?.notConfirmed,
     },
   });
   return response;
@@ -131,4 +137,37 @@ export const deleteUsers = async (users: number[]) => {
   });
 
   return response;
+};
+
+export const getUsersTypes = async (params?: any) => {
+  return await axios.get(
+    ENV.basePath + ENDPOINTS.GETUSERSTYPES,
+    {
+      params: {
+        name: params?.name,
+      },
+    },
+  );
+};
+
+export const getEntrees = async (params?: any) => {
+  return await axios.get(
+    ENV.basePath + ENDPOINTS.GETENTREES,
+    {
+      params: {
+        name: params?.name,
+      },
+    },
+  );
+};
+
+export const getDinners = async (params?: any) => {
+  return await axios.get(
+    ENV.basePath + ENDPOINTS.GETDINNERS,
+    {
+      params: {
+        name: params?.name,
+      },
+    },
+  );
 };

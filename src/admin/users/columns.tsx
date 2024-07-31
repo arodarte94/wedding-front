@@ -5,7 +5,6 @@ import {
   GridValueGetterParams,
 } from "@mui/x-data-grid";
 import {
-  createdAtColumn,
   idColumn,
   updatedAtColumn,
 } from "../lib/defaultTableColumns";
@@ -13,6 +12,10 @@ import { Link } from "react-router-dom";
 import styles from "../styles/tables.module.scss";
 import { TextFilter } from "../components/tables/columnFilter";
 import DateRangePicker from "../components/inputs/DateRangePicker";
+import GroupsCombobox from "../components/ComboBox/GroupsCombobox";
+import EntreesCombobox from "../components/ComboBox/EntreesCombobox";
+import DinnersCombobox from "../components/ComboBox/DinnersCombobox";
+import UsersTypesCombobox from "../components/ComboBox/UsersTypesCombobox";
 export const columns: GridColDef[] = [
   idColumn,
   {
@@ -51,17 +54,19 @@ export const columns: GridColDef[] = [
     field: "type",
     headerName: "Tipo",
     width: 200,
-    filter: TextFilter,
+    filter: UsersTypesCombobox,
+    valueGetter: (params: GridValueGetterParams) =>
+      params.row.type?.name ?? "",
     cellClassName: (params: GridCellParams) => {
-      if (params.row.type === "Acompañante") return styles.guest;
-      else if (params.row.type === "Niño acompañante") return styles.guestChild;
+      if (params.row.type?.name === "Acompañante") return styles.guest;
+      else if (params.row.type?.name === "Niño acompañante") return styles.guestChild;
     },
   },
   {
     field: "group",
     headerName: "Grupo",
     width: 200,
-    filter: TextFilter,
+    filter: GroupsCombobox,
     valueGetter: (params: GridValueGetterParams) =>
       params.row.group?.name ?? "",
   },
@@ -72,9 +77,21 @@ export const columns: GridColDef[] = [
     filter: TextFilter,
     valueGetter: (params: GridValueGetterParams) => params.row.host?.name ?? "",
   },
-  { field: "entree", headerName: "Entrada", width: 250, filter: TextFilter },
-  { field: "dinner", headerName: "Cena", width: 250, filter: TextFilter },
-
-  createdAtColumn,
+  {
+    field: "entree",
+    headerName: "Entrada",
+    width: 200,
+    filter: EntreesCombobox,
+    valueGetter: (params: GridValueGetterParams) =>
+      params.row.entree?.name ?? "",
+  },
+  {
+    field: "dinner",
+    headerName: "Cena",
+    width: 200,
+    filter: DinnersCombobox,
+    valueGetter: (params: GridValueGetterParams) =>
+      params.row.dinner?.name ?? "",
+  },
   updatedAtColumn,
 ];

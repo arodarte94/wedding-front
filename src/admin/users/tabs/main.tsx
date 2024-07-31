@@ -5,26 +5,15 @@ import TabOptions from "../../components/edit-view/TabOptions";
 import { User } from "../../models/user.model";
 import { create, getHosts, update } from "../actions";
 import ComboBox from "../../components/inputs/ComboBox";
-import { getGroups } from "../../groups/actions";
 import LoadingBackdrop from "../../components/layout/loadingBackdrop";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import GroupsCombobox from "../../components/ComboBox/GroupsCombobox";
+import EntreesCombobox from "../../components/ComboBox/EntreesCombobox";
+import DinnersCombobox from "../../components/ComboBox/DinnersCombobox";
+import UsersTypesCombobox from "../../components/ComboBox/UsersTypesCombobox";
 const MainTab = ({ user, set }: { user: User | null; set: any }) => {
-  const types = [
-    { id: 1, label: "Invitado principal" },
-    { id: 2, label: "Acompañante" },
-    { id: 3, label: "Niño acompañante" },
-  ];
 
-  const entrees = [
-    { id: 1, label: "Ensalada olimpia" },
-    { id: 2, label: "Takos de jicama dicos" },
-  ];
-
-  const dinners = [
-    { id: 1, label: "Chile en nogada" },
-    { id: 2, label: "Pollo en nuez" },
-  ];
   const appState = useSelector((state: RootState) => state.app);
   const [userData, setUserData] = useState({
     name: user?.name,
@@ -34,9 +23,9 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
     host: user?.host?.id,
     group: user?.group?.id,
     role: user?.role?.id,
-    type: user?.type_id,
-    entree: user?.entree_id,
-    dinner: user?.dinner_id,
+    type: user?.type?.id,
+    entree: user?.entree?.id,
+    dinner: user?.dinner?.id,
   });
 
   const save = async () => {
@@ -83,37 +72,20 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
                 required
                 label="Nombre del invitado"
                 defaultValue={user?.name}
-                InputLabelProps={{
-                  shrink: true,
-                }}
                 onChange={(e) =>
                   setUserData({ ...userData, name: e.target.value })
                 }
-                variant="filled"
               />
             </Grid>
             <Grid item md={6} xs={12}>
-              <Autocomplete
-                options={types}
-                onChange={(e, val) =>
-                  setUserData({ ...userData, type: val?.id })
-                }
-                value={
-                  userData?.type &&
-                  types.find((i) => i.id == userData.type)?.label
-                }
-                renderInput={(params) => (
-                  <TextField
-                    label="Tipo de usuario..."
-                    variant="filled"
-                    {...params}
-                  />
-                )}
+            <UsersTypesCombobox
+                data={userData}
+                set={setUserData}
+                initialValue={user?.type ?? undefined}
               />
             </Grid>
-
             <Grid item md={6} xs={12}>
-              {userData?.type == 1 && (
+              {userData?.type == 2 && (
                 <TextField
                   fullWidth
                   required
@@ -131,7 +103,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             </Grid>
 
             <Grid item md={6} xs={12}>
-              {userData?.type == 1 ? (
+              {userData?.type == 2 ? (
                 <TextField
                   fullWidth
                   required
@@ -161,54 +133,30 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             </Grid>
             <Grid item xs={12}>
               {!userData?.host && (
-                <ComboBox
-                  src={() => getGroups(1, 1000, null, null)}
-                  async
-                  required
-                  field="name"
-                  fieldKey="group"
-                  responseProperty="groups"
-                  label="Grupo..."
-                  initialValue={user?.group}
-                  set={(newValue: any) =>
-                    setUserData({ ...userData, group: newValue })
-                  }
-                ></ComboBox>
+                <GroupsCombobox
+                data={userData}
+                set={setUserData}
+                initialValue={user?.group ?? undefined}
+              />
               )}
             </Grid>
             <Grid item md={6} xs={12}>
-              <Autocomplete
-                options={entrees}
-                onChange={(e, val) =>
-                  setUserData({ ...userData, entree: val?.id })
-                }
-                value={
-                  userData?.entree &&
-                  entrees.find((i) => i.id == userData.entree)?.label
-                }
-                renderInput={(params) => (
-                  <TextField label="Entrada..." variant="filled" {...params} />
-                )}
-              />
+            <EntreesCombobox
+                  data={userData}
+                  set={setUserData}
+                  initialValue={user?.entree ?? undefined}
+                />
             </Grid>
             <Grid item md={6} xs={12}>
-              <Autocomplete
-                options={dinners}
-                onChange={(e, val) =>
-                  setUserData({ ...userData, dinner: val?.id })
-                }
-                value={
-                  userData?.dinner &&
-                  dinners.find((i) => i.id == userData.dinner)?.label
-                }
-                renderInput={(params) => (
-                  <TextField label="Cenita..." variant="filled" {...params} />
-                )}
-              />
+            <DinnersCombobox
+                  data={userData}
+                  set={setUserData}
+                  initialValue={user?.dinner ?? undefined}
+                />
             </Grid>
           </Grid>
         </Grid>
-        {userData?.type == 1 && (
+        {userData?.type == 2 && (
           <Grid item xl={12} marginTop={3}>
             <TextField
               fullWidth
