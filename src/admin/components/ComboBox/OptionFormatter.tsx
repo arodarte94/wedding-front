@@ -1,10 +1,10 @@
-import { Avatar, Badge, Box, Grid, Typography } from '@mui/material';
-import comboboxStyles from '../../styles/combobox.module.scss';
-import { ENV } from '../../../environment/environment';
-import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
-import ScaleOutlinedIcon from '@mui/icons-material/ScaleOutlined';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import { Avatar, Badge, Box, Grid, Typography } from "@mui/material";
+import comboboxStyles from "../../styles/combobox.module.scss";
+import { ENV } from "../../../environment/environment";
+import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
+import ScaleOutlinedIcon from "@mui/icons-material/ScaleOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 const OptionFormatter = ({
   props,
@@ -21,7 +21,7 @@ const OptionFormatter = ({
 }) => {
   return (
     <>
-      {customFormat === 'user' && (
+      {customFormat === "user" && (
         <UserFormatter
           props={props}
           option={option}
@@ -29,7 +29,7 @@ const OptionFormatter = ({
           selected={selected}
         />
       )}
-      {customFormat === 'product' && (
+      {customFormat === "product" && (
         <ProductFormatter
           props={props}
           option={option}
@@ -37,7 +37,7 @@ const OptionFormatter = ({
           selected={selected}
         />
       )}
-      {customFormat === 'location' && (
+      {customFormat === "location" && (
         <LocationFormatter
           props={props}
           option={option}
@@ -45,7 +45,7 @@ const OptionFormatter = ({
           selected={selected}
         />
       )}
-      {customFormat === 'pricelist' && (
+      {customFormat === "pricelist" && (
         <PricelistFormatter
           props={props}
           option={option}
@@ -66,7 +66,7 @@ const OptionFormatter = ({
 };
 
 export const ProductFormatter = ({ props, option, field, selected }) => {
-  const image = option?.image ? ENV.imagePath + option?.image : '/noImage.png';
+  const image = option?.image ? ENV.imagePath + option?.image : "/noImage.png";
 
   return (
     <Grid
@@ -75,25 +75,25 @@ export const ProductFormatter = ({ props, option, field, selected }) => {
       className={[
         comboboxStyles.option,
         comboboxStyles.product,
-        selected ? comboboxStyles.selected : '',
-      ].join(' ')}
+        selected ? comboboxStyles.selected : "",
+      ].join(" ")}
     >
       <Grid item xs={2} className={comboboxStyles.optionImage}>
         <img src={image} width="100%" alt="" />
       </Grid>
       <Grid item xs={10} className={comboboxStyles.productInfo}>
-        <Typography fontWeight={'bold'} fontSize={14}>
+        <Typography fontWeight={"bold"} fontSize={14}>
           {option[field] ?? option.name}
         </Typography>
-        <Box display={'flex'} flexDirection={'row'} gap={1.5}>
+        <Box display={"flex"} flexDirection={"row"} gap={1.5}>
           <Typography
-            variant={'caption'}
+            variant={"caption"}
             className={comboboxStyles.additionalData}
           >
             <ClassOutlinedIcon /> {option?.category?.name}
           </Typography>
           <Typography
-            variant={'caption'}
+            variant={"caption"}
             className={comboboxStyles.additionalData}
           >
             <ScaleOutlinedIcon /> {option?.unit?.name}
@@ -105,7 +105,7 @@ export const ProductFormatter = ({ props, option, field, selected }) => {
 };
 
 export const UserFormatter = ({ props, option, field, selected }) => {
-  const image = option?.image ? ENV.imagePath + option?.image : '/noImage.png';
+  const image = option?.image ? ENV.imagePath + option?.image : "/noImage.png";
 
   return (
     <Grid
@@ -114,19 +114,19 @@ export const UserFormatter = ({ props, option, field, selected }) => {
       className={[
         comboboxStyles.option,
         comboboxStyles.product,
-        selected ? comboboxStyles.selected : '',
-      ].join(' ')}
+        selected ? comboboxStyles.selected : "",
+      ].join(" ")}
     >
       <Grid item xs={2} className={comboboxStyles.optionImage}>
         <img src={image} width="100%" alt="" />
       </Grid>
       <Grid item xs={10} className={comboboxStyles.productInfo}>
-        <Typography fontWeight={'bold'} fontSize={14}>
+        <Typography fontWeight={"bold"} fontSize={14}>
           {option[field] ?? option.name}
         </Typography>
-        <Box display={'flex'} flexDirection={'row'} gap={1.5}>
+        <Box display={"flex"} flexDirection={"row"} gap={1.5}>
           <Typography
-            variant={'caption'}
+            variant={"caption"}
             className={comboboxStyles.additionalData}
           >
             <EmailOutlinedIcon /> {option?.email}
@@ -144,12 +144,12 @@ export const LocationFormatter = ({ props, option, field, selected }) => {
       {...props}
       className={[
         comboboxStyles.option,
-        selected ? comboboxStyles.selected : '',
-      ].join(' ')}
+        selected ? comboboxStyles.selected : "",
+      ].join(" ")}
     >
       <Grid item xs={12}>
-        <Typography fontWeight={'bold'}>
-          {option[field] ?? option.name}{' '}
+        <Typography fontWeight={"bold"}>
+          {option[field] ?? option.name}{" "}
           {option?.warehouse && (
             <Badge
               color="success"
@@ -158,9 +158,9 @@ export const LocationFormatter = ({ props, option, field, selected }) => {
             />
           )}
         </Typography>
-        <Box display={'flex'} flexDirection={'row'} gap={1.5}>
+        <Box display={"flex"} flexDirection={"row"} gap={1.5}>
           <Typography
-            variant={'caption'}
+            variant={"caption"}
             className={comboboxStyles.additionalData}
           >
             <LocationOnOutlinedIcon /> {option?.address}
@@ -172,7 +172,7 @@ export const LocationFormatter = ({ props, option, field, selected }) => {
 };
 
 export const PricelistFormatter = ({ props, option, field, selected }) => {
-  const image = option.is_usd ? '/usFlagIcon.png' : '/mxFlagIcon.png';
+  const image = option.is_usd ? "/usFlagIcon.png" : "/mxFlagIcon.png";
 
   return (
     <Grid
@@ -180,29 +180,29 @@ export const PricelistFormatter = ({ props, option, field, selected }) => {
       {...props}
       className={[
         comboboxStyles.option,
-        selected ? comboboxStyles.selected : '',
-      ].join(' ')}
+        selected ? comboboxStyles.selected : "",
+      ].join(" ")}
     >
       <Grid item xs={12}>
-        <Typography fontWeight={'bold'}>
-          {option[field] ?? option.name}{' '}
+        <Typography fontWeight={"bold"}>
+          {option[field] ?? option.name}{" "}
           <Badge
-            color={option.is_purchasing ? 'info' : 'success'}
-            badgeContent={option.is_purchasing ? 'Compras' : 'Ventas'}
+            color={option.is_purchasing ? "info" : "success"}
+            badgeContent={option.is_purchasing ? "Compras" : "Ventas"}
             sx={{ marginLeft: 4 }}
           />
         </Typography>
-        <Box display={'flex'} flexDirection={'row'} gap={1.5}>
+        <Box display={"flex"} flexDirection={"row"} gap={1.5}>
           <Typography
-            variant={'caption'}
+            variant={"caption"}
             className={comboboxStyles.additionalData}
           >
             <Avatar
-              alt={option.is_usd ? 'USD' : 'MXN'}
+              alt={option.is_usd ? "USD" : "MXN"}
               src={image}
               sx={{ width: 24, height: 24, marginRight: 0.75 }}
             />
-            {option.is_usd ? 'USD' : 'MXN'}
+            {option.is_usd ? "USD" : "MXN"}
           </Typography>
         </Box>
       </Grid>
@@ -216,8 +216,8 @@ const DefaultFormatter = ({ props, option, field, selected }) => {
       {...props}
       className={[
         comboboxStyles.option,
-        selected ? comboboxStyles.selected : '',
-      ].join(' ')}
+        selected ? comboboxStyles.selected : "",
+      ].join(" ")}
     >
       {option[field] ?? option.name}
     </li>

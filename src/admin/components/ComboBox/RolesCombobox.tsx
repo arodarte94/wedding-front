@@ -1,5 +1,5 @@
-import { getRoles } from '../../roles/actions';
-import ComboBox from '../inputs/ComboBox';
+import { getRoles } from "../../roles/actions";
+import ComboBox from "../inputs/ComboBox";
 
 const RolesCombobox = ({
   set,

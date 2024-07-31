@@ -1,9 +1,9 @@
-import { TextField } from '@mui/material';
-import styles from '../../styles/tables.module.scss';
+import { TextField } from "@mui/material";
+import styles from "../../styles/tables.module.scss";
 
 export const TextFilter = ({ title, set, field, isLoading }) => {
   const filter = (e) => {
-    if (e.key === 'Enter' && !isLoading) {
+    if (e.key === "Enter" && !isLoading) {
       set({ [field]: e.target.value });
     }
   };

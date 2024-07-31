@@ -1,10 +1,10 @@
-import { Chip } from '@mui/material';
+import { Chip } from "@mui/material";
 
 export const headerFilterProps = {
   sx: {
-    '& .MuiOutlinedInput-root': {
-      height: '35px!important',
-      flexWrap: 'nowrap',
+    "& .MuiOutlinedInput-root": {
+      height: "35px!important",
+      flexWrap: "nowrap",
     },
   },
   renderTags: (value, getTagProps) => {

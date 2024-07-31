@@ -140,34 +140,25 @@ export const deleteUsers = async (users: number[]) => {
 };
 
 export const getUsersTypes = async (params?: any) => {
-  return await axios.get(
-    ENV.basePath + ENDPOINTS.GETUSERSTYPES,
-    {
-      params: {
-        name: params?.name,
-      },
+  return await axios.get(ENV.basePath + ENDPOINTS.GETUSERSTYPES, {
+    params: {
+      name: params?.name,
     },
-  );
+  });
 };
 
 export const getEntrees = async (params?: any) => {
-  return await axios.get(
-    ENV.basePath + ENDPOINTS.GETENTREES,
-    {
-      params: {
-        name: params?.name,
-      },
+  return await axios.get(ENV.basePath + ENDPOINTS.GETENTREES, {
+    params: {
+      name: params?.name,
     },
-  );
+  });
 };
 
 export const getDinners = async (params?: any) => {
-  return await axios.get(
-    ENV.basePath + ENDPOINTS.GETDINNERS,
-    {
-      params: {
-        name: params?.name,
-      },
+  return await axios.get(ENV.basePath + ENDPOINTS.GETDINNERS, {
+    params: {
+      name: params?.name,
     },
-  );
+  });
 };

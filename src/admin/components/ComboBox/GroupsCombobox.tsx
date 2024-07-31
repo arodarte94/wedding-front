@@ -1,5 +1,5 @@
-import { getGroups } from '../../groups/actions';
-import ComboBox from '../inputs/ComboBox';
+import { getGroups } from "../../groups/actions";
+import ComboBox from "../inputs/ComboBox";
 
 const GroupsCombobox = ({
   set,
@@ -24,14 +24,10 @@ const GroupsCombobox = ({
       fieldKey="group"
       responseProperty="groups"
       label="Grupo..."
-      key={'groupsComboBox'}
+      key={"groupsComboBox"}
       initialValue={initialValue}
       set={(newValue: any) =>
-        set(
-          isTableFilter
-            ? { groups: newValue }
-            : { ...data, group: newValue },
-        )
+        set(isTableFilter ? { groups: newValue } : { ...data, group: newValue })
       }
     ></ComboBox>
   );

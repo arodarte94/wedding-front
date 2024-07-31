@@ -1,5 +1,5 @@
-import { getUsersTypes } from '../../users/actions';
-import ComboBox from '../inputs/ComboBox';
+import { getUsersTypes } from "../../users/actions";
+import ComboBox from "../inputs/ComboBox";
 
 const UsersTypesCombobox = ({
   set,
@@ -24,14 +24,10 @@ const UsersTypesCombobox = ({
       fieldKey="type"
       responseProperty="types"
       label="Tipo..."
-      key={'usersTypesCombobox'}
+      key={"usersTypesCombobox"}
       initialValue={initialValue}
       set={(newValue: any) =>
-        set(
-          isTableFilter
-            ? { types: newValue }
-            : { ...data, type: newValue },
-        )
+        set(isTableFilter ? { types: newValue } : { ...data, type: newValue })
       }
     ></ComboBox>
   );

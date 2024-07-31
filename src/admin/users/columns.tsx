@@ -4,10 +4,7 @@ import {
   GridRenderCellParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid";
-import {
-  idColumn,
-  updatedAtColumn,
-} from "../lib/defaultTableColumns";
+import { idColumn, updatedAtColumn } from "../lib/defaultTableColumns";
 import { Link } from "react-router-dom";
 import styles from "../styles/tables.module.scss";
 import { TextFilter } from "../components/tables/columnFilter";
@@ -55,11 +52,11 @@ export const columns: GridColDef[] = [
     headerName: "Tipo",
     width: 200,
     filter: UsersTypesCombobox,
-    valueGetter: (params: GridValueGetterParams) =>
-      params.row.type?.name ?? "",
+    valueGetter: (params: GridValueGetterParams) => params.row.type?.name ?? "",
     cellClassName: (params: GridCellParams) => {
       if (params.row.type?.name === "Acompañante") return styles.guest;
-      else if (params.row.type?.name === "Niño acompañante") return styles.guestChild;
+      else if (params.row.type?.name === "Niño acompañante")
+        return styles.guestChild;
     },
   },
   {

@@ -1,5 +1,5 @@
-import { getEntrees } from '../../users/actions';
-import ComboBox from '../inputs/ComboBox';
+import { getEntrees } from "../../users/actions";
+import ComboBox from "../inputs/ComboBox";
 
 const EntreesCombobox = ({
   set,
@@ -24,13 +24,11 @@ const EntreesCombobox = ({
       fieldKey="entree"
       responseProperty="entrees"
       label="Entrada..."
-      key={'entreesCombobox'}
+      key={"entreesCombobox"}
       initialValue={initialValue}
       set={(newValue: any) =>
         set(
-          isTableFilter
-            ? { entrees: newValue }
-            : { ...data, entree: newValue },
+          isTableFilter ? { entrees: newValue } : { ...data, entree: newValue },
         )
       }
     ></ComboBox>

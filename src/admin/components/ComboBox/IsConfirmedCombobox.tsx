@@ -1,7 +1,7 @@
-import { Autocomplete, TextField } from '@mui/material';
-import { headerFilterProps } from './HeaderFilterProps';
-import styles from '../../styles/tables.module.scss';
-import OptionFormatter from './OptionFormatter';
+import { Autocomplete, TextField } from "@mui/material";
+import { headerFilterProps } from "./HeaderFilterProps";
+import styles from "../../styles/tables.module.scss";
+import OptionFormatter from "./OptionFormatter";
 
 const IsConfirmedCombobox = ({
   set,
@@ -19,8 +19,8 @@ const IsConfirmedCombobox = ({
   const handleSelect = (e: any, val: any) => {
     if (val) {
       set({
-        [val.id === 2 ? 'notConfirmed' : 'confirmed']: 1,
-        [val.id === 2 ? 'confirmed' : 'notConfirmed']: null,
+        [val.id === 2 ? "notConfirmed" : "confirmed"]: 1,
+        [val.id === 2 ? "confirmed" : "notConfirmed"]: null,
       });
     } else {
       set({ confirmed: null, notConfirmed: null });
@@ -29,12 +29,12 @@ const IsConfirmedCombobox = ({
 
   return (
     <Autocomplete
-      size={isTableFilter ? 'small' : 'medium'}
+      size={isTableFilter ? "small" : "medium"}
       limitTags={isTableFilter ? 1 : 20}
-      className={isTableFilter ? styles.headerComboBox : ''}
+      className={isTableFilter ? styles.headerComboBox : ""}
       options={[
-        { id: 1, name: 'Inventariable' },
-        { id: 2, name: 'No inventariable' },
+        { id: 1, name: "Inventariable" },
+        { id: 2, name: "No inventariable" },
       ]}
       getOptionLabel={(option) => option.name}
       {...customProps}
@@ -43,7 +43,7 @@ const IsConfirmedCombobox = ({
         <TextField
           label="Confirmado"
           {...params}
-          variant={isTableFilter ? 'filled' : 'outlined'}
+          variant={isTableFilter ? "filled" : "outlined"}
         />
       )}
       renderOption={(props, option, { selected }) => (
@@ -51,7 +51,7 @@ const IsConfirmedCombobox = ({
           props={props}
           option={option}
           selected={selected}
-          field={'name'}
+          field={"name"}
         />
       )}
     />

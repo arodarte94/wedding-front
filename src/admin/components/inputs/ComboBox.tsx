@@ -1,8 +1,8 @@
-import { Autocomplete, CircularProgress, TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
-import styles from '../../styles/tables.module.scss';
-import { headerFilterProps } from '../ComboBox/HeaderFilterProps';
-import OptionFormatter from '../ComboBox/OptionFormatter';
+import { Autocomplete, CircularProgress, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import styles from "../../styles/tables.module.scss";
+import { headerFilterProps } from "../ComboBox/HeaderFilterProps";
+import OptionFormatter from "../ComboBox/OptionFormatter";
 
 interface ComboBoxProps {
   src: any;
@@ -41,7 +41,7 @@ const ComboBox = ({
   customFormat,
   disabled,
 }: ComboBoxProps) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [options, setOptions] = useState([]);
   const [value, setValue] = useState(initialValue ? initialValue : null);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -49,7 +49,7 @@ const ComboBox = ({
 
   const fetchOptions = async () => {
     setIsLoading(true);
-    const response = await src(1, 100, 'nameDesc', {
+    const response = await src(1, 100, "nameDesc", {
       ...params,
       [field]: query,
     });
@@ -93,7 +93,7 @@ const ComboBox = ({
     if (newValue) {
       if (multiple) {
         if (isTableFilter || simple) {
-          set(newValue.map((i) => i.id).join(','));
+          set(newValue.map((i) => i.id).join(","));
         } else {
           set(newValue);
         }
@@ -113,8 +113,8 @@ const ComboBox = ({
   return (
     <Autocomplete
       limitTags={isTableFilter ? 1 : 20}
-      size={isTableFilter ? 'small' : 'medium'}
-      className={isTableFilter ? styles.headerComboBox : ''}
+      size={isTableFilter ? "small" : "medium"}
+      className={isTableFilter ? styles.headerComboBox : ""}
       multiple={multiple}
       options={options}
       getOptionLabel={(option) => option[field]}
@@ -130,19 +130,19 @@ const ComboBox = ({
       loadingText={
         <CircularProgress
           sx={{
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            display: 'block',
-            width: '100%',
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "block",
+            width: "100%",
           }}
         />
       }
       renderInput={(params) => (
         <TextField
           required={required}
-          variant={isTableFilter ? 'filled' : 'outlined'}
+          variant={isTableFilter ? "filled" : "outlined"}
           {...params}
-          label={label ?? 'Seleccionar...'}
+          label={label ?? "Seleccionar..."}
           onChange={async ? (e) => search(e.target.value) : undefined}
           onClick={() => handleFirstLoad()}
         />

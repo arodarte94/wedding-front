@@ -1,7 +1,7 @@
-import { login } from '../actions';
-import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../slice';
-import styles from '../styles/login.module.scss';
+import { login } from "../actions";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../slice";
+import styles from "../styles/login.module.scss";
 import {
   Box,
   Button,
@@ -10,12 +10,12 @@ import {
   Snackbar,
   TextField,
   Typography,
-} from '@mui/material';
-import { useState } from 'react';
+} from "@mui/material";
+import { useState } from "react";
 
 const LoginForm = ({ setForgotPassword }) => {
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
   const [openError, setOpenError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useDispatch();
@@ -41,19 +41,19 @@ const LoginForm = ({ setForgotPassword }) => {
   return (
     <Box className={styles.loginScreen}>
       <form onSubmit={submit}>
-        <Typography variant={'h5'} fontWeight={'bold'} marginBottom={3}>
+        <Typography variant={"h5"} fontWeight={"bold"} marginBottom={3}>
           Iniciar sesión
         </Typography>
         <Divider sx={{ marginBottom: 3 }} />
         <TextField
           onChange={(e) => setUser(e.target.value)}
-          label={'Correo o username'}
+          label={"Correo o username"}
         />
         <br />
         <TextField
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-          label={'Contraseña'}
+          label={"Contraseña"}
         />
         <Snackbar
           open={openError}
@@ -63,14 +63,14 @@ const LoginForm = ({ setForgotPassword }) => {
         {isLoading ? (
           <Box paddingTop={3}>
             <CircularProgress
-              sx={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
+              sx={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
             />
           </Box>
         ) : (
           <>
             <Button
               type="submit"
-              color={'primary'}
+              color={"primary"}
               variant="contained"
               className={styles.submitButton}
             >

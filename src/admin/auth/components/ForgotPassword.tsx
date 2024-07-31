@@ -1,5 +1,5 @@
-import { sendResetPasswordLink } from '../actions';
-import styles from '../styles/login.module.scss';
+import { sendResetPasswordLink } from "../actions";
+import styles from "../styles/login.module.scss";
 import {
   Box,
   Button,
@@ -7,8 +7,8 @@ import {
   Snackbar,
   TextField,
   Typography,
-} from '@mui/material';
-import { useState } from 'react';
+} from "@mui/material";
+import { useState } from "react";
 
 const ForgotPassword = ({ setForgotPassword }) => {
   const [email, setEmail] = useState(null);
@@ -32,10 +32,10 @@ const ForgotPassword = ({ setForgotPassword }) => {
   return (
     <Box className={styles.loginScreen}>
       <form onSubmit={submit}>
-        <Typography variant={'h6'} marginBottom={3}>
+        <Typography variant={"h6"} marginBottom={3}>
           Enviar correo de recuperación
         </Typography>
-        <Typography textAlign={'justify'} variant={'caption'} marginBottom={3}>
+        <Typography textAlign={"justify"} variant={"caption"} marginBottom={3}>
           Sigue las instrucciones del correo que llegará a tu bandeja para
           continuar con el proceso de reestablecimiento de contraseña. ¡Revisa
           también tu bandeja de spam por si las dudas!
@@ -43,7 +43,7 @@ const ForgotPassword = ({ setForgotPassword }) => {
 
         <TextField
           onChange={(e) => setEmail(e.target.value)}
-          label={'Correo'}
+          label={"Correo"}
         />
         <br />
         <Snackbar
@@ -59,14 +59,14 @@ const ForgotPassword = ({ setForgotPassword }) => {
         {isLoading ? (
           <Box paddingTop={3}>
             <CircularProgress
-              sx={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
+              sx={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
             />
           </Box>
         ) : (
           <>
             <Button
               type="submit"
-              color={'primary'}
+              color={"primary"}
               variant="contained"
               className={styles.submitButton}
             >

@@ -1,5 +1,5 @@
-import { getUsers, getUsersWithPermission } from '../../users/actions';
-import ComboBox from '../inputs/ComboBox';
+import { getUsers, getUsersWithPermission } from "../../users/actions";
+import ComboBox from "../inputs/ComboBox";
 
 const UsersCombobox = ({
   initialValue,
@@ -37,8 +37,8 @@ const UsersCombobox = ({
       customFormat="user"
       set={(newValue: any) =>
         multiple
-          ? set({ ...data, [property ?? 'users']: newValue })
-          : set({ ...data, [field ?? 'user']: newValue })
+          ? set({ ...data, [property ?? "users"]: newValue })
+          : set({ ...data, [field ?? "user"]: newValue })
       }
     ></ComboBox>
   );

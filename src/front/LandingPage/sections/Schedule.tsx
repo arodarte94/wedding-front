@@ -193,36 +193,34 @@ const Schedule = () => {
           </Grid>
         </Grid>
 
-        <Grid container padding={5} marginTop={5} >
+        <Grid container padding={5} marginTop={5}>
           <Grid lg={6} xs={12} className={styles.scheduleInstructions}>
-            
             <Grid container spacing={6}>
               <Grid item lg={6} xs={12}>
                 <h3>CONFIRMACIÓN</h3>
                 <p>
-
-                Es muy importante confirmar tu
-asistencia y selección de platillo
-a más tardar el día:
-
-<h3>4 Octubre 2024</h3>
-*Sin confirmación y selección
-de platillo no es posible servirte cena <br />¡Agradecemos tu pronta confirmación!
-
+                  Es muy importante confirmar tu asistencia y selección de
+                  platillo a más tardar el día:
+                  <h3>4 Octubre 2024</h3>
+                  *Sin confirmación y selección de platillo no es posible
+                  servirte cena <br />
+                  ¡Agradecemos tu pronta confirmación!
                 </p>
               </Grid>
               <Grid item lg={6} xs={12}>
-              <h3>DRESS CODE</h3>
-          <p>
-          Formal<br />
-          Hombres: Traje y corbata<br />
-          Mujeres: Vestido largo<br />
-          *Se reservará el derecho
-          de admisión
-          </p>
-          <Button className={styles.confirm} variant="outlined">
-            CONFIRMAR
-          </Button>
+                <h3>DRESS CODE</h3>
+                <p>
+                  Formal
+                  <br />
+                  Hombres: Traje y corbata
+                  <br />
+                  Mujeres: Vestido largo
+                  <br />
+                  *Se reservará el derecho de admisión
+                </p>
+                <Button className={styles.confirm} variant="outlined">
+                  CONFIRMAR
+                </Button>
               </Grid>
             </Grid>
           </Grid>

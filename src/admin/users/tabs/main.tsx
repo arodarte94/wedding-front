@@ -13,7 +13,6 @@ import EntreesCombobox from "../../components/ComboBox/EntreesCombobox";
 import DinnersCombobox from "../../components/ComboBox/DinnersCombobox";
 import UsersTypesCombobox from "../../components/ComboBox/UsersTypesCombobox";
 const MainTab = ({ user, set }: { user: User | null; set: any }) => {
-
   const appState = useSelector((state: RootState) => state.app);
   const [userData, setUserData] = useState({
     name: user?.name,
@@ -78,7 +77,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
               />
             </Grid>
             <Grid item md={6} xs={12}>
-            <UsersTypesCombobox
+              <UsersTypesCombobox
                 data={userData}
                 set={setUserData}
                 initialValue={user?.type ?? undefined}
@@ -134,25 +133,25 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             <Grid item xs={12}>
               {!userData?.host && (
                 <GroupsCombobox
-                data={userData}
-                set={setUserData}
-                initialValue={user?.group ?? undefined}
-              />
+                  data={userData}
+                  set={setUserData}
+                  initialValue={user?.group ?? undefined}
+                />
               )}
             </Grid>
             <Grid item md={6} xs={12}>
-            <EntreesCombobox
-                  data={userData}
-                  set={setUserData}
-                  initialValue={user?.entree ?? undefined}
-                />
+              <EntreesCombobox
+                data={userData}
+                set={setUserData}
+                initialValue={user?.entree ?? undefined}
+              />
             </Grid>
             <Grid item md={6} xs={12}>
-            <DinnersCombobox
-                  data={userData}
-                  set={setUserData}
-                  initialValue={user?.dinner ?? undefined}
-                />
+              <DinnersCombobox
+                data={userData}
+                set={setUserData}
+                initialValue={user?.dinner ?? undefined}
+              />
             </Grid>
           </Grid>
         </Grid>
