@@ -10,6 +10,7 @@ import Groups from "./admin/groups/page";
 import GroupEditView from "./admin/groups/edit";
 import UserEditView from "./admin/users/edit";
 import Wedding from "./front/Wedding";
+import WeddingConfirmation from "./front/Confirmation/page";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -32,7 +33,8 @@ root.render(
         <Route path="/admin/roles/new" element={<RolePage />} />
         <Route path="/" element={<Wedding />} />
         <Route path="/" element={<Wedding />} />
-        <Route path="/:id" element={<Wedding />} />
+        <Route path="/confirmation" element={<WeddingConfirmation />} />
+        <Route path="/:id" element={<WeddingConfirmation />} />
       </Routes>
     </RootLayout>
   </BrowserRouter>,

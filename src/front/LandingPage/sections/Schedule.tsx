@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "../../styles/front.module.scss";
 import { Box, Button, Grid } from "@mui/material";
 
@@ -195,8 +196,8 @@ const Schedule = () => {
 
         <Grid container padding={5} marginTop={5}>
           <Grid lg={6} xs={12} className={styles.scheduleInstructions}>
-            <Grid container spacing={6}>
-              <Grid item lg={6} xs={12}>
+            <Grid container>
+              <Grid item lg={6} xs={12} paddingRight={5}>
                 <h3>CONFIRMACIÓN</h3>
                 <p>
                   Es muy importante confirmar tu asistencia y selección de
@@ -218,9 +219,11 @@ const Schedule = () => {
                   <br />
                   *Se reservará el derecho de admisión
                 </p>
-                <Button className={styles.confirm} variant="outlined">
-                  CONFIRMAR
-                </Button>
+                <Link to="/confirmation">
+                  <Button className={styles.confirm} variant="outlined">
+                    CONFIRMAR
+                  </Button>
+                </Link>
               </Grid>
             </Grid>
           </Grid>

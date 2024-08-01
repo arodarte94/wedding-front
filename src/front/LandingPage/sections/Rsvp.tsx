@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import rsvpStyles from "../../styles/rsvp.module.scss";
 import styles from "../../styles/front.module.scss";
+import { Link } from "react-router-dom";
 
 const Rsvp = () => {
   return (
@@ -58,13 +59,16 @@ const Rsvp = () => {
               </li>
             </ol>
           </Typography>
-          <Button
-            className={rsvpStyles.confirm}
-            variant="outlined"
-            sx={{ marginLeft: 2 }}
-          >
-            CONFIRMAR
-          </Button>
+
+          <Link to="/confirmation">
+            <Button
+              className={rsvpStyles.confirm}
+              variant="outlined"
+              sx={{ marginLeft: 2 }}
+            >
+              CONFIRMAR
+            </Button>
+          </Link>
         </Box>
         <Box
           component={"img"}

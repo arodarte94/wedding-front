@@ -1,5 +1,5 @@
 import styles from "../styles/front.module.scss";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
@@ -7,7 +7,7 @@ import SynagogueOutlinedIcon from "@mui/icons-material/SynagogueOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { Button } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getUserByCode } from "../../admin/users/actions";
 import { User } from "../../admin/models/user.model";
 import WhoWeAre from "./sections/WhoWeAre";
@@ -34,6 +34,8 @@ const Page = () => {
   const rsvpRef = useRef(null);
   const giftsRef = useRef(null);
 
+  const location = useLocation();
+
   useEffect(() => {
     resize();
 
@@ -41,13 +43,33 @@ const Page = () => {
       getUserByCode(id, setGuest);
       animateSectionJump(boditaRef);
     }
-  }, [window.screen.width]);
+
+    // Listen to hash changes
+    const hash = location.hash;
+    if (hash) {
+      scrollToSection(hash);
+    }
+  }, [window.screen.width, location.hash]);
 
   const resize = () => {
     if (window.innerWidth <= 900) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
+    }
+  };
+
+  const scrollToSection = (hash) => {
+    const sectionRefMap = {
+      "#us": usRef,
+      "#event": boditaRef,
+      "#rsvp": rsvpRef,
+      "#gifts": giftsRef,
+    };
+
+    const ref = sectionRefMap[hash];
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ block: "start" });
     }
   };
 
@@ -138,9 +160,11 @@ const Page = () => {
       </div>
       <div className={styles.sideMenu}>
         <div className={styles.menuTitle}>
-          <Button className={styles.mainConfirm} variant="outlined">
-            CONFIRMAR
-          </Button>
+          <Link to="/confirmation">
+            <Button className={styles.mainConfirm} variant="outlined">
+              CONFIRMAR
+            </Button>
+          </Link>
         </div>
         <ul>
           <li>
@@ -183,7 +207,7 @@ const Page = () => {
         <section ref={rsvpRef} className={styles.rsvp}>
           <Rsvp />
         </section>
-        <div ref={giftsRef} className={styles.gifts}>
+        <div ref={giftsRef} className={styles.gifts} id="gifts">
           <Gifts />
         </div>
         <section className={styles.footer}>

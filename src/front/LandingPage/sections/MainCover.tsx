@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import styles from "../../styles/front.module.scss";
 import CelebrationIcon from "@mui/icons-material/Celebration";
+import { Link } from "react-router-dom";
 
 const MainCover = ({ isMobile }) => {
   const isIOS =
@@ -23,13 +24,15 @@ const MainCover = ({ isMobile }) => {
             ) : (
               <img src="mainLabel.png" alt="" />
             )}
-            <Button
-              variant="contained"
-              startIcon={<CelebrationIcon />}
-              className={styles.mainCoverConfirmButton}
-            >
-              Confirmar
-            </Button>
+            <Link to="/confirmation">
+              <Button
+                variant="contained"
+                startIcon={<CelebrationIcon />}
+                className={styles.mainCoverConfirmButton}
+              >
+                Confirmar
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

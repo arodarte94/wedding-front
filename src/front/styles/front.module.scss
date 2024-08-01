@@ -33,6 +33,19 @@ body {
   background-color: #ffffff !important;
   margin: 0px;
   overflow-x: hidden;
+
+  a:link {
+    color: inherit;
+  }
+  a:active {
+    color: inherit;
+  }
+  a:visited {
+    color: inherit;
+  }
+  a:hover {
+    color: inherit;
+  }
 }
 
 .main {
@@ -246,5 +259,9 @@ body {
     opacity: 0.2;
     font-size: 120px;
     line-height: 120px;
+
+    @media (max-width: $mobileThreshold) {
+      display: none;
+    }
   }
 }
