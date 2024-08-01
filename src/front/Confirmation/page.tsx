@@ -1,12 +1,40 @@
-import React, { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../styles/front.module.scss";
 import confirmationStyles from "../styles/confirmation.module.scss";
 import { Box, Button, TextField } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
+import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
+import SynagogueOutlinedIcon from "@mui/icons-material/SynagogueOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const WeddingConfirmation = () => {
   const [code, setCode] = useState(Array(5).fill("")); // Initialize state for the code
   const refs = useRef([]);
+  const [isMobile, setIsMobile] = useState(false);
+  const { id } = useParams();
+
+  useEffect(() => {
+    resize();
+
+    if (id) {
+    }
+  }, [window.screen.width]);
+
+  useEffect(() => {
+    refs.current[0]?.focus();
+  }, []);
+
+  const resize = () => {
+    if (window.innerWidth <= 900) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  window.onresize = resize;
 
   const handleInputChange = (e, index) => {
     const newValue = e.target.value;
@@ -38,6 +66,38 @@ const WeddingConfirmation = () => {
 
   return (
     <Box className={styles.main}>
+      <div className={styles.bottomMenu}>
+        <div className={styles.bottomMenuOption}>
+          <Link to="/">
+            <HomeOutlinedIcon />
+            <span>Inicio</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+          <Link to="/#us">
+            <FavoriteBorderOutlinedIcon />
+            <span>Nosotros</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+          <Link to="/#event">
+            <SynagogueOutlinedIcon />
+            <span>Evento</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+          <Link to="/#rsvp">
+            <MarkEmailReadOutlinedIcon />
+            <span>RSVP</span>
+          </Link>
+        </div>
+        <div className={styles.bottomMenuOption}>
+          <Link to="/#gifts">
+            <CardGiftcardOutlinedIcon />
+            <span>Regalos</span>
+          </Link>
+        </div>
+      </div>
       <Box className={styles.sideMenu}>
         <Box className={styles.menuTitle}>
           <Link to="/">
@@ -67,23 +127,45 @@ const WeddingConfirmation = () => {
 
       <Box className={styles.content}>
         <Box className={confirmationStyles.confirmationCode}>
-          {code.map((value, index) => (
-            <TextField
-              key={index}
-              value={value}
-              inputRef={(el) => (refs.current[index] = el)}
-              onChange={(e) => handleInputChange(e, index)}
-              inputProps={{ maxLength: 1, style: { textAlign: 'center' } }}
-              className={confirmationStyles.confirmationCodeInput}
-              sx={{
-                input: {
-                    backgroundColor: '#f6f3ed',
-                    fontFamily: 'chapaza',
-                    color: ''
-                }
-              }}
+          {isMobile ? (
+            <Box
+              component={"img"}
+              src="mainLabelMobile.png"
+              alt=""
+              className={confirmationStyles.mobileLabel}
             />
-          ))}
+          ) : (
+            <Box
+              component={"img"}
+              src="mainLabel.png"
+              alt=""
+              className={confirmationStyles.confirmationCodeImg}
+            />
+          )}
+
+          <Box display={"flex"}>
+            {code.map((value, index) => (
+              <TextField
+                key={index}
+                value={value}
+                inputRef={(el) => (refs.current[index] = el)}
+                onChange={(e) => handleInputChange(e, index)}
+                inputProps={{ maxLength: 1, style: { textAlign: "center" } }}
+                className={confirmationStyles.confirmationCodeInput}
+                sx={{
+                  input: {
+                    backgroundColor: "#f6f3ed",
+                    fontFamily: "chapaza",
+                    color: "#7c8274",
+                    fontWeight: 700,
+                    fontSize: 30,
+                    padding: 1.5,
+                    textTransform: "uppercase",
+                  },
+                }}
+              />
+            ))}
+          </Box>
         </Box>
       </Box>
     </Box>

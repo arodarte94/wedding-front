@@ -1,16 +1,30 @@
 @import "variables.module.scss";
 
 .confirmationCode {
+  min-height: 100vh;
   height: 100vh;
-  background: #FFF;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background-image: url("../../../public/Homepage.jpg");
+  background-position: 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 500px;
+  background-attachment: fixed;
 
   .confirmationCodeInput {
     padding: 10px;
     max-width: 100px;
   }
+  .confirmationCodeImg {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+  }
 
-
+  .mobileLabel {
+    width: 80%;
+  }
 }
