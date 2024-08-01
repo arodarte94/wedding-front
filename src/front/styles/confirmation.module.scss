@@ -1,0 +1,16 @@
+@import "variables.module.scss";
+
+.confirmationCode {
+  height: 100vh;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .confirmationCodeInput {
+    padding: 10px;
+    max-width: 100px;
+  }
+
+
+}
