@@ -64,7 +64,7 @@ const Rsvp = () => {
             <Button
               className={rsvpStyles.confirm}
               variant="outlined"
-              sx={{ marginLeft: 2 }}
+              sx={{ marginLeft: 2, zIndex: 10 }}
             >
               CONFIRMAR
             </Button>

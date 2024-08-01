@@ -54,6 +54,14 @@ const WeddingConfirmation = () => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+    if (e.key === 'Backspace' && code[index] === '') {
+      if (index > 0) {
+        refs.current[index - 1]?.focus();
+      }
+    }
+  };
+
   const handleSubmit = (finalCode) => {
     if (finalCode.every((char) => char !== "")) {
       console.log("Code entered:", finalCode.join(""));
@@ -150,6 +158,7 @@ const WeddingConfirmation = () => {
                 value={value}
                 inputRef={(el) => (refs.current[index] = el)}
                 onChange={(e) => handleInputChange(e, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
                 inputProps={{ maxLength: 1, style: { textAlign: "center" } }}
                 className={confirmationStyles.confirmationCodeInput}
                 sx={{
