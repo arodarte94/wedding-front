@@ -134,7 +134,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
             ) : (
               <Grid item xs={12}>
                 <UsersCombobox
-                  property="host"
+                  field="host"
                   data={userData}
                   set={setUserData}
                   type={1}

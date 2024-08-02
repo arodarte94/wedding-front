@@ -1,4 +1,4 @@
-import { getUsers, getUsersWithPermission } from "../../users/actions";
+import { getUsers } from "../../users/actions";
 import ComboBox from "../inputs/ComboBox";
 
 const UsersCombobox = ({

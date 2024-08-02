@@ -1,8 +1,6 @@
 import { Avatar, Badge, Box, Grid, Typography } from "@mui/material";
 import comboboxStyles from "../../styles/combobox.module.scss";
 import { ENV } from "../../../environment/environment";
-import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
-import ScaleOutlinedIcon from "@mui/icons-material/ScaleOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
@@ -23,14 +21,6 @@ const OptionFormatter = ({
     <>
       {customFormat === "user" && (
         <UserFormatter
-          props={props}
-          option={option}
-          field={field}
-          selected={selected}
-        />
-      )}
-      {customFormat === "product" && (
-        <ProductFormatter
           props={props}
           option={option}
           field={field}
@@ -65,45 +55,6 @@ const OptionFormatter = ({
   );
 };
 
-export const ProductFormatter = ({ props, option, field, selected }) => {
-  const image = option?.image ? ENV.imagePath + option?.image : "/noImage.png";
-
-  return (
-    <Grid
-      container
-      {...props}
-      className={[
-        comboboxStyles.option,
-        comboboxStyles.product,
-        selected ? comboboxStyles.selected : "",
-      ].join(" ")}
-    >
-      <Grid item xs={2} className={comboboxStyles.optionImage}>
-        <img src={image} width="100%" alt="" />
-      </Grid>
-      <Grid item xs={10} className={comboboxStyles.productInfo}>
-        <Typography fontWeight={"bold"} fontSize={14}>
-          {option[field] ?? option.name}
-        </Typography>
-        <Box display={"flex"} flexDirection={"row"} gap={1.5}>
-          <Typography
-            variant={"caption"}
-            className={comboboxStyles.additionalData}
-          >
-            <ClassOutlinedIcon /> {option?.category?.name}
-          </Typography>
-          <Typography
-            variant={"caption"}
-            className={comboboxStyles.additionalData}
-          >
-            <ScaleOutlinedIcon /> {option?.unit?.name}
-          </Typography>
-        </Box>
-      </Grid>
-    </Grid>
-  );
-};
-
 export const UserFormatter = ({ props, option, field, selected }) => {
   const image = option?.image ? ENV.imagePath + option?.image : "/noImage.png";
 
@@ -117,10 +68,7 @@ export const UserFormatter = ({ props, option, field, selected }) => {
         selected ? comboboxStyles.selected : "",
       ].join(" ")}
     >
-      <Grid item xs={2} className={comboboxStyles.optionImage}>
-        <img src={image} width="100%" alt="" />
-      </Grid>
-      <Grid item xs={10} className={comboboxStyles.productInfo}>
+      <Grid item xs={12} className={comboboxStyles.productInfo}>
         <Typography fontWeight={"bold"} fontSize={14}>
           {option[field] ?? option.name}
         </Typography>

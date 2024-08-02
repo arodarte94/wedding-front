@@ -43,10 +43,14 @@ export const getUser = async (id: string, set: any) => {
 };
 
 export const getUserByCode = async (id: string, set: any) => {
-  const response = await axios.get(
-    ENV.basePath + ENDPOINTS.GETBYCODE + "/" + id,
-  );
-  set(response.data.user);
+  try {
+    const response = await axios.get(
+      ENV.basePath + ENDPOINTS.GETBYCODE + "/" + id,
+    );
+    set(response.data.user);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const create = async (
