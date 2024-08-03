@@ -13,10 +13,7 @@ import _ from "lodash";
 
 const Guests = ({ guest, setGuest }) => {
   const changeMainSelection = (e, value, property) => {
-    console.log(value);
-    const guestCopy = _.cloneDeep(guest);
-    guest[property] = value;
-    setGuest(guestCopy);
+    setGuest({ ...guest, [property]: value });
   };
 
   const changeGuestSelection = (e, value, property, id = null) => {
@@ -58,48 +55,54 @@ const Guests = ({ guest, setGuest }) => {
                   </ToggleButtonGroup>
                 </Box>
 
-                <Box className={confirmationStyles.selectionRow}>
-                  <Typography className={confirmationStyles.selectionTitle}>
-                    Entrada
-                  </Typography>
-                  <ToggleButtonGroup
-                    color="primary"
-                    value={guest.entree_id}
-                    exclusive
-                    onChange={(e, value) => {
-                      changeMainSelection(e, value, "entree_id");
-                    }}
-                    aria-label="Entree"
-                    fullWidth
-                  >
-                    <ToggleButton value={1}>Ensalada Olimpia</ToggleButton>
-                    <ToggleButton value={2}>
-                      Tacos de jícama con camarón
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </Box>
+                {guest.confirmed === 1 && (
+                  <>
+                    <Box className={confirmationStyles.selectionRow}>
+                      <Typography className={confirmationStyles.selectionTitle}>
+                        Entrada
+                      </Typography>
+                      <ToggleButtonGroup
+                        color="primary"
+                        value={guest.entree_id}
+                        exclusive
+                        onChange={(e, value) => {
+                          changeMainSelection(e, value, "entree_id");
+                        }}
+                        aria-label="Entree"
+                        fullWidth
+                      >
+                        <ToggleButton value={1}>Ensalada Olimpia</ToggleButton>
+                        <ToggleButton value={2}>
+                          Tacos de jícama con camarón
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+                    </Box>
 
-                <Box className={confirmationStyles.selectionRow}>
-                  <Typography className={confirmationStyles.selectionTitle}>
-                    Plato fuerte
-                  </Typography>
-                  <ToggleButtonGroup
-                    color="primary"
-                    value={guest.dinner_id}
-                    exclusive
-                    onChange={(e, value) => {
-                      changeMainSelection(e, value, "dinner_id");
-                    }}
-                    aria-label="Dinner"
-                    fullWidth
-                  >
-                    <ToggleButton value={1}>Chile en Nogada</ToggleButton>
-                    <ToggleButton value={2}>
-                      Pollo con salsa en nuez
-                    </ToggleButton>
-                    <ToggleButton value={3}>Pizza (sólo niños)</ToggleButton>
-                  </ToggleButtonGroup>
-                </Box>
+                    <Box className={confirmationStyles.selectionRow}>
+                      <Typography className={confirmationStyles.selectionTitle}>
+                        Plato fuerte
+                      </Typography>
+                      <ToggleButtonGroup
+                        color="primary"
+                        value={guest.dinner_id}
+                        exclusive
+                        onChange={(e, value) => {
+                          changeMainSelection(e, value, "dinner_id");
+                        }}
+                        aria-label="Dinner"
+                        fullWidth
+                      >
+                        <ToggleButton value={1}>Chile en Nogada</ToggleButton>
+                        <ToggleButton value={2}>
+                          Pollo con salsa en nuez
+                        </ToggleButton>
+                        <ToggleButton value={3}>
+                          Pizza (sólo niños)
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+                    </Box>
+                  </>
+                )}
 
                 <Box className={confirmationStyles.floatingNumber}>1</Box>
               </Box>
@@ -137,60 +140,72 @@ const Guests = ({ guest, setGuest }) => {
                       </ToggleButtonGroup>
                     </Box>
 
-                    <Box className={confirmationStyles.selectionRow}>
-                      <Typography className={confirmationStyles.selectionTitle}>
-                        Entrada
-                      </Typography>
-                      <ToggleButtonGroup
-                        color="primary"
-                        value={person.entree_id}
-                        exclusive
-                        onChange={(e, value) => {
-                          changeGuestSelection(
-                            e,
-                            value,
-                            "entree_id",
-                            person.id,
-                          );
-                        }}
-                        aria-label="Entree"
-                        fullWidth
-                      >
-                        <ToggleButton value={1}>Ensalada Olimpia</ToggleButton>
-                        <ToggleButton value={2}>
-                          Tacos de jícama con camarón
-                        </ToggleButton>
-                      </ToggleButtonGroup>
-                    </Box>
+                    {person.confirmed === 1 && (
+                      <>
+                        <Box className={confirmationStyles.selectionRow}>
+                          <Typography
+                            className={confirmationStyles.selectionTitle}
+                          >
+                            Entrada
+                          </Typography>
+                          <ToggleButtonGroup
+                            color="primary"
+                            value={person.entree_id}
+                            exclusive
+                            onChange={(e, value) => {
+                              changeGuestSelection(
+                                e,
+                                value,
+                                "entree_id",
+                                person.id,
+                              );
+                            }}
+                            aria-label="Entree"
+                            fullWidth
+                          >
+                            <ToggleButton value={1}>
+                              Ensalada Olimpia
+                            </ToggleButton>
+                            <ToggleButton value={2}>
+                              Tacos de jícama con camarón
+                            </ToggleButton>
+                          </ToggleButtonGroup>
+                        </Box>
 
-                    <Box className={confirmationStyles.selectionRow}>
-                      <Typography className={confirmationStyles.selectionTitle}>
-                        Plato fuerte
-                      </Typography>
-                      <ToggleButtonGroup
-                        color="primary"
-                        value={person.dinner_id}
-                        exclusive
-                        onChange={(e, value) => {
-                          changeGuestSelection(
-                            e,
-                            value,
-                            "dinner_id",
-                            person.id,
-                          );
-                        }}
-                        aria-label="Dinner"
-                        fullWidth
-                      >
-                        <ToggleButton value={1}>Chile en Nogada</ToggleButton>
-                        <ToggleButton value={2}>
-                          Pollo con salsa en nuez
-                        </ToggleButton>
-                        <ToggleButton value={3}>
-                          Pizza (sólo niños)
-                        </ToggleButton>
-                      </ToggleButtonGroup>
-                    </Box>
+                        <Box className={confirmationStyles.selectionRow}>
+                          <Typography
+                            className={confirmationStyles.selectionTitle}
+                          >
+                            Plato fuerte
+                          </Typography>
+                          <ToggleButtonGroup
+                            color="primary"
+                            value={person.dinner_id}
+                            exclusive
+                            onChange={(e, value) => {
+                              changeGuestSelection(
+                                e,
+                                value,
+                                "dinner_id",
+                                person.id,
+                              );
+                            }}
+                            aria-label="Dinner"
+                            fullWidth
+                          >
+                            <ToggleButton value={1}>
+                              Chile en Nogada
+                            </ToggleButton>
+                            <ToggleButton value={2}>
+                              Pollo con salsa en nuez
+                            </ToggleButton>
+                            <ToggleButton value={3}>
+                              Pizza (sólo niños)
+                            </ToggleButton>
+                          </ToggleButtonGroup>
+                        </Box>
+                      </>
+                    )}
 
                     <Box className={confirmationStyles.floatingNumber}>
                       {index + 2}
