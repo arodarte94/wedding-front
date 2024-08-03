@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import GuestCode from "./components/Code";
+import Guests from "./components/Guests";
 
 const WeddingConfirmation = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const WeddingConfirmation = () => {
           setGuest={setGuest}
         />
       ) : (
-        guest?.name
+        <Guests guest={guest} setGuest={setGuest} />
       )}
     </>
   );

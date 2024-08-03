@@ -16,6 +16,7 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
   const [code, setCode] = useState(Array(5).fill("")); // Initialize state for the code
   const refs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     resize();
@@ -44,33 +45,42 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
     setLoading(true);
     const response = await getUserByCode(code, setGuest);
     setLoading(false);
+    if (!response) {
+      setError(true);
+      refs.current[0]?.focus(); // Focus on the first input field
+    } else {
+      setError(false);
+    }
   };
 
-  const handleInputChange = (e, index) => {
-    const newValue = e.target.value;
-
-    // Update the state with the new value at the correct index
+  const handleInputChange = (e, index, newValue) => {
     const newCode = [...code];
-    newCode[index] = newValue;
+    newCode[index] = newValue || e.target.value;
     setCode(newCode);
 
-    if (newValue.length === 1 && index < refs.current.length - 1) {
+    if (newValue && index < refs.current.length - 1) {
       refs.current[index + 1].focus();
     }
 
     if (index === refs.current.length - 1) {
-      // Trigger the function when the last input field is filled
       fetchGuest(newCode.join(""));
     }
   };
 
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    index: number,
-  ) => {
-    if (e.key === "Backspace" && code[index] === "") {
-      if (index > 0) {
+  const handleKeyDown = (e, index) => {
+    const key = e.key;
+
+    // If the key pressed is a single alphanumeric character
+    if (key.length === 1 && key.match(/[a-zA-Z0-9]/)) {
+      e.preventDefault(); // Prevent the default action
+      handleInputChange(e, index, key);
+    } else if (key === "Backspace") {
+      if (code[index] === "" && index > 0) {
         refs.current[index - 1]?.focus();
+      } else {
+        const newCode = [...code];
+        newCode[index] = "";
+        setCode(newCode);
       }
     }
   };
@@ -140,7 +150,7 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
                   className={confirmationStyles.confirmationCodeInput}
                   sx={{
                     input: {
-                      backgroundColor: "#f6f3ed",
+                      backgroundColor: error ? "#f4c6c6" : "#f6f3ed",
                       fontFamily: "chapaza",
                       color: "#7c8274",
                       fontWeight: 700,
