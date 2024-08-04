@@ -13,20 +13,29 @@ import _ from "lodash";
 
 const Guests = ({ guest, setGuest }) => {
   const changeMainSelection = (e, value, property) => {
-    setGuest({ ...guest, [property]: value });
+    if(value !== null) {
+        setGuest({ ...guest, [property]: value });
+    }
   };
 
   const changeGuestSelection = (e, value, property, id = null) => {
-    const guestCopy = _.cloneDeep(guest);
-    const modifiedGuest = guestCopy?.guests.find((i) => i.id === id);
-    modifiedGuest[property] = value;
-    setGuest(guestCopy);
+
+    if(value !== null) {
+        const guestCopy = _.cloneDeep(guest);
+        const modifiedGuest = guestCopy?.guests.find((i) => i.id === id);
+        modifiedGuest[property] = value;
+        setGuest(guestCopy);
+    }
   };
 
   return (
     <Box className={styles.main}>
+      
+      
       <MobileMenu />
       <SideMenu />
+
+
       <Box className={styles.content}>
         <Box className={confirmationStyles.guestsList}>
           <Grid container>
@@ -50,8 +59,8 @@ const Guests = ({ guest, setGuest }) => {
                     aria-label="Platform"
                     fullWidth
                   >
-                    <ToggleButton value={1}>Sí</ToggleButton>
-                    <ToggleButton value={0}>No</ToggleButton>
+                    <ToggleButton value={1} className={guest.confirmed ? confirmationStyles.selected : ""}>Sí</ToggleButton>
+                    <ToggleButton value={0} className={guest.confirmed ? confirmationStyles.selected : ""}>No</ToggleButton>
                   </ToggleButtonGroup>
                 </Box>
 
@@ -71,8 +80,8 @@ const Guests = ({ guest, setGuest }) => {
                         aria-label="Entree"
                         fullWidth
                       >
-                        <ToggleButton value={1}>Ensalada Olimpia</ToggleButton>
-                        <ToggleButton value={2}>
+                        <ToggleButton value={1} className={guest.entree_id === 1 ? confirmationStyles.selected : ""}>Ensalada Olimpia</ToggleButton>
+                        <ToggleButton value={2} className={guest.entree_id === 2 ? confirmationStyles.selected : ""}>
                           Tacos de jícama con camarón
                         </ToggleButton>
                       </ToggleButtonGroup>
@@ -92,11 +101,11 @@ const Guests = ({ guest, setGuest }) => {
                         aria-label="Dinner"
                         fullWidth
                       >
-                        <ToggleButton value={1}>Chile en Nogada</ToggleButton>
-                        <ToggleButton value={2}>
+                        <ToggleButton value={1} className={guest.dinner_id === 1 ? confirmationStyles.selected : ""}>Chile en Nogada</ToggleButton>
+                        <ToggleButton value={2} className={guest.dinner_id === 2 ? confirmationStyles.selected : ""}>
                           Pollo con salsa en nuez
                         </ToggleButton>
-                        <ToggleButton value={3}>
+                        <ToggleButton value={3} className={guest.dinner_id === 3 ? confirmationStyles.selected : ""}>
                           Pizza (sólo niños)
                         </ToggleButton>
                       </ToggleButtonGroup>
@@ -135,8 +144,8 @@ const Guests = ({ guest, setGuest }) => {
                         aria-label="Confirmation"
                         fullWidth
                       >
-                        <ToggleButton value={1}>Sí</ToggleButton>
-                        <ToggleButton value={0}>No</ToggleButton>
+                        <ToggleButton value={1} className={person.confirmed ? confirmationStyles.selected : ""}>Sí</ToggleButton>
+                        <ToggleButton value={0} className={!person.confirmed ? confirmationStyles.selected : ""}>No</ToggleButton>
                       </ToggleButtonGroup>
                     </Box>
 
@@ -163,10 +172,10 @@ const Guests = ({ guest, setGuest }) => {
                             aria-label="Entree"
                             fullWidth
                           >
-                            <ToggleButton value={1}>
+                            <ToggleButton value={1} className={person.entree_id === 1 ? confirmationStyles.selected : ""}>
                               Ensalada Olimpia
                             </ToggleButton>
-                            <ToggleButton value={2}>
+                            <ToggleButton value={2} className={person.entree_id === 2 ? confirmationStyles.selected : ""}>
                               Tacos de jícama con camarón
                             </ToggleButton>
                           </ToggleButtonGroup>
@@ -193,13 +202,13 @@ const Guests = ({ guest, setGuest }) => {
                             aria-label="Dinner"
                             fullWidth
                           >
-                            <ToggleButton value={1}>
+                            <ToggleButton value={1} className={person.dinner_id === 1 ? confirmationStyles.selected : ""}>
                               Chile en Nogada
                             </ToggleButton>
-                            <ToggleButton value={2}>
+                            <ToggleButton value={2} className={person.dinner_id === 2 ? confirmationStyles.selected : ""}>
                               Pollo con salsa en nuez
                             </ToggleButton>
-                            <ToggleButton value={3}>
+                            <ToggleButton value={3} className={person.dinner_id === 3 ? confirmationStyles.selected : ""}>
                               Pizza (sólo niños)
                             </ToggleButton>
                           </ToggleButtonGroup>

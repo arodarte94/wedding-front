@@ -56,6 +56,20 @@
       border-bottom: 1px solid $greenOverlay;
       padding: 30px 30px;
 
+      button {
+        background-color: $green;
+        font-family: 'chapaza';
+        color: white;
+        border: 1px solid $beige;
+
+        &:hover {
+          background-color: $pink !important;
+        }
+
+        &.selected {
+          background-color: $blue;
+        }
+      }
       .selectionTitle {
         font-family: "chapaza";
         color: $blue;
