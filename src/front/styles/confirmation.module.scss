@@ -58,7 +58,7 @@
 
       button {
         background-color: $green;
-        font-family: 'chapaza';
+        font-family: "chapaza";
         color: white;
         border: 1px solid $beige;
 
@@ -86,8 +86,17 @@
       text-align: right;
       font-family: "chapaza";
       color: $green;
-      opacity: 0.3;
+      opacity: 0.5;
       font-size: 50px;
+      font-weight: 700;
     }
   }
+}
+
+.footerButtons {
+  position: fixed;
+  display: block;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
 }
