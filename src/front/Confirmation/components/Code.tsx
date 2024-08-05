@@ -57,8 +57,7 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
     const newCode = [...code];
     newCode[index] = newValue || e.target.value;
     setCode(newCode);
-
-    if (newValue && index < refs.current.length - 1) {
+    if (newCode[index] && index < refs.current.length - 1) {
       refs.current[index + 1].focus();
     }
 
