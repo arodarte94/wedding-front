@@ -4,7 +4,7 @@ import {
   GridRenderCellParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid";
-import { idColumn, updatedAtColumn } from "../lib/defaultTableColumns";
+import { idColumn, transformDate, updatedAtColumn } from "../lib/defaultTableColumns";
 import { Link } from "react-router-dom";
 import styles from "../styles/tables.module.scss";
 import { TextFilter } from "../components/tables/columnFilter";
@@ -27,25 +27,29 @@ export const columns: GridColDef[] = [
       <Link to={"/admin/users/" + params.row.id}>{params.row.name}</Link>
     ),
   },
-  { field: "email", headerName: "Correo", width: 250, filter: TextFilter },
   // { field: 'confirmed', headerName: 'Confirmado', width: 150 },
   {
     field: "confirmed_at",
     headerName: "Fecha de confirmación",
     width: 200,
     filter: DateRangePicker,
+    valueGetter: transformDate,
+  },
+  {
+    field: "slots",
+    headerName: "Extras asignados",
+    width: 200,
+    filter: TextFilter,
+    valueGetter: (params: GridValueGetterParams) =>
+      params.row?.slots === 0 ? "" : params.row.slots,
   },
   {
     field: "guests_count",
     headerName: "Extras utilizados",
     width: 200,
     filter: TextFilter,
-  },
-  {
-    field: "slots",
-    headerName: "Extras disponibles",
-    width: 200,
-    filter: TextFilter,
+    valueGetter: (params: GridValueGetterParams) =>
+      params.row?.slots === 0 ? "" : params.row.guests_count,
   },
   {
     field: "type",
