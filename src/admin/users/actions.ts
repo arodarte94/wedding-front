@@ -10,6 +10,7 @@ enum ENDPOINTS {
   GETUSERSTYPES = "users-types",
   GETENTREES = "entrees",
   GETDINNERS = "dinners",
+  SAVEGUESTS = "guests",
 }
 
 export const getUsers = async (
@@ -49,7 +50,6 @@ export const getUserByCode = async (id: string, set: any) => {
     );
     set(response.data.user);
   } catch (error) {
-    console.log(error);
   }
 };
 
@@ -109,6 +109,16 @@ export const update = async (
       slots: slots,
     },
   );
+
+  return response;
+};
+
+export const saveGuests = async (
+  requestData?: any,
+) => {
+  const response = await axios.post(ENV.basePath + ENDPOINTS.SAVEGUESTS, {
+    guest: requestData,
+  });
 
   return response;
 };

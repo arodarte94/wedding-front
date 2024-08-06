@@ -10,19 +10,27 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import MobileMenu from "./MobileMenu";
 import SideMenu from "./SideMenu";
 import _ from "lodash";
+import { saveGuests } from "../../../admin/users/actions";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useState } from "react";
+import LoadingBackdrop from "../../../admin/components/layout/loadingBackdrop";
+
+const swal = withReactContent(Swal)
 
 const Guests = ({ guest, setGuest }) => {
   const availableSlots = guest?.slots - guest?.guests.length;
-  console.log(availableSlots);
+
+  const [loading, setLoading] = useState(false);
+
   const newGuests = Array(availableSlots).fill({
     id: null,
     name: "",
     confirmed: 0,
-    entree_id: 0,
-    dinner_id: 0,
+    entree_id: null,
+    dinner_id: null,
     new: true,
   });
 
@@ -51,19 +59,48 @@ const Guests = ({ guest, setGuest }) => {
       name: value,
       new: true,
       confirmed: 0,
-      entree_id: 0,
-      dinner_id: 0,
+      entree_id: null,
+      dinner_id: null,
     };
     const guestCopy = _.cloneDeep(guest);
     guestCopy.guests.push(newGuestData);
     setGuest(guestCopy);
   };
 
+  const save = async () => {
+    setLoading(true);
+    const res = await saveGuests(guest);
+    setLoading(false);
+    if (res?.status === 200) {
+
+      setGuest(res.data.user);
+
+      swal.fire({
+        title: "¡Gracias!",
+        text: "Tu confirmación y platillos han sido guardados",
+        icon: "success",
+        confirmButtonText: "Cerrar"
+      });
+
+    }
+
+    else {
+      swal.fire({
+        title: "¡Oops!",
+        text: res?.response?.data?.message || "An error occurred",
+        icon: "error",
+        confirmButtonText: "Cerrar"
+      });
+    }
+
+  };
+
   return (
     <Box className={styles.main}>
+      {loading && <LoadingBackdrop />}
       <Box className={confirmationStyles.footerButtons}>
         <ButtonGroup fullWidth>
-          <Button variant="contained" color="success">
+          <Button variant="contained" color="success" onClick={save}>
             Guardar
           </Button>
           <Button variant="contained" color="warning">
@@ -114,7 +151,7 @@ const Guests = ({ guest, setGuest }) => {
 
 const GuestOptions = ({ guest, handle, index }) => {
   return (
-    <Grid item xl={4} lg={6} xs={12} padding={1}>
+    <Grid item xl={4} lg={6} xs={12} padding={1} marginBottom={2}>
       <Box className={confirmationStyles.guestCard}>
         <Typography className={confirmationStyles.guestName}>
           {guest.name}

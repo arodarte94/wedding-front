@@ -56,6 +56,10 @@
       border-bottom: 1px solid $greenOverlay;
       padding: 30px 30px;
 
+      @media (max-width: $mobileThreshold) {
+        padding: 10px 10px;
+      }
+
       button {
         background-color: $green;
         font-family: "chapaza";
@@ -99,4 +103,31 @@
   bottom: 0;
   width: 100%;
   z-index: 100;
+
+  button {
+    font-family: 'chapaza';
+    letter-spacing: 1px;
+    height:50px;
+    font-size: 18px;
+  }
+
+  button:first-child {
+    background: $pink;
+  }
+
+  button:nth-child(2) {
+    background: $blue;
+    color: $beige;
+  }
+
+  @media (min-width: $mobileThreshold) {
+    width: 400px;
+    right: 70px;
+    bottom: 30px;
+
+    /* Hide second button inside footerButtons on desktop */
+    button:nth-child(2) {
+      display: none;
+    }
+  }
 }

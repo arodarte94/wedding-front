@@ -21,7 +21,6 @@ export const getGroups = async (
       name: params?.name,
     },
   });
-  console.log(response);
   return response;
 };
 
