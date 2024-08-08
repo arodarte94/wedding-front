@@ -92,7 +92,12 @@ const Guests = ({ guest, setGuest }) => {
 
   return (
     <Box className={styles.main}>
-      {loading && <LoadingBackdrop />}
+      {loading && <Box sx={{position: 'fixed', height: '100vh', width:'100%', zIndex: 10000}}>
+        <LoadingBackdrop />
+      </Box>
+
+      
+      }
       <Box className={confirmationStyles.footerButtons}>
         <ButtonGroup fullWidth>
           <Button variant="contained" color="success" onClick={save}>
