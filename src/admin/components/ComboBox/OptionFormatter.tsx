@@ -2,7 +2,7 @@ import { Avatar, Badge, Box, Grid, Typography } from "@mui/material";
 import comboboxStyles from "../../styles/combobox.module.scss";
 import { ENV } from "../../../environment/environment";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import TableBarIcon from "@mui/icons-material/TableBar";
 
 const OptionFormatter = ({
   props,
@@ -77,7 +77,7 @@ export const UserFormatter = ({ props, option, field, selected }) => {
             variant={"caption"}
             className={comboboxStyles.additionalData}
           >
-            <EmailOutlinedIcon /> {option?.email}
+            <TableBarIcon /> {option?.group?.name}
           </Typography>
         </Box>
       </Grid>

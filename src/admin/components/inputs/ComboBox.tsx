@@ -61,22 +61,13 @@ const ComboBox = ({
     setOptions(async ? [...responseData] : responseData);
   };
 
-  const handleFirstLoad = () => {
-    if (isFirstLoad) {
-      fetchOptions();
-      setIsFirstLoad(false);
-    }
-  };
-
   useEffect(() => {
-    if (!isFirstLoad) {
-      setIsLoading(true);
-      let timer = setTimeout(() => {
-        fetchOptions();
-      }, 500);
+    setIsLoading(true);
+    let timer = setTimeout(() => {
+      fetchOptions();
+    }, 500);
 
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, [query]);
 
   const search = (term: string) => {
@@ -144,7 +135,6 @@ const ComboBox = ({
           {...params}
           label={label ?? "Seleccionar..."}
           onChange={async ? (e) => search(e.target.value) : undefined}
-          onClick={() => handleFirstLoad()}
         />
       )}
       renderOption={(props, option, { selected }) => (

@@ -49,8 +49,7 @@ export const getUserByCode = async (id: string, set: any) => {
       ENV.basePath + ENDPOINTS.GETBYCODE + "/" + id,
     );
     set(response.data.user);
-  } catch (error) {
-  }
+  } catch (error) {}
 };
 
 export const create = async (
@@ -113,9 +112,7 @@ export const update = async (
   return response;
 };
 
-export const saveGuests = async (
-  requestData?: any,
-) => {
+export const saveGuests = async (requestData?: any) => {
   const response = await axios.post(ENV.basePath + ENDPOINTS.SAVEGUESTS, {
     guest: requestData,
   });

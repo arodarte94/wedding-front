@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { logout as clearUser } from "../../auth/slice";
 import { useState } from "react";
+import { ENV } from "../../../environment/environment";
 
 const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);

@@ -13,12 +13,12 @@ import {
 import SideMenu from "./SideMenu";
 import _ from "lodash";
 import { saveGuests } from "../../../admin/users/actions";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import { useState } from "react";
 import LoadingBackdrop from "../../../admin/components/layout/loadingBackdrop";
 
-const swal = withReactContent(Swal)
+const swal = withReactContent(Swal);
 
 const Guests = ({ guest, setGuest }) => {
   const availableSlots = guest?.slots - guest?.guests.length;
@@ -72,27 +72,22 @@ const Guests = ({ guest, setGuest }) => {
     const res = await saveGuests(guest);
     setLoading(false);
     if (res?.status === 200) {
-
       setGuest(res.data.user);
 
       swal.fire({
         title: "¡Gracias!",
         text: "Tu confirmación y platillos han sido guardados",
         icon: "success",
-        confirmButtonText: "Cerrar"
+        confirmButtonText: "Cerrar",
       });
-
-    }
-
-    else {
+    } else {
       swal.fire({
         title: "¡Oops!",
         text: res?.response?.data?.message || "An error occurred",
         icon: "error",
-        confirmButtonText: "Cerrar"
+        confirmButtonText: "Cerrar",
       });
     }
-
   };
 
   return (
@@ -119,7 +114,18 @@ const Guests = ({ guest, setGuest }) => {
               guest={guest}
               handle={changeMainSelection}
               index={1}
-            />
+            >
+              <Box className={confirmationStyles.selectionRow}>
+                <TextField
+                  fullWidth
+                  label="Correo electrónico..."
+                  value={guest?.email}
+                  onChange={(e) =>
+                    setGuest({ ...guest, email: e.target.value })
+                  }
+                />
+              </Box>
+            </GuestOptions>
             {guest?.guests.map((person, index) => {
               return (
                 <GuestOptions
@@ -149,14 +155,24 @@ const Guests = ({ guest, setGuest }) => {
   );
 };
 
-const GuestOptions = ({ guest, handle, index }) => {
+const GuestOptions = ({
+  guest,
+  handle,
+  index,
+  children,
+}: {
+  guest: any;
+  handle: any;
+  index: any;
+  children?: any;
+}) => {
   return (
     <Grid item xl={4} lg={6} xs={12} padding={1} marginBottom={2}>
       <Box className={confirmationStyles.guestCard}>
         <Typography className={confirmationStyles.guestName}>
           {guest.name}
         </Typography>
-
+        {children}
         <Box className={confirmationStyles.selectionRow}>
           <Typography className={confirmationStyles.selectionTitle}>
             ¿Esta persona asistirá?
@@ -272,7 +288,7 @@ const GuestOptions = ({ guest, handle, index }) => {
 
 const NewGuest = ({ guest, handle, index, add }) => {
   return (
-    <Grid item xl={4} lg={6} xs={12} padding={1}>
+    <Grid item xl={4} lg={6} xs={12} padding={1} marginBottom={3}>
       <Box className={confirmationStyles.guestCard}>
         <Typography className={confirmationStyles.guestName}>
           Nuevo invitado

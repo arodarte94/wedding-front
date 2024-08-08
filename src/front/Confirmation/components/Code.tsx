@@ -43,6 +43,7 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
   window.onresize = resize;
   const fetchGuest = async (code: string) => {
     setLoading(true);
+    setError(false);
     const response = await getUserByCode(code, setGuest);
     setLoading(false);
     if (!response) {
@@ -53,15 +54,16 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
     }
   };
 
-  const handleInputChange = (e, index, newValue) => {
+  const handleInputChange = (e, index, newValue = null) => {
     const newCode = [...code];
     newCode[index] = newValue || e.target.value;
     setCode(newCode);
+    setError(false);
     if (newCode[index] && index < refs.current.length - 1) {
       refs.current[index + 1].focus();
     }
 
-    if (index === refs.current.length - 1) {
+    if (index === refs.current.length - 1 && newCode?.length === 5) {
       fetchGuest(newCode.join(""));
     }
   };
@@ -123,6 +125,7 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
                   display={"flex"}
                   justifyContent={"center"}
                   alignItems={"center"}
+                  overflow={"hidden"}
                   gap={3}
                 >
                   <CircularProgress sx={{ color: "#7c8274" }} />
@@ -162,6 +165,16 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
               ))}
             </Box>
           )}
+          <Box padding={1.5}>
+            {error && (
+              <Alert
+                severity="warning"
+                sx={{ fontFamily: "chapaza", fontSize: 16, marginTop: 2 }}
+              >
+                Código de invitado no encontrado, por favor intenta de nuevo.
+              </Alert>
+            )}
+          </Box>
         </Box>
       </Box>
     </Box>

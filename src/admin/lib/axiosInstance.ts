@@ -47,7 +47,6 @@ defaultInstance.interceptors.request.use(
   },
 );
 
-
 // Add a response interceptor
 defaultInstance.interceptors.response.use(
   (response) => response,
@@ -57,8 +56,7 @@ defaultInstance.interceptors.response.use(
 
     // Example: You can handle specific status codes globally
     if (error.response) {
-
-       if (error.response.status === 400) {
+      if (error.response.status === 400) {
         console.log("Server error");
       }
 
@@ -75,10 +73,8 @@ defaultInstance.interceptors.response.use(
     }
 
     return error;
-  }
+  },
 );
-
-
 
 export const cancelPendingRequests = () => {
   sources.forEach((source) => source.cancel());

@@ -4,7 +4,11 @@ import {
   GridRenderCellParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid";
-import { idColumn, transformDate, updatedAtColumn } from "../lib/defaultTableColumns";
+import {
+  idColumn,
+  transformDate,
+  updatedAtColumn,
+} from "../lib/defaultTableColumns";
 import { Link } from "react-router-dom";
 import styles from "../styles/tables.module.scss";
 import { TextFilter } from "../components/tables/columnFilter";
