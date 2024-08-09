@@ -12,8 +12,12 @@ import styles from "../../styles/app.module.scss";
 import { create, update } from "../actions";
 import TabOptions from "../../components/edit-view/TabOptions";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
+import LoadingBackdrop from "../../components/layout/loadingBackdrop";
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
 
 const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
+  const appState = useSelector((state: RootState) => state.app);
   const [groupData, setGroupData] = useState({
     name: group?.name,
     capacity: group?.capacity,
@@ -31,6 +35,7 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
     <>
       <TabOptions save={save} link="/admin/groups" />
       <Grid container spacing={2} className={styles.tabContent}>
+      {appState.isLoading && <LoadingBackdrop />}
         <Grid item md={6} xs={12}>
           <TextField
             fullWidth

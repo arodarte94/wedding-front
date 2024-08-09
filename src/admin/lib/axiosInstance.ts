@@ -47,35 +47,6 @@ defaultInstance.interceptors.request.use(
   },
 );
 
-// Add a response interceptor
-defaultInstance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    // Centralized error handling
-    console.error("Response error:", error);
-
-    // Example: You can handle specific status codes globally
-    if (error.response) {
-      if (error.response.status === 400) {
-        console.log("Server error");
-      }
-
-      if (error.response.status === 401) {
-        global?.window?.localStorage.removeItem("user");
-        console.log("Unauthorized access - User logged out");
-      } else if (error.response.status === 403) {
-        console.log("Access denied");
-      } else if (error.response.status === 404) {
-        console.log("Resource not found");
-      } else if (error.response.status === 500) {
-        console.log("Server error");
-      }
-    }
-
-    return error;
-  },
-);
-
 export const cancelPendingRequests = () => {
   sources.forEach((source) => source.cancel());
   sources = [];

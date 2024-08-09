@@ -1,10 +1,9 @@
-import { Autocomplete, Divider, Grid, TextField } from "@mui/material";
+import { Divider, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 import styles from "../../styles/app.module.scss";
 import TabOptions from "../../components/edit-view/TabOptions";
 import { User } from "../../models/user.model";
-import { create, getHosts, update } from "../actions";
-import ComboBox from "../../components/inputs/ComboBox";
+import { create, update } from "../actions";
 import LoadingBackdrop from "../../components/layout/loadingBackdrop";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
