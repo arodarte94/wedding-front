@@ -32,7 +32,7 @@ export const getUsers = async (
       dinners: params?.dinners,
       entrees: params?.entrees,
       confirmed: params?.confirmed,
-      notConfirmed: params?.notConfirmed,
+      unconfirmed: params?.unconfirmed,
     },
   });
   return response;

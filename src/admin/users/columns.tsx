@@ -17,6 +17,7 @@ import GroupsCombobox from "../components/ComboBox/GroupsCombobox";
 import EntreesCombobox from "../components/ComboBox/EntreesCombobox";
 import DinnersCombobox from "../components/ComboBox/DinnersCombobox";
 import UsersTypesCombobox from "../components/ComboBox/UsersTypesCombobox";
+import IsConfirmedCombobox from "../components/ComboBox/IsConfirmedCombobox";
 export const columns: GridColDef[] = [
   idColumn,
   {
@@ -31,7 +32,13 @@ export const columns: GridColDef[] = [
       <Link to={"/admin/users/" + params.row.id}>{params.row.name}</Link>
     ),
   },
-  // { field: 'confirmed', headerName: 'Confirmado', width: 150 },
+  { 
+    field: 'confirmed', 
+    headerName: 'Confirmado', 
+    width: 150, 
+    filter: IsConfirmedCombobox,
+    valueGetter: (params: GridValueGetterParams) => params.row.confirmed ? 'Sí' : "No",
+  },
   {
     field: "confirmed_at",
     headerName: "Fecha de confirmación",

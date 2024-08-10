@@ -19,11 +19,11 @@ const IsConfirmedCombobox = ({
   const handleSelect = (e: any, val: any) => {
     if (val) {
       set({
-        [val.id === 2 ? "notConfirmed" : "confirmed"]: 1,
-        [val.id === 2 ? "confirmed" : "notConfirmed"]: null,
+        [val.id === 2 ? "unconfirmed" : "confirmed"]: 1,
+        [val.id === 2 ? "confirmed" : "unconfirmed"]: null,
       });
     } else {
-      set({ confirmed: null, notConfirmed: null });
+      set({ confirmed: null, unconfirmed: null });
     }
   };
 
@@ -33,8 +33,8 @@ const IsConfirmedCombobox = ({
       limitTags={isTableFilter ? 1 : 20}
       className={isTableFilter ? styles.headerComboBox : ""}
       options={[
-        { id: 1, name: "Inventariable" },
-        { id: 2, name: "No inventariable" },
+        { id: 1, name: "Confirmado" },
+        { id: 2, name: "Sin confirmar" },
       ]}
       getOptionLabel={(option) => option.name}
       {...customProps}
