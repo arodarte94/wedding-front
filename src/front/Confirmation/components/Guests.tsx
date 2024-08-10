@@ -6,8 +6,6 @@ import {
   ButtonGroup,
   Grid,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
   Typography,
 } from "@mui/material";
 import SideMenu from "./SideMenu";
@@ -17,6 +15,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useState } from "react";
 import LoadingBackdrop from "../../../admin/components/layout/loadingBackdrop";
+import GuestCard from "./GuestCard";
 
 const swal = withReactContent(Swal);
 
@@ -81,6 +80,7 @@ const Guests = ({ guest, setGuest }) => {
         confirmButtonText: "Cerrar",
       });
     } else {
+      console.log(res);
       swal.fire({
         title: "¡Oops!",
         text: res?.response?.data?.message || "An error occurred",
@@ -95,8 +95,6 @@ const Guests = ({ guest, setGuest }) => {
       {loading && <Box sx={{position: 'fixed', height: '100vh', width:'100%', zIndex: 10000}}>
         <LoadingBackdrop />
       </Box>
-
-      
       }
       <Box className={confirmationStyles.footerButtons}>
         <ButtonGroup fullWidth>
@@ -108,13 +106,11 @@ const Guests = ({ guest, setGuest }) => {
           </Button>
         </ButtonGroup>
       </Box>
-
       <SideMenu />
-
       <Box className={styles.content}>
         <Box className={confirmationStyles.guestsList}>
           <Grid container>
-            <GuestOptions
+            <GuestCard
               key={"mainGuest"}
               guest={guest}
               handle={changeMainSelection}
@@ -130,10 +126,10 @@ const Guests = ({ guest, setGuest }) => {
                   }
                 />
               </Box>
-            </GuestOptions>
+            </GuestCard>
             {guest?.guests.map((person, index) => {
               return (
-                <GuestOptions
+                <GuestCard
                   key={"childGuest" + index}
                   guest={person}
                   handle={changeGuestSelection}
@@ -157,137 +153,6 @@ const Guests = ({ guest, setGuest }) => {
         </Box>
       </Box>
     </Box>
-  );
-};
-
-const GuestOptions = ({
-  guest,
-  handle,
-  index,
-  children,
-}: {
-  guest: any;
-  handle: any;
-  index: any;
-  children?: any;
-}) => {
-  return (
-    <Grid item xl={4} lg={6} xs={12} padding={1} marginBottom={2}>
-      <Box className={confirmationStyles.guestCard}>
-        <Typography className={confirmationStyles.guestName}>
-          {guest.name}
-        </Typography>
-        {children}
-        <Box className={confirmationStyles.selectionRow}>
-          <Typography className={confirmationStyles.selectionTitle}>
-            ¿Esta persona asistirá?
-          </Typography>
-          <ToggleButtonGroup
-            color="primary"
-            value={guest.confirmed}
-            exclusive
-            onChange={(e, value) => {
-              handle(e, value, "confirmed", guest.id);
-            }}
-            aria-label="Confirmation"
-            fullWidth
-          >
-            <ToggleButton
-              value={1}
-              className={guest.confirmed ? confirmationStyles.selected : ""}
-            >
-              Sí
-            </ToggleButton>
-            <ToggleButton
-              value={0}
-              className={!guest.confirmed ? confirmationStyles.selected : ""}
-            >
-              No
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
-
-        {guest.confirmed === 1 && (
-          <>
-            <Box className={confirmationStyles.selectionRow}>
-              <Typography className={confirmationStyles.selectionTitle}>
-                Entrada
-              </Typography>
-              <ToggleButtonGroup
-                color="primary"
-                value={guest.entree_id}
-                exclusive
-                onChange={(e, value) => {
-                  handle(e, value, "entree_id", guest.id);
-                }}
-                aria-label="Entree"
-                fullWidth
-              >
-                <ToggleButton
-                  value={1}
-                  className={
-                    guest.entree_id === 1 ? confirmationStyles.selected : ""
-                  }
-                >
-                  Ensalada Olimpia
-                </ToggleButton>
-                <ToggleButton
-                  value={2}
-                  className={
-                    guest.entree_id === 2 ? confirmationStyles.selected : ""
-                  }
-                >
-                  Tacos de jícama con camarón
-                </ToggleButton>
-              </ToggleButtonGroup>
-            </Box>
-
-            <Box className={confirmationStyles.selectionRow}>
-              <Typography className={confirmationStyles.selectionTitle}>
-                Plato fuerte
-              </Typography>
-              <ToggleButtonGroup
-                color="primary"
-                value={guest.dinner_id}
-                exclusive
-                onChange={(e, value) => {
-                  handle(e, value, "dinner_id", guest.id);
-                }}
-                aria-label="Dinner"
-                fullWidth
-              >
-                <ToggleButton
-                  value={1}
-                  className={
-                    guest.dinner_id === 1 ? confirmationStyles.selected : ""
-                  }
-                >
-                  Chile en Nogada
-                </ToggleButton>
-                <ToggleButton
-                  value={2}
-                  className={
-                    guest.dinner_id === 2 ? confirmationStyles.selected : ""
-                  }
-                >
-                  Pollo con salsa en nuez
-                </ToggleButton>
-                <ToggleButton
-                  value={3}
-                  className={
-                    guest.dinner_id === 3 ? confirmationStyles.selected : ""
-                  }
-                >
-                  Pizza (sólo niños)
-                </ToggleButton>
-              </ToggleButtonGroup>
-            </Box>
-          </>
-        )}
-
-        <Box className={confirmationStyles.floatingNumber}>{index}</Box>
-      </Box>
-    </Grid>
   );
 };
 

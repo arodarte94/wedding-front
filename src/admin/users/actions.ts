@@ -113,11 +113,17 @@ export const update = async (
 };
 
 export const saveGuests = async (requestData?: any) => {
+
+  try {
   const response = await axios.post(ENV.basePath + ENDPOINTS.SAVEGUESTS, {
     guest: requestData,
   });
-
+  
   return response;
+  }
+  catch (error) {
+    return error;
+  }
 };
 
 export const deleteUsers = async (users: number[]) => {

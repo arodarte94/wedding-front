@@ -73,7 +73,7 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
               image="https://1.bp.blogspot.com/-_KJEdOO6wfE/V2GvfG95UpI/AAAAAAAAIWQ/dxmJ6T7i3d0etDH9V6V5SBKXr7FHG8eFQCLcB/s1600/IMG_0210.jpg"
             />
             <CardContent>
-              <h3>Ensaladita olimpia</h3>
+              <h3>Ensalada Olimpia</h3>
               <Typography>
                 <RestaurantIcon sx={{ fontSize: 15 }} /> Cantidad solicitada: 0
               </Typography>
@@ -88,7 +88,7 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
               image="https://blog.renaware.com/wp-content/uploads/2016/09/Tacos-de-camaron-featured.png"
             />
             <CardContent>
-              <h3>Takitos de jicama</h3>
+              <h3>Tacos de jícama con camarón</h3>
               <Typography>
                 <RestaurantIcon sx={{ fontSize: 15 }} /> Cantidad solicitada: 0
               </Typography>
@@ -117,7 +117,21 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
               image="https://montesesma.com/wp-content/uploads/2021/03/pollo-con-salsa-de-nueces.jpg"
             />
             <CardContent>
-              <h3>Pollito en salsa de nuez</h3>
+              <h3>Pollito con salsa en nuez</h3>
+              <Typography>
+                <RestaurantIcon sx={{ fontSize: 15 }} /> Cantidad solicitada: 0
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item lg={3} md={6} xs={12}>
+          <Card>
+            <CardMedia
+              sx={{ height: 140 }}
+              image="https://montesesma.com/wp-content/uploads/2021/03/pollo-con-salsa-de-nueces.jpg"
+            />
+            <CardContent>
+              <h3>Pizza</h3>
               <Typography>
                 <RestaurantIcon sx={{ fontSize: 15 }} /> Cantidad solicitada: 0
               </Typography>
