@@ -1,15 +1,18 @@
-import { deleteUsers, getUsers } from "./actions";
+import { deleteUsers, getUsers, usersReport } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 import AppLayout from "../components/layout/appLayout";
 import DataTable from "../components/tables/dataTable";
 import { columns } from "./columns";
 import { RootState } from "../store";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import DeleteModal from "../components/layout/deleteModal";
 import usePaginator from "../lib/hooks/usePaginator";
 import useDeleteModal from "../lib/hooks/useDeleteModal";
 import { setIsLoading } from "../lib/appSlice";
-import TableOptions from "../components/tables/tableOptions";
+import DescriptionIcon from '@mui/icons-material/Description';
+import PageHeader from "../components/layout/PageHeader";
+import { useState } from "react";
+import ReportModal from "../components/reports/ReportModal";
 
 const Users = () => {
   const dispatcher = useDispatch();
@@ -29,7 +32,8 @@ const Users = () => {
 
   const { openDeleteModal, toggleModal, handleDelete } = useDeleteModal();
   const appState = useSelector((state: RootState) => state.app);
-
+  const [openReportModal, setOpenReportModal] = useState(false);
+  
   const deleteSelected = async () => {
     dispatcher(setIsLoading(true));
     const response = await deleteUsers(selectedRows);
@@ -47,17 +51,24 @@ const Users = () => {
         alignItems="flex-end"
         marginBottom={2}
       ></Grid>
-      <TableOptions
-        editButton={{ link: "/admin/users/new", label: "Nuevo invitado" }}
-        deleteButton={{
-          fn: () => toggleModal(true),
-          label: "Eliminar invitados",
-          active: selectedRows.length > 0,
-        }}
-      />
-      <span style={{ fontStyle: "italic", color: "#555555" }}>
-        {elements} - invitados encontrados
-      </span>
+          <PageHeader
+            title={'Invitados'}
+            editButton={{ link: '/users/new', label: 'Nuevo invitado' }}
+            deleteButton={{
+              fn: () => toggleModal(true),
+              label: 'Eliminar invitados',
+              active: selectedRows.length > 0,
+            }}
+          >
+            <Button
+              variant="contained"
+              color="warning"
+              startIcon={<DescriptionIcon />}
+              onClick={() => setOpenReportModal(true)}
+            >
+              Extracto de invitados
+            </Button>
+          </PageHeader>
       <DataTable
         columns={columns}
         rows={items}
@@ -80,6 +91,13 @@ const Users = () => {
         ¿Estás seguro de eliminar los {selectedRows.length} usuarios
         seleccionados?
       </DeleteModal>
+      <ReportModal
+        title="Extracto de invitados"
+        getReport={usersReport}
+        open={openReportModal}
+        setOpen={setOpenReportModal}
+        dateRangeFilter
+      />
     </AppLayout>
   );
 };

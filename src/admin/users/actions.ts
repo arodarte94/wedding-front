@@ -159,3 +159,18 @@ export const getDinners = async (params?: any) => {
     },
   });
 };
+
+export const usersReport = async (params?: any) => {
+  return await axios.get(
+    ENV.basePath + 'reports/users',
+    {
+      responseType: 'blob',
+      params: {
+        startDate: params?.startDate,
+        endDate: params?.endDate,
+        usersList: true,
+        includeSoftDeleted: params?.includeSoftDeleted,
+      },
+    },
+  );
+};
