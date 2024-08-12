@@ -19,7 +19,6 @@ export const getUsers = async (
   sortKey: string | null,
   params?: any,
 ) => {
-
   console.log(params);
   const response = await axios.get(ENV.basePath + ENDPOINTS.GET, {
     params: {
@@ -115,15 +114,13 @@ export const update = async (
 };
 
 export const saveGuests = async (requestData?: any) => {
-
   try {
-  const response = await axios.post(ENV.basePath + ENDPOINTS.SAVEGUESTS, {
-    guest: requestData,
-  });
-  
-  return response;
-  }
-  catch (error) {
+    const response = await axios.post(ENV.basePath + ENDPOINTS.SAVEGUESTS, {
+      guest: requestData,
+    });
+
+    return response;
+  } catch (error) {
     return error;
   }
 };
@@ -163,16 +160,13 @@ export const getDinners = async (params?: any) => {
 };
 
 export const usersReport = async (params?: any) => {
-  return await axios.get(
-    ENV.basePath + 'reports/users',
-    {
-      responseType: 'blob',
-      params: {
-        startDate: params?.startDate,
-        endDate: params?.endDate,
-        usersList: true,
-        includeSoftDeleted: params?.includeSoftDeleted,
-      },
+  return await axios.get(ENV.basePath + "reports/users", {
+    responseType: "blob",
+    params: {
+      startDate: params?.startDate,
+      endDate: params?.endDate,
+      usersList: true,
+      includeSoftDeleted: params?.includeSoftDeleted,
     },
-  );
+  });
 };

@@ -35,7 +35,7 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
     <>
       <TabOptions save={save} link="/admin/groups" />
       <Grid container spacing={2} className={styles.tabContent}>
-      {appState.isLoading && <LoadingBackdrop />}
+        {appState.isLoading && <LoadingBackdrop />}
         <Grid item md={6} xs={12}>
           <TextField
             fullWidth

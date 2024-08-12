@@ -98,10 +98,18 @@ const Guests = ({ guest, setGuest }) => {
 
   return (
     <Box className={styles.main}>
-      {loading && <Box sx={{position: 'fixed', height: '100vh', width:'100%', zIndex: 10000}}>
-        <LoadingBackdrop />
-      </Box>
-      }
+      {loading && (
+        <Box
+          sx={{
+            position: "fixed",
+            height: "100vh",
+            width: "100%",
+            zIndex: 10000,
+          }}
+        >
+          <LoadingBackdrop />
+        </Box>
+      )}
       <Box className={confirmationStyles.footerButtons}>
         <ButtonGroup fullWidth>
           <Button variant="contained" color="success" onClick={save}>
@@ -114,11 +122,15 @@ const Guests = ({ guest, setGuest }) => {
       </Box>
       <SideMenu />
       <Box className={styles.content}>
-      {disabled && (
+        {disabled && (
           <Box padding={2}>
-            <Alert severity="warning" sx={{fontFamily: 'chapaza'}}>¡La fecha límite para confirmar tus platillos fue el 4 de Octubre! Aún puedes confirmar tu asistencia, pero ya no es posible cambiar tus alimentos.</Alert>
+            <Alert severity="warning" sx={{ fontFamily: "chapaza" }}>
+              ¡La fecha límite para confirmar tus platillos fue el 4 de Octubre!
+              Aún puedes confirmar tu asistencia, pero ya no es posible cambiar
+              tus alimentos.
+            </Alert>
           </Box>
-          )}
+        )}
         <Box className={confirmationStyles.guestsList}>
           <Grid container>
             <GuestCard

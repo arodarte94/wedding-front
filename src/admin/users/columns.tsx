@@ -32,16 +32,14 @@ export const columns: GridColDef[] = [
       <Link to={"/admin/users/" + params.row.id}>{params.row.name}</Link>
     ),
   },
-  { 
-    field: 'confirmed', 
-    headerName: 'Asistirá', 
-    width: 150, 
+  {
+    field: "confirmed",
+    headerName: "Asistirá",
+    width: 150,
     filter: IsConfirmedCombobox,
     valueGetter: (params: GridValueGetterParams) => {
-     
-      if(params.row.confirmed === null) return "No respondido";
-
-      else return (params.row.confirmed ? 'Sí' : "No");
+      if (params.row.confirmed === null) return "No respondido";
+      else return params.row.confirmed ? "Sí" : "No";
     },
   },
   {

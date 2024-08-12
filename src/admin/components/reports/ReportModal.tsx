@@ -1,15 +1,15 @@
-import { Checkbox, Divider, FormControlLabel, Grid } from '@mui/material';
-import SideModal from '../layout/SideModal';
-import LoadingBackdrop from '../layout/loadingBackdrop';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { downloadFile } from '../../lib/helpers';
+import { Checkbox, Divider, FormControlLabel, Grid } from "@mui/material";
+import SideModal from "../layout/SideModal";
+import LoadingBackdrop from "../layout/loadingBackdrop";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { downloadFile } from "../../lib/helpers";
 import {
   setIsLoading,
   showErrorMessage,
   showMessage,
-} from '../../lib/appSlice';
-import { useState } from 'react';
+} from "../../lib/appSlice";
+import { useState } from "react";
 
 type ReportModalProps = {
   title: string;
@@ -39,19 +39,19 @@ const ReportModal = ({
     products: null,
     startDate: null,
     endDate: null,
-    includeSoftDeleted: '0',
+    includeSoftDeleted: "0",
   });
   const appState = useSelector((state: RootState) => state.app);
   const dispatcher = useDispatch();
   const generateReport = async () => {
     if (locationsRequired && !reportParams.locations) {
-      dispatcher(showErrorMessage('Por favor seleccione una ubicación'));
+      dispatcher(showErrorMessage("Por favor seleccione una ubicación"));
       return;
     } else if (
       dateRangeRequired &&
       (!reportParams.startDate || !reportParams.endDate)
     ) {
-      dispatcher(showErrorMessage('Por favor seleccione un rango de fechas'));
+      dispatcher(showErrorMessage("Por favor seleccione un rango de fechas"));
       return;
     }
 
@@ -59,7 +59,7 @@ const ReportModal = ({
     const report = await getReport(reportParams);
     if (report.status === 200) {
       downloadFile(report.data, title);
-      dispatcher(showMessage('Reporte ha sido descargado.'));
+      dispatcher(showMessage("Reporte ha sido descargado."));
     }
   };
 
