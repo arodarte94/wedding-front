@@ -53,7 +53,7 @@ const Users = () => {
       ></Grid>
           <PageHeader
             title={'Invitados'}
-            editButton={{ link: '/users/new', label: 'Nuevo invitado' }}
+            editButton={{ link: '/admin/users/new', label: 'Nuevo invitado' }}
             deleteButton={{
               fn: () => toggleModal(true),
               label: 'Eliminar invitados',

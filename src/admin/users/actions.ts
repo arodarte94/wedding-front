@@ -19,6 +19,8 @@ export const getUsers = async (
   sortKey: string | null,
   params?: any,
 ) => {
+
+  console.log(params);
   const response = await axios.get(ENV.basePath + ENDPOINTS.GET, {
     params: {
       page: page,
@@ -27,7 +29,7 @@ export const getUsers = async (
       role: params?.role,
       name: params?.name,
       groups: params?.groups,
-      host: params?.host,
+      hosts: params?.hosts,
       types: params?.types,
       dinners: params?.dinners,
       entrees: params?.entrees,

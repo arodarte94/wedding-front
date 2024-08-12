@@ -13,11 +13,13 @@ const GuestCard = ({
     handle,
     index,
     children,
+    disabled
   }: {
     guest: any;
     handle: any;
     index: any;
     children?: any;
+    disabled?: boolean;
   }) => {
     return (
       <Grid item xl={4} lg={6} xs={12} padding={1} marginBottom={2}>
@@ -41,13 +43,13 @@ const GuestCard = ({
               fullWidth
             >
               <ToggleButton
-                value={1}
+                value={true}
                 className={guest.confirmed ? confirmationStyles.selected : ""}
               >
                 Sí
               </ToggleButton>
               <ToggleButton
-                value={0}
+                value={false}
                 className={!guest.confirmed ? confirmationStyles.selected : ""}
               >
                 No
@@ -55,7 +57,7 @@ const GuestCard = ({
             </ToggleButtonGroup>
           </Box>
   
-          {guest.confirmed === 1 && (
+          {guest.confirmed === true && (
             <>
             {guest?.type_id == 4 ? (
 
@@ -79,6 +81,7 @@ const GuestCard = ({
                   }}
                   aria-label="Entree"
                   fullWidth
+                  disabled={disabled}
                 >
                   <ToggleButton
                     value={1}
@@ -111,6 +114,7 @@ const GuestCard = ({
                   }}
                   aria-label="Dinner"
                   fullWidth
+                  disabled={disabled}
                 >
                   <ToggleButton
                     value={1}

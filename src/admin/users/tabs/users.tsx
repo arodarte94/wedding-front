@@ -13,7 +13,7 @@ const UsersTab = ({ user }: { user: User }) => {
     itemsPerPage,
     onPageChange,
     onSortChange,
-  } = usePaginator(getUsers, "users", { host: user.id });
+  } = usePaginator(getUsers, "users", { hosts: user.id });
 
   return (
     <DataTable

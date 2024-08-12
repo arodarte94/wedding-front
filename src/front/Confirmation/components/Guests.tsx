@@ -1,6 +1,7 @@
 import styles from "../../styles/front.module.scss";
 import confirmationStyles from "../../styles/confirmation.module.scss";
 import {
+  Alert,
   Box,
   Button,
   ButtonGroup,
@@ -90,6 +91,11 @@ const Guests = ({ guest, setGuest }) => {
     }
   };
 
+  const countDownDate = new Date("Oct 4, 2024 00:00:00").getTime();
+  const now = new Date().getTime();
+  const distance = countDownDate - now;
+  const disabled = distance <= 0;
+
   return (
     <Box className={styles.main}>
       {loading && <Box sx={{position: 'fixed', height: '100vh', width:'100%', zIndex: 10000}}>
@@ -108,6 +114,11 @@ const Guests = ({ guest, setGuest }) => {
       </Box>
       <SideMenu />
       <Box className={styles.content}>
+      {disabled && (
+          <Box padding={2}>
+            <Alert severity="warning" sx={{fontFamily: 'chapaza'}}>¡La fecha límite para confirmar tus platillos fue el 4 de Octubre! Aún puedes confirmar tu asistencia, pero ya no es posible cambiar tus alimentos.</Alert>
+          </Box>
+          )}
         <Box className={confirmationStyles.guestsList}>
           <Grid container>
             <GuestCard
@@ -115,6 +126,7 @@ const Guests = ({ guest, setGuest }) => {
               guest={guest}
               handle={changeMainSelection}
               index={1}
+              disabled={disabled}
             >
               <Box className={confirmationStyles.selectionRow}>
                 <TextField
@@ -134,6 +146,7 @@ const Guests = ({ guest, setGuest }) => {
                   guest={person}
                   handle={changeGuestSelection}
                   index={index + 2}
+                  disabled={disabled}
                 />
               );
             })}
@@ -161,7 +174,7 @@ const NewGuest = ({ guest, handle, index, add }) => {
     <Grid item xl={4} lg={6} xs={12} padding={1} marginBottom={3}>
       <Box className={confirmationStyles.guestCard}>
         <Typography className={confirmationStyles.guestName}>
-          Nuevo invitado
+          Invitado extra
         </Typography>
         <Box className={confirmationStyles.selectionRow}>
           <Typography className={confirmationStyles.selectionTitle}>

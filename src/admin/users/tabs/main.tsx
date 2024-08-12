@@ -103,6 +103,7 @@ const MainTab = ({ user, set }: { user: User | null; set: any }) => {
                     required
                     label="Correo del invitado"
                     defaultValue={user?.email}
+                    disabled
                     onChange={(e) =>
                       setUserData({ ...userData, email: e.target.value })
                     }

@@ -34,14 +34,19 @@ export const columns: GridColDef[] = [
   },
   { 
     field: 'confirmed', 
-    headerName: 'Confirmado', 
+    headerName: 'Asistirá', 
     width: 150, 
     filter: IsConfirmedCombobox,
-    valueGetter: (params: GridValueGetterParams) => params.row.confirmed ? 'Sí' : "No",
+    valueGetter: (params: GridValueGetterParams) => {
+     
+      if(params.row.confirmed === null) return "No respondido";
+
+      else return (params.row.confirmed ? 'Sí' : "No");
+    },
   },
   {
     field: "confirmed_at",
-    headerName: "Fecha de confirmación",
+    headerName: "Fecha de respuesta",
     width: 200,
     filter: DateRangePicker,
     valueGetter: transformDate,
