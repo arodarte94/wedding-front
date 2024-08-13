@@ -5,8 +5,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@mui/material";
-import LoadingBackdrop from "./loadingBackdrop";
+} from '@mui/material';
+import LoadingBackdrop from './loadingBackdrop';
 
 interface deleteModalProps {
   open: boolean;
@@ -14,6 +14,8 @@ interface deleteModalProps {
   deleteElements: any;
   isLoading?: boolean;
   children?: React.ReactNode;
+  cancelLabels?: boolean;
+  customTitle?: string;
 }
 
 const DeleteModal = ({
@@ -22,6 +24,8 @@ const DeleteModal = ({
   deleteElements,
   isLoading,
   children,
+  cancelLabels,
+  customTitle,
 }: deleteModalProps) => {
   return (
     <Dialog
@@ -31,7 +35,13 @@ const DeleteModal = ({
       aria-describedby="alert-dialog-description"
     >
       {isLoading && <LoadingBackdrop />}
-      <DialogTitle id="alert-dialog-title">Eliminar elementos</DialogTitle>
+      <DialogTitle id="alert-dialog-title">
+        {customTitle
+          ? customTitle
+          : cancelLabels
+            ? 'Cancelar'
+            : 'Eliminar elementos'}
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
           {children}
@@ -42,7 +52,7 @@ const DeleteModal = ({
           Regresar
         </Button>
         <Button onClick={deleteElements} variant="outlined" color="error">
-          Eliminar
+          {cancelLabels ? 'Cancelar' : 'Eliminar'}
         </Button>
       </DialogActions>
     </Dialog>

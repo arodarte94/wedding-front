@@ -8,7 +8,6 @@ import { Button, Grid } from "@mui/material";
 import DeleteModal from "../components/layout/deleteModal";
 import usePaginator from "../lib/hooks/usePaginator";
 import useDeleteModal from "../lib/hooks/useDeleteModal";
-import { setIsLoading } from "../lib/appSlice";
 import DescriptionIcon from "@mui/icons-material/Description";
 import PageHeader from "../components/layout/PageHeader";
 import { useState } from "react";
@@ -30,15 +29,8 @@ const Users = () => {
     removeRows,
   } = usePaginator(getUsers, "users");
 
-  const { openDeleteModal, toggleModal, handleDelete } = useDeleteModal();
-  const appState = useSelector((state: RootState) => state.app);
+  const { openDeleteModal, isDeleteLoading,  toggleModal, handleDelete } = useDeleteModal();
   const [openReportModal, setOpenReportModal] = useState(false);
-
-  const deleteSelected = async () => {
-    dispatcher(setIsLoading(true));
-    const response = await deleteUsers(selectedRows);
-    handleDelete(response, () => removeRows(selectedRows));
-  };
 
   return (
     <AppLayout>
@@ -85,8 +77,10 @@ const Users = () => {
       <DeleteModal
         open={openDeleteModal}
         close={() => toggleModal(false)}
-        deleteElements={deleteSelected}
-        isLoading={appState.isLoading}
+        deleteElements={() =>
+          handleDelete(() => deleteUsers(selectedRows), removeRows)
+        }
+        isLoading={isDeleteLoading}
       >
         ¿Estás seguro de eliminar los {selectedRows.length} usuarios
         seleccionados?

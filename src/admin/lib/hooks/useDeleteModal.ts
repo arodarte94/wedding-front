@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function useDeleteModal() {
   const [openDeleteModal, toggleModal] = useState(false);
