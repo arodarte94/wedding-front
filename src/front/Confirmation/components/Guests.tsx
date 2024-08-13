@@ -91,7 +91,7 @@ const Guests = ({ guest, setGuest }) => {
     }
   };
 
-  const countDownDate = new Date("Oct 4, 2024 00:00:00").getTime();
+  const countDownDate = new Date("Oct 5, 2024 00:00:00").getTime();
   const now = new Date().getTime();
   const distance = countDownDate - now;
   const disabled = distance <= 0;
@@ -166,7 +166,7 @@ const Guests = ({ guest, setGuest }) => {
             {newGuests.map((person, index) => {
               return (
                 <NewGuest
-                  key={"newGuest" + index}
+                  key={"newGuest" + (guest?.guests.length + index)}
                   guest={person}
                   handle={changeGuestSelection}
                   index={guest?.guests.length + index + 2}
