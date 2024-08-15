@@ -98,16 +98,26 @@ const GuestCard = ({
                       className={
                         guest.entree_id === 1 ? confirmationStyles.selected : ""
                       }
+                      sx={{ flexDirection: "column" }}
                     >
                       Ensalada Olimpia
+                      <Typography fontSize={10}>
+                        Mezcla de lechugas, queso de cabra, pera y arándanos al
+                        balsámico
+                      </Typography>
                     </ToggleButton>
                     <ToggleButton
                       value={2}
                       className={
                         guest.entree_id === 2 ? confirmationStyles.selected : ""
                       }
+                      sx={{ flexDirection: "column" }}
                     >
                       Tacos de jícama con camarón
+                      <Typography fontSize={10}>
+                        Finas láminas de jícama rellenas de camarón salteado con
+                        reducción de tamarindo
+                      </Typography>
                     </ToggleButton>
                   </ToggleButtonGroup>
                 </Box>
@@ -131,16 +141,27 @@ const GuestCard = ({
                       className={
                         guest.dinner_id === 1 ? confirmationStyles.selected : ""
                       }
+                      sx={{ flexDirection: "column" }}
                     >
                       Chile en Nogada
+                      <Typography fontSize={10}>
+                        Chile poblano relleno de carne de res y puerco,
+                        mezclados con frutas de la estación, nueces, almendras,
+                        piñones y diversas especias
+                      </Typography>
                     </ToggleButton>
                     <ToggleButton
                       value={2}
                       className={
                         guest.dinner_id === 2 ? confirmationStyles.selected : ""
                       }
+                      sx={{ flexDirection: "column" }}
                     >
                       Pollo con salsa en nuez
+                      <Typography fontSize={10}>
+                        Pechuga de pollo rellena de espinacas y queso de cabra
+                        acompañado de arroz florentina y vegetales crocantes
+                      </Typography>
                     </ToggleButton>
                   </ToggleButtonGroup>
                 </Box>

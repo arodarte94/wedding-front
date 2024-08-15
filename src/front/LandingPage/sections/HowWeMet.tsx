@@ -43,22 +43,26 @@ const HowWeMet = () => {
           <p>
             ¡Nos conocimos en <b>Bumble</b>!<br />
             <br />
-            En diciembre del 2021, ambos nos encontrábamos activos en Bumble,
-            una aplicación de citas muy conocida. Como cualquier otra aplicación
-            de citas, las personas deben de hacer "match" para poder iniciar una
-            conversación.
+            En Diciembre del 2021, ambos nos encontrábamos activos en Bumble,
+            una aplicación de citas muy conocida. Estas aplicaciones son como un
+            catálogo con los diferentes perfiles de personas. Lo importante es
+            que dos perfiles indiquen que “se gustan” para se generar un “match”
+            y poder iniciar una conversación.
             <br />
             <br />
-            Al empezar a platicar, hubo una conexión inmediata que ambos
-            disfrutamos mucho. Hablábamos por horas en diferentes niveles de
-            profundidad. Pronto la conversación migró a WhatsApp y la longitud
-            de las conversaciones sólo aumentaba.
+            ¡Antonio presionó el botón de pánico! Un match solo permite comenzar
+            una conversación durante las primeras 24 horas. Antonio tuvo que
+            extender el match porque Nallely no le enviaba un mensaje. Al
+            empezar a platicar, hubo una conexión inmediata . Pasábamos horas
+            mensajeándonos temas de todos los niveles de profundidad. Pronto la
+            conversación migró a WhatsApp y la longitud de las conversaciones
+            sólo aumentaba.
             <br />
             <br />
             El COVID nos impidió conocernos durante un par de semanas, hasta que
             el 13 de enero del 2022 tuvimos nuestra primera cita en Basilico, un
-            restaurante italiano en Juárez, en el cual nos estuvimos hasta la
-            hora de cierre del lugar.
+            restaurante italiano en Juárez, en el cual nos estuvimos conversando
+            hasta el cierre del lugar.
           </p>
         </div>
 
@@ -84,22 +88,26 @@ const HowWeMet = () => {
             </Typography>
             !<br />
             <br />
-            En diciembre del 2021, ambos nos encontrábamos activos en Bumble,
-            una aplicación de citas muy conocida. Como cualquier otra aplicación
-            de citas, las personas deben de hacer "match" para poder iniciar una
-            conversación.
+            En Diciembre del 2021, ambos nos encontrábamos activos en Bumble,
+            una aplicación de citas muy conocida. Estas aplicaciones son como un
+            catálogo con los diferentes perfiles de personas. Lo importante es
+            que dos perfiles indiquen que “se gustan” para se generar un “match”
+            y poder iniciar una conversación.
             <br />
             <br />
-            Al empezar a platicar, hubo una conexión inmediata que ambos
-            disfrutamos mucho. Hablábamos por horas en diferentes niveles de
-            profundidad. Pronto la conversación migró a WhatsApp y la longitud
-            de las conversaciones sólo aumentaba.
+            ¡Antonio presionó el botón de pánico! Un match solo permite comenzar
+            una conversación durante las primeras 24 horas. Antonio tuvo que
+            extender el match porque Nallely no le enviaba un mensaje. Al
+            empezar a platicar, hubo una conexión inmediata. Pasábamos horas
+            mensajeándonos temas de todos los niveles de profundidad. Pronto la
+            conversación migró a WhatsApp y la longitud de las conversaciones
+            sólo aumentaba.
             <br />
             <br />
             El COVID nos impidió conocernos durante un par de semanas, hasta que
             el 13 de enero del 2022 tuvimos nuestra primera cita en Basilico, un
-            restaurante italiano en Juárez, en el cual nos estuvimos hasta la
-            hora de cierre del lugar.
+            restaurante italiano en Juárez, conversamos hasta el cierre del
+            lugar.
           </p>
         </div>
         <div className={styles.floatingTitle}>

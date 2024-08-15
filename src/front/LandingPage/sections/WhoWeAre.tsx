@@ -5,7 +5,6 @@ import styles from "../../styles/front.module.scss";
 const WhoWeAre = ({ isAntonioOpen, isNallelyOpen, openPopover }) => {
   return (
     <>
-      <h1>Esto es lo que somos...</h1>
       <Box
         className={styles.morritoDialog + " " + styles.tumblus}
         visibility={isAntonioOpen ? "" : "hidden"}
@@ -27,8 +26,9 @@ const WhoWeAre = ({ isAntonioOpen, isNallelyOpen, openPopover }) => {
         <h3 style={{ color: "#FFF" }}>Nallely</h3>
         <p>
           E-commerce specialist, 29 años. <br />
-          Le encantan las manualidades y el ejercicio. Su botana favorita son
-          los doritos con queso para nachos. <br />
+          Ser mamá de Jade es su título más importante. Le encantan las
+          manualidades y viajar por el mundo. Su botana favorita son los doritos
+          con queso. <br />
           <br />
           Su persona favorita es Antonio.
         </p>

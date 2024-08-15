@@ -166,13 +166,22 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
             </Box>
           )}
           <Box padding={1.5}>
-            {error && (
+            {error ? (
               <Alert
                 severity="warning"
                 sx={{ fontFamily: "chapaza", fontSize: 16, marginTop: 2 }}
               >
                 Código de invitado no encontrado, por favor intenta de nuevo.
               </Alert>
+            ) : (
+              !loading && (
+                <Alert
+                  severity="info"
+                  sx={{ fontFamily: "chapaza", fontSize: 16, marginTop: 2 }}
+                >
+                  Introduce el código de invitado que te fue proporcionado.
+                </Alert>
+              )
             )}
           </Box>
         </Box>
