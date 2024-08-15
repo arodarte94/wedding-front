@@ -152,7 +152,7 @@ const Page = () => {
             currentSection === 4 ? styles.selected : "",
           ].join(" ")}
         >
-          <Link onClick={() => animateSectionJump(morritosRef, 4)}>
+          <Link onClick={() => animateSectionJump(giftsRef, 4)}>
             <CardGiftcardOutlinedIcon />
             <span>Regalos</span>
           </Link>

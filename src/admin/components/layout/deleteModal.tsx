@@ -5,8 +5,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from '@mui/material';
-import LoadingBackdrop from './loadingBackdrop';
+} from "@mui/material";
+import LoadingBackdrop from "./loadingBackdrop";
 
 interface deleteModalProps {
   open: boolean;
@@ -39,8 +39,8 @@ const DeleteModal = ({
         {customTitle
           ? customTitle
           : cancelLabels
-            ? 'Cancelar'
-            : 'Eliminar elementos'}
+            ? "Cancelar"
+            : "Eliminar elementos"}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
@@ -52,7 +52,7 @@ const DeleteModal = ({
           Regresar
         </Button>
         <Button onClick={deleteElements} variant="outlined" color="error">
-          {cancelLabels ? 'Cancelar' : 'Eliminar'}
+          {cancelLabels ? "Cancelar" : "Eliminar"}
         </Button>
       </DialogActions>
     </Dialog>

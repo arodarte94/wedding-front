@@ -29,7 +29,8 @@ const Users = () => {
     removeRows,
   } = usePaginator(getUsers, "users");
 
-  const { openDeleteModal, isDeleteLoading,  toggleModal, handleDelete } = useDeleteModal();
+  const { openDeleteModal, isDeleteLoading, toggleModal, handleDelete } =
+    useDeleteModal();
   const [openReportModal, setOpenReportModal] = useState(false);
 
   return (
