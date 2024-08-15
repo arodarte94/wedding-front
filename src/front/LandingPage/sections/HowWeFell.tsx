@@ -4,7 +4,7 @@ import MasonryImg from "../../../img/masonry.png";
 import MasonryImgMobile from "../../../img/masonryMobile.png";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const HowWeFell = () => {
   const isIOS =
@@ -56,41 +56,7 @@ const HowWeFell = () => {
             <h1>¿Cómo nos enamoramos?</h1>
 
             <p>
-              ¡Las aplicaciones de citas si funcionan! Hicimos “match” en
-              Bumble, alrededor del 18 de Diciembre del 2021. En esta aplicación
-              la mujer tiene que enviar el primer mensaje durante un periodo de
-              24 horas, de lo contrario pierdes tu oportunidad y la persona
-              desaparece.
-              <br />
-              <br />
-              Casi al llegar al límite de las 24 horas, Antonio presiona el
-              botón de emergencia el cual le daba otras 24 horas a Nallely para
-              enviarle un mensaje. Intrigada por tal acción el 20 de Diciembre,
-              Nallely envía a Antonio el clásico “Hola ¿cómo estas?”
-              <br />
-              <br />
-              Casi al llegar al límite de las 24 horas, Antonio presiona el
-              botón de emergencia el cual le daba otras 24 horas a Nallely para
-              enviarle un mensaje. Intrigada por tal acción el 20 de Diciembre,
-              Nallely envía a Antonio el clásico “Hola ¿cómo estas?”
-              <br />
-              <br />
-              Casi al llegar al límite de las 24 horas, Antonio presiona el
-              botón de emergencia el cual le daba otras 24 horas a Nallely para
-              enviarle un mensaje. Intrigada por tal acción el 20 de Diciembre,
-              Nallely envía a Antonio el clásico “Hola ¿cómo estas?”
-              <br />
-              <br />
-              Casi al llegar al límite de las 24 horas, Antonio presiona el
-              botón de emergencia el cual le daba otras 24 horas a Nallely para
-              enviarle un mensaje. Intrigada por tal acción el 20 de Diciembre,
-              Nallely envía a Antonio el clásico “Hola ¿cómo estas?”
-              <br />
-              <br />
-              Casi al llegar al límite de las 24 horas, Antonio presiona el
-              botón de emergencia el cual le daba otras 24 horas a Nallely para
-              enviarle un mensaje. Intrigada por tal acción el 20 de Diciembre,
-              Nallely envía a Antonio el clásico “Hola ¿cómo estas?”
+            Como cada pareja, nuestra historia también ha visto altas, bajas, mucho amor, momentos de risas y momentos de mucha seriedad, ha sido un aprendizaje maravilloso que siempre estaremos felices de platicarte con un vinito y, por supuesto, nada nos haría más felices que celebrarlo contigo el día de nuestra boda.<br /><br />
             </p>
           </div>
 
@@ -104,27 +70,23 @@ const HowWeFell = () => {
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.dateContent}>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Explicabo, officiis, inventore labore culpa odit earum assumenda
-              vitae expedita laborum quis quibusdam impedit amet quidem,
-              obcaecati modi. Debitis qui esse illo?
-              <br />
-              <br />
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Temporibus illum tempore nisi debitis vitae officia repudiandae
-              odio cupiditate et quos voluptatibus, neque libero dolor magni,
-              perspiciatis vero fuga? Necessitatibus, expedita.
-              <br /> <br />
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Temporibus illum tempore nisi debitis vitae officia repudiandae
-              odio cupiditate et quos voluptatibus, neque libero dolor magni,
-              perspiciatis vero fuga? Necessitatibus, expedita.
-            </p>
+          <p>
+            Nuestro noviazgo comenzó en la cita número 8, la cual sucedió el 9 de marzo del 2022. Nallely vivía en el Paso, Antonio en Juárez, alternábamos mucho nuestras citas entre una ciudad y la otra.
+            <br/><br/>
+            Como los nerds que somos, tenemos un Excel en donde mantenemos una bitácora de todas las citas que hemos tenido, podemos encontrar nuestra historia de amor ahí con cosas como:
+            <ul>
+              <li>Cita #32: Antonio se quedó encerrado en su casa, Nallely lo fue a visitar con unas mangoneadas mientras llegaba el cerrajero</li>
+              <li>Cita #60: Antonio comió comida coreana por primera vez, llevamos a nuestra perrita Jade a un juego de béisbol</li>
+              <li>Cita #130: Buscarle un doctor a Nallely en Guadalajara en medio de un viaje (le dió una alergia medio rara)</li>
+              <li>Cita #204: Fuimos a una carrera en el Chamizal en donde podíamos llevar perritos </li>
+              <li>Cita #262: Hicimos el mandado y ya</li>
+              <li>Cita #333: Descubrimos un lugar de arepas colombianas delicioso</li>
+            </ul>
+          </p>
           </div>
           <div className={styles.floatingTitle}>
             Primeros
-            <br /> <Box sx={{ fontSize: "150px" }}>Pasos</Box>
+            <br /> <Box sx={{ fontSize: "120px" }}>Pasos</Box>
           </div>
         </div>
       </div>
@@ -140,22 +102,18 @@ const HowWeFell = () => {
         <div className={styles.rightColumn}>
           <div className={styles.dateContent}>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Explicabo, officiis, inventore labore culpa odit earum assumenda
-              vitae expedita laborum quis quibusdam impedit amet quidem,
-              obcaecati modi. Debitis qui esse illo?
-              <br />
-              <br />
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Temporibus illum tempore nisi debitis vitae officia repudiandae
-              odio cupiditate et quos voluptatibus, neque libero dolor magni,
-              perspiciatis vero fuga? Necessitatibus, expedita.
+
+            Nallely tuvo un viaje de trabajo en Mérida, viaje al cual Antonio fue de sorpresa para pedirle matrimonio a Nallely (Nallely jura que ya se las olía). Esta fue nuestra cita número 295, el 30 de agosto del 2023. Terminamos tomando unas copitas de vino en un bar llamado "Piensa Rosa", ¡Si alguna vez vas a Mérida, te lo recomendamos mucho! <br /><br />
+
+            Nuestra boda civil ocurrió el 3 de noviembre del 2023, nuestra cita número 336. Como personas que aman viajar, celebramos con un tour a Sudamérica el cual incluyó Colombia, Argentina, Uruguay y Cancún (Sí, el dinero se nos va en viajes). <br /><br />
+
+            Como cada pareja, nuestra historia también ha visto altas, bajas, mucho amor, momentos de risas y momentos de mucha seriedad, ha sido un aprendizaje maravilloso que siempre estaremos felices de platicarte con un vinito y, por supuesto, nada nos haría más felices que celebrarlo contigo el día de nuestra boda.<br /><br />
             </p>
           </div>
           <div className={styles.floatingTitle}>
             Camino
             <br />
-            <Box sx={{ fontSize: "150px" }}>Al Altar</Box>
+            <Box sx={{ fontSize: "120px" }}>Al Altar</Box>
           </div>
         </div>
       </div>

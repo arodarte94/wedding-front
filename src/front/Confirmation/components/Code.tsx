@@ -23,7 +23,7 @@ const GuestCode = ({ id, loading, setLoading, guest, setGuest }) => {
   }, [window.screen.width]);
 
   useEffect(() => {
-    if (id) {
+    if (id && id !== "confirm") {
       fetchGuest(id);
     }
   }, []);

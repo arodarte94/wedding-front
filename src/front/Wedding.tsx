@@ -4,7 +4,7 @@ import weddingStore from "./stores/weddingStore";
 import Page from "./LandingPage/page";
 
 const Wedding = () => {
-  const countDownDate = new Date("Sept 1, 2024 00:00:00").getTime();
+  const countDownDate = new Date("Aug 1, 2024 00:00:00").getTime();
   const now = new Date().getTime();
   const distance = countDownDate - now;
 

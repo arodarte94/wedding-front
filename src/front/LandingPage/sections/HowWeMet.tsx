@@ -3,7 +3,7 @@ import styles from "../../styles/front.module.scss";
 import MatchImg from "../../../img/match.png";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const HowWeMet = () => {
   const isIOS =
@@ -38,16 +38,13 @@ const HowWeMet = () => {
           </div>
           <h1>¿Cómo nos conocimos?</h1>
           <p>
-            ¡Las aplicaciones de citas si funcionan! Hicimos “match” en Bumble,
-            alrededor del 18 de Diciembre del 2021. En esta aplicación la mujer
-            tiene que enviar el primer mensaje durante un periodo de 24 horas,
-            de lo contrario pierdes tu oportunidad y la persona desaparece.
-            <br />
-            <br />
-            Casi al llegar al límite de las 24 horas, Antonio presiona el botón
-            de emergencia el cual le daba otras 24 horas a Nallely para enviarle
-            un mensaje. Intrigada por tal acción el 20 de Diciembre, Nallely
-            envía a Antonio el clásico “Hola ¿cómo estas?”
+        ¡Nos conocimos en <b>Bumble</b>!<br /><br />
+        En diciembre del 2021, ambos nos encontrábamos activos en Bumble, una aplicación de citas muy conocida. Como cualquier otra aplicación de citas, las personas deben
+        de hacer "match" para poder iniciar una conversación.
+        <br /><br />
+        Al empezar a platicar, hubo una conexión inmediata que ambos disfrutamos mucho. Hablábamos por horas en diferentes niveles de profundidad. Pronto la conversación migró a WhatsApp y la longitud de las conversaciones sólo aumentaba.
+        <br /><br />
+        El COVID nos impidió conocernos durante un par de semanas, hasta que el 13 de enero del 2022 tuvimos nuestra primera cita en Basilico, un restaurante italiano en Juárez, en el cual nos estuvimos hasta la hora de cierre del lugar.
           </p>
         </div>
 
@@ -62,22 +59,19 @@ const HowWeMet = () => {
 
       <div className={styles.rightColumn}>
         <div className={styles.dateContent}>
-          <p>
-            ¡Las aplicaciones de citas si funcionan! Hicimos “match” en Bumble,
-            alrededor del 18 de Diciembre del 2021. En esta aplicación la mujer
-            tiene que enviar el primer mensaje durante un periodo de 24 horas,
-            de lo contrario pierdes tu oportunidad y la persona desaparece.
-            <br />
-            <br />
-            Casi al llegar al límite de las 24 horas, Antonio presiona el botón
-            de emergencia el cual le daba otras 24 horas a Nallely para enviarle
-            un mensaje. Intrigada por tal acción el 20 de Diciembre, Nallely
-            envía a Antonio el clásico “Hola ¿cómo estas?”
+        <p>
+        ¡Nos conocimos en <Typography fontWeight={'bold'} fontSize={'20px !important'} display={'inline'}>Bumble</Typography>!<br /><br />
+        En diciembre del 2021, ambos nos encontrábamos activos en Bumble, una aplicación de citas muy conocida. Como cualquier otra aplicación de citas, las personas deben
+        de hacer "match" para poder iniciar una conversación.
+        <br /><br />
+        Al empezar a platicar, hubo una conexión inmediata que ambos disfrutamos mucho. Hablábamos por horas en diferentes niveles de profundidad. Pronto la conversación migró a WhatsApp y la longitud de las conversaciones sólo aumentaba.
+        <br /><br />
+        El COVID nos impidió conocernos durante un par de semanas, hasta que el 13 de enero del 2022 tuvimos nuestra primera cita en Basilico, un restaurante italiano en Juárez, en el cual nos estuvimos hasta la hora de cierre del lugar.
           </p>
         </div>
         <div className={styles.floatingTitle}>
           Primer
-          <br /> <Box sx={{ fontSize: "150px" }}>Mensaje</Box>
+          <br /> <Box sx={{ fontSize: "120px" }}>Mensaje</Box>
         </div>
       </div>
     </div>
