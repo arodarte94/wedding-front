@@ -84,7 +84,6 @@ const Page = () => {
   };
 
   const animateSectionJump = (ref, section = 0) => {
-
     setTimeout(() => {
       setAnimationState(`${styles.content} ${styles.fadeIn}`);
 

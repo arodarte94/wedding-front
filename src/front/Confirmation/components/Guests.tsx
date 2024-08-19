@@ -17,7 +17,7 @@ import withReactContent from "sweetalert2-react-content";
 import { useRef, useState } from "react";
 import LoadingBackdrop from "../../../admin/components/layout/loadingBackdrop";
 import GuestCard from "./GuestCard";
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 const swal = withReactContent(Swal);
 
@@ -183,7 +183,6 @@ const Guests = ({ guest, setGuest }) => {
 };
 
 const NewGuest = ({ guest, handle, index, add }) => {
-
   const textBoxRef = useRef(null);
   return (
     <Grid item xl={4} lg={6} xs={12} padding={1} marginBottom={3}>
@@ -193,27 +192,32 @@ const NewGuest = ({ guest, handle, index, add }) => {
         </Typography>
         <Box className={confirmationStyles.selectionRow}>
           <Typography className={confirmationStyles.selectionTitle}>
-            Escribe el nombre del invitado y pulsa Enter o el botón de la derecha
+            Escribe el nombre del invitado y pulsa Enter o el botón de la
+            derecha
           </Typography>
 
-        <Grid container>
-          <Grid item xs={10}>         
-            <TextField
-            inputRef={textBoxRef}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                add(e, e.target.value);
-              }
-            }}
-            label="Nombre..."
-            fullWidth
-          /></Grid>
-          <Grid item xs={2} display={'flex'}>
-            <Button fullWidth onClick={(e) => add(e, textBoxRef.current?.value)}>
-              <PersonAddIcon />
-            </Button>
+          <Grid container>
+            <Grid item xs={10}>
+              <TextField
+                inputRef={textBoxRef}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    add(e, e.target.value);
+                  }
+                }}
+                label="Nombre..."
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={2} display={"flex"}>
+              <Button
+                fullWidth
+                onClick={(e) => add(e, textBoxRef.current?.value)}
+              >
+                <PersonAddIcon />
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
         </Box>
         <Box className={confirmationStyles.floatingNumber}>{index}</Box>
       </Box>
