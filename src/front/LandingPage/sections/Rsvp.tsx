@@ -47,7 +47,7 @@ const Rsvp = () => {
               <li>Dar click en el botón de “confirmar”</li>
               <li>
                 Se te redireccionará a un sitio donde tendrás que escribir el
-                código de 6 dígitos que te asignamos
+                código de 5 dígitos que te asignamos
               </li>
               <li>
                 Ahora tendrás que confirmar el número de personas que asistirán
