@@ -32,6 +32,7 @@ const Guests = ({ guest, setGuest }) => {
     confirmed: 0,
     entree_id: null,
     dinner_id: null,
+    with_food: true,
     new: true,
   });
 
@@ -62,6 +63,7 @@ const Guests = ({ guest, setGuest }) => {
       confirmed: 0,
       entree_id: null,
       dinner_id: null,
+      with_food: true,
     };
     const guestCopy = _.cloneDeep(guest);
     guestCopy.guests.push(newGuestData);
