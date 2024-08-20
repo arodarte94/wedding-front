@@ -78,6 +78,7 @@ const GuestCard = ({
               }}
               aria-label="with_food"
               fullWidth
+              disabled={disabled}
             >
               <ToggleButton
                 value={true}
