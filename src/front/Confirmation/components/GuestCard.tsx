@@ -65,37 +65,39 @@ const GuestCard = ({
         </Box>
 
         {guest.confirmed === true && (
-        <Box className={confirmationStyles.selectionRow}>
-          <Typography className={confirmationStyles.selectionTitle}>
-            ¿Esta persona cenará?
-          </Typography>
-          <ToggleButtonGroup
-            color="primary"
-            value={guest.with_food}
-            exclusive
-            onChange={(e, value) => {
-              handle(e, value, "with_food", guest.id);
-            }}
-            aria-label="with_food"
-            fullWidth
-          >
-            <ToggleButton
-              value={true}
-              className={guest.with_food ? confirmationStyles.selected : ""}
+          <Box className={confirmationStyles.selectionRow}>
+            <Typography className={confirmationStyles.selectionTitle}>
+              ¿Esta persona cenará?
+            </Typography>
+            <ToggleButtonGroup
+              color="primary"
+              value={guest.with_food}
+              exclusive
+              onChange={(e, value) => {
+                handle(e, value, "with_food", guest.id);
+              }}
+              aria-label="with_food"
+              fullWidth
             >
-              Sí
-            </ToggleButton>
-            <ToggleButton
-              value={false}
-              className={guest.with_food === false ? confirmationStyles.selected : ""}
-            >
-              No
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
-          )}
+              <ToggleButton
+                value={true}
+                className={guest.with_food ? confirmationStyles.selected : ""}
+              >
+                Sí
+              </ToggleButton>
+              <ToggleButton
+                value={false}
+                className={
+                  guest.with_food === false ? confirmationStyles.selected : ""
+                }
+              >
+                No
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
+        )}
 
-        { (guest.confirmed === true && guest.with_food !== false) && (
+        {guest.confirmed === true && guest.with_food !== false && (
           <>
             {guest?.type_id == 4 ? (
               <Box className={confirmationStyles.selectionRow}>
