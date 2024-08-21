@@ -34,7 +34,14 @@ const Schedule = () => {
                   <br /> Señora de la Paz
                 </p>
                 <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                <a
+                  href="https://maps.google.com/?q=Parroquia+Nuestra+Señora+De+La+Paz+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
+                   C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                </a> 
                 </p>
               </Grid>
             </Grid>
@@ -54,7 +61,14 @@ const Schedule = () => {
                 <h6>9:15 p.m.</h6>
                 <p>Terraza Jardín Cibeles</p>
                 <p>
+                <a
+                  href="https://maps.google.com/?q=Terraza+Jardín+Cibeles+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                </a> 
                   <b>* Con previa confirmación</b>
                 </p>
               </Grid>
@@ -76,7 +90,14 @@ const Schedule = () => {
                 <h6>10:15 p.m.</h6>
                 <p>Terraza Jardín Cibeles</p>
                 <p>
+                <a
+                  href="https://maps.google.com/?q=Terraza+Jardín+Cibeles+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                </a> 
                 </p>
               </Grid>
             </Grid>
@@ -97,7 +118,14 @@ const Schedule = () => {
                 <h6>10:30 p.m.</h6>
                 <p>Terraza Jardín Cibeles</p>
                 <p>
+                <a
+                  href="https://maps.google.com/?q=Terraza+Jardín+Cibeles+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                </a> 
                 </p>
               </Grid>
             </Grid>
@@ -162,14 +190,28 @@ const Schedule = () => {
                   <br /> Señora de la Paz
                 </p>
                 <p>
-                  C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                <a
+                  href="https://maps.google.com/?q=Parroquia+Nuestra+Señora+De+La+Paz+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
+                   C. Rancho el Retiro Sur 3517 <br /> Juárez, Chih.
+                </a>
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
                 <h6>9:15 p.m.</h6>
                 <p>Terraza Jardín Cibeles</p>
                 <p>
+                <a
+                  href="https://maps.google.com/?q=Terraza+Jardín+Cibeles+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                </a>   
                   <b>* Con previa confirmación</b>
                 </p>
               </Grid>
@@ -177,14 +219,28 @@ const Schedule = () => {
                 <h6>10:15 p.m.</h6>
                 <p>Terraza Jardín Cibeles</p>
                 <p>
+                <a
+                  href="https://maps.google.com/?q=Terraza+Jardín+Cibeles+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                </a> 
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>
                 <h6>10:30 p.m.</h6>
                 <p>Terraza Jardín Cibeles</p>
                 <p>
+                <a
+                  href="https://maps.google.com/?q=Terraza+Jardín+Cibeles+Ciudad+Juárez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'underline'}}
+                >
                   Blvd. Tomás Fernández 8450 <br /> Juárez, Chih. <br />
+                </a> 
                 </p>
               </Grid>
               <Grid md={2.4} sm={12} {...flexProps}>

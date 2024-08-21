@@ -79,7 +79,7 @@ const Guests = ({ guest, setGuest }) => {
 
       swal.fire({
         title: "¡Gracias!",
-        text: "Tu confirmación y platillos han sido guardados",
+        text: "Hemos recibido tu confirmación, aún puedes cambiar los platillos hasta el 4 de Octubre.",
         icon: "success",
         confirmButtonText: "Cerrar",
       });
@@ -116,7 +116,7 @@ const Guests = ({ guest, setGuest }) => {
       <Box className={confirmationStyles.footerButtons}>
         <ButtonGroup fullWidth>
           <Button variant="contained" color="success" onClick={save}>
-            Guardar
+            Confirmar
           </Button>
           <Button variant="contained" color="warning">
             Regresar
