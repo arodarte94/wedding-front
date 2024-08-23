@@ -33,6 +33,15 @@ export const columns: GridColDef[] = [
     ),
   },
   {
+    field: "code",
+    headerName: "Código",
+    width: 150,
+    filter: TextFilter,
+    valueGetter: (params: GridValueGetterParams) => {
+      return params.row.code ?? "";
+    },
+  },
+  {
     field: "confirmed",
     headerName: "Asistirá",
     width: 150,

@@ -19,7 +19,6 @@ export const getUsers = async (
   sortKey: string | null,
   params?: any,
 ) => {
-  console.log(params);
   const response = await axios.get(ENV.basePath + ENDPOINTS.GET, {
     params: {
       page: page,
@@ -27,6 +26,7 @@ export const getUsers = async (
       orderBy: sortKey,
       role: params?.role,
       name: params?.name,
+      code: params?.code,
       groups: params?.groups,
       hosts: params?.hosts,
       types: params?.types,
