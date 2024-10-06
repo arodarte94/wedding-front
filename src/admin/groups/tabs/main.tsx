@@ -21,12 +21,13 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
   const [groupData, setGroupData] = useState({
     name: group?.name,
     capacity: group?.capacity,
+    description: group?.description
   });
 
   const save = async () => {
     const res = group
-      ? await update(group?.id, groupData.name, groupData.capacity)
-      : await create(groupData.name, groupData.capacity);
+      ? await update(group?.id, groupData.name, groupData.capacity, groupData.description)
+      : await create(groupData.name, groupData.capacity, groupData.description);
 
     if (res.status === 200) set(res.data.group);
   };
@@ -64,8 +65,21 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
             variant="filled"
           />
         </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            required
+            type="text"
+            label="Descripción"
+            defaultValue={group?.description}
+            onChange={(e) =>
+              setGroupData({ ...groupData, description: e.target.value })
+            }
+            variant="filled"
+          />
+        </Grid>
       </Grid>
-      <Grid container spacing={3} className={styles.tabContent}>
+      {/* <Grid container spacing={3} className={styles.tabContent}>
         <Grid item lg={3} md={6} xs={12}>
           <Card>
             <CardMedia
@@ -138,7 +152,7 @@ const MainTab = ({ group, set }: { group: Group | null; set: any }) => {
             </CardContent>
           </Card>
         </Grid>
-      </Grid>
+      </Grid> */}
     </>
   );
 };

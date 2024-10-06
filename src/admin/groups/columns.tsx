@@ -23,6 +23,12 @@ export const columns: GridColDef[] = [
     ),
   },
   {
+    field: "description",
+    headerName: "Descripción",
+    width: 200,
+    filter: TextFilter,
+  },
+  {
     field: "capacity",
     headerName: "Capacidad",
     width: 200,

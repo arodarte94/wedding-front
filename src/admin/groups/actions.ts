@@ -29,19 +29,21 @@ export const getGroup = async (id: string, set: any) => {
   set(response.data.group);
 };
 
-export const create = async (name?: string, capacity?: number) => {
+export const create = async (name?: string, capacity?: number, description? : string) => {
   const response = await axios.post(ENV.basePath + ENDPOINTS.CREATE, {
     name: name,
     capacity: capacity,
+    description: description
   });
 
   return response;
 };
 
-export const update = async (id: number, name?: string, capacity?: number) => {
+export const update = async (id: number, name?: string, capacity?: number, description? : string) => {
   const response = await axios.put(ENV.basePath + ENDPOINTS.UPDATE + "/" + id, {
     name: name,
     capacity: capacity,
+    description: description
   });
 
   return response;
